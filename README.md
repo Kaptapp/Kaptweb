@@ -54,6 +54,9 @@ the side panel and the bundled help page for version 0.4.4:
 - No account, ads, analytics or data transmission
 - Requires Chrome 120+
 
+A "Coming next" note in the final CTA section mentions that a dedicated Kapture
+app is planned, Mac first. It is deliberately worded as a plan with no date.
+
 `privacy.html` reproduces the supplied privacy-policy wording verbatim. Do not
 reword its claims without a corresponding change to the extension.
 

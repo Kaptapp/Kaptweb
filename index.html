@@ -319,7 +319,6 @@
                 <circle cx="164" cy="18" r="12" class="s-ripple"/>
                 <circle cx="164" cy="18" r="16" class="s-ripple faint"/>
               </g>
-              <rect x="154" y="8" width="20" height="20" rx="6" class="s-chip"/>
               <path d="M174 31l1.5 17.5 4.2-5.4 6.6 1.2z" class="s-cursor"/>
             </svg>
             <img class="step-kapture-icon" src="assets/logo/kapture-icon.svg" alt="" width="40" height="40">
@@ -383,7 +382,7 @@
         </div>
 
         <figure class="privacy-art">
-          <svg viewBox="0 0 260 250" aria-hidden="true">
+          <svg viewBox="0 0 260 226" aria-hidden="true">
             <!-- captures streaming down into the machine -->
             <g class="pl-stream">
               <g class="pl-card">
@@ -400,32 +399,24 @@
               </g>
             </g>
             <g class="pl-arrow">
-              <path d="M131 80v10"/>
-              <path d="M125.5 85.5l5.5 5.5 5.5-5.5"/>
+              <path d="M131 80v9"/>
+              <path d="M125.5 84.5l5.5 5.5 5.5-5.5"/>
             </g>
 
             <!-- the machine it lands on -->
-            <g class="pl-body">
-              <rect x="36" y="96" width="188" height="108" rx="12"/>
-              <path d="M34 204l-14 15h220l-14-15"/>
-              <path d="M12 219h236"/>
-            </g>
-            <rect x="46" y="106" width="168" height="88" rx="6" class="pl-screen"/>
+            <rect x="48" y="98" width="164" height="102" rx="10" class="pl-lid"/>
+            <rect x="55" y="105" width="150" height="88" rx="5" class="pl-screen"/>
+            <rect x="26" y="204" width="208" height="10" rx="5" class="pl-base"/>
+            <path d="M120 209h20" class="pl-notch"/>
 
-            <!-- a folder on that machine, holding the capture -->
-            <g class="pl-folder">
-              <path d="M88 182v-50a7 7 0 0 1 7-7h14l5 7h38a7 7 0 0 1 7 7v43a7 7 0 0 1-7 7H95a7 7 0 0 1-7-7Z"/>
-            </g>
-            <g class="pl-file">
-              <rect x="110" y="145" width="36" height="30" rx="7"/>
-              <path d="M118 155h20M118 165h13"/>
-            </g>
+            <!-- kept in a folder on that machine -->
+            <path d="M94 128v-3a6 6 0 0 1 6-6h13l5 7h42a6 6 0 0 1 6 6v38a6 6 0 0 1-6 6h-60a6 6 0 0 1-6-6z" class="pl-folder"/>
 
-            <!-- kept private -->
+            <!-- closed padlock inside it -->
             <g class="pl-lock">
-              <circle cx="200" cy="188" r="23" class="pl-lock-badge"/>
-              <rect x="190" y="186" width="20" height="16" rx="4"/>
-              <path d="M194 186v-5a6 6 0 0 1 12 0v5"/>
+              <rect x="119" y="148" width="22" height="18" rx="4"/>
+              <path d="M123.5 148v-5a6.5 6.5 0 0 1 13 0v5"/>
+              <path d="M130 154.5v5"/>
             </g>
           </svg>
           <figcaption>Captured, then saved to your own computer.</figcaption>
@@ -446,6 +437,11 @@
         <span class="store-cta-label">Add to Chrome</span>
       </a>
       <p class="cta-note" data-store-note>Kapture is going through the Chrome Web Store review process. This button will link to the listing as soon as it is published.</p>
+
+      <div class="cta-next">
+        <span class="cta-next-label">Coming next</span>
+        <p>Kapture starts as a Chrome extension. A dedicated app is on the way, Mac first.</p>
+      </div>
     </div>
   </section>
 
