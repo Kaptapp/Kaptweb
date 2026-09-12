@@ -108,6 +108,17 @@ pills go at 1040px, the nav at 900px, and the Mac action at 460px, where there
 is no longer room for both. The hero and final CTA keep both actions and both
 pills at every width.
 
+## Cache busting
+
+`styles.css` and `script.js` are referenced with a `?v=N` query in both pages.
+GitHub Pages serves assets with `cache-control: max-age=600`, and local dev
+servers often send no cache headers at all, so without this a browser can hold
+a stale stylesheet against fresh HTML and render the page wrong in ways that
+look like a broken deploy.
+
+**Bump the number in both `index.html` and `privacy.html` whenever you change
+`styles.css` or `script.js`.** Currently `v=2`.
+
 ## SEO and discoverability
 
 Both pages carry a unique title, a factual meta description, a self-referencing

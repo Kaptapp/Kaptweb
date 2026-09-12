@@ -836,12 +836,19 @@ code {
   transition: background-color .25s var(--ease), border-color .25s var(--ease);
 }
 .tile-icon svg {
-  width: 32px; height: 32px;
+  width: 40px; height: 40px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+/* Phosphor Regular ships filled paths with the stroke baked in, so these are
+   painted rather than stroked. Its 16/256 stroke ratio matches the 1.5/24 of
+   the hand-drawn icon above, so the weights sit consistently side by side. */
+.tile-icon svg.phosphor {
+  fill: currentColor;
+  stroke: none;
 }
 .tile:hover .tile-icon {
   background: rgba(25, 215, 192, .16);
