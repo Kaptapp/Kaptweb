@@ -147,6 +147,29 @@ code {
 }
 .btn-ghost:hover { background: var(--surface); border-color: var(--text-muted); color: var(--text); }
 
+/* The "Add to Chrome" treatment: white with the Chrome mark. */
+.btn-white {
+  background: #ffffff;
+  color: #17201e;
+  box-shadow: 0 8px 30px -12px rgba(0, 0, 0, .6);
+}
+.btn-white:hover {
+  background: #f1f4f2;
+  color: #17201e;
+  transform: translateY(-1px);
+}
+.btn-white:active { transform: translateY(0); }
+
+/* Official Chrome mark on every "Add to Chrome" action. */
+.chrome-mark {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  margin-right: -1px;
+}
+.btn-sm .chrome-mark { width: 17px; height: 17px; }
+.btn-lg .chrome-mark { width: 21px; height: 21px; }
+
 /* Store link is not live yet: render the CTA as an unavailable state without faking a URL. */
 .btn[data-store-pending] { cursor: default; }
 .btn[data-store-pending]::after {
@@ -159,6 +182,7 @@ code {
   letter-spacing: .01em;
 }
 .btn-ghost[data-store-pending]::after { background: var(--surface-2); color: var(--text-muted); }
+.btn-white[data-store-pending]::after { background: rgba(23, 32, 30, .1); color: #4c5754; }
 
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn:hover { transform: none; transition: none; }
@@ -674,6 +698,7 @@ code {
   position: absolute;
   left: 18%; top: 26%;
   width: 58%; height: 46%;
+  animation: select-settle 4.4s var(--ease) infinite;
   border: 2px solid var(--teal);
   border-radius: 8px;
   background: rgba(25, 215, 192, .1);
@@ -684,10 +709,49 @@ code {
   border-radius: 50%;
   background: var(--teal);
 }
+/* Cursor holding the bottom-right handle, nudging it very slightly. */
+.mode-art-cursor {
+  position: absolute;
+  right: -20px;
+  bottom: -29px;
+  width: 26px;
+  color: var(--text);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .55));
+  animation: drag-nudge 4.4s var(--ease) infinite;
+}
+.mode-art-cursor svg {
+  width: 100%;
+  height: auto;
+  fill: currentColor;
+  stroke: var(--bg-deep);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+@keyframes select-settle {
+  0%, 100% { width: 58%; height: 46%; }
+  45%      { width: 60.5%; height: 49%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mode-art-selection { animation: none; }
+}
+
+@keyframes drag-nudge {
+  0%, 100% { transform: translate(0, 0); }
+  45%      { transform: translate(5px, 4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mode-art-cursor { animation: none; }
+}
+
 .mode-art-selection .tl { left: -5px; top: -5px; }
 .mode-art-selection .tr { right: -5px; top: -5px; }
 .mode-art-selection .bl { left: -5px; bottom: -5px; }
-.mode-art-selection .br { right: -5px; bottom: -5px; }
+.mode-art-selection .br {
+  right: -5px; bottom: -5px;
+  width: 11px; height: 11px;
+  margin: 1px -1px -1px 0;
+  box-shadow: 0 0 0 4px rgba(25, 215, 192, .18);
+}
 
 /* ---------- Feature grid ---------- */
 .grid {
@@ -708,19 +772,19 @@ code {
 .tile-icon {
   display: grid;
   place-items: center;
-  width: 44px; height: 44px;
-  margin-bottom: 18px;
+  width: 62px; height: 62px;
+  margin-bottom: 20px;
   border: 1px solid rgba(25, 215, 192, .26);
-  border-radius: 13px;
+  border-radius: 17px;
   background: rgba(25, 215, 192, .09);
   color: var(--teal);
   transition: background-color .25s var(--ease), border-color .25s var(--ease);
 }
 .tile-icon svg {
-  width: 22px; height: 22px;
+  width: 32px; height: 32px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -748,7 +812,19 @@ code {
   background: var(--bg-deep);
   overflow: hidden;
 }
+.step-visual.has-icon { position: relative; }
 .step-art { display: block; width: 100%; height: auto; color: var(--text); }
+
+/* Supplied Kapture icon, sitting in the toolbar slot drawn by the SVG
+   (x 158.5-181.5, y 6.5-29.5 of a 200x124 viewBox). Not redrawn. */
+.step-kapture-icon {
+  position: absolute;
+  left: 77%;
+  top: 6.45%;
+  width: 10%;
+  height: auto;
+  border-radius: 24%;
+}
 
 .step-art .s-frame   { fill: none; stroke: currentColor; stroke-opacity: .2; stroke-width: 1.2; }
 .step-art .s-dot     { fill: currentColor; fill-opacity: .22; }
@@ -795,7 +871,7 @@ code {
   stroke-linejoin: round;
 }
 
-.step-art .s-pulse { animation: pulse 2.8s var(--ease) infinite; transform-origin: 170px 18px; }
+.step-art .s-pulse { animation: pulse 2.8s var(--ease) infinite; transform-origin: 164px 18px; }
 @keyframes pulse {
   0%, 100% { opacity: .35; transform: scale(.82); }
   50%      { opacity: 1;   transform: scale(1); }
@@ -823,9 +899,9 @@ code {
 /* ---------- Privacy ---------- */
 .privacy {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: clamp(28px, 5vw, 64px);
-  align-items: start;
+  grid-template-columns: 1.25fr .75fr;
+  gap: clamp(28px, 4vw, 52px);
+  align-items: center;
   padding: clamp(28px, 4.5vw, 56px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -834,92 +910,133 @@ code {
     var(--surface);
 }
 .privacy h2 { margin-bottom: 16px; font-size: clamp(27px, 3.6vw, 38px); }
-.privacy-copy > p { margin-bottom: 22px; color: var(--text-dim); font-size: 16.5px; }
+.privacy-copy > p { margin-bottom: 28px; color: var(--text-dim); font-size: 16.5px; }
 
-.privacy-side { display: grid; gap: 26px; }
-
-.privacy-art { margin: 0; }
-.privacy-art svg {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  margin-inline: auto;
-  color: var(--text);
+/* four points, two by two, above the policy link */
+.privacy-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px 20px;
+  margin-bottom: 30px;
 }
-.privacy-art figcaption {
-  margin-top: 14px;
-  font-size: 13.5px;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-.privacy-art .pa-cloud {
-  fill: none;
-  stroke: currentColor;
-  stroke-opacity: .22;
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-.privacy-art .pa-route {
-  fill: none;
-  stroke: currentColor;
-  stroke-opacity: .38;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 5 5;
-}
-.privacy-art .pa-cross {
-  fill: none;
-  stroke: var(--teal);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-}
-.privacy-art .pa-device {
-  fill: none;
-  stroke: currentColor;
-  stroke-opacity: .3;
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-.privacy-art .pa-file {
-  fill: none;
-  stroke: var(--teal);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-}
-.privacy-art .pa-file rect { fill: var(--teal); fill-opacity: .16; }
-.privacy-art .pa-frame {
-  fill: none;
-  stroke: var(--teal);
-  stroke-opacity: .5;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.privacy-list { display: grid; gap: 12px; }
 .privacy-list li {
   display: flex;
   align-items: flex-start;
   gap: 11px;
-  font-size: 16px;
+  font-size: 15.5px;
   color: var(--text-dim);
 }
 .privacy-list li::before {
   content: "";
   flex: none;
   width: 20px; height: 20px;
-  margin-top: 4px;
+  margin-top: 3px;
   border-radius: 50%;
   background: rgba(25, 215, 192, .16) no-repeat center;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.4 4.8 8.7 9.5 3.6' fill='none' stroke='%2319d7c0' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size: 12px 12px;
 }
 
-@media (max-width: 760px) {
+/* ---------- Privacy illustration: capture, saved locally, private ---------- */
+.privacy-art { margin: 0; }
+.privacy-art svg {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-inline: auto;
+  color: var(--text);
+}
+.privacy-art figcaption {
+  margin-top: 16px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.privacy-art .pl-card {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: feed 2.7s var(--ease) infinite;
+}
+.privacy-art .pl-card rect { fill: var(--teal); fill-opacity: .14; }
+.privacy-art .pl-card:nth-child(1) { animation-delay: 0s; }
+.privacy-art .pl-card:nth-child(2) { animation-delay: .28s; }
+.privacy-art .pl-card:nth-child(3) { animation-delay: .56s; }
+@keyframes feed {
+  0%, 100% { opacity: .2;  transform: translateY(-3px); }
+  42%      { opacity: 1;   transform: translateY(0); }
+}
+
+.privacy-art .pl-arrow {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: feed-arrow 2.7s var(--ease) infinite;
+}
+@keyframes feed-arrow {
+  0%, 100% { opacity: .35; transform: translateY(-2px); }
+  55%      { opacity: 1;   transform: translateY(2px); }
+}
+
+.privacy-art .pl-body {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: .3;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.privacy-art .pl-screen { fill: currentColor; fill-opacity: .05; stroke: none; }
+
+.privacy-art .pl-folder {
+  fill: var(--teal);
+  fill-opacity: .1;
+  stroke: var(--teal);
+  stroke-opacity: .55;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.privacy-art .pl-file {
+  fill: none;
+  stroke: var(--bg-deep);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.privacy-art .pl-file rect { fill: var(--teal); stroke: none; }
+
+.privacy-art .pl-lock {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.privacy-art .pl-lock rect { fill: var(--teal); fill-opacity: .18; }
+.privacy-art .pl-lock-badge {
+  fill: var(--bg-deep);
+  stroke: var(--teal);
+  stroke-opacity: .4;
+  stroke-width: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-art .pl-card,
+  .privacy-art .pl-arrow { animation: none; opacity: 1; transform: none; }
+}
+
+@media (max-width: 860px) {
   .privacy { grid-template-columns: 1fr; }
+  .privacy-art { order: -1; }
+  .privacy-art svg { max-width: 280px; }
+}
+@media (max-width: 460px) {
+  .privacy-list { grid-template-columns: 1fr; gap: 12px; }
 }
 
 /* ---------- Final CTA ---------- */

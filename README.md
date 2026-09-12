@@ -48,7 +48,7 @@ the side panel and the bundled help page for version 0.4.4:
 - Select area capture (Freeform, 1:1, 16:9, 9:16)
 - PNG, JPEG and PDF output
 - Viewport presets: current window, Phone 390, Tablet 820, Desktop 1440, Desktop 1920
-- Saves to a subfolder of Chrome's Downloads directory
+- Saves to a subfolder of Chrome's Downloads directory, named per capture
 - Local capture history with open and delete
 - Light and dark side panel themes
 - No account, ads, analytics or data transmission
@@ -72,6 +72,9 @@ To go live, in `index.html`:
 
 No other change is needed. The pending styling and the click handler both key off
 that one attribute.
+
+All three buttons use the `.btn-white` treatment with the official Chrome mark
+(`.chrome-mark`, inline SVG in `index.html`).
 
 ## Deployment
 

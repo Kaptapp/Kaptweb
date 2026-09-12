@@ -44,7 +44,8 @@
       <a href="#privacy">Privacy</a>
     </nav>
     <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
-    <a class="btn btn-primary btn-sm store-cta" href="#cta" data-store-pending>
+    <a class="btn btn-white btn-sm store-cta" href="#cta" data-store-pending>
+      <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
       <span class="store-cta-label">Add to Chrome</span>
     </a>
   </div>
@@ -73,7 +74,8 @@
 
       <div class="hero-actions">
         <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
-        <a class="btn btn-primary" href="#cta" data-store-pending>
+        <a class="btn btn-white" href="#cta" data-store-pending>
+          <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
           <span class="store-cta-label">Add to Chrome</span>
         </a>
         <a class="btn btn-ghost" href="#how">See how it works</a>
@@ -203,6 +205,11 @@
             </div>
             <div class="mode-art-selection">
               <i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i>
+              <span class="mode-art-cursor">
+                <svg viewBox="0 0 18 24" aria-hidden="true" focusable="false">
+                  <path d="M1.5 1.2l14.3 12.1-6.4.3-3.2 7.6z"/>
+                </svg>
+              </span>
             </div>
           </div>
           <h3>Select area</h3>
@@ -240,10 +247,10 @@
         </article>
         <article class="tile reveal">
           <span class="tile-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M2.6 7.2a2 2 0 0 1 2-2h3.1l1.7 2.2h10a2 2 0 0 1 2 2v8.4a2 2 0 0 1-2 2H4.6a2 2 0 0 1-2-2Z"/><path d="M12.6 10.6v4.8"/><path d="M10.3 13.4l2.3 2.3 2.3-2.3"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M1.9 12.9a1.7 1.7 0 0 1 1.7-1.7H6l1.4 1.8h2.3a1.7 1.7 0 0 1 1.7 1.7v5.4a1.7 1.7 0 0 1-1.7 1.7H3.6a1.7 1.7 0 0 1-1.7-1.7Z"/><path d="M13 12.9a1.7 1.7 0 0 1 1.7-1.7h2.4l1.4 1.8h2.3a1.7 1.7 0 0 1 1.7 1.7v5.4a1.7 1.7 0 0 1-1.7 1.7h-6.1a1.7 1.7 0 0 1-1.7-1.7Z"/><path d="M6.6 2.3v5.5"/><path d="M4.3 5.6 6.6 7.9 8.9 5.6"/></svg>
           </span>
-          <h3>Straight to Downloads</h3>
-          <p>Files are saved into a subfolder of your Chrome Downloads directory, <code>Downloads/Kapture</code> by default.</p>
+          <h3>Save where it makes sense</h3>
+          <p>Send captures straight to Downloads, or name a folder per page or project to keep them organised.</p>
         </article>
         <article class="tile reveal">
           <span class="tile-icon" aria-hidden="true">
@@ -298,7 +305,7 @@
           <p>Go to whatever you want to keep.</p>
         </li>
         <li class="reveal">
-          <div class="step-visual">
+          <div class="step-visual has-icon">
             <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
               <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
               <path d="M6 30h188" class="s-frame"/>
@@ -309,19 +316,13 @@
               <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
               <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
               <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/></g><g class="s-pulse">
-                <circle cx="170" cy="18" r="15" class="s-ripple"/>
-                <circle cx="170" cy="18" r="22" class="s-ripple faint"/>
+                <circle cx="164" cy="18" r="12" class="s-ripple"/>
+                <circle cx="164" cy="18" r="16" class="s-ripple faint"/>
               </g>
-              <rect x="160" y="8" width="20" height="20" rx="6" class="s-chip"/>
-              <g class="s-glyph">
-                <path d="M166 13.4v-1.2a1.2 1.2 0 0 1 1.2-1.2h1.3"/>
-                <path d="M174 13.4v-1.2a1.2 1.2 0 0 0-1.2-1.2h-1.3"/>
-                <path d="M166 22.6v1.2a1.2 1.2 0 0 0 1.2 1.2h1.3"/>
-                <path d="M174 22.6v1.2a1.2 1.2 0 0 1-1.2 1.2h-1.3"/>
-                <rect x="167.4" y="14.2" width="5.2" height="7.6" rx="1.6" class="s-glyph-fill"/>
-              </g>
-              <path d="M150 44l1.5 17.5 4.2-5.4 6.6 1.2z" class="s-cursor"/>
+              <rect x="154" y="8" width="20" height="20" rx="6" class="s-chip"/>
+              <path d="M174 31l1.5 17.5 4.2-5.4 6.6 1.2z" class="s-cursor"/>
             </svg>
+            <img class="step-kapture-icon" src="assets/logo/kapture-icon.svg" alt="" width="40" height="40">
           </div>
           <span class="step-num">2</span>
           <h3>Click Kapture</h3>
@@ -370,41 +371,6 @@
             to the developer or to any third party, and Kapture contains no analytics,
             advertising or tracking.
           </p>
-          <a class="link-arrow" href="privacy.html">Read the privacy policy<span aria-hidden="true">→</span></a>
-        </div>
-        <div class="privacy-side">
-          <figure class="privacy-art">
-            <svg viewBox="0 0 240 196" aria-hidden="true">
-              <!-- nothing leaves for the network -->
-              <g class="pa-cloud">
-                <path d="M84 44h74a17 17 0 0 0 .6-34 27 27 0 0 0-50.4-8A19 19 0 0 0 84 44Z"/>
-              </g>
-              <!-- the upload that never happens -->
-              <g class="pa-route">
-                <path d="M120 100V64"/>
-                <path d="M113 71l7-7 7 7"/>
-              </g>
-              <g class="pa-cross">
-                <path d="M112 90l16-16M128 90l-16-16"/>
-              </g>
-              <!-- the device, holding the file -->
-              <g class="pa-device">
-                <rect x="44" y="106" width="152" height="68" rx="11"/>
-                <path d="M28 186h184"/>
-              </g>
-              <g class="pa-file">
-                <rect x="102" y="124" width="36" height="32" rx="8"/>
-                <path d="M111 135h18M111 145h12"/>
-              </g>
-              <g class="pa-frame">
-                <path d="M78 132v-6a5 5 0 0 1 5-5h7"/>
-                <path d="M162 132v-6a5 5 0 0 0-5-5h-7"/>
-                <path d="M78 148v6a5 5 0 0 0 5 5h7"/>
-                <path d="M162 148v6a5 5 0 0 1-5 5h-7"/>
-              </g>
-            </svg>
-            <figcaption>Captured, saved, and nowhere else.</figcaption>
-          </figure>
 
           <ul class="privacy-list">
             <li>No account required</li>
@@ -412,7 +378,58 @@
             <li>No remote code</li>
             <li>Files saved locally by Chrome</li>
           </ul>
+
+          <a class="link-arrow" href="privacy.html">Read the Privacy Policy<span aria-hidden="true">&rarr;</span></a>
         </div>
+
+        <figure class="privacy-art">
+          <svg viewBox="0 0 260 250" aria-hidden="true">
+            <!-- captures streaming down into the machine -->
+            <g class="pl-stream">
+              <g class="pl-card">
+                <rect x="108" y="2" width="46" height="20" rx="5"/>
+                <path d="M116 12h22"/>
+              </g>
+              <g class="pl-card">
+                <rect x="108" y="28" width="46" height="20" rx="5"/>
+                <path d="M116 38h22"/>
+              </g>
+              <g class="pl-card">
+                <rect x="108" y="54" width="46" height="20" rx="5"/>
+                <path d="M116 64h22"/>
+              </g>
+            </g>
+            <g class="pl-arrow">
+              <path d="M131 80v10"/>
+              <path d="M125.5 85.5l5.5 5.5 5.5-5.5"/>
+            </g>
+
+            <!-- the machine it lands on -->
+            <g class="pl-body">
+              <rect x="36" y="96" width="188" height="108" rx="12"/>
+              <path d="M34 204l-14 15h220l-14-15"/>
+              <path d="M12 219h236"/>
+            </g>
+            <rect x="46" y="106" width="168" height="88" rx="6" class="pl-screen"/>
+
+            <!-- a folder on that machine, holding the capture -->
+            <g class="pl-folder">
+              <path d="M88 182v-50a7 7 0 0 1 7-7h14l5 7h38a7 7 0 0 1 7 7v43a7 7 0 0 1-7 7H95a7 7 0 0 1-7-7Z"/>
+            </g>
+            <g class="pl-file">
+              <rect x="110" y="145" width="36" height="30" rx="7"/>
+              <path d="M118 155h20M118 165h13"/>
+            </g>
+
+            <!-- kept private -->
+            <g class="pl-lock">
+              <circle cx="200" cy="188" r="23" class="pl-lock-badge"/>
+              <rect x="190" y="186" width="20" height="16" rx="4"/>
+              <path d="M194 186v-5a6 6 0 0 1 12 0v5"/>
+            </g>
+          </svg>
+          <figcaption>Captured, then saved to your own computer.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -424,7 +441,8 @@
       <h2>Capture the whole page.</h2>
       <p>Kapture is a Chrome extension. Add it, click it, done.</p>
       <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
-      <a class="btn btn-primary btn-lg" href="#cta" data-store-pending>
+      <a class="btn btn-white btn-lg" href="#cta" data-store-pending>
+        <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
         <span class="store-cta-label">Add to Chrome</span>
       </a>
       <p class="cta-note" data-store-note>Kapture is going through the Chrome Web Store review process. This button will link to the listing as soon as it is published.</p>
