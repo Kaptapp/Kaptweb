@@ -44,6 +44,30 @@
     });
   });
 
+  /* ---- Hero mock: one desktop composition, scaled to fit ----
+     Kapture only runs on the desktop, so the mock never reflows into a phone
+     layout. It is laid out at its design width and scaled down as a unit, the
+     way a real screenshot of a desktop window would be. */
+  var scaler = document.querySelector('.product-scaler');
+  var mock = scaler && scaler.querySelector('.window');
+
+  if (scaler && mock) {
+    var DESIGN_WIDTH = 1040;
+    var fitMock = function () {
+      var available = scaler.clientWidth;
+      if (!available) return;
+      var factor = Math.min(1, available / DESIGN_WIDTH);
+      mock.style.transform = factor === 1 ? 'none' : 'scale(' + factor + ')';
+      // offsetHeight is the untransformed layout height, so scale it too.
+      scaler.style.height = Math.round(mock.offsetHeight * factor) + 'px';
+    };
+
+    fitMock();
+    window.addEventListener('resize', fitMock);
+    window.addEventListener('orientationchange', fitMock);
+    window.addEventListener('load', fitMock);
+  }
+
   /* ---- Hero panel demo: alternate the extension's light and dark themes ---- */
   var panelDemo = document.getElementById('panelDemo');
   var stillMotion = window.matchMedia

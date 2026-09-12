@@ -354,6 +354,21 @@ code {
   pointer-events: none;
 }
 
+/* Kapture is a desktop extension, so the mock keeps its desktop composition at
+   every viewport: browser on the left, side panel beside it. Rather than
+   reflowing, the whole thing is drawn at its design width and scaled down as a
+   single unit (script.js sets the factor and the wrapper height). */
+.product-scaler {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+.js .product-scaler .window {
+  width: var(--mock-width, 1040px);
+  transform-origin: top left;
+}
+
 .window {
   position: relative;
   border: 1px solid var(--line-strong);
@@ -660,17 +675,7 @@ code {
   text-align: center;
 }
 
-@media (max-width: 900px) {
-  .window-body { grid-template-columns: 1fr; min-height: 0; }
-  .stage { min-height: 260px; }
-  .panel { border-left: 0; border-top: 1px solid var(--line); }
-  .scanline { animation-duration: 4.2s; background-size: 100% 110px; }
-}
-@media (max-width: 560px) {
-  .urlbar { max-width: none; }
-  .stage { padding: 18px; }
-  .stage-badge { left: 18px; bottom: 16px; font-size: 11px; }
-}
+
 
 /* ---------- Modes ---------- */
 .modes {

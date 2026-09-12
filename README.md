@@ -124,3 +124,13 @@ Cloudflare is not needed.
 - **Real extension screenshots**: the hero currently uses a faithful HTML/CSS
   recreation of the side panel. Drop real PNGs into `assets/screenshots/` and swap
   the `.window` block in `index.html` for an `<img>` when they are available.
+
+## Hero mock scaling
+
+Kapture only runs on the desktop, so the hero mock never reflows into a phone
+layout. It is laid out at a fixed design width (1040px, the shell's maximum
+content width) inside `.product-scaler`, and `fitMock()` in `script.js` scales
+it down as a single unit and sets the wrapper's height to match. The result is
+the same desktop composition at every viewport, the way a real screenshot of a
+desktop window behaves. Change `DESIGN_WIDTH` in `script.js` if the shell width
+ever changes.
