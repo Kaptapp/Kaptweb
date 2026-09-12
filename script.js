@@ -1,4 +1,4 @@
-/* Kapture — captapp.com
+/* Kapture site · kaptapp.com
    Minimal progressive enhancement. The page is fully readable without this file. */
 
 (function () {
@@ -36,6 +36,18 @@
       }
     });
   });
+
+  /* ---- Hero panel demo: alternate the extension's light and dark themes ---- */
+  var panelDemo = document.getElementById('panelDemo');
+  var stillMotion = window.matchMedia
+    ? window.matchMedia('(prefers-reduced-motion: reduce)')
+    : { matches: false };
+
+  if (panelDemo && !stillMotion.matches) {
+    window.setInterval(function () {
+      panelDemo.classList.toggle('is-dark');
+    }, 4200);
+  }
 
   /* ---- Reveal sections on scroll ---- */
   var reveals = document.querySelectorAll('.reveal');

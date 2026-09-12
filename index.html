@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kapture — Full Page Screenshots for Chrome</title>
+<title>Kapture: Full Page Screenshots for Chrome</title>
 <meta name="description" content="Capture complete webpages directly from Chrome with Kapture. Full page or selected area, saved locally as PNG, JPEG or PDF.">
 <meta name="theme-color" content="#1b1d1c">
-<link rel="canonical" href="https://captapp.com/">
+<link rel="canonical" href="https://kaptapp.com/">
 
 <link rel="icon" href="assets/logo/kapture-icon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/logo/kapture-icon-32.png" sizes="32x32" type="image/png">
@@ -14,17 +14,17 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kapture">
-<meta property="og:url" content="https://captapp.com/">
-<meta property="og:title" content="Kapture — Full Page Screenshots for Chrome">
+<meta property="og:url" content="https://kaptapp.com/">
+<meta property="og:title" content="Kapture: Full Page Screenshots for Chrome">
 <meta property="og:description" content="Capture complete webpages directly from Chrome. Full page or selected area, saved locally as PNG, JPEG or PDF.">
-<meta property="og:image" content="https://captapp.com/assets/social/kapture-og.png">
+<meta property="og:image" content="https://kaptapp.com/assets/social/kapture-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Kapture, full page screenshots for Chrome.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kapture — Full Page Screenshots for Chrome">
+<meta name="twitter:title" content="Kapture: Full Page Screenshots for Chrome">
 <meta name="twitter:description" content="Capture complete webpages directly from Chrome. Full page or selected area, saved locally as PNG, JPEG or PDF.">
-<meta name="twitter:image" content="https://captapp.com/assets/social/kapture-og.png">
+<meta name="twitter:image" content="https://kaptapp.com/assets/social/kapture-og.png">
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -66,7 +66,7 @@
       </h1>
 
       <p class="hero-sub">
-        Kapture is a Chrome extension that screenshots a complete webpage &mdash; scrolling
+        Kapture is a Chrome extension that screenshots a complete webpage, scrolling
         the whole document, not only the visible viewport. Save it as PNG, JPEG or PDF,
         straight to your Downloads folder.
       </p>
@@ -92,7 +92,7 @@
           <!-- browser chrome -->
           <div class="window-bar" aria-hidden="true">
             <span class="lights"><i></i><i></i><i></i></span>
-            <span class="urlbar">captapp.com</span>
+            <span class="urlbar">kaptapp.com</span>
             <span class="toolbar-icon">
               <img src="assets/logo/kapture-icon.svg" alt="" width="18" height="18">
             </span>
@@ -120,19 +120,22 @@
                 <div class="ph ph-line w65"></div>
                 <div class="ph ph-block"></div>
               </div>
-              <div class="scanline"></div>
+              <div class="scanline" aria-hidden="true"></div>
               <div class="stage-badge">Full page &middot; 8,000px sections</div>
             </div>
 
             <!-- side panel replica -->
-            <div class="panel">
+            <div class="panel" id="panelDemo">
               <div class="panel-head">
                 <img src="assets/logo/kapture-icon.svg" alt="" width="30" height="30">
                 <div>
                   <strong>Kapture</strong>
                   <small>Version 0.4.4</small>
                 </div>
-                <span class="toggle"><i class="on">☀</i><i>☾</i></span>
+                <span class="toggle">
+                  <i class="sun"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9"/></svg></i>
+                  <i class="moon"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></i>
+                </span>
               </div>
 
               <div class="panel-body">
@@ -154,9 +157,9 @@
                   <strong>History</strong><span class="pill">3</span>
                 </div>
                 <ul class="entries">
-                  <li><span class="file">PNG</span><span><b>captapp-com-full.png</b><small>captapp.com · just now</small></span></li>
-                  <li><span class="file">PDF</span><span><b>captapp-com-full.pdf</b><small>captapp.com · 2 min ago</small></span></li>
-                  <li><span class="file">JPG</span><span><b>captapp-com-area.jpg</b><small>captapp.com · 6 min ago</small></span></li>
+                  <li><span class="file">PNG</span><span><b>kaptapp-com-full.png</b><small>kaptapp.com · just now</small></span></li>
+                  <li><span class="file">PDF</span><span><b>kaptapp-com-full.pdf</b><small>kaptapp.com · 2 min ago</small></span></li>
+                  <li><span class="file">JPG</span><span><b>kaptapp-com-area.jpg</b><small>kaptapp.com · 6 min ago</small></span></li>
                 </ul>
               </div>
             </div>
@@ -222,26 +225,44 @@
 
       <div class="grid">
         <article class="tile reveal">
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3.2" y="2.8" width="12.4" height="15.4" rx="2.4"/><path d="M7.2 21.2h9.6a2.6 2.6 0 0 0 2.6-2.6V6.6"/><path d="M6.6 7.4h5.6M6.6 11.2h4"/></svg>
+          </span>
           <h3>PNG, JPEG or PDF</h3>
           <p>Pick the format before you capture. PDF produces one local, multi&#8209;page file.</p>
         </article>
         <article class="tile reveal">
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="1.8" y="4" width="13" height="9.6" rx="1.8"/><path d="M5.6 17.6h5.4M8.3 13.6v4"/><rect x="17" y="8.2" width="5.2" height="11.8" rx="1.6"/></svg>
+          </span>
           <h3>Viewport presets</h3>
           <p>Capture at your current window, or render the page at Phone&nbsp;390, Tablet&nbsp;820, Desktop&nbsp;1440 or Desktop&nbsp;1920 first.</p>
         </article>
         <article class="tile reveal">
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M2.6 7.2a2 2 0 0 1 2-2h3.1l1.7 2.2h10a2 2 0 0 1 2 2v8.4a2 2 0 0 1-2 2H4.6a2 2 0 0 1-2-2Z"/><path d="M12.6 10.6v4.8"/><path d="M10.3 13.4l2.3 2.3 2.3-2.3"/></svg>
+          </span>
           <h3>Straight to Downloads</h3>
-          <p>Files are saved into a subfolder of your Chrome Downloads directory &mdash; <code>Downloads/Kapture</code> by default.</p>
+          <p>Files are saved into a subfolder of your Chrome Downloads directory, <code>Downloads/Kapture</code> by default.</p>
         </article>
         <article class="tile reveal">
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12.4" r="8.2"/><path d="M12 7.6v4.8l3.3 2"/></svg>
+          </span>
           <h3>Local history</h3>
           <p>Newest first, with the site and time. Open a screenshot, or select entries and delete the files for good.</p>
         </article>
         <article class="tile reveal">
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><path d="M12 3.6a8.4 8.4 0 0 0 0 16.8Z" fill="currentColor" stroke="none"/></svg>
+          </span>
           <h3>Light and dark</h3>
           <p>The side panel has both themes, and remembers the one you chose.</p>
         </article>
         <article class="tile reveal">
+          <span class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M2.6 20.4v-1.8a4.2 4.2 0 0 1 4.2-4.2h3.6a4.2 4.2 0 0 1 4.2 4.2v1.8"/><circle cx="8.6" cy="7.6" r="3.8"/><path d="M17.4 5.2l4.4 4.4M21.8 5.2l-4.4 4.4"/></svg>
+          </span>
           <h3>Nothing to sign up for</h3>
           <p>No account, no ads, no analytics. Install it and capture.</p>
         </article>
@@ -258,9 +279,80 @@
       </header>
 
       <ol class="steps">
-        <li class="reveal"><span class="step-num">1</span><h3>Open the page</h3><p>Go to whatever you want to keep.</p></li>
-        <li class="reveal"><span class="step-num">2</span><h3>Click Kapture</h3><p>The side panel opens beside the page.</p></li>
-        <li class="reveal"><span class="step-num">3</span><h3>Capture</h3><p>Choose full page or an area, then save.</p></li>
+        <li class="reveal">
+          <div class="step-visual">
+            <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
+              <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
+              <path d="M6 30h188" class="s-frame"/>
+              <circle cx="18" cy="18" r="2.6" class="s-dot"/>
+              <circle cx="27" cy="18" r="2.6" class="s-dot"/>
+              <circle cx="36" cy="18" r="2.6" class="s-dot"/>
+              <rect x="20" y="44" width="64" height="9" rx="4.5" class="s-accent-bar"/>
+              <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
+              <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
+              <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/>
+            </svg>
+          </div>
+          <span class="step-num">1</span>
+          <h3>Open the page</h3>
+          <p>Go to whatever you want to keep.</p>
+        </li>
+        <li class="reveal">
+          <div class="step-visual">
+            <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
+              <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
+              <path d="M6 30h188" class="s-frame"/>
+              <circle cx="18" cy="18" r="2.6" class="s-dot"/>
+              <circle cx="27" cy="18" r="2.6" class="s-dot"/>
+              <circle cx="36" cy="18" r="2.6" class="s-dot"/>
+              <g class="s-dim"><rect x="20" y="44" width="64" height="9" rx="4.5" class="s-accent-bar"/>
+              <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
+              <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
+              <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/></g><g class="s-pulse">
+                <circle cx="170" cy="18" r="15" class="s-ripple"/>
+                <circle cx="170" cy="18" r="22" class="s-ripple faint"/>
+              </g>
+              <rect x="160" y="8" width="20" height="20" rx="6" class="s-chip"/>
+              <g class="s-glyph">
+                <path d="M166 13.4v-1.2a1.2 1.2 0 0 1 1.2-1.2h1.3"/>
+                <path d="M174 13.4v-1.2a1.2 1.2 0 0 0-1.2-1.2h-1.3"/>
+                <path d="M166 22.6v1.2a1.2 1.2 0 0 0 1.2 1.2h1.3"/>
+                <path d="M174 22.6v1.2a1.2 1.2 0 0 1-1.2 1.2h-1.3"/>
+                <rect x="167.4" y="14.2" width="5.2" height="7.6" rx="1.6" class="s-glyph-fill"/>
+              </g>
+              <path d="M150 44l1.5 17.5 4.2-5.4 6.6 1.2z" class="s-cursor"/>
+            </svg>
+          </div>
+          <span class="step-num">2</span>
+          <h3>Click Kapture</h3>
+          <p>The side panel opens beside the page.</p>
+        </li>
+        <li class="reveal">
+          <div class="step-visual">
+            <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
+              <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
+              <path d="M6 30h188" class="s-frame"/>
+              <circle cx="18" cy="18" r="2.6" class="s-dot"/>
+              <circle cx="27" cy="18" r="2.6" class="s-dot"/>
+              <circle cx="36" cy="18" r="2.6" class="s-dot"/>
+              <g class="s-dim"><rect x="20" y="44" width="64" height="9" rx="4.5" class="s-accent-bar"/>
+              <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
+              <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
+              <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/></g><g class="s-brackets">
+                <path d="M26 50v-6a4 4 0 0 1 4-4h6"/>
+                <path d="M174 50v-6a4 4 0 0 0-4-4h-6"/>
+                <path d="M26 92v6a4 4 0 0 0 4 4h6"/>
+                <path d="M174 92v6a4 4 0 0 1-4 4h-6"/>
+              </g>
+              <rect x="56" y="60" width="88" height="22" rx="11" class="s-chip"/>
+              <path d="M68 71.2l3.4 3.4 6-6.8" class="s-check"/>
+              <rect x="84" y="68" width="46" height="6" rx="3" class="s-accent-bar"/>
+            </svg>
+          </div>
+          <span class="step-num">3</span>
+          <h3>Capture</h3>
+          <p>Choose full page or an area, then save.</p>
+        </li>
       </ol>
     </div>
   </section>
@@ -280,12 +372,47 @@
           </p>
           <a class="link-arrow" href="privacy.html">Read the privacy policy<span aria-hidden="true">→</span></a>
         </div>
-        <ul class="privacy-list">
-          <li>No account required</li>
-          <li>No analytics or tracking</li>
-          <li>No remote code</li>
-          <li>Files saved locally by Chrome</li>
-        </ul>
+        <div class="privacy-side">
+          <figure class="privacy-art">
+            <svg viewBox="0 0 240 196" aria-hidden="true">
+              <!-- nothing leaves for the network -->
+              <g class="pa-cloud">
+                <path d="M84 44h74a17 17 0 0 0 .6-34 27 27 0 0 0-50.4-8A19 19 0 0 0 84 44Z"/>
+              </g>
+              <!-- the upload that never happens -->
+              <g class="pa-route">
+                <path d="M120 100V64"/>
+                <path d="M113 71l7-7 7 7"/>
+              </g>
+              <g class="pa-cross">
+                <path d="M112 90l16-16M128 90l-16-16"/>
+              </g>
+              <!-- the device, holding the file -->
+              <g class="pa-device">
+                <rect x="44" y="106" width="152" height="68" rx="11"/>
+                <path d="M28 186h184"/>
+              </g>
+              <g class="pa-file">
+                <rect x="102" y="124" width="36" height="32" rx="8"/>
+                <path d="M111 135h18M111 145h12"/>
+              </g>
+              <g class="pa-frame">
+                <path d="M78 132v-6a5 5 0 0 1 5-5h7"/>
+                <path d="M162 132v-6a5 5 0 0 0-5-5h-7"/>
+                <path d="M78 148v6a5 5 0 0 0 5 5h7"/>
+                <path d="M162 148v6a5 5 0 0 1-5 5h-7"/>
+              </g>
+            </svg>
+            <figcaption>Captured, saved, and nowhere else.</figcaption>
+          </figure>
+
+          <ul class="privacy-list">
+            <li>No account required</li>
+            <li>No analytics or tracking</li>
+            <li>No remote code</li>
+            <li>Files saved locally by Chrome</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -312,7 +439,7 @@
       <img src="assets/logo/kapture-icon.svg" alt="" width="26" height="26">
       <div>
         <strong>Kapture</strong>
-        <span>captapp.com</span>
+        <span>kaptapp.com</span>
       </div>
     </div>
     <nav class="footer-nav" aria-label="Footer">

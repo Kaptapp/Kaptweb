@@ -2,7 +2,7 @@
 
 Official website for **Kapture**, a Chrome extension for capturing full webpages.
 
-Live domain: **captapp.com** (published with GitHub Pages from this repository).
+Live domain: **kaptapp.com** (published with GitHub Pages from this repository).
 
 ## Stack
 
@@ -18,12 +18,12 @@ review on the deployed URL.
 ├── privacy.html          Privacy policy
 ├── styles.css            All styles for both pages
 ├── script.js             Sticky header, scroll reveal, footer year
-├── CNAME                 captapp.com
+├── CNAME                 kaptapp.com
 ├── .nojekyll             Serve files as-is on GitHub Pages
 └── assets/
     ├── logo/             Supplied Kapture icon (source of truth)
     ├── social/           1200×630 Open Graph image
-    └── screenshots/      Empty — real extension screenshots go here
+    └── screenshots/      Empty. Real extension screenshots go here
 ```
 
 ## Brand
@@ -41,7 +41,7 @@ renders/compositions of that same file.
 
 ## Content rules
 
-Every product claim on the site comes from the shipped extension — `manifest.json`,
+Every product claim on the site comes from the shipped extension: `manifest.json`,
 the side panel and the bundled help page for version 0.4.4:
 
 - Full page capture, split into 8,000px sections
@@ -70,7 +70,7 @@ To go live, in `index.html`:
 2. Delete the `data-store-pending` attribute from all three.
 3. Remove the `<p class="cta-note" data-store-note>` paragraph in the final CTA section.
 
-No other change is needed — the pending styling and the click handler both key off
+No other change is needed. The pending styling and the click handler both key off
 that one attribute.
 
 ## Deployment
@@ -86,7 +86,7 @@ GitHub Pages, published from the `main` branch root.
 DNS is managed at Hostinger. Set the custom domain in **Settings → Pages** first, then
 point DNS at GitHub:
 
-Apex `captapp.com` — A records:
+Apex `kaptapp.com`, A records:
 
 ```text
 185.199.108.153
@@ -95,14 +95,14 @@ Apex `captapp.com` — A records:
 185.199.111.153
 ```
 
-`www.captapp.com` — CNAME to `kaptapp.github.io`.
+`www.kaptapp.com`: CNAME to `kaptapp.github.io`.
 
 Enable **Enforce HTTPS** once GitHub offers it. DNS propagation can take a while.
 Cloudflare is not needed.
 
 ## Still to supply
 
-- **Chrome Web Store listing URL** — see the CTA section above.
-- **Real extension screenshots** — the hero currently uses a faithful HTML/CSS
+- **Chrome Web Store listing URL**: see the CTA section above.
+- **Real extension screenshots**: the hero currently uses a faithful HTML/CSS
   recreation of the side panel. Drop real PNGs into `assets/screenshots/` and swap
   the `.window` block in `index.html` for an `<img>` when they are available.
