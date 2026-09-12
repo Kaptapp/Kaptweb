@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kapture — Full Page Screenshots for Chrome</title>
+<meta name="description" content="Capture complete webpages directly from Chrome with Kapture. Full page or selected area, saved locally as PNG, JPEG or PDF.">
+<meta name="theme-color" content="#1b1d1c">
+<link rel="canonical" href="https://captapp.com/">
+
+<link rel="icon" href="assets/logo/kapture-icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logo/kapture-icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/kapture-icon-512.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kapture">
+<meta property="og:url" content="https://captapp.com/">
+<meta property="og:title" content="Kapture — Full Page Screenshots for Chrome">
+<meta property="og:description" content="Capture complete webpages directly from Chrome. Full page or selected area, saved locally as PNG, JPEG or PDF.">
+<meta property="og:image" content="https://captapp.com/assets/social/kapture-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kapture, full page screenshots for Chrome.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kapture — Full Page Screenshots for Chrome">
+<meta name="twitter:description" content="Capture complete webpages directly from Chrome. Full page or selected area, saved locally as PNG, JPEG or PDF.">
+<meta name="twitter:image" content="https://captapp.com/assets/social/kapture-og.png">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+    <a class="brand" href="index.html" aria-label="Kapture home">
+      <img class="brand-mark" src="assets/logo/kapture-icon.svg" alt="" width="34" height="34">
+      <span class="brand-name">Kapture</span>
+    </a>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="#capture">Capture</a>
+      <a href="#how">How it works</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+    <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
+    <a class="btn btn-primary btn-sm store-cta" href="#cta" data-store-pending>
+      <span class="store-cta-label">Add to Chrome</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Chrome extension &middot; version 0.4.4
+      </p>
+
+      <h1 class="hero-title">
+        Capture the whole page.<br>
+        <span class="accent">Not just what you can see.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Kapture is a Chrome extension that screenshots a complete webpage &mdash; scrolling
+        the whole document, not only the visible viewport. Save it as PNG, JPEG or PDF,
+        straight to your Downloads folder.
+      </p>
+
+      <div class="hero-actions">
+        <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
+        <a class="btn btn-primary" href="#cta" data-store-pending>
+          <span class="store-cta-label">Add to Chrome</span>
+        </a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+
+      <p class="hero-note">Requires Chrome 120 or later. Screenshots never leave your device.</p>
+    </div>
+
+    <!-- ============ PRODUCT VISUAL ============ -->
+    <div class="shell">
+      <figure class="product reveal">
+        <div class="product-glow" aria-hidden="true"></div>
+
+        <div class="window" role="img"
+             aria-label="Kapture running in Chrome: the side panel offers Full page or Select area, a viewport preset, a file format and a Downloads subfolder, next to the webpage being captured.">
+          <!-- browser chrome -->
+          <div class="window-bar" aria-hidden="true">
+            <span class="lights"><i></i><i></i><i></i></span>
+            <span class="urlbar">captapp.com</span>
+            <span class="toolbar-icon">
+              <img src="assets/logo/kapture-icon.svg" alt="" width="18" height="18">
+            </span>
+          </div>
+
+          <div class="window-body" aria-hidden="true">
+            <!-- the page being captured -->
+            <div class="stage">
+              <div class="stage-scroll">
+                <div class="ph ph-title"></div>
+                <div class="ph ph-line w80"></div>
+                <div class="ph ph-line w60"></div>
+                <div class="ph ph-block"></div>
+                <div class="ph-row">
+                  <div class="ph ph-card"></div>
+                  <div class="ph ph-card"></div>
+                </div>
+                <div class="ph ph-line w70"></div>
+                <div class="ph ph-line w45"></div>
+                <div class="ph ph-block tall"></div>
+                <div class="ph-row">
+                  <div class="ph ph-card"></div>
+                  <div class="ph ph-card"></div>
+                </div>
+                <div class="ph ph-line w65"></div>
+                <div class="ph ph-block"></div>
+              </div>
+              <div class="scanline"></div>
+              <div class="stage-badge">Full page &middot; 8,000px sections</div>
+            </div>
+
+            <!-- side panel replica -->
+            <div class="panel">
+              <div class="panel-head">
+                <img src="assets/logo/kapture-icon.svg" alt="" width="30" height="30">
+                <div>
+                  <strong>Kapture</strong>
+                  <small>Version 0.4.4</small>
+                </div>
+                <span class="toggle"><i class="on">☀</i><i>☾</i></span>
+              </div>
+
+              <div class="panel-body">
+                <div class="card">
+                  <div class="segmented">
+                    <span class="seg active">Full page</span>
+                    <span class="seg">Select area</span>
+                  </div>
+                  <div class="fields">
+                    <label>Viewport<span class="select">Desktop · 1440 px</span></label>
+                    <label>Format<span class="select">PNG</span></label>
+                  </div>
+                  <div class="folder"><span>Save to Downloads/</span><span class="input">Kapture</span></div>
+                  <div class="cta-row"><span class="panel-btn">Capture page</span></div>
+                  <p class="panel-status">Capturing section 2 of 3…</p>
+                </div>
+
+                <div class="panel-section-title">
+                  <strong>History</strong><span class="pill">3</span>
+                </div>
+                <ul class="entries">
+                  <li><span class="file">PNG</span><span><b>captapp-com-full.png</b><small>captapp.com · just now</small></span></li>
+                  <li><span class="file">PDF</span><span><b>captapp-com-full.pdf</b><small>captapp.com · 2 min ago</small></span></li>
+                  <li><span class="file">JPG</span><span><b>captapp-com-area.jpg</b><small>captapp.com · 6 min ago</small></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <figcaption class="product-caption">
+          The Kapture side panel stays open beside the page you are capturing.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ TWO MODES ============ -->
+  <section class="section" id="capture">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">Two ways to capture</p>
+        <h2>Everything, or exactly one part of it.</h2>
+      </header>
+
+      <div class="modes">
+        <article class="mode-card reveal">
+          <div class="mode-art" aria-hidden="true">
+            <div class="mode-art-page">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="mode-art-frame"></div>
+          </div>
+          <h3>Full page</h3>
+          <p>
+            Kapture scrolls the main document and captures it end to end, splitting very long
+            pages into 8,000&nbsp;pixel sections so the files stay usable.
+          </p>
+        </article>
+
+        <article class="mode-card reveal">
+          <div class="mode-art" aria-hidden="true">
+            <div class="mode-art-page dim">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="mode-art-selection">
+              <i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i>
+            </div>
+          </div>
+          <h3>Select area</h3>
+          <p>
+            Drag over the visible page to grab one region. Choose Freeform, 1:1, 16:9 or 9:16,
+            then move or resize the selection before you capture.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="section section-tight">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">What you get</p>
+        <h2>Built for the screenshot you actually needed.</h2>
+      </header>
+
+      <div class="grid">
+        <article class="tile reveal">
+          <h3>PNG, JPEG or PDF</h3>
+          <p>Pick the format before you capture. PDF produces one local, multi&#8209;page file.</p>
+        </article>
+        <article class="tile reveal">
+          <h3>Viewport presets</h3>
+          <p>Capture at your current window, or render the page at Phone&nbsp;390, Tablet&nbsp;820, Desktop&nbsp;1440 or Desktop&nbsp;1920 first.</p>
+        </article>
+        <article class="tile reveal">
+          <h3>Straight to Downloads</h3>
+          <p>Files are saved into a subfolder of your Chrome Downloads directory &mdash; <code>Downloads/Kapture</code> by default.</p>
+        </article>
+        <article class="tile reveal">
+          <h3>Local history</h3>
+          <p>Newest first, with the site and time. Open a screenshot, or select entries and delete the files for good.</p>
+        </article>
+        <article class="tile reveal">
+          <h3>Light and dark</h3>
+          <p>The side panel has both themes, and remembers the one you chose.</p>
+        </article>
+        <article class="tile reveal">
+          <h3>Nothing to sign up for</h3>
+          <p>No account, no ads, no analytics. Install it and capture.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section" id="how">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">How it works</p>
+        <h2>Three steps. No setup.</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="reveal"><span class="step-num">1</span><h3>Open the page</h3><p>Go to whatever you want to keep.</p></li>
+        <li class="reveal"><span class="step-num">2</span><h3>Click Kapture</h3><p>The side panel opens beside the page.</p></li>
+        <li class="reveal"><span class="step-num">3</span><h3>Capture</h3><p>Choose full page or an area, then save.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY ============ -->
+  <section class="section section-tight" id="privacy">
+    <div class="shell">
+      <div class="privacy reveal">
+        <div class="privacy-copy">
+          <p class="kicker">Privacy</p>
+          <h2>Your screenshots stay on your device.</h2>
+          <p>
+            Kapture processes the page on your computer and saves the file through Chrome's
+            own Downloads system. Screenshots, webpage content, URLs and history are not sent
+            to the developer or to any third party, and Kapture contains no analytics,
+            advertising or tracking.
+          </p>
+          <a class="link-arrow" href="privacy.html">Read the privacy policy<span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="privacy-list">
+          <li>No account required</li>
+          <li>No analytics or tracking</li>
+          <li>No remote code</li>
+          <li>Files saved locally by Chrome</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-band" id="cta">
+    <div class="shell cta-inner reveal">
+      <img src="assets/logo/kapture-icon.svg" alt="" width="72" height="72" class="cta-mark">
+      <h2>Capture the whole page.</h2>
+      <p>Kapture is a Chrome extension. Add it, click it, done.</p>
+      <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
+      <a class="btn btn-primary btn-lg" href="#cta" data-store-pending>
+        <span class="store-cta-label">Add to Chrome</span>
+      </a>
+      <p class="cta-note" data-store-note>Kapture is going through the Chrome Web Store review process. This button will link to the listing as soon as it is published.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo/kapture-icon.svg" alt="" width="26" height="26">
+      <div>
+        <strong>Kapture</strong>
+        <span>captapp.com</span>
+      </div>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#capture">Capture</a>
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:pequelord@gmail.com">Contact</a>
+    </nav>
+    <ul class="footer-social">
+      <li>
+        <a href="https://www.x.com/kaptapp" target="_blank" rel="noopener noreferrer" aria-label="Kapture on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.53 3h3.02l-6.6 7.54L21.5 21h-5.6l-4.39-5.74L6.5 21H3.47l6.86-7.84L2.5 3h5.75l4.1 5.42L17.53 3Zm-1.06 16.2h1.67L7.6 4.72H5.81L16.47 19.2Z"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/company/kaptap" target="_blank" rel="noopener noreferrer" aria-label="Kapture on LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.25h3.96V21H3V9.25Zm6.44 0h3.8v1.6h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76V21h-3.96v-5.6c0-1.34-.02-3.06-1.9-3.06-1.9 0-2.19 1.44-2.19 2.96V21H9.44V9.25Z"/></svg>
+        </a>
+      </li>
+    </ul>
+    <p class="copyright">&copy; <span id="year">2026</span> Kapture</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
