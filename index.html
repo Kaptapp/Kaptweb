@@ -43,11 +43,18 @@
       <a href="#how">How it works</a>
       <a href="#privacy">Privacy</a>
     </nav>
+    <div class="header-ctas">
     <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
     <a class="btn btn-white btn-sm store-cta" href="#cta" data-store-pending>
       <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
       <span class="store-cta-label">Add to Chrome</span>
     </a>
+    <!-- Mac app is planned, not released: no link, "Soon" state -->
+    <a class="btn btn-primary btn-sm store-cta store-cta-mac" href="#cta" data-mac-pending>
+      <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
+      <span class="store-cta-label">Add to Mac</span>
+    </a>
+    </div>
   </div>
 </header>
 
@@ -78,10 +85,15 @@
           <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
           <span class="store-cta-label">Add to Chrome</span>
         </a>
+        <!-- Mac app is planned, not released: no link, "Soon" state -->
+        <a class="btn btn-primary" href="#cta" data-mac-pending>
+          <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
+          <span class="store-cta-label">Add to Mac</span>
+        </a>
         <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
 
-      <p class="hero-note">Requires Chrome 120 or later. Screenshots never leave your device.</p>
+      <p class="hero-note">Requires Chrome 120 or later. Screenshots never leave your device. Dedicated Mac app coming soon.</p>
     </div>
 
     <!-- ============ PRODUCT VISUAL ============ -->
@@ -432,16 +444,19 @@
       <h2>Capture the whole page.</h2>
       <p>Kapture is a Chrome extension. Add it, click it, done.</p>
       <!-- TODO: replace href with the Chrome Web Store listing URL and remove data-store-pending -->
+      <div class="cta-actions">
       <a class="btn btn-white btn-lg" href="#cta" data-store-pending>
         <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
         <span class="store-cta-label">Add to Chrome</span>
       </a>
-      <p class="cta-note" data-store-note>Kapture is going through the Chrome Web Store review process. This button will link to the listing as soon as it is published.</p>
-
-      <div class="cta-next">
-        <span class="cta-next-label">Coming next</span>
-        <p>Kapture starts as a Chrome extension. A dedicated app is on the way, Mac first.</p>
+      <!-- Mac app is planned, not released: no link, "Soon" state -->
+      <a class="btn btn-primary btn-lg" href="#cta" data-mac-pending>
+        <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
+        <span class="store-cta-label">Add to Mac</span>
+      </a>
       </div>
+      <p class="cta-note" data-store-note>Chrome extension in review. This button links to the store listing once published. Dedicated Mac app coming soon.</p>
+
     </div>
   </section>
 

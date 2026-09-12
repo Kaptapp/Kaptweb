@@ -54,8 +54,10 @@ the side panel and the bundled help page for version 0.4.4:
 - No account, ads, analytics or data transmission
 - Requires Chrome 120+
 
-A "Coming next" note in the final CTA section mentions that a dedicated Kapture
-app is planned, Mac first. It is deliberately worded as a plan with no date.
+Kapture is presented as one product on two platforms. Alongside each "Add to
+Chrome" action there is a teal "Add to Mac" action carrying a "Soon" pill, and
+the supporting lines say the Mac app is coming. Both are deliberately worded as
+plans with no dates.
 
 `privacy.html` reproduces the supplied privacy-policy wording verbatim. Do not
 reword its claims without a corresponding change to the extension.
@@ -76,8 +78,18 @@ To go live, in `index.html`:
 No other change is needed. The pending styling and the click handler both key off
 that one attribute.
 
-All three buttons use the `.btn-white` treatment with the official Chrome mark
-(`.chrome-mark`, inline SVG in `index.html`).
+All three Chrome buttons use the `.btn-white` treatment with the official Chrome
+mark (`.chrome-mark`, inline SVG in `index.html`).
+
+The Mac buttons sit beside them in the header, hero and final CTA. They carry
+`data-mac-pending`, which renders the "Soon" pill and blocks the click, and use
+`.btn-primary` (teal) with `.apple-mark`. When a Mac build ships, give each a
+real href and drop `data-mac-pending`; the same three-step swap as Chrome.
+
+In the header the two actions shed detail as the viewport narrows: the status
+pills go at 1040px, the nav at 900px, and the Mac action at 460px, where there
+is no longer room for both. The hero and final CTA keep both actions and both
+pills at every width.
 
 ## Deployment
 

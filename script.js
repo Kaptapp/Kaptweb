@@ -21,19 +21,26 @@
     window.addEventListener('scroll', setStuck, { passive: true });
   }
 
-  /* ---- Store CTA: unavailable until the Chrome Web Store URL exists ----
-     The markup ships no fake store link. Until `data-store-pending` is removed
-     and a real href is set, these links behave as disabled controls that
-     announce why. */
-  var pending = document.querySelectorAll('[data-store-pending]');
-  Array.prototype.forEach.call(pending, function (el) {
-    el.setAttribute('aria-disabled', 'true');
-    el.setAttribute('title', 'Kapture is in Chrome Web Store review');
-    el.addEventListener('click', function (event) {
-      // Let the final CTA anchor scroll to its own explanatory note; block the rest.
-      if (el.getAttribute('href') === '#cta' && el.closest('.cta-band')) {
-        event.preventDefault();
-      }
+  /* ---- Store CTAs: unavailable until each destination exists ----
+     The markup ships no fake links. `data-store-pending` covers the Chrome Web
+     Store listing, `data-mac-pending` the unreleased Mac app. Both render as
+     disabled controls that announce why. */
+  var pendingStates = [
+    { attr: 'data-store-pending', title: 'Kapture is in Chrome Web Store review' },
+    { attr: 'data-mac-pending',   title: 'The Kapture Mac app is coming soon' }
+  ];
+
+  pendingStates.forEach(function (state) {
+    var nodes = document.querySelectorAll('[' + state.attr + ']');
+    Array.prototype.forEach.call(nodes, function (el) {
+      el.setAttribute('aria-disabled', 'true');
+      el.setAttribute('title', state.title);
+      el.addEventListener('click', function (event) {
+        // Let the final CTA anchor scroll to its own explanatory note; block the rest.
+        if (el.getAttribute('href') === '#cta' && el.closest('.cta-band')) {
+          event.preventDefault();
+        }
+      });
     });
   });
 
