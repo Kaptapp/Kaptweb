@@ -181,6 +181,21 @@ code {
 .btn-sm .apple-mark { width: 15px; height: 15px; }
 .btn-lg .apple-mark { width: 19px; height: 19px; }
 
+/* Compact variant for the header: a platform and availability indicator, not a
+   repeat of the hero CTAs. Same pill shape and colours, smaller everything. */
+.btn-compact {
+  --btn-pad: 8px 14px;
+  gap: 7px;
+  font-size: 14px;
+}
+.btn-compact .chrome-mark { width: 15px; height: 15px; }
+.btn-compact .apple-mark { width: 14px; height: 14px; margin-top: -1px; }
+.btn-compact[data-store-pending]::after,
+.btn-compact[data-mac-pending]::after {
+  padding: 2px 7px;
+  font-size: 10.5px;
+}
+
 /* Store link is not live yet: render the CTA as an unavailable state without faking a URL. */
 .btn[data-store-pending] { cursor: default; }
 .btn[data-store-pending]::after {
@@ -260,23 +275,25 @@ code {
 
 .brand { flex: none; }
 
-/* Two header actions need room. Shed the status pills first, then the nav,
-   then the Mac action, so nothing ever overflows. */
-@media (max-width: 1040px) {
-  .header-ctas .store-cta::after { display: none !important; }
-}
+/* The compact actions fit alongside the nav, so the header only sheds things
+   at genuinely narrow widths: the nav, then the status pills, then Mac. */
 @media (max-width: 900px) {
   .header-nav { display: none; }
-  .header-ctas { margin-left: auto; }
+  .header-ctas,
+  .header-inner > .store-cta { margin-left: auto; }
 }
 @media (max-width: 520px) {
   .header-inner { gap: 12px; min-height: 66px; }
   .header-ctas { gap: 7px; }
   .brand-mark { width: 30px; height: 30px; }
   .brand-name { font-size: 17.5px; }
-  .header-ctas .store-cta { --btn-pad: 9px 15px; font-size: 14px; }
 }
-@media (max-width: 460px) {
+/* Below this the status pills no longer fit beside both actions. */
+@media (max-width: 480px) {
+  .header-ctas .btn-compact::after { display: none !important; }
+  .header-ctas .btn-compact { --btn-pad: 8px 12px; }
+}
+@media (max-width: 360px) {
   .store-cta-mac { display: none; }
 }
 
