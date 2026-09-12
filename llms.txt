@@ -1,0 +1,32 @@
+# Kapture
+
+> Kapture is a Chrome extension that captures a complete webpage, or a selected
+> area of one, and saves the result on the user's own device as a PNG, JPEG or PDF.
+
+Kapture runs in Chrome's side panel. In full page mode it scrolls the whole
+document rather than capturing only the visible viewport, splitting very long
+pages into sections of up to 8,000 image rows. In select area mode the user
+drags over the visible page, with Freeform, 1:1, 16:9 and 9:16 ratios.
+
+Files are saved through Chrome's own Downloads system, into a Downloads
+subfolder the user names per capture, so different pages or projects can be kept
+in different folders. Kapture keeps a local capture history and offers light and
+dark side panel themes.
+
+Kapture requires Google Chrome 120 or later. A dedicated Kapture app is planned,
+on Mac first; it has not been released.
+
+## Privacy
+
+Screenshots, webpage content, URLs and history metadata are not sent to the
+developer or to external servers. Kapture contains no analytics, advertising or
+tracking, requires no account, and downloads no remote code.
+
+## Pages
+
+- [Home](https://kaptapp.com/): what Kapture is, the two capture modes, formats, viewport presets, folders, history and themes.
+- [Privacy Policy](https://kaptapp.com/privacy.html): what information Kapture handles, how it is stored locally, and what is never transmitted.
+
+## Contact
+
+- Email: pequelord@gmail.com

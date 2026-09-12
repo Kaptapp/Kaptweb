@@ -1,0 +1,43 @@
+# https://kaptapp.com/robots.txt
+# Kapture is a public marketing site. Everything here is crawlable.
+
+User-agent: *
+Allow: /
+
+# Search and answer-engine crawlers are explicitly welcome. Each group below
+# repeats "Allow: /" because a named group replaces the "*" group for that bot.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://kaptapp.com/sitemap.xml

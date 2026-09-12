@@ -1,0 +1,14 @@
+{
+  "name": "Kapture",
+  "short_name": "Kapture",
+  "description": "Full page screenshots for Chrome.",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#1b1d1c",
+  "theme_color": "#1b1d1c",
+  "icons": [
+    { "src": "favicon-48x48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

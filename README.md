@@ -20,11 +20,28 @@ review on the deployed URL.
 ├── script.js             Sticky header, scroll reveal, footer year
 ├── CNAME                 kaptapp.com
 ├── .nojekyll             Serve files as-is on GitHub Pages
+├── robots.txt            Fully crawlable, names the sitemap
+├── sitemap.xml           The two indexable URLs
+├── llms.txt              Plain-text product summary for AI crawlers
+├── site.webmanifest      Name, theme colour and icons
+├── favicon.ico           16, 32 and 48px in one file
+├── favicon-16x16.png
+├── favicon-32x32.png
+├── favicon-48x48.png
+├── favicon-512x512.png   Large square for modern browsers and search
+├── apple-touch-icon.png  180px, opaque, for iOS home screens
 └── assets/
     ├── logo/             Supplied Kapture icon (source of truth)
     ├── social/           1200×630 Open Graph image
     └── screenshots/      Empty. Real extension screenshots go here
 ```
+
+Every favicon is rendered from `assets/logo/kapture-icon.svg`, the supplied icon.
+They are referenced with **relative** paths rather than root-relative ones, so
+they resolve both on `kaptapp.com` and on the `github.io` project URL while the
+custom domain is still being set up. Because both pages sit at the site root,
+a relative `favicon.ico` resolves to `kaptapp.com/favicon.ico` in production,
+which is also where browsers probe for it automatically.
 
 ## Brand
 
@@ -90,6 +107,44 @@ In the header the two actions shed detail as the viewport narrows: the status
 pills go at 1040px, the nav at 900px, and the Mac action at 460px, where there
 is no longer room for both. The hero and final CTA keep both actions and both
 pills at every width.
+
+## SEO and discoverability
+
+Both pages carry a unique title, a factual meta description, a self-referencing
+canonical on `https://kaptapp.com`, `robots` set to `index, follow,
+max-image-preview:large`, full Open Graph and Twitter card tags pointing at
+`assets/social/kapture-og.png`, and JSON-LD.
+
+Structured data:
+
+| Page | Types |
+| ---- | ----- |
+| Home | `WebSite`, `Organization`, `SoftwareApplication`, `WebPage` |
+| Privacy | `WebPage`, `BreadcrumbList` |
+
+`SoftwareApplication` uses `applicationCategory: BrowserApplication` and
+`browserRequirements: Requires Google Chrome 120 or later`. It deliberately
+carries **no** `operatingSystem` (a browser extension has no OS requirement of
+its own, so the property would be semantically wrong) and no `offers`,
+`aggregateRating` or `review`, since the site states no price, rating or review
+count. Only facts taken from the shipped extension appear in `featureList`.
+
+`robots.txt` disallows nothing. It repeats `Allow: /` for named search and
+answer-engine crawlers, `OAI-SearchBot` included, because a named user-agent
+group replaces the `*` group for that bot.
+
+## Search Console
+
+The verification tag is **not** in the repository. To add it:
+
+1. In Google Search Console add the property `https://kaptapp.com`
+2. Choose the **HTML tag** verification method and copy the tag it gives you
+3. Open `index.html` and find the comment `GOOGLE SEARCH CONSOLE VERIFICATION`
+   near the top of the `<head>`, around line 10
+4. Paste the tag on the empty line directly below that comment
+5. Commit, push, wait for Pages to deploy, then click Verify
+
+Then submit `https://kaptapp.com/sitemap.xml` under **Sitemaps**.
 
 ## Deployment
 
