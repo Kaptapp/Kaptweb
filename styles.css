@@ -190,25 +190,10 @@ code {
 }
 .btn-compact .chrome-mark { width: 15px; height: 15px; }
 .btn-compact .apple-mark { width: 14px; height: 14px; margin-top: -1px; }
-.btn-compact[data-store-pending]::after,
 .btn-compact[data-mac-pending]::after {
   padding: 2px 7px;
   font-size: 10.5px;
 }
-
-/* Store link is not live yet: render the CTA as an unavailable state without faking a URL. */
-.btn[data-store-pending] { cursor: default; }
-.btn[data-store-pending]::after {
-  content: "In review";
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: rgba(8, 36, 31, .16);
-  font-size: 12px;
-  font-weight: 650;
-  letter-spacing: .01em;
-}
-.btn-ghost[data-store-pending]::after { background: var(--surface-2); color: var(--text-muted); }
-.btn-white[data-store-pending]::after { background: rgba(23, 32, 30, .1); color: #4c5754; }
 
 /* Mac app is planned, not released. */
 .btn[data-mac-pending] { cursor: default; }

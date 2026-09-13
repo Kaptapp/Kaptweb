@@ -81,32 +81,24 @@ reword its claims without a corresponding change to the extension.
 
 ## Chrome Web Store CTA
 
-The store listing does not exist yet, so the site deliberately ships **no store URL**.
-The three "Add to Chrome" buttons carry `data-store-pending`, which renders them as an
-"In review" state and blocks navigation.
+The extension is live. All three "Add to Chrome" buttons link to the listing:
 
-To go live, in `index.html`:
+```text
+https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap
+```
 
-1. Replace `href="#cta"` with the real Chrome Web Store URL on all three buttons
-   (each is marked with a `TODO` comment).
-2. Delete the `data-store-pending` attribute from all three.
-3. Remove the `<p class="cta-note" data-store-note>` paragraph in the final CTA section.
+They open in a new tab with `rel="noopener noreferrer"`, use the `.btn-white`
+treatment with the official Chrome mark, and behave as ordinary links.
 
-No other change is needed. The pending styling and the click handler both key off
-that one attribute.
-
-All three Chrome buttons use the `.btn-white` treatment with the official Chrome
-mark (`.chrome-mark`, inline SVG in `index.html`).
-
-The Mac buttons sit beside them in the header, hero and final CTA. They carry
-`data-mac-pending`, which renders the "Soon" pill and blocks the click, and use
-`.btn-primary` (teal) with `.apple-mark`. When a Mac build ships, give each a
-real href and drop `data-mac-pending`; the same three-step swap as Chrome.
+The Mac buttons sit beside them in the header, hero and final CTA. The Mac app
+is **not** released, so they still carry `data-mac-pending`, which renders the
+"Soon" pill and blocks the click. When a Mac build ships, give each a real href
+and drop `data-mac-pending`.
 
 In the header the two actions shed detail as the viewport narrows: the status
 pills go at 1040px, the nav at 900px, and the Mac action at 460px, where there
-is no longer room for both. The hero and final CTA keep both actions and both
-pills at every width.
+is no longer room for both. The hero and final CTA keep both actions at every
+width.
 
 ## Cache busting
 
@@ -117,7 +109,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=2`.
+`styles.css` or `script.js`.** Currently `v=3`.
 
 ## SEO and discoverability
 
@@ -186,7 +178,6 @@ Cloudflare is not needed.
 
 ## Still to supply
 
-- **Chrome Web Store listing URL**: see the CTA section above.
 - **Real extension screenshots**: the hero currently uses a faithful HTML/CSS
   recreation of the side panel. Drop real PNGs into `assets/screenshots/` and swap
   the `.window` block in `index.html` for an `<img>` when they are available.

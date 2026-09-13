@@ -21,13 +21,12 @@
     window.addEventListener('scroll', setStuck, { passive: true });
   }
 
-  /* ---- Store CTAs: unavailable until each destination exists ----
-     The markup ships no fake links. `data-store-pending` covers the Chrome Web
-     Store listing, `data-mac-pending` the unreleased Mac app. Both render as
-     disabled controls that announce why. */
+  /* ---- Unreleased destinations ----
+     The Chrome extension is live, so those buttons are ordinary links. The Mac
+     app is not released, so `data-mac-pending` still renders it as a disabled
+     control that announces why. */
   var pendingStates = [
-    { attr: 'data-store-pending', title: 'Kapture is in Chrome Web Store review' },
-    { attr: 'data-mac-pending',   title: 'The Kapture Mac app is coming soon' }
+    { attr: 'data-mac-pending', title: 'The Kapture Mac app is coming soon' }
   ];
 
   pendingStates.forEach(function (state) {
