@@ -100,6 +100,51 @@ pills go at 1040px, the nav at 900px, and the Mac action at 460px, where there
 is no longer room for both. The hero and final CTA keep both actions at every
 width.
 
+## Languages
+
+Five static language versions, each with real crawlable HTML. English is the
+default and stays at the root.
+
+| Language | Home | Privacy |
+| -------- | ---- | ------- |
+| English  | `/` | `/privacy.html` |
+| Spanish  | `/es/` | `/es/privacy.html` |
+| Chinese (Simplified) | `/zh/` | `/zh/privacy.html` |
+| Korean   | `/ko/` | `/ko/privacy.html` |
+| Japanese | `/ja/` | `/ja/privacy.html` |
+
+**The translated pages are generated, not hand-edited.** `index.html` and
+`privacy.html` are the source of truth for markup; the copy lives in
+`tools/t_*.py`. After changing either English page, or any translation, run:
+
+```sh
+python3 tools/build_i18n.py
+```
+
+That rewrites all eight translated pages and re-injects the hreflang set and the
+language selector into the English pages too. It is idempotent, so it is safe to
+run repeatedly. Editing `es/index.html` by hand will be overwritten.
+
+Each page self-canonicalises, carries the full reciprocal hreflang set (five
+languages plus `x-default`), sets the right `<html lang>`, and ships localised
+metadata and JSON-LD prose. Factual fields in the structured data (name,
+version, category, `installUrl`, `browserRequirements`) are identical in every
+language.
+
+The language selector is a native `<details>` disclosure: keyboard accessible,
+no JavaScript. It keeps you on the same kind of page, so switching language from
+a privacy page lands on that language's privacy page. There is **no** automatic
+redirect based on browser language.
+
+The Kapture side panel shown in the hero mock stays in English on every page. It
+reproduces the real extension interface, which is not localised, so translating
+it would show a product that does not exist. The badge, caption and the
+descriptive `aria-label` around it are translated.
+
+Fonts are system-only. The stack gains PingFang SC, Hiragino Sans, Yu Gothic UI,
+Apple SD Gothic Neo, Malgun Gothic and the Noto CJK fallbacks, so nothing is
+downloaded for CJK or Hangul.
+
 ## Cache busting
 
 `styles.css` and `script.js` are referenced with a `?v=N` query in both pages.
@@ -109,7 +154,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=3`.
+`styles.css` or `script.js`.** Currently `v=4`.
 
 ## SEO and discoverability
 
