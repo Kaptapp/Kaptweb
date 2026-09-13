@@ -15,7 +15,7 @@ review on the deployed URL.
 ```text
 /
 ├── index.html            Landing page
-├── privacy.html          Privacy policy
+├── privacy/index.html    Privacy policy, served at /privacy/
 ├── styles.css            All styles for both pages
 ├── script.js             Sticky header, scroll reveal, footer year
 ├── CNAME                 kaptapp.com
@@ -76,7 +76,7 @@ Chrome" action there is a teal "Add to Mac" action carrying a "Soon" pill, and
 the supporting lines say the Mac app is coming. Both are deliberately worded as
 plans with no dates.
 
-`privacy.html` reproduces the supplied privacy-policy wording verbatim. Do not
+`privacy/index.html` reproduces the supplied privacy-policy wording verbatim. Do not
 reword its claims without a corresponding change to the extension.
 
 ## Chrome Web Store CTA
@@ -107,14 +107,14 @@ default and stays at the root.
 
 | Language | Home | Privacy |
 | -------- | ---- | ------- |
-| English  | `/` | `/privacy.html` |
-| Spanish  | `/es/` | `/es/privacy.html` |
-| Chinese (Simplified) | `/zh/` | `/zh/privacy.html` |
-| Korean   | `/ko/` | `/ko/privacy.html` |
-| Japanese | `/ja/` | `/ja/privacy.html` |
+| English  | `/` | `/privacy/` |
+| Spanish  | `/es/` | `/es/privacy/` |
+| Chinese (Simplified) | `/zh/` | `/zh/privacy/` |
+| Korean   | `/ko/` | `/ko/privacy/` |
+| Japanese | `/ja/` | `/ja/privacy/` |
 
 **The translated pages are generated, not hand-edited.** `index.html` and
-`privacy.html` are the source of truth for markup; the copy lives in
+`privacy/index.html` are the source of truth for markup; the copy lives in
 `tools/t_*.py`. After changing either English page, or any translation, run:
 
 ```sh
@@ -145,6 +145,11 @@ Fonts are system-only. The stack gains PingFang SC, Hiragino Sans, Yu Gothic UI,
 Apple SD Gothic Neo, Malgun Gothic and the Noto CJK fallbacks, so nothing is
 downloaded for CJK or Hangul.
 
+Privacy pages use directory URLs (`/privacy/`, `/es/privacy/`) rather than
+`.html`, so each is an `index.html` inside a `privacy/` folder. Internal links
+to them are root-relative; the build rewrites `href="/..."` into the current
+language when it generates a translated page.
+
 ## Cache busting
 
 `styles.css` and `script.js` are referenced with a `?v=N` query in both pages.
@@ -153,7 +158,7 @@ servers often send no cache headers at all, so without this a browser can hold
 a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
-**Bump the number in both `index.html` and `privacy.html` whenever you change
+**Bump the number in both `index.html` and `privacy/index.html` whenever you change
 `styles.css` or `script.js`.** Currently `v=4`.
 
 ## SEO and discoverability

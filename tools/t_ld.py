@@ -58,4 +58,4 @@ def home_url(lang):
     return f'{BASE}/' if lang == 'en' else f'{BASE}/{lang}/'
 
 def privacy_url(lang):
-    return f'{BASE}/privacy.html' if lang == 'en' else f'{BASE}/{lang}/privacy.html'
+    return f'{BASE}/privacy/' if lang == 'en' else f'{BASE}/{lang}/privacy/'

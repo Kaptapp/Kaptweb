@@ -25,7 +25,7 @@ tracking, requires no account, and downloads no remote code.
 ## Pages
 
 - [Home](https://kaptapp.com/): what Kapture is, the two capture modes, formats, viewport presets, folders, history and themes.
-- [Privacy Policy](https://kaptapp.com/privacy.html): what information Kapture handles, how it is stored locally, and what is never transmitted.
+- [Privacy Policy](https://kaptapp.com/privacy/): what information Kapture handles, how it is stored locally, and what is never transmitted.
 
 ## Contact
 

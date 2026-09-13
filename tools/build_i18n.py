@@ -2,7 +2,7 @@
 """
 Generates the localised pages from the English sources.
 
-English index.html / privacy.html are the single source of truth for markup.
+English index.html and privacy/index.html are the single source of truth for markup.
 This script only swaps copy, rewrites relative paths for the subfolder, and
 injects the hreflang set, the language selector and localised JSON-LD. Re-run
 it after any change to the English pages.
@@ -94,8 +94,13 @@ def strip_i18n(src):
     return src
 
 
+# Where each page lives. English privacy sits at privacy/index.html so it is
+# served at the clean /privacy/ URL, which makes it one level deep already.
+SOURCE = {'index': 'index.html', 'privacy': 'privacy/index.html'}
+
+
 def build(lang, page):
-    src = strip_i18n((ROOT / f'{page}.html').read_text())
+    src = strip_i18n((ROOT / SOURCE[page]).read_text())
     table = HOME_ALL if page == 'index' else PRIV
 
     # 1. copy, longest key first so no key is a prefix of another
@@ -108,19 +113,25 @@ def build(lang, page):
     if missed:
         raise SystemExit(f'{lang}/{page}: {len(missed)} keys not found, first: {missed[0][:80]!r}')
 
-    # 2. relative asset paths, one directory deeper
-    for a, b in [('href="styles.css', 'href="../styles.css'),
-                 ('src="script.js', 'src="../script.js'),
-                 ('href="favicon', 'href="../favicon'),
-                 ('href="apple-touch-icon', 'href="../apple-touch-icon'),
-                 ('href="site.webmanifest', 'href="../site.webmanifest'),
-                 ('src="assets/', 'src="../assets/'),
-                 ('href="assets/', 'href="../assets/')]:
-        src = src.replace(a, b)
+    # 2. assets sit one more level up for every translated page. The English
+    #    homepage is at the root, everything else is already one deep.
+    if page == 'index':
+        for a, b in [('href="styles.css', 'href="../styles.css'),
+                     ('src="script.js', 'src="../script.js'),
+                     ('href="favicon', 'href="../favicon'),
+                     ('href="apple-touch-icon', 'href="../apple-touch-icon'),
+                     ('href="site.webmanifest', 'href="../site.webmanifest'),
+                     ('src="assets/', 'src="../assets/'),
+                     ('href="assets/', 'href="../assets/')]:
+            src = src.replace(a, b)
+    else:
+        # privacy/index.html already uses ../, and {lang}/privacy/ is two deep
+        src = src.replace('href="../', 'href="../../').replace('src="../', 'src="../../')
 
-    # 3. language attribute, brand link, canonical, og:url
+    # 3. language attribute, then every root-relative internal link moves into
+    #    this language: href="/" , href="/#how" and href="/privacy/" all shift.
     src = src.replace('<html lang="en">', f'<html lang="{HTMLLANG[lang]}">', 1)
-    src = src.replace('<a class="brand" href="/"', f'<a class="brand" href="/{lang}/"', 1)
+    src = src.replace('href="/', f'href="/{lang}/')
     page_url = home_url(lang) if page == 'index' else privacy_url(lang)
     src = re.sub(r'<link rel="canonical" href="[^"]+">',
                  f'<link rel="canonical" href="{page_url}">', src, count=1)
@@ -147,8 +158,8 @@ def build(lang, page):
                       '<script type="application/ld+json">\n'
                       + localise_ld(block.group(1), lang, page, title, desc) + '\n</script>')
 
-    out = ROOT / lang / f'{page}.html'
-    out.parent.mkdir(exist_ok=True)
+    out = ROOT / lang / ('index.html' if page == 'index' else 'privacy/index.html')
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(src)
     return out
 
@@ -156,9 +167,15 @@ def build(lang, page):
 def patch_english():
     """English pages need the same hreflang set and the selector."""
     for page in ('index', 'privacy'):
-        p = ROOT / f'{page}.html'
+        p = ROOT / SOURCE[page]
         src = strip_i18n(p.read_text())
         url = home_url('en') if page == 'index' else privacy_url('en')
+        # Derive rather than assume, so a URL change cannot silently skip the
+        # hreflang injection the way a stale canonical once did.
+        src = re.sub(r'<link rel="canonical" href="[^"]+">',
+                     f'<link rel="canonical" href="{url}">', src, count=1)
+        src = re.sub(r'<meta property="og:url" content="[^"]+">',
+                     f'<meta property="og:url" content="{url}">', src, count=1)
         src = src.replace(f'<link rel="canonical" href="{url}">',
                           f'<link rel="canonical" href="{url}">\n' + hreflang(page), 1)
         if page == 'index':
@@ -168,7 +185,7 @@ def patch_english():
             anchor = '    <a class="btn btn-ghost btn-sm store-cta"'
             src = src.replace(anchor, selector('en', page) + anchor, 1)
         p.write_text(src)
-        print(f'  patched  {page}.html (hreflang + selector)')
+        print(f'  patched  {SOURCE[page]} (hreflang + selector)')
 
 
 if __name__ == '__main__':

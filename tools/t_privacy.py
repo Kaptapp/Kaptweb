@@ -14,11 +14,11 @@ PRIV = {
  'ko': 'Kapture가 스크린샷과 로컬 파일, 개인정보를 어떻게 다루는지 설명합니다. 스크린샷은 Chrome 다운로드를 통해 기기에 저장되며 개발자나 제3자에게 전송되지 않습니다.',
  'ja': 'Kapture がスクリーンショットやローカルファイル、プライバシーをどう扱うかについて。スクリーンショットは Chrome のダウンロード機能で端末に保存され、開発者や第三者に送信されることはありません。'},
 
-'<a class="btn btn-ghost btn-sm store-cta" href="index.html">Back to site</a>': {
- 'es': '<a class="btn btn-ghost btn-sm store-cta" href="index.html">Volver al sitio</a>',
- 'zh': '<a class="btn btn-ghost btn-sm store-cta" href="index.html">返回网站</a>',
- 'ko': '<a class="btn btn-ghost btn-sm store-cta" href="index.html">사이트로 돌아가기</a>',
- 'ja': '<a class="btn btn-ghost btn-sm store-cta" href="index.html">サイトに戻る</a>'},
+'<a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>': {
+ 'es': '<a class="btn btn-ghost btn-sm store-cta" href="/">Volver al sitio</a>',
+ 'zh': '<a class="btn btn-ghost btn-sm store-cta" href="/">返回网站</a>',
+ 'ko': '<a class="btn btn-ghost btn-sm store-cta" href="/">사이트로 돌아가기</a>',
+ 'ja': '<a class="btn btn-ghost btn-sm store-cta" href="/">サイトに戻る</a>'},
 
 '<p class="kicker">Legal</p>': {
  'es': '<p class="kicker">Aviso legal</p>', 'zh': '<p class="kicker">法律条款</p>',
@@ -118,20 +118,20 @@ PRIV = {
  'ja': '<p class="legal-foot">Kapture by Pequelord &middot; スクリーンショットは端末の外に出ません。</p>'},
 
 # footer nav on the privacy page
-'<a href="index.html#capture">Capture</a>\n      <a href="index.html#how">How it works</a>\n      <a href="privacy.html">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>': {
- 'es': '<a href="index.html#capture">Captura</a>\n      <a href="index.html#how">Cómo funciona</a>\n      <a href="privacy.html">Privacidad</a>\n      <a href="mailto:pequelord@gmail.com">Contacto</a>',
- 'zh': '<a href="index.html#capture">截图</a>\n      <a href="index.html#how">使用方法</a>\n      <a href="privacy.html">隐私</a>\n      <a href="mailto:pequelord@gmail.com">联系我们</a>',
- 'ko': '<a href="index.html#capture">캡처</a>\n      <a href="index.html#how">사용 방법</a>\n      <a href="privacy.html">개인정보</a>\n      <a href="mailto:pequelord@gmail.com">문의</a>',
- 'ja': '<a href="index.html#capture">キャプチャ</a>\n      <a href="index.html#how">使い方</a>\n      <a href="privacy.html">プライバシー</a>\n      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
-'<a href="index.html#capture">Capture</a>': {
- 'es': '<a href="index.html#capture">Captura</a>', 'zh': '<a href="index.html#capture">截图</a>',
- 'ko': '<a href="index.html#capture">캡처</a>', 'ja': '<a href="index.html#capture">キャプチャ</a>'},
-'<a href="index.html#how">How it works</a>': {
- 'es': '<a href="index.html#how">Cómo funciona</a>', 'zh': '<a href="index.html#how">使用方法</a>',
- 'ko': '<a href="index.html#how">사용 방법</a>', 'ja': '<a href="index.html#how">使い方</a>'},
-'<a href="privacy.html" aria-current="page">Privacy</a>': {
- 'es': '<a href="privacy.html" aria-current="page">Privacidad</a>',
- 'zh': '<a href="privacy.html" aria-current="page">隐私</a>',
- 'ko': '<a href="privacy.html" aria-current="page">개인정보</a>',
- 'ja': '<a href="privacy.html" aria-current="page">プライバシー</a>'},
+'<a href="/#capture">Capture</a>\n      <a href="/#how">How it works</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>': {
+ 'es': '<a href="/#capture">Captura</a>\n      <a href="/#how">Cómo funciona</a>\n      <a href="/privacy/">Privacidad</a>\n      <a href="mailto:pequelord@gmail.com">Contacto</a>',
+ 'zh': '<a href="/#capture">截图</a>\n      <a href="/#how">使用方法</a>\n      <a href="/privacy/">隐私</a>\n      <a href="mailto:pequelord@gmail.com">联系我们</a>',
+ 'ko': '<a href="/#capture">캡처</a>\n      <a href="/#how">사용 방법</a>\n      <a href="/privacy/">개인정보</a>\n      <a href="mailto:pequelord@gmail.com">문의</a>',
+ 'ja': '<a href="/#capture">キャプチャ</a>\n      <a href="/#how">使い方</a>\n      <a href="/privacy/">プライバシー</a>\n      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
+'<a href="/#capture">Capture</a>': {
+ 'es': '<a href="/#capture">Captura</a>', 'zh': '<a href="/#capture">截图</a>',
+ 'ko': '<a href="/#capture">캡처</a>', 'ja': '<a href="/#capture">キャプチャ</a>'},
+'<a href="/#how">How it works</a>': {
+ 'es': '<a href="/#how">Cómo funciona</a>', 'zh': '<a href="/#how">使用方法</a>',
+ 'ko': '<a href="/#how">사용 방법</a>', 'ja': '<a href="/#how">使い方</a>'},
+'<a href="/privacy/" aria-current="page">Privacy</a>': {
+ 'es': '<a href="/privacy/" aria-current="page">Privacidad</a>',
+ 'zh': '<a href="/privacy/" aria-current="page">隐私</a>',
+ 'ko': '<a href="/privacy/" aria-current="page">개인정보</a>',
+ 'ja': '<a href="/privacy/" aria-current="page">プライバシー</a>'},
 }
