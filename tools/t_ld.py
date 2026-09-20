@@ -59,3 +59,23 @@ def home_url(lang):
 
 def privacy_url(lang):
     return f'{BASE}/privacy/' if lang == 'en' else f'{BASE}/{lang}/privacy/'
+
+
+# ---- Kapture Pro: localised JSON-LD prose. Factual fields stay identical. ----
+PRO_DESC = {
+ 'en': 'Kapture Pro indexes the screenshots already saved on your Mac and turns them into a searchable visual library with projects, tags and an inspector.',
+ 'es': 'Kapture Pro indexa las capturas que ya tienes guardadas en el Mac y las convierte en una biblioteca visual con proyectos, etiquetas e inspector en la que puedes buscar.',
+ 'zh': 'Kapture Pro 会索引 Mac 上已经保存的截图，把它们变成一个带项目、标签和检查器的可搜索可视化图库。',
+ 'ko': 'Kapture Pro는 이미 Mac에 저장된 스크린샷을 색인해 프로젝트, 태그, 인스펙터를 갖춘 검색 가능한 시각 라이브러리로 만들어 줍니다.',
+ 'ja': 'Kapture Pro は、すでに Mac に保存されているスクリーンショットを取り込み、プロジェクト・タグ・インスペクタを備えた検索できるビジュアルライブラリに変えます。'}
+
+PRO_FEATURES = {
+ 'en': ['Projects', 'Search', 'Visual library', 'Inspector', 'Tags and notes',
+        'Local storage with no cloud sync'],
+ 'es': ['Proyectos', 'Búsqueda', 'Biblioteca visual', 'Inspector', 'Etiquetas y notas',
+        'Almacenamiento local sin sincronización en la nube'],
+ 'zh': ['项目', '搜索', '可视化图库', '检查器', '标签与备注', '本地存储，无需云同步'],
+ 'ko': ['프로젝트', '검색', '시각 라이브러리', '인스펙터', '태그와 메모',
+        '클라우드 동기화 없는 로컬 저장'],
+ 'ja': ['プロジェクト', '検索', 'ビジュアルライブラリ', 'インスペクタ', 'タグとメモ',
+        'クラウド同期なしのローカル保存']}

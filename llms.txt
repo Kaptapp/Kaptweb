@@ -1,7 +1,8 @@
 # Kapture
 
-> Kapture is a Chrome extension that captures a complete webpage, or a selected
-> area of one, and saves the result on the user's own device as a PNG, JPEG or PDF.
+> Kapture is two products. Kapture for Chrome captures a complete webpage, or a
+> selected area of one, and saves it on the user's own device as a PNG, JPEG or PDF.
+> Kapture Pro for Mac organises those captures into a searchable local library.
 
 Kapture runs in Chrome's side panel. In full page mode it scrolls the whole
 document rather than capturing only the visible viewport, splitting very long
@@ -13,8 +14,10 @@ subfolder the user names per capture, so different pages or projects can be kept
 in different folders. Kapture keeps a local capture history and offers light and
 dark side panel themes.
 
-Kapture requires Google Chrome 120 or later. A dedicated Kapture app is planned,
-on Mac first; it has not been released.
+Kapture for Chrome requires Google Chrome 120 or later and is free. Kapture Pro for
+Mac is a companion app that indexes the screenshots already saved on the user's Mac
+and turns them into a searchable visual library with projects, tags and an
+inspector. Kapture Pro is not yet available to buy.
 
 ## Privacy
 

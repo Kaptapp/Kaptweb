@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kapture：Chrome でページ全体をスクリーンショット</title>
-<meta name="description" content="Kapture なら Chrome から直接、ページ全体でも選んだ範囲でもキャプチャできます。PNG・JPEG・PDF で保存し、ファイルは端末の中だけに残ります。">
+<title>Kapture：Chrome で撮って、Mac で整理する</title>
+<meta name="description" content="Kapture は Chrome から直接、ページ全体でも選んだ範囲でもキャプチャします。Kapture Pro はそれを Mac 上の検索できるビジュアルライブラリに変えます。すべてローカルのままです。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1b1d1c">
 <link rel="canonical" href="https://kaptapp.com/ja/">
@@ -34,8 +34,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kapture">
 <meta property="og:url" content="https://kaptapp.com/ja/">
-<meta property="og:title" content="Kapture: Full Page Screenshots for Chrome">
-<meta property="og:description" content="Kapture なら Chrome から直接、ページ全体でも選んだ範囲でもキャプチャできます。PNG・JPEG・PDF で保存し、ファイルは端末の中だけに残ります。">
+<meta property="og:title" content="Kapture: Capture in Chrome, Organise on Mac">
+<meta property="og:description" content="Kapture は Chrome から直接、ページ全体でも選んだ範囲でもキャプチャします。Kapture Pro はそれを Mac 上の検索できるビジュアルライブラリに変えます。すべてローカルのままです。">
 <meta property="og:image" content="https://kaptapp.com/assets/social/kapture-og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -43,8 +43,8 @@
 <meta property="og:image:alt" content="Kapture、Chrome でページ全体をスクリーンショット。">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@kaptapp">
-<meta name="twitter:title" content="Kapture: Full Page Screenshots for Chrome">
-<meta name="twitter:description" content="Kapture なら Chrome から直接、ページ全体でも選んだ範囲でもキャプチャできます。PNG・JPEG・PDF で保存し、ファイルは端末の中だけに残ります。">
+<meta name="twitter:title" content="Kapture: Capture in Chrome, Organise on Mac">
+<meta name="twitter:description" content="Kapture は Chrome から直接、ページ全体でも選んだ範囲でもキャプチャします。Kapture Pro はそれを Mac 上の検索できるビジュアルライブラリに変えます。すべてローカルのままです。">
 <meta name="twitter:image" content="https://kaptapp.com/assets/social/kapture-og.png">
 <meta name="twitter:image:alt" content="Kapture、Chrome でページ全体をスクリーンショット。">
 
@@ -57,7 +57,7 @@
       "@id": "https://kaptapp.com/ja/#website",
       "url": "https://kaptapp.com/ja/",
       "name": "Kapture",
-      "description": "Kapture なら Chrome から直接、ページ全体でも選んだ範囲でもキャプチャできます。PNG・JPEG・PDF で保存し、ファイルは端末の中だけに残ります。",
+      "description": "Kapture は Chrome から直接、ページ全体でも選んだ範囲でもキャプチャします。Kapture Pro はそれを Mac 上の検索できるビジュアルライブラリに変えます。すべてローカルのままです。",
       "inLanguage": "ja",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
@@ -84,14 +84,14 @@
     {
       "@type": "SoftwareApplication",
       "@id": "https://kaptapp.com/ja/#kapture",
-      "name": "Kapture",
+      "name": "Kapture for Chrome",
       "url": "https://kaptapp.com/ja/",
       "installUrl": "https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap",
       "description": "Kapture は、ウェブページ全体または選択した範囲をキャプチャし、PNG・JPEG・PDF として自分の端末に保存できる Chrome 拡張機能です。",
       "applicationCategory": "BrowserApplication",
       "applicationSubCategory": "Screenshot utility",
       "browserRequirements": "Requires Google Chrome 120 or later",
-      "softwareVersion": "0.4.4",
+      "softwareVersion": "0.4.7",
       "featureList": [
         "ファーストビューより下も含めたページ全体のキャプチャ",
         "表示中の画面から範囲を選んでキャプチャ",
@@ -104,14 +104,44 @@
       "image": "https://kaptapp.com/assets/social/kapture-og.png",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
+      },
+      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-chrome-0-4-7.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://kaptapp.com/ja/#kapture-pro",
+      "name": "Kapture Pro for Mac",
+      "url": "https://kaptapp.com/ja/#pro",
+      "description": "Kapture Pro は、すでに Mac に保存されているスクリーンショットを取り込み、プロジェクト・タグ・インスペクタを備えた検索できるビジュアルライブラリに変えます。",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "macOS",
+      "featureList": [
+        "プロジェクト",
+        "検索",
+        "ビジュアルライブラリ",
+        "インスペクタ",
+        "タグとメモ",
+        "クラウド同期なしのローカル保存"
+      ],
+      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-pro-mac.png",
+      "releaseNotes": "Not yet released.",
+      "publisher": {
+        "@id": "https://kaptapp.com/#organization"
       }
     },
     {
       "@type": "WebPage",
       "@id": "https://kaptapp.com/ja/#webpage",
       "url": "https://kaptapp.com/ja/",
-      "name": "Kapture：Chrome でページ全体をスクリーンショット",
-      "description": "Kapture なら Chrome から直接、ページ全体でも選んだ範囲でもキャプチャできます。PNG・JPEG・PDF で保存し、ファイルは端末の中だけに残ります。",
+      "name": "Kapture：Chrome で撮って、Mac で整理する",
+      "description": "Kapture は Chrome から直接、ページ全体でも選んだ範囲でもキャプチャします。Kapture Pro はそれを Mac 上の検索できるビジュアルライブラリに変えます。すべてローカルのままです。",
       "isPartOf": {
         "@id": "https://kaptapp.com/ja/#website"
       },
@@ -128,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=4">
+<link rel="stylesheet" href="../styles.css?v=5">
 </head>
 <body>
 
@@ -136,12 +166,13 @@
 
 <header class="site-header" id="siteHeader">
   <div class="shell header-inner">
-    <a class="brand" href="/ja/" aria-label="Kapture ホーム">
-      <img class="brand-mark" src="../assets/logo/kapture-icon.svg" alt="" width="34" height="34">
-      <span class="brand-name">Kapture</span>
+    <a class="brand" href="/ja/">
+      <img class="brand-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
     </a>
     <nav class="header-nav" aria-label="メインナビゲーション">
-      <a href="#capture">キャプチャ</a>
+      <a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
       <a href="#how">使い方</a>
       <a href="#privacy">プライバシー</a>
     </nav>
@@ -165,8 +196,8 @@
       <span class="store-cta-label">Chrome</span>
     </a>
     <!-- Mac app is planned, not released: no link, "Soon" state -->
-    <a class="btn btn-primary btn-compact store-cta store-cta-mac" href="#cta" data-mac-pending
-       aria-label="Mac 版 Kapture。近日公開。">
+    <a class="btn btn-primary btn-compact store-cta store-cta-mac" href="#pro" data-mac-pending
+       aria-label="Mac 版 Kapture Pro。近日公開。">
       <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
       <span class="store-cta-label">Mac</span>
     </a>
@@ -181,18 +212,17 @@
     <div class="shell">
       <p class="eyebrow">
         <span class="dot" aria-hidden="true"></span>
-        Chrome 拡張機能 &middot; バージョン 0.4.4
+        Chrome 拡張機能 0.4.7 &middot; Mac 版 Kapture Pro
       </p>
 
       <h1 class="hero-title">
-        ページ全体をキャプチャ。<br>
-        <span class="accent">見える範囲だけじゃない。</span>
+        Chrome で撮る。<br>
+        <span class="accent">Mac で整理する。</span>
       </h1>
 
       <p class="hero-sub">
-        Kapture は、表示されている範囲だけでなくページ全体をスクロールして丸ごと
-        撮影する Chrome 拡張機能です。PNG・JPEG・PDF でダウンロードフォルダに
-        そのまま保存できます。
+        Kapture は Chrome から直接、ページ全体でも選んだ範囲でもキャプチャします。
+        Kapture Pro は、それを Mac の中のビジュアルライブラリに変えます。
       </p>
 
       <div class="hero-actions">
@@ -201,105 +231,25 @@
           <span class="store-cta-label">Chrome に追加</span>
         </a>
         <!-- Mac app is planned, not released: no link, "Soon" state -->
-        <a class="btn btn-primary" href="#cta" data-mac-pending>
+        <a class="btn btn-primary" href="#pro" data-mac-pending
+           aria-label="Mac 版 Kapture Pro。近日公開。">
           <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
-          <span class="store-cta-label">Mac に追加</span>
+          <span class="store-cta-label">Mac 版 Kapture Pro</span>
         </a>
         <a class="btn btn-ghost" href="#how">使い方を見る</a>
       </div>
 
-      <p class="hero-note">Chrome 120 以降が必要です。スクリーンショットが端末の外に出ることはありません。Mac アプリも近日公開。</p>
+      <p class="hero-note">Chrome 120 以降が必要です。Chrome 版 Kapture は無料。Mac 版 Kapture Pro は近日公開です。</p>
     </div>
 
     <!-- ============ PRODUCT VISUAL ============ -->
     <div class="shell">
-      <figure class="product reveal">
-        <div class="product-glow" aria-hidden="true"></div>
-
-        <div class="product-scaler">
-        <div class="window" role="img"
-             aria-label="Chrome で動作中の Kapture：サイドパネルでページ全体か範囲選択、画面幅、ファイル形式、ダウンロード先のサブフォルダを選べます。その隣にキャプチャ中のウェブページが表示されています。">
-          <!-- browser chrome -->
-          <div class="window-bar" aria-hidden="true">
-            <span class="lights"><i></i><i></i><i></i></span>
-            <span class="urlbar">kaptapp.com</span>
-            <span class="toolbar-icon">
-              <img src="../assets/logo/kapture-icon.svg" alt="" width="18" height="18">
-            </span>
-          </div>
-
-          <div class="window-body" aria-hidden="true">
-            <!-- the page being captured -->
-            <div class="stage">
-              <div class="stage-scroll">
-                <div class="ph ph-title"></div>
-                <div class="ph ph-line w80"></div>
-                <div class="ph ph-line w60"></div>
-                <div class="ph ph-block"></div>
-                <div class="ph-row">
-                  <div class="ph ph-card"></div>
-                  <div class="ph ph-card"></div>
-                </div>
-                <div class="ph ph-line w70"></div>
-                <div class="ph ph-line w45"></div>
-                <div class="ph ph-block tall"></div>
-                <div class="ph-row">
-                  <div class="ph ph-card"></div>
-                  <div class="ph ph-card"></div>
-                </div>
-                <div class="ph ph-line w65"></div>
-                <div class="ph ph-block"></div>
-              </div>
-              <div class="scanline" aria-hidden="true"></div>
-              <div class="stage-badge">ページ全体 &middot; 8,000px ごとに分割</div>
-            </div>
-
-            <!-- side panel replica -->
-            <div class="panel" id="panelDemo">
-              <div class="panel-head">
-                <img src="../assets/logo/kapture-icon.svg" alt="" width="30" height="30">
-                <div>
-                  <strong>Kapture</strong>
-                  <small>Version 0.4.4</small>
-                </div>
-                <span class="toggle">
-                  <i class="sun"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9"/></svg></i>
-                  <i class="moon"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg></i>
-                </span>
-              </div>
-
-              <div class="panel-body">
-                <div class="card">
-                  <div class="segmented">
-                    <span class="seg active">Full page</span>
-                    <span class="seg">Select area</span>
-                  </div>
-                  <div class="fields">
-                    <label>Viewport<span class="select">Desktop · 1440 px</span></label>
-                    <label>Format<span class="select">PNG</span></label>
-                  </div>
-                  <div class="folder"><span>Save to Downloads/</span><span class="input">Kapture</span></div>
-                  <div class="cta-row"><span class="panel-btn">Capture page</span></div>
-                  <p class="panel-status">Capturing section 2 of 3…</p>
-                </div>
-
-                <div class="panel-section-title">
-                  <strong>History</strong><span class="pill">3</span>
-                </div>
-                <ul class="entries">
-                  <li><span class="file">PNG</span><span><b>kaptapp-com-full.png</b><small>kaptapp.com · just now</small></span></li>
-                  <li><span class="file">PDF</span><span><b>kaptapp-com-full.pdf</b><small>kaptapp.com · 2 min ago</small></span></li>
-                  <li><span class="file">JPG</span><span><b>kaptapp-com-area.jpg</b><small>kaptapp.com · 6 min ago</small></span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-
-        <figcaption class="product-caption">
-          Kapture のサイドパネルは、撮影中のページの横に開いたままです。
-        </figcaption>
+      <figure class="shot shot-hero reveal">
+        <div class="shot-glow" aria-hidden="true"></div>
+        <img src="../assets/screenshots/kapture-chrome-0-4-7.png"
+             alt="Chrome で開いた Kapture 0.4.7：キャプチャ中のページの横にサイドパネルがあり、キャプチャモード、画面幅、ファイル形式、保存先のプロジェクトフォルダが表示されています。"
+             width="2400" height="1500" decoding="async">
+        <figcaption>Chrome 上の Kapture 0.4.7。サイドパネルは撮影中のページの横に開いたままです。</figcaption>
       </figure>
     </div>
   </section>
@@ -308,8 +258,9 @@
   <section class="section" id="capture">
     <div class="shell">
       <header class="section-head reveal">
-        <p class="kicker">2 つのキャプチャ方法</p>
+        <p class="kicker">Chrome 版 Kapture &middot; 0.4.7</p>
         <h2>ページ全体か、<br>必要な一部だけか。</h2>
+        <p class="section-lead">2 つのキャプチャ方法と 4 つの保存先。端末の外に出るものはありません。</p>
       </header>
 
       <div class="modes">
@@ -355,7 +306,7 @@
   <section class="section section-tight">
     <div class="shell">
       <header class="section-head reveal">
-        <p class="kicker">できること</p>
+        <p class="kicker">拡張機能の中身</p>
         <h2>本当に必要だったスクリーンショットのために。</h2>
       </header>
 
@@ -381,16 +332,16 @@
             <!-- Phosphor Folders, Regular weight, official @phosphor-icons/core asset -->
             <svg class="phosphor" viewBox="0 0 256 256"><path d="M224,64H154.67L126.93,43.2a16.12,16.12,0,0,0-9.6-3.2H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H192.89A15.13,15.13,0,0,0,208,200.89V184h16.89A15.13,15.13,0,0,0,240,168.89V80A16,16,0,0,0,224,64ZM192,200H40V88H85.33l29.87,22.4A8,8,0,0,0,120,112h72Zm32-32H208V112a16,16,0,0,0-16-16H122.67L94.93,75.2a16.12,16.12,0,0,0-9.6-3.2H72V56h45.33L147.2,78.4A8,8,0,0,0,152,80h72Z"/></svg>
           </span>
-          <h3>置きたい場所に保存</h3>
-          <p>そのままダウンロードフォルダへ。ページやプロジェクトごとにフォルダ名を決めて整理することもできます。</p>
+          <h3>プロジェクトフォルダ</h3>
+          <p>ページやプロジェクトごとにフォルダ名を決めます。キャプチャは順番に保存され、Kapture&nbsp;Pro がそのまま読み込めます。</p>
         </article>
         <article class="tile reveal">
           <span class="tile-icon" aria-hidden="true">
             <!-- Phosphor ClockCountdown, Regular weight, official @phosphor-icons/core asset -->
             <svg class="phosphor" viewBox="0 0 256 256"><path d="M232,136.66A104.12,104.12,0,1,1,119.34,24,8,8,0,0,1,120.66,40,88.12,88.12,0,1,0,216,135.34,8,8,0,0,1,232,136.66ZM120,72v56a8,8,0,0,0,8,8h56a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Zm40-24a12,12,0,1,0-12-12A12,12,0,0,0,160,48Zm36,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72Zm24,36a12,12,0,1,0-12-12A12,12,0,0,0,220,108Z"/></svg>
           </span>
-          <h3>端末内の履歴</h3>
-          <p>新しい順に、サイト名と時刻つきで。その場で開くことも、選んでまとめて削除することもできます。</p>
+          <h3>プレビュー付きの履歴</h3>
+          <p>新しい順に、プレビューとサイト名、時刻つきで。その場で開くことも、選んでまとめて削除することもできます。</p>
         </article>
         <article class="tile reveal">
           <span class="tile-icon" aria-hidden="true">
@@ -404,10 +355,46 @@
             <!-- Phosphor ReceiptX, Regular weight, official @phosphor-icons/core asset -->
             <svg class="phosphor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V208a8,8,0,0,0,11.58,7.15L64,200.94l28.42,14.21a8,8,0,0,0,7.16,0L128,200.94l28.42,14.21a8,8,0,0,0,7.16,0L192,200.94l28.42,14.21A8,8,0,0,0,232,208V56A16,16,0,0,0,216,40Zm0,155.06-20.42-10.22a8,8,0,0,0-7.16,0L160,199.06l-28.42-14.22a8,8,0,0,0-7.16,0L96,199.06,67.58,184.84a8,8,0,0,0-7.16,0L40,195.06V56H216ZM98.34,138.34,116.69,120,98.34,101.66a8,8,0,0,1,11.32-11.32L128,108.69l18.34-18.35a8,8,0,0,1,11.32,11.32L139.31,120l18.35,18.34a8,8,0,0,1-11.32,11.32L128,131.31l-18.34,18.35a8,8,0,0,1-11.32-11.32Z"/></svg>
           </span>
-          <h3>登録は不要</h3>
-          <p>アカウントも広告も解析もありません。入れたらすぐ撮れます。</p>
+          <h3>ローカル完結</h3>
+          <p>アカウントも広告も解析もありません。キャプチャは自分の端末で作られ、そこに残ります。</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ KAPTURE PRO ============ -->
+  <section class="section" id="pro">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">Mac 版 Kapture Pro</p>
+        <h2>散らばったスクリーンショットが、<br>やっと整理される。</h2>
+        <p class="section-lead">
+          Kapture Pro は、すでに Mac に保存されているスクリーンショットを取り込み、
+          検索できるビジュアルな作業スペースに変えます。
+        </p>
+      </header>
+
+      <figure class="shot reveal">
+        <div class="shot-glow" aria-hidden="true"></div>
+        <img src="../assets/screenshots/kapture-pro-mac.png"
+             alt="macOS 上の Kapture Pro：サイドバーにプロジェクト、中央にプレビューの一覧、インスペクタに選択したファイルの詳細が並ぶスクリーンショットのビジュアルライブラリ。"
+             width="2400" height="1500" loading="lazy" decoding="async">
+        <figcaption>Mac 版 Kapture Pro。</figcaption>
+      </figure>
+
+      <ul class="pro-points reveal">
+        <li><h3>プロジェクト</h3><p>キャプチャのフォルダが、そのまま行き来できるプロジェクトになります。</p></li>
+        <li><h3>検索</h3><p>Finder を開かなくても、名前・サイト・プロジェクトからキャプチャを探せます。</p></li>
+        <li><h3>ビジュアルライブラリ</h3><p>ファイル名ではなくプレビューで全体を見渡せます。</p></li>
+        <li><h3>インスペクタ</h3><p>選んだものの大きさ、形式、取得元、撮影日時をその場で確認できます。</p></li>
+        <li><h3>タグとメモ</h3><p>自分で文脈を書き添えておけば、後から見ても用途がわかります。</p></li>
+        <li><h3>ローカル保存</h3><p>クラウドも同期もアカウントも不要。手元のディスクを読むだけです。</p></li>
+      </ul>
+
+      <p class="pro-statement reveal">
+        ファイルは元の場所にあるままです。<br>
+        <span>Kapture Pro は、それを見つけて整理する手助けをするだけです。</span>
+      </p>
     </div>
   </section>
 
@@ -416,76 +403,24 @@
     <div class="shell">
       <header class="section-head reveal">
         <p class="kicker">使い方</p>
-        <h2>3 ステップ。設定は不要。</h2>
+        <h2>Chrome が撮って、<br>Mac が整える。</h2>
       </header>
 
-      <ol class="steps">
+      <ol class="flow">
         <li class="reveal">
-          <div class="step-visual">
-            <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
-              <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
-              <path d="M6 30h188" class="s-frame"/>
-              <circle cx="18" cy="18" r="2.6" class="s-dot"/>
-              <circle cx="27" cy="18" r="2.6" class="s-dot"/>
-              <circle cx="36" cy="18" r="2.6" class="s-dot"/>
-              <rect x="20" y="44" width="64" height="9" rx="4.5" class="s-accent-bar"/>
-              <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
-              <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
-              <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/>
-            </svg>
-          </div>
-          <span class="step-num">1</span>
-          <h3>ページを開く</h3>
-          <p>残しておきたいものを表示します。</p>
+          <p class="flow-step">撮る</p>
+          <h3>Chrome で</h3>
+          <p>サイドパネルを開き、ページ全体か範囲を選んで、保存先のプロジェクトを決めます。</p>
         </li>
         <li class="reveal">
-          <div class="step-visual has-icon">
-            <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
-              <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
-              <path d="M6 30h188" class="s-frame"/>
-              <circle cx="18" cy="18" r="2.6" class="s-dot"/>
-              <circle cx="27" cy="18" r="2.6" class="s-dot"/>
-              <circle cx="36" cy="18" r="2.6" class="s-dot"/>
-              <g class="s-dim"><rect x="20" y="44" width="64" height="9" rx="4.5" class="s-accent-bar"/>
-              <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
-              <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
-              <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/></g><g class="s-pulse">
-                <circle cx="164" cy="18" r="12" class="s-ripple"/>
-                <circle cx="164" cy="18" r="16" class="s-ripple faint"/>
-              </g>
-              <path d="M174 31l1.5 17.5 4.2-5.4 6.6 1.2z" class="s-cursor"/>
-            </svg>
-            <img class="step-kapture-icon" src="../assets/logo/kapture-icon.svg" alt="" width="40" height="40">
-          </div>
-          <span class="step-num">2</span>
-          <h3>Kapture をクリック</h3>
-          <p>ページの横にサイドパネルが開きます。</p>
+          <p class="flow-step">保存</p>
+          <h3>Mac に</h3>
+          <p>ファイルは <code>Downloads/Kapture/</code> のプロジェクトへ直接、連番で保存されます。</p>
         </li>
         <li class="reveal">
-          <div class="step-visual">
-            <svg viewBox="0 0 200 124" class="step-art" aria-hidden="true">
-              <rect x="6" y="6" width="188" height="112" rx="10" class="s-frame"/>
-              <path d="M6 30h188" class="s-frame"/>
-              <circle cx="18" cy="18" r="2.6" class="s-dot"/>
-              <circle cx="27" cy="18" r="2.6" class="s-dot"/>
-              <circle cx="36" cy="18" r="2.6" class="s-dot"/>
-              <g class="s-dim"><rect x="20" y="44" width="64" height="9" rx="4.5" class="s-accent-bar"/>
-              <rect x="20" y="62" width="124" height="6" rx="3" class="s-bar"/>
-              <rect x="20" y="74" width="96" height="6" rx="3" class="s-bar"/>
-              <rect x="20" y="88" width="160" height="18" rx="5" class="s-block"/></g><g class="s-brackets">
-                <path d="M26 50v-6a4 4 0 0 1 4-4h6"/>
-                <path d="M174 50v-6a4 4 0 0 0-4-4h-6"/>
-                <path d="M26 92v6a4 4 0 0 0 4 4h6"/>
-                <path d="M174 92v6a4 4 0 0 1-4 4h-6"/>
-              </g>
-              <rect x="56" y="60" width="88" height="22" rx="11" class="s-chip"/>
-              <path d="M68 71.2l3.4 3.4 6-6.8" class="s-check"/>
-              <rect x="84" y="68" width="46" height="6" rx="3" class="s-accent-bar"/>
-            </svg>
-          </div>
-          <span class="step-num">3</span>
-          <h3>キャプチャ</h3>
-          <p>ページ全体か範囲を選んで保存。</p>
+          <p class="flow-step">整理</p>
+          <h3>Kapture Pro で</h3>
+          <p>同じフォルダが、見渡して・タグを付けて・見比べられるライブラリとして開きます。</p>
         </li>
       </ol>
     </div>
@@ -497,18 +432,18 @@
       <div class="privacy reveal">
         <div class="privacy-copy">
           <p class="kicker">プライバシー</p>
-          <h2>スクリーンショットは<br>あなたの端末から出ません。</h2>
+          <h2>はじめからローカル。</h2>
           <p>
-            Kapture はページをあなたのパソコン上で処理し、Chrome のダウンロード機能を使って
-            ファイルを保存します。スクリーンショット、ページの内容、URL、履歴が開発者や
-            第三者に送信されることはなく、解析・広告・トラッキングも含まれていません。
+            Kapture はあなたのパソコン上でスクリーンショットを作り、Chrome のダウンロード機能で
+            保存します。Kapture Pro は、すでに Mac にあるファイルを読むだけです。アップロードは
+            一切なく、どちらの製品もアカウント不要で、解析・広告・トラッキングも含まれていません。
           </p>
 
           <ul class="privacy-list">
-            <li>アカウント不要</li>
-            <li>解析・トラッキングなし</li>
-            <li>リモートコードなし</li>
-            <li>ファイルは Chrome がローカルに保存</li>
+            <li>No account required</li>
+            <li>No analytics or tracking</li>
+            <li>No remote code</li>
+            <li>クラウド保存なし</li>
           </ul>
 
           <a class="link-arrow" href="/ja/privacy/">プライバシーポリシーを読む<span aria-hidden="true">&rarr;</span></a>
@@ -552,7 +487,7 @@
               <path d="M130 154.5v5"/>
             </g>
           </svg>
-          <figcaption>撮ったら、そのまま自分のパソコンへ。</figcaption>
+          <figcaption>Chrome で撮って、Mac に置いたまま。</figcaption>
         </figure>
       </div>
     </div>
@@ -560,23 +495,36 @@
 
   <!-- ============ FINAL CTA ============ -->
   <section class="cta-band" id="cta">
-    <div class="shell cta-inner reveal">
-      <img src="../assets/logo/kapture-icon.svg" alt="" width="72" height="72" class="cta-mark">
-      <h2>ページ全体をキャプチャ。</h2>
-      <p>Kapture は Chrome 拡張機能です。追加して、押すだけ。</p>
-      <div class="cta-actions">
-      <a class="btn btn-white btn-lg" href="https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap" target="_blank" rel="noopener noreferrer">
-        <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
-        <span class="store-cta-label">Chrome に追加</span>
-      </a>
-      <!-- Mac app is planned, not released: no link, "Soon" state -->
-      <a class="btn btn-primary btn-lg" href="#cta" data-mac-pending>
-        <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
-        <span class="store-cta-label">Mac に追加</span>
-      </a>
-      </div>
-      <p class="cta-note">Mac アプリも近日公開。</p>
+    <div class="shell">
+      <header class="section-head cta-head reveal">
+        <h2>2 つのプロダクト、<br>ひとつの流れ。</h2>
+      </header>
 
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Chrome 版 Kapture</h3>
+          <p class="plan-price">無料</p>
+          <p class="plan-copy">ページ全体も範囲も、選んだプロジェクトフォルダへそのまま保存。</p>
+          <a class="btn btn-white" href="https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap" target="_blank" rel="noopener noreferrer">
+            <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
+            <span class="store-cta-label">Chrome に追加</span>
+          </a>
+        </article>
+
+        <!-- Kapture Pro is a working product but is not purchasable yet: no link, no price. -->
+        <article class="plan reveal">
+          <h3>Mac 版 Kapture Pro</h3>
+          <p class="plan-price">買い切り</p>
+          <p class="plan-copy">これまで撮ったものを、検索して、整理して、見比べる。</p>
+          <a class="btn btn-primary" href="#pro" data-mac-pending
+             aria-label="Mac 版 Kapture Pro。近日公開。">
+            <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
+            <span class="store-cta-label">Kapture Pro</span>
+          </a>
+        </article>
+      </div>
+
+      <p class="cta-note">Kapture Pro の価格はまだ確定していません。サブスクではありません。</p>
     </div>
   </section>
 
@@ -585,14 +533,13 @@
 <footer class="site-footer">
   <div class="shell footer-inner">
     <div class="footer-brand">
-      <img src="../assets/logo/kapture-icon.svg" alt="" width="26" height="26">
-      <div>
-        <strong>Kapture</strong>
-        <span>kaptapp.com</span>
-      </div>
+      <img class="footer-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+      <span>kaptapp.com</span>
     </div>
     <nav class="footer-nav" aria-label="フッター">
-      <a href="#capture">キャプチャ</a>
+      <a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
       <a href="#how">使い方</a>
       <a href="/ja/privacy/">プライバシー</a>
       <a href="mailto:pequelord@gmail.com">お問い合わせ</a>
@@ -613,6 +560,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=4"></script>
+<script src="../script.js?v=5"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 # Kaptweb
 
-Official website for **Kapture**, a Chrome extension for capturing full webpages.
+Official website for **Kapture**: a Chrome extension for capturing full webpages,
+and **Kapture Pro for Mac**, which organises those captures.
 
 Live domain: **kaptapp.com** (published with GitHub Pages from this repository).
 
@@ -59,7 +60,7 @@ renders/compositions of that same file.
 ## Content rules
 
 Every product claim on the site comes from the shipped extension: `manifest.json`,
-the side panel and the bundled help page for version 0.4.4:
+the side panel and the bundled help page for version 0.4.7:
 
 - Full page capture, split into 8,000px sections
 - Select area capture (Freeform, 1:1, 16:9, 9:16)
@@ -150,6 +151,25 @@ Privacy pages use directory URLs (`/privacy/`, `/es/privacy/`) rather than
 to them are root-relative; the build rewrites `href="/..."` into the current
 language when it generates a translated page.
 
+## Product assets
+
+`assets/logo/kapture_wordmark.svg` is the supplied final wordmark, used as-is in the
+header and footer on every page. It is an outlined vector with no font dependency, so
+it stays sharp at any pixel ratio. The icon (`kapture-icon.svg`) is still the favicon,
+app icon and Open Graph mark.
+
+`assets/screenshots/` holds the two product visuals the homepage renders:
+
+| File | Shows |
+| ---- | ----- |
+| `kapture-chrome-0-4-7.png` | Kapture 0.4.7 side panel in Chrome |
+| `kapture-pro-mac.png` | Kapture Pro library on macOS |
+
+**Both are placeholders right now.** Replace the files in place and the site picks
+them up. If the replacement is not 2400x1500, update the `width`/`height` attributes
+on the matching `<img>` in `index.html` and rerun `python3 tools/build_i18n.py`, or
+the reserved space will be the wrong shape.
+
 ## Cache busting
 
 `styles.css` and `script.js` are referenced with a `?v=N` query in both pages.
@@ -159,7 +179,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=4`.
+`styles.css` or `script.js`.** Currently `v=5`.
 
 ## SEO and discoverability
 

@@ -358,340 +358,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   color: var(--text-muted);
 }
 
-/* ---------- Product visual ---------- */
-.product { position: relative; margin: clamp(56px, 8vw, 88px) 0 0; }
-
-.product-glow {
-  position: absolute;
-  inset: 8% 4% 14%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(25, 215, 192, .22), transparent 70%);
-  filter: blur(60px);
-  pointer-events: none;
-}
-
-/* Kapture is a desktop extension, so the mock keeps its desktop composition at
-   every viewport: browser on the left, side panel beside it. Rather than
-   reflowing, the whole thing is drawn at its design width and scaled down as a
-   single unit (script.js sets the factor and the wrapper height). */
-.product-scaler {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-}
-.js .product-scaler .window {
-  width: var(--mock-width, 1040px);
-  transform-origin: top left;
-}
-
-.window {
-  position: relative;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-lg);
-  background: var(--bg-deep);
-  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8), 0 2px 0 rgba(255, 255, 255, .04) inset;
-  overflow: hidden;
-}
-
-.window-bar {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 13px 18px;
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-}
-.lights { display: flex; gap: 7px; flex: none; }
-.lights i { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-2); }
-.urlbar {
-  flex: 1;
-  max-width: 320px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  font-size: 12.5px;
-  color: var(--text-muted);
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.toolbar-icon {
-  flex: none;
-  margin-left: auto;
-  display: grid;
-  place-items: center;
-  width: 30px; height: 30px;
-  border-radius: 8px;
-  background: rgba(25, 215, 192, .12);
-}
-.toolbar-icon img { border-radius: 5px; }
-
-.window-body {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  min-height: 430px;
-}
-
-/* the page being captured */
-.stage {
-  position: relative;
-  padding: 26px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .03), transparent 40%),
-    var(--bg-deep);
-  overflow: hidden;
-}
-.stage-scroll { display: grid; gap: 13px; }
-
-.ph { background: var(--surface-2); border-radius: 7px; }
-.ph-title { height: 26px; width: 58%; background: rgba(25, 215, 192, .28); }
-.ph-line  { height: 10px; }
-.ph-block { height: 96px; }
-.ph-block.tall { height: 128px; }
-.ph-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-.ph-card { height: 74px; }
-.w80 { width: 80%; } .w70 { width: 70%; } .w65 { width: 65%; }
-.w60 { width: 60%; } .w45 { width: 45%; }
-
-/* The beam is painted as a background on a full-size layer, so the sweep spans
-   the whole stage at any height. It travels top to bottom, then back up. */
-.scanline {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      rgba(25, 215, 192, 0) 0%,
-      rgba(25, 215, 192, .10) 62%,
-      rgba(25, 215, 192, .45) 92%,
-      var(--teal) 100%) no-repeat;
-  background-size: 100% 140px;
-  animation: scan 5.2s ease-in-out infinite alternate;
-}
-@keyframes scan {
-  from { background-position: 0 0; }
-  to   { background-position: 0 100%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .scanline { animation: none; background-position: 0 45%; }
-}
-
-.stage-badge {
-  position: absolute;
-  left: 26px;
-  bottom: 22px;
-  padding: 7px 13px;
-  border-radius: 999px;
-  border: 1px solid rgba(25, 215, 192, .3);
-  background: rgba(23, 25, 24, .9);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--teal);
-}
-
-/* side panel replica (mirrors the extension's light theme) */
-/* Mirrors the extension's own light and dark side-panel palettes. The demo
-   alternates between them (see script.js) to show both themes. */
-.panel {
-  --p-bg:      #faf9f6;
-  --p-surface: #ffffff;
-  --p-soft:    #f2f2ef;
-  --p-border:  #e3dfd7;
-  --p-muted:   #89857c;
-  --p-text:    #242424;
-  --p-shadow:  rgba(0, 0, 0, .14);
-
-  border-left: 1px solid var(--line);
-  background: var(--p-bg);
-  color: var(--p-text);
-  font-size: 12px;
-  line-height: 1.45;
-}
-.panel.is-dark {
-  --p-bg:      #1f1f1d;
-  --p-surface: #292927;
-  --p-soft:    #363633;
-  --p-border:  #46433e;
-  --p-muted:   #aaa59b;
-  --p-text:    #f4f1eb;
-  --p-shadow:  rgba(0, 0, 0, .45);
-}
-.panel, .panel * {
-  transition: background-color .55s var(--ease), color .55s var(--ease),
-              border-color .55s var(--ease), box-shadow .55s var(--ease);
-}
-@media (prefers-reduced-motion: reduce) {
-  .panel, .panel * { transition: none; }
-}
-.panel-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 15px 13px;
-  border-bottom: 1px solid var(--p-border);
-}
-.panel-head img { border-radius: 7px; flex: none; }
-.panel-head strong { display: block; font-size: 17px; letter-spacing: -.03em; }
-.panel-head small { font-size: 11px; color: var(--p-muted); }
-.panel-head .toggle {
-  margin-left: auto;
-  flex: none;
-  display: flex;
-  gap: 2px;
-  padding: 2px;
-  border: 1px solid var(--p-border);
-  border-radius: 15px;
-  background: var(--p-soft);
-}
-.panel-head .toggle i {
-  width: 20px; height: 20px;
-  display: grid; place-items: center;
-  border-radius: 50%;
-  font-size: 11px;
-  font-style: normal;
-  color: var(--p-muted);
-}
-.panel-head .toggle i svg {
-  width: 12px; height: 12px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.panel-head .toggle .sun { background: var(--p-surface); color: var(--p-text); box-shadow: 0 1px 3px var(--p-shadow); }
-.panel.is-dark .panel-head .toggle .sun { background: transparent; color: var(--p-muted); box-shadow: none; }
-.panel.is-dark .panel-head .toggle .moon { background: var(--p-surface); color: var(--p-text); box-shadow: 0 1px 3px var(--p-shadow); }
-
-.panel-body { padding: 14px; }
-
-.card {
-  padding: 12px;
-  border: 1px solid var(--p-border);
-  border-radius: 14px;
-  background: var(--p-surface);
-}
-.segmented {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 3px;
-  border-radius: 10px;
-  background: var(--p-soft);
-  margin-bottom: 10px;
-}
-.seg { padding: 6px; border-radius: 8px; text-align: center; color: var(--p-muted); }
-.seg.active { background: var(--p-surface); color: var(--p-text); font-weight: 650; box-shadow: 0 1px 3px var(--p-shadow); }
-
-.fields { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; }
-.fields label { display: block; font-size: 11px; color: var(--p-muted); }
-.fields .select {
-  display: block;
-  margin-top: 5px;
-  padding: 7px 8px;
-  border: 1px solid var(--p-border);
-  border-radius: 9px;
-  background: var(--p-surface);
-  font-size: 11px;
-  color: var(--p-text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.folder {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-  padding: 8px 9px;
-  border-radius: 8px;
-  background: var(--p-soft);
-  font-size: 11px;
-  color: var(--p-muted);
-}
-.folder .input {
-  flex: 1;
-  padding: 5px 7px;
-  border: 1px solid var(--p-border);
-  border-radius: 8px;
-  background: var(--p-surface);
-  color: var(--p-text);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cta-row { margin-top: 11px; }
-.panel-btn {
-  display: block;
-  padding: 9px;
-  border-radius: 9px;
-  background: var(--teal-deep);
-  color: #f2fffd;
-  font-weight: 650;
-  text-align: center;
-}
-.panel-status { margin: 7px 0 0; text-align: center; font-size: 11px; color: var(--p-muted); }
-
-.panel-section-title {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 20px 0 8px;
-}
-.panel-section-title strong { font-size: 15px; letter-spacing: -.02em; }
-.panel-section-title .pill {
-  padding: 1px 8px;
-  border-radius: 12px;
-  background: var(--p-soft);
-  font-size: 11px;
-  color: var(--p-muted);
-}
-
-.entries { display: grid; gap: 6px; }
-.entries li {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 10px;
-  border: 1px solid var(--p-border);
-  border-radius: 10px;
-  background: var(--p-surface);
-}
-.entries .file {
-  flex: none;
-  width: 27px; height: 32px;
-  display: grid; place-items: center;
-  border: 1px solid var(--p-border);
-  border-radius: 5px;
-  background: #edf8f6;
-  color: #0b7066;
-  font-size: 9px;
-  font-weight: 700;
-}
-.entries span span, .entries li > span:last-child { min-width: 0; }
-.entries b {
-  display: block;
-  font-size: 11px;
-  font-weight: 650;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.entries small { display: block; font-size: 10px; color: var(--p-muted); }
-
-.product-caption {
-  margin-top: 18px;
-  font-size: 14px;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-
-
 /* ---------- Modes ---------- */
 .modes {
   display: grid;
@@ -1289,3 +955,130 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   .langpick summary { padding: 8px 9px; }
   .langpick summary span { display: none; }
 }
+
+/* ==========================================================================
+   Ecosystem pass: wordmark, real product screenshots, Kapture Pro, workflow,
+   two-product pricing. Same charcoal and teal, more editorial spacing.
+   ========================================================================== */
+
+/* ---------- Brand wordmark ---------- */
+/* Supplied vector, used as-is. Height drives it so it stays sharp at any DPR. */
+.brand-wordmark { height: 26px; width: auto; }
+.footer-wordmark { height: 22px; width: auto; }
+@media (max-width: 520px) { .brand-wordmark { height: 23px; } }
+@media (max-width: 380px) { .brand-wordmark { height: 21px; } }
+
+/* ---------- Section lead ---------- */
+.section-lead {
+  margin-top: 18px;
+  font-size: clamp(16.5px, 2vw, 19px);
+  color: var(--text-dim);
+  max-width: 54ch;
+}
+
+/* ---------- Real product screenshots ----------
+   One restrained frame: rounded surface, hairline, teal glow behind. The image
+   carries its own aspect ratio so nothing jumps while it loads. */
+.shot { position: relative; margin: clamp(40px, 6vw, 72px) 0 0; }
+.shot-glow {
+  position: absolute;
+  inset: 6% 3% 16%;
+  background: radial-gradient(52% 52% at 50% 50%, rgba(25, 215, 192, .20), transparent 72%);
+  filter: blur(64px);
+  pointer-events: none;
+}
+.shot img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-deep);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8);
+}
+.shot figcaption {
+  position: relative;
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.shot-hero { margin-top: clamp(48px, 7vw, 88px); }
+
+/* ---------- Kapture Pro ---------- */
+.pro-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(26px, 3.4vw, 40px) clamp(28px, 4vw, 56px);
+  margin-top: clamp(48px, 6vw, 76px);
+}
+.pro-points li { border-top: 1px solid var(--line); padding-top: 18px; }
+.pro-points h3 { margin-bottom: 8px; font-size: 18.5px; }
+.pro-points p { font-size: 15.5px; color: var(--text-dim); }
+
+.pro-statement {
+  margin-top: clamp(44px, 6vw, 72px);
+  font-size: clamp(21px, 3vw, 30px);
+  font-weight: 620;
+  letter-spacing: -.025em;
+  line-height: 1.25;
+  max-width: 36ch;
+}
+.pro-statement span { color: var(--text-muted); }
+
+/* ---------- Workflow ---------- */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(28px, 4vw, 48px);
+}
+.flow li { position: relative; border-top: 1px solid var(--line); padding-top: 22px; }
+/* the connector reads as a handoff, not a technical diagram */
+.flow li + li::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: calc(-1 * clamp(28px, 4vw, 48px) / 2 - 4px);
+  width: 8px; height: 8px;
+  border-top: 1px solid var(--teal);
+  border-right: 1px solid var(--teal);
+  transform: translateY(-50%) rotate(45deg);
+}
+@media (max-width: 700px) { .flow li + li::before { display: none; } }
+.flow-step {
+  margin-bottom: 12px;
+  font-size: 12.5px;
+  font-weight: 650;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.flow h3 { margin-bottom: 9px; font-size: 21px; }
+.flow p { font-size: 16px; color: var(--text-dim); }
+.flow code { font-size: .92em; }
+
+/* ---------- Two-product choice ---------- */
+.cta-head { max-width: none; margin-bottom: clamp(40px, 5vw, 60px); text-align: center; }
+.cta-head h2 { font-size: clamp(32px, 5vw, 52px); }
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(28px, 4vw, 56px);
+  max-width: 880px;
+  margin-inline: auto;
+  text-align: left;
+}
+.plan { border-top: 1px solid var(--line-strong); padding-top: 26px; }
+.plan h3 { font-size: 22px; }
+.plan-price {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 640;
+  color: var(--teal);
+}
+.plan-copy { margin-top: 14px; margin-bottom: 26px; font-size: 16px; color: var(--text-dim); }
+.plan .btn { width: 100%; }
+
+.cta-band .cta-note { margin-top: clamp(32px, 4vw, 44px) !important; text-align: center; }

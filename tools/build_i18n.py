@@ -15,12 +15,15 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from t_home import HOME
 from t_home2 import HOME2
 from t_home3 import HOME3
+from t_eco1 import ECO1
+from t_eco2 import ECO2
 from t_privacy import PRIV
-from t_ld import (APP_DESC, FEATURES, SELECTOR_LABEL, NATIVE_NAME, SHORT_NAME,
+from t_ld import (APP_DESC, FEATURES, PRO_DESC, PRO_FEATURES, SELECTOR_LABEL, NATIVE_NAME, SHORT_NAME,
                   LANGS, HTMLLANG, BASE, home_url, privacy_url)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-HOME_ALL = {**HOME, **HOME2, **HOME3}
+# ECO* are the ecosystem pass and win over any older entry with the same key.
+HOME_ALL = {**HOME, **HOME2, **HOME3, **ECO1, **ECO2}
 
 
 # ---------------------------------------------------------------- selector
@@ -63,10 +66,18 @@ def localise_ld(raw, lang, page, title, desc):
             node['description'] = desc
             node['inLanguage'] = HTMLLANG[lang]
         elif t == 'SoftwareApplication':
-            node['@id'] = h + '#kapture'
-            node['url'] = h
-            node['description'] = APP_DESC[lang]
-            node['featureList'] = FEATURES[lang]
+            # Two apps share this type, so key off the existing id suffix rather
+            # than overwriting both with the same one.
+            suffix = node['@id'].rsplit('#', 1)[1]
+            node['@id'] = f'{h}#{suffix}'
+            if suffix == 'kapture-pro':
+                node['url'] = h + '#pro'
+                node['description'] = PRO_DESC[lang]
+                node['featureList'] = PRO_FEATURES[lang]
+            else:
+                node['url'] = h
+                node['description'] = APP_DESC[lang]
+                node['featureList'] = FEATURES[lang]
         elif t == 'WebPage':
             node['@id'] = p + '#webpage'
             node['url'] = p
@@ -103,15 +114,15 @@ def build(lang, page):
     src = strip_i18n((ROOT / SOURCE[page]).read_text())
     table = HOME_ALL if page == 'index' else PRIV
 
-    # 1. copy, longest key first so no key is a prefix of another
-    missed = []
+    # 1. copy, longest key first so no key is a prefix of another. Keys that no
+    #    longer appear are retired copy, not an error, so they are only reported.
+    retired = []
     for key in sorted(table, key=len, reverse=True):
         if key in src:
             src = src.replace(key, table[key][lang])
         else:
-            missed.append(key)
-    if missed:
-        raise SystemExit(f'{lang}/{page}: {len(missed)} keys not found, first: {missed[0][:80]!r}')
+            retired.append(key)
+    build.retired = retired
 
     # 2. assets sit one more level up for every translated page. The English
     #    homepage is at the root, everything else is already one deep.
@@ -188,8 +199,36 @@ def patch_english():
         print(f'  patched  {SOURCE[page]} (hreflang + selector)')
 
 
+SENTINELS = [
+    'Capture in Chrome', 'Organise on Mac', 'Your screenshots,', 'finally organised',
+    'Chrome captures', 'Mac organises', 'Local by default', 'Two products',
+    'One workflow', 'Project folders', 'History previews', 'Local only',
+    'Visual library', 'Tags and notes', 'One-time purchase', 'Free</p>',
+    'How it works', 'Privacy</a>', 'Add to Chrome', 'In the extension',
+]
+
+
+def audit(lang):
+    """Fail loudly if recognisable English marketing copy survived translation."""
+    out = (ROOT / lang / 'index.html').read_text()
+    body = out[out.index('<body>'):]
+    body = re.sub(r'<script.*?</script>', '', body, flags=re.S)
+    leftovers = [s for s in SENTINELS if s in body]
+    return leftovers
+
+
 if __name__ == '__main__':
     patch_english()
+    retired = None
     for lang in [l for l in LANGS if l != 'en']:
         for page in ('index', 'privacy'):
             print(f'  built    {build(lang, page).relative_to(ROOT)}')
+            if page == 'index':
+                retired = build.retired
+        bad = audit(lang)
+        if bad:
+            raise SystemExit(f'  !! {lang}: untranslated English still present: {bad}')
+    if retired:
+        print(f'\n  {len(retired)} retired key(s) no longer in the English source:')
+        for k in retired:
+            print(f'    - {k[:78]!r}')
