@@ -201,3 +201,30 @@ ECO2 = {
  'ko': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">사용 방법</a>\n      <a href="/privacy/">개인정보</a>\n      <a href="mailto:pequelord@gmail.com">문의</a>',
  'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">使い方</a>\n      <a href="/privacy/">プライバシー</a>\n      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
 }
+
+# ---- hero composition + Chrome section visual (added in the visual pass) ----
+ECO2.update({
+'<figcaption>Capture in Chrome, on the right. Organise in Kapture Pro, behind it.</figcaption>': {
+ 'es': '<figcaption>Captura en Chrome, a la derecha. Organiza en Kapture Pro, detrás.</figcaption>',
+ 'zh': '<figcaption>右边是在 Chrome 里截图，后面是在 Kapture Pro 里整理。</figcaption>',
+ 'ko': '<figcaption>오른쪽은 Chrome에서 캡처, 뒤쪽은 Kapture Pro에서 정리.</figcaption>',
+ 'ja': '<figcaption>右が Chrome でのキャプチャ、奥が Kapture Pro での整理。</figcaption>'},
+
+'alt="Kapture Pro on macOS: projects in the sidebar, a grid of captured screenshots, and an inspector with the selected file\'s details."': {
+ 'es': 'alt="Kapture Pro en macOS: los proyectos en la barra lateral, una cuadrícula de capturas y un inspector con los datos del archivo seleccionado."',
+ 'zh': 'alt="macOS 上的 Kapture Pro：侧边栏是项目列表，中间是截图网格，检查器显示所选文件的详细信息。"',
+ 'ko': 'alt="macOS의 Kapture Pro: 사이드바의 프로젝트 목록, 캡처 격자, 그리고 선택한 파일의 정보를 보여 주는 인스펙터."',
+ 'ja': 'alt="macOS 上の Kapture Pro：サイドバーのプロジェクト、キャプチャの一覧、選択したファイルの詳細を示すインスペクタ。"'},
+
+'alt="The Kapture 0.4.7 side panel in Chrome, with capture mode, viewport, file format and the destination project folder."': {
+ 'es': 'alt="El panel lateral de Kapture 0.4.7 en Chrome, con el modo de captura, el tamaño de pantalla, el formato y la carpeta de proyecto de destino."',
+ 'zh': 'alt="Chrome 中的 Kapture 0.4.7 侧边栏，显示截图模式、画面宽度、文件格式和目标项目文件夹。"',
+ 'ko': 'alt="Chrome의 Kapture 0.4.7 사이드 패널. 캡처 모드, 화면 크기, 파일 형식, 저장할 프로젝트 폴더가 보입니다."',
+ 'ja': 'alt="Chrome の Kapture 0.4.7 サイドパネル。キャプチャモード、画面幅、ファイル形式、保存先のプロジェクトフォルダが表示されています。"'},
+
+'alt="Kapture 0.4.7 running in Chrome: the side panel sits beside the webpage being captured."': {
+ 'es': 'alt="Kapture 0.4.7 funcionando en Chrome: el panel lateral está junto a la página que se está capturando."',
+ 'zh': 'alt="Kapture 0.4.7 在 Chrome 中运行：侧边栏位于正在截图的网页旁边。"',
+ 'ko': 'alt="Chrome에서 실행 중인 Kapture 0.4.7: 사이드 패널이 캡처 중인 웹페이지 옆에 있습니다."',
+ 'ja': 'alt="Chrome で動作中の Kapture 0.4.7：サイドパネルがキャプチャ中のページの横にあります。"'},
+})

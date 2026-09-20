@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=5">
+<link rel="stylesheet" href="../styles.css?v=6">
 </head>
 <body>
 
@@ -167,6 +167,7 @@
 <header class="site-header" id="siteHeader">
   <div class="shell header-inner">
     <a class="brand" href="/ja/">
+      <img class="brand-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
       <img class="brand-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
            width="843" height="233">
     </a>
@@ -242,14 +243,26 @@
       <p class="hero-note">Chrome 120 以降が必要です。Chrome 版 Kapture は無料。Mac 版 Kapture Pro は近日公開です。</p>
     </div>
 
-    <!-- ============ PRODUCT VISUAL ============ -->
+    <!-- ============ HERO PRODUCT COMPOSITION ============ -->
+    <!-- Two real screenshots layered: the Mac app sits behind, the Chrome side
+         panel overlaps in front. Reads as one ecosystem rather than two ads. -->
     <div class="shell">
-      <figure class="shot shot-hero reveal">
-        <div class="shot-glow" aria-hidden="true"></div>
-        <img src="../assets/screenshots/kapture-chrome-0-4-7.png"
-             alt="Chrome で開いた Kapture 0.4.7：キャプチャ中のページの横にサイドパネルがあり、キャプチャモード、画面幅、ファイル形式、保存先のプロジェクトフォルダが表示されています。"
-             width="2400" height="1500" decoding="async">
-        <figcaption>Chrome 上の Kapture 0.4.7。サイドパネルは撮影中のページの横に開いたままです。</figcaption>
+      <figure class="hero-stage reveal">
+        <div class="hero-stage-glow" aria-hidden="true"></div>
+
+        <div class="hero-stage-mac">
+          <img src="../assets/screenshots/kapture-pro-mac.png"
+               alt="macOS 上の Kapture Pro：サイドバーのプロジェクト、キャプチャの一覧、選択したファイルの詳細を示すインスペクタ。"
+               width="2560" height="1600" decoding="async">
+        </div>
+
+        <div class="hero-stage-chrome">
+          <img src="../assets/screenshots/kapture-chrome-panel.png"
+               alt="Chrome の Kapture 0.4.7 サイドパネル。キャプチャモード、画面幅、ファイル形式、保存先のプロジェクトフォルダが表示されています。"
+               width="900" height="1400" decoding="async">
+        </div>
+
+        <figcaption>右が Chrome でのキャプチャ、奥が Kapture Pro での整理。</figcaption>
       </figure>
     </div>
   </section>
@@ -262,6 +275,12 @@
         <h2>ページ全体か、<br>必要な一部だけか。</h2>
         <p class="section-lead">2 つのキャプチャ方法と 4 つの保存先。端末の外に出るものはありません。</p>
       </header>
+
+      <figure class="shot shot-flat reveal">
+        <img src="../assets/screenshots/kapture-chrome-0-4-7.png"
+             alt="Chrome で動作中の Kapture 0.4.7：サイドパネルがキャプチャ中のページの横にあります。"
+             width="2560" height="1600" loading="lazy" decoding="async">
+      </figure>
 
       <div class="modes">
         <article class="mode-card reveal">
@@ -374,11 +393,11 @@
         </p>
       </header>
 
-      <figure class="shot reveal">
+      <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
         <img src="../assets/screenshots/kapture-pro-mac.png"
              alt="macOS 上の Kapture Pro：サイドバーにプロジェクト、中央にプレビューの一覧、インスペクタに選択したファイルの詳細が並ぶスクリーンショットのビジュアルライブラリ。"
-             width="2400" height="1500" loading="lazy" decoding="async">
+             width="2560" height="1600" loading="lazy" decoding="async">
         <figcaption>Mac 版 Kapture Pro。</figcaption>
       </figure>
 
@@ -533,6 +552,7 @@
 <footer class="site-footer">
   <div class="shell footer-inner">
     <div class="footer-brand">
+      <img class="footer-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
       <img class="footer-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
            width="843" height="233">
       <span>kaptapp.com</span>
@@ -560,6 +580,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=5"></script>
+<script src="../script.js?v=6"></script>
 </body>
 </html>

@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=5">
+<link rel="stylesheet" href="../styles.css?v=6">
 </head>
 <body>
 
@@ -167,6 +167,7 @@
 <header class="site-header" id="siteHeader">
   <div class="shell header-inner">
     <a class="brand" href="/es/">
+      <img class="brand-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
       <img class="brand-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
            width="843" height="233">
     </a>
@@ -242,14 +243,26 @@
       <p class="hero-note">Requiere Chrome 120 o posterior. Kapture para Chrome es gratis. Kapture Pro para Mac llega pronto.</p>
     </div>
 
-    <!-- ============ PRODUCT VISUAL ============ -->
+    <!-- ============ HERO PRODUCT COMPOSITION ============ -->
+    <!-- Two real screenshots layered: the Mac app sits behind, the Chrome side
+         panel overlaps in front. Reads as one ecosystem rather than two ads. -->
     <div class="shell">
-      <figure class="shot shot-hero reveal">
-        <div class="shot-glow" aria-hidden="true"></div>
-        <img src="../assets/screenshots/kapture-chrome-0-4-7.png"
-             alt="Kapture 0.4.7 abierto en Chrome: el panel lateral está junto a la página que se captura, con el modo de captura, el tamaño de pantalla, el formato y la carpeta de proyecto de destino."
-             width="2400" height="1500" decoding="async">
-        <figcaption>Kapture 0.4.7 en Chrome. El panel lateral sigue abierto junto a la página que estás capturando.</figcaption>
+      <figure class="hero-stage reveal">
+        <div class="hero-stage-glow" aria-hidden="true"></div>
+
+        <div class="hero-stage-mac">
+          <img src="../assets/screenshots/kapture-pro-mac.png"
+               alt="Kapture Pro en macOS: los proyectos en la barra lateral, una cuadrícula de capturas y un inspector con los datos del archivo seleccionado."
+               width="2560" height="1600" decoding="async">
+        </div>
+
+        <div class="hero-stage-chrome">
+          <img src="../assets/screenshots/kapture-chrome-panel.png"
+               alt="El panel lateral de Kapture 0.4.7 en Chrome, con el modo de captura, el tamaño de pantalla, el formato y la carpeta de proyecto de destino."
+               width="900" height="1400" decoding="async">
+        </div>
+
+        <figcaption>Captura en Chrome, a la derecha. Organiza en Kapture Pro, detrás.</figcaption>
       </figure>
     </div>
   </section>
@@ -262,6 +275,12 @@
         <h2>Todo, o justo<br>la parte que quieras.</h2>
         <p class="section-lead">Dos modos de captura, cuatro destinos para los archivos y nada que salga de tu equipo.</p>
       </header>
+
+      <figure class="shot shot-flat reveal">
+        <img src="../assets/screenshots/kapture-chrome-0-4-7.png"
+             alt="Kapture 0.4.7 funcionando en Chrome: el panel lateral está junto a la página que se está capturando."
+             width="2560" height="1600" loading="lazy" decoding="async">
+      </figure>
 
       <div class="modes">
         <article class="mode-card reveal">
@@ -374,11 +393,11 @@
         </p>
       </header>
 
-      <figure class="shot reveal">
+      <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
         <img src="../assets/screenshots/kapture-pro-mac.png"
              alt="Kapture Pro en macOS: una biblioteca visual de capturas con los proyectos en la barra lateral, una cuadrícula de vistas previas y un inspector con los datos del archivo seleccionado."
-             width="2400" height="1500" loading="lazy" decoding="async">
+             width="2560" height="1600" loading="lazy" decoding="async">
         <figcaption>Kapture Pro para Mac.</figcaption>
       </figure>
 
@@ -534,6 +553,7 @@
 <footer class="site-footer">
   <div class="shell footer-inner">
     <div class="footer-brand">
+      <img class="footer-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
       <img class="footer-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
            width="843" height="233">
       <span>kaptapp.com</span>
@@ -561,6 +581,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=5"></script>
+<script src="../script.js?v=6"></script>
 </body>
 </html>

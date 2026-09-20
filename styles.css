@@ -963,10 +963,24 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 
 /* ---------- Brand wordmark ---------- */
 /* Supplied vector, used as-is. Height drives it so it stays sharp at any DPR. */
-.brand-wordmark { height: 26px; width: auto; }
-.footer-wordmark { height: 22px; width: auto; }
-@media (max-width: 520px) { .brand-wordmark { height: 23px; } }
-@media (max-width: 380px) { .brand-wordmark { height: 21px; } }
+/* Full lockup: supplied icon on the left, supplied wordmark on the right.
+   Both vector, both sized by height so they stay sharp at any pixel ratio. */
+.brand { gap: 10px; }
+.brand-icon { height: 30px; width: auto; border-radius: 8px; flex: none; }
+.brand-wordmark { height: 24px; width: auto; }
+.footer-icon { height: 26px; width: auto; border-radius: 7px; flex: none; }
+.footer-wordmark { height: 20px; width: auto; }
+.footer-brand { gap: 9px; }
+
+@media (max-width: 520px) {
+  .brand { gap: 8px; }
+  .brand-icon { height: 27px; }
+  .brand-wordmark { height: 21px; }
+}
+@media (max-width: 380px) {
+  .brand-icon { height: 25px; }
+  .brand-wordmark { height: 19px; }
+}
 
 /* ---------- Section lead ---------- */
 .section-lead {
@@ -1082,3 +1096,70 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .plan .btn { width: 100%; }
 
 .cta-band .cta-note { margin-top: clamp(32px, 4vw, 44px) !important; text-align: center; }
+
+/* ---------- Hero product composition ----------
+   Two real screenshots, layered. The Mac window sits behind at full weight and
+   the Chrome side panel overlaps in front, so the pair reads as one ecosystem:
+   capture on the right, organise behind it. */
+.hero-stage {
+  position: relative;
+  margin: clamp(48px, 7vw, 88px) 0 0;
+  padding-right: 4%;
+}
+.hero-stage-glow {
+  position: absolute;
+  inset: 4% 2% 10%;
+  background: radial-gradient(48% 50% at 42% 50%, rgba(25, 215, 192, .18), transparent 72%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.hero-stage-mac { position: relative; width: 84%; }
+.hero-stage-mac img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-deep);
+  box-shadow: 0 44px 100px -44px rgba(0, 0, 0, .85);
+}
+.hero-stage-chrome {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-44%);
+  width: 25%;
+}
+.hero-stage-chrome img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg-deep);
+  /* a touch more lift than the layer behind, so the overlap reads as depth */
+  box-shadow: 0 30px 70px -26px rgba(0, 0, 0, .9);
+}
+.hero-stage figcaption {
+  position: relative;
+  margin-top: 22px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Stack rather than shrink: a desktop app window at 25% of a phone is unreadable. */
+@media (max-width: 760px) {
+  .hero-stage { padding-right: 0; display: grid; justify-items: center; gap: 20px; }
+  .hero-stage-mac { width: 100%; }
+  .hero-stage-chrome { position: static; width: 60%; transform: none; }
+  .hero-stage figcaption { margin-top: 4px; }
+}
+@media (max-width: 420px) {
+  .hero-stage-chrome { width: 72%; }
+}
+
+/* The Chrome section visual is deliberately flat and full width, so the three
+   product moments on the page do not all get the same treatment. */
+.shot-flat { margin-top: clamp(36px, 5vw, 56px); }
+.shot-flat img { border-radius: var(--radius); }

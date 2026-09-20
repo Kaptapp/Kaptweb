@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -167,6 +167,7 @@
 <header class="site-header" id="siteHeader">
   <div class="shell header-inner">
     <a class="brand" href="/">
+      <img class="brand-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
       <img class="brand-wordmark" src="assets/logo/kapture_wordmark.svg" alt="Kapture"
            width="843" height="233">
     </a>
@@ -242,14 +243,26 @@
       <p class="hero-note">Requires Chrome 120 or later. Kapture for Chrome is free. Kapture Pro for Mac is coming soon.</p>
     </div>
 
-    <!-- ============ PRODUCT VISUAL ============ -->
+    <!-- ============ HERO PRODUCT COMPOSITION ============ -->
+    <!-- Two real screenshots layered: the Mac app sits behind, the Chrome side
+         panel overlaps in front. Reads as one ecosystem rather than two ads. -->
     <div class="shell">
-      <figure class="shot shot-hero reveal">
-        <div class="shot-glow" aria-hidden="true"></div>
-        <img src="assets/screenshots/kapture-chrome-0-4-7.png"
-             alt="Kapture 0.4.7 open in Chrome: the side panel sits beside the webpage being captured, with capture mode, viewport, file format and the destination project folder."
-             width="2400" height="1500" decoding="async">
-        <figcaption>Kapture 0.4.7 in Chrome. The side panel stays open beside the page you are capturing.</figcaption>
+      <figure class="hero-stage reveal">
+        <div class="hero-stage-glow" aria-hidden="true"></div>
+
+        <div class="hero-stage-mac">
+          <img src="assets/screenshots/kapture-pro-mac.png"
+               alt="Kapture Pro on macOS: projects in the sidebar, a grid of captured screenshots, and an inspector with the selected file's details."
+               width="2560" height="1600" decoding="async">
+        </div>
+
+        <div class="hero-stage-chrome">
+          <img src="assets/screenshots/kapture-chrome-panel.png"
+               alt="The Kapture 0.4.7 side panel in Chrome, with capture mode, viewport, file format and the destination project folder."
+               width="900" height="1400" decoding="async">
+        </div>
+
+        <figcaption>Capture in Chrome, on the right. Organise in Kapture Pro, behind it.</figcaption>
       </figure>
     </div>
   </section>
@@ -262,6 +275,12 @@
         <h2>Everything, or exactly<br>one part of it.</h2>
         <p class="section-lead">Two capture modes, four file destinations, and nothing that leaves your machine.</p>
       </header>
+
+      <figure class="shot shot-flat reveal">
+        <img src="assets/screenshots/kapture-chrome-0-4-7.png"
+             alt="Kapture 0.4.7 running in Chrome: the side panel sits beside the webpage being captured."
+             width="2560" height="1600" loading="lazy" decoding="async">
+      </figure>
 
       <div class="modes">
         <article class="mode-card reveal">
@@ -374,11 +393,11 @@
         </p>
       </header>
 
-      <figure class="shot reveal">
+      <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
         <img src="assets/screenshots/kapture-pro-mac.png"
              alt="Kapture Pro on macOS: a visual library of captured screenshots with projects in the sidebar, a grid of previews, and an inspector showing the selected file's details."
-             width="2400" height="1500" loading="lazy" decoding="async">
+             width="2560" height="1600" loading="lazy" decoding="async">
         <figcaption>Kapture Pro for Mac.</figcaption>
       </figure>
 
@@ -534,6 +553,7 @@
 <footer class="site-footer">
   <div class="shell footer-inner">
     <div class="footer-brand">
+      <img class="footer-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
       <img class="footer-wordmark" src="assets/logo/kapture_wordmark.svg" alt="Kapture"
            width="843" height="233">
       <span>kaptapp.com</span>
@@ -561,6 +581,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>
