@@ -129,4 +129,20 @@ FIX = {
  'ko': 'Kapture는 Chrome에서 바로 전체 웹페이지나 선택한 영역을 저장합니다. Kapture Pro는 그것들을 Mac 안에서 정돈되고 검색 가능한 시각적 라이브러리로 만듭니다. 모든 것이 기기 안에 남습니다.',
  'ja': 'Kapture は Chrome から直接、Web ページ全体や選んだ範囲を保存します。Kapture Pro はそれらを Mac 上の整理された、検索できるビジュアルライブラリにします。すべてローカルのままです。'},
 
+# ---------------------------------------------------------------- closing statement
+'<h2>Two products.<br><span class="accent">One workflow.</span></h2>': {
+ 'es': '<h2>Dos productos.<br><span class="accent">Un mismo flujo.</span></h2>',
+ 'zh': '<h2>两款产品，<br><span class="accent">一套流程。</span></h2>',
+ 'ko': '<h2>두 개의 제품,<br><span class="accent">하나의 흐름.</span></h2>',
+ 'ja': '<h2>2 つのプロダクト、<br><span class="accent">ひとつの流れ。</span></h2>'},
+
+# The pricing labels became .kicker eyebrows above the product titles.
+'<p class="kicker plan-price">Free</p>': {
+ 'es': '<p class="kicker plan-price">Gratis</p>', 'zh': '<p class="kicker plan-price">免费</p>',
+ 'ko': '<p class="kicker plan-price">무료</p>', 'ja': '<p class="kicker plan-price">無料</p>'},
+
+'<p class="kicker plan-price">One-time purchase</p>': {
+ 'es': '<p class="kicker plan-price">Pago único</p>', 'zh': '<p class="kicker plan-price">一次性买断</p>',
+ 'ko': '<p class="kicker plan-price">1회 구매</p>', 'ja': '<p class="kicker plan-price">買い切り</p>'},
+
 }
