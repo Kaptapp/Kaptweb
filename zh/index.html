@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=18">
+<link rel="stylesheet" href="../styles.css?v=19">
 </head>
 <body>
 
@@ -306,12 +306,16 @@
             </div>
 
             <div class="cap-panel">
-              <img class="cap-p cap-p-full" src="../assets/demo/panel-light-full.png?v=2"
-                   alt="Kapture 侧边栏处于 Full page 模式。"
-                   width="1000" height="1400" loading="lazy" decoding="async">
-              <img class="cap-p cap-p-area" src="../assets/demo/panel-light-area.png?v=2"
-                   alt="Kapture 侧边栏处于 Select area 模式。"
-                   width="1000" height="1400" loading="lazy" decoding="async">
+              <span class="cap-p-body">
+                <img class="cap-p cap-p-full" src="../assets/demo/panel-light-full.png?v=2"
+                     alt="Kapture 侧边栏处于 Full page 模式。"
+                     width="1000" height="1400" loading="lazy" decoding="async">
+                <img class="cap-p cap-p-area" src="../assets/demo/panel-light-area.png?v=2"
+                     alt="Kapture 侧边栏处于 Select area 模式。"
+                     width="1000" height="1400" loading="lazy" decoding="async">
+              </span>
+              <!-- the panel's own sticky footer, pinned to the bottom of the column -->
+              <span class="cap-p-foot" aria-hidden="true"></span>
             </div>
           </div>
         </div>
@@ -671,6 +675,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=18"></script>
+<script src="../script.js?v=19"></script>
 </body>
 </html>

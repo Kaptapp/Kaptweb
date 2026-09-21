@@ -1449,11 +1449,31 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
    and left it flush on the right: the inner UI was inset 13px on one side and
    12px on the other. The divider is drawn as an overlay instead, which keeps
    the padding box equal to the border box and the bitmap exactly centred. */
+/* The panel render is a fixed-height screenshot dropped into a column that is
+   usually taller, so its footer floated wherever the bitmap happened to end,
+   just under History, with paper below it. The real panel is a flex column with
+   a sticky footer, so this mirrors that: the body stretches and clips, the
+   footer is its own track pinned to the bottom. */
 .cap-panel {
   position: relative;
+  display: flex;
+  flex-direction: column;
   /* the panel render's own paper, so the column reads as one surface */
   background: #FAF9F6;
   overflow: hidden;
+}
+.cap-p-body {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+/* The render's bottom 83 of 1400 pixels are its footer. Those are clipped off
+   here and redrawn by .cap-p-foot, at the same scale, against the bottom edge. */
+.cap-p-foot {
+  flex: none;
+  aspect-ratio: 1000 / 83;
+  background: url("assets/demo/panel-light-full.png?v=2") bottom center / 100% auto no-repeat;
 }
 .cap-panel::after {
   content: "";
@@ -1463,14 +1483,13 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   background: rgba(0, 0, 0, .10);
   z-index: 2;
 }
-/* contain, not cover: the browser viewport is now taller than the panel render,
-   and cropping the sides would cut the extension's own controls. The panel sits
-   at the top and its paper carries on below. */
+/* Drawn at the column's width and its own aspect, anchored to the top, clipped
+   by .cap-p-body. Never scaled to the column's height, so the extension's own
+   controls can't be cropped off the sides. */
 .cap-p {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: contain;
-  object-position: top center;
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: auto;
+  clip-path: inset(0 0 5.93% 0);   /* 83 / 1400: the footer, drawn separately */
 }
 .cap-p-area { opacity: 0; }
 
