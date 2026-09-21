@@ -1432,12 +1432,24 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 }
 
 /* ---- the real side panel ---- */
+/* No border on this element. An absolutely positioned child resolves `inset`
+   against the PADDING box, so a border-left pushed the panel bitmap 1px right
+   and left it flush on the right: the inner UI was inset 13px on one side and
+   12px on the other. The divider is drawn as an overlay instead, which keeps
+   the padding box equal to the border box and the bitmap exactly centred. */
 .cap-panel {
   position: relative;
-  border-left: 1px solid rgba(255, 255, 255, .07);
   /* the panel render's own paper, so the column reads as one surface */
   background: #FAF9F6;
   overflow: hidden;
+}
+.cap-panel::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, .10);
+  z-index: 2;
 }
 /* contain, not cover: the browser viewport is now taller than the panel render,
    and cropping the sides would cut the extension's own controls. The panel sits

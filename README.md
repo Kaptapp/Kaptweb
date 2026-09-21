@@ -170,12 +170,23 @@ mock-up, an illustration or an approximation.
 | `demo/panel-light-area.png`, `panel-dark-area.png` | The same panel switched to Select area |
 
 The four panel renders come from the shipped extension's own `panel.html` and
-`panel.css`, seeded with a static history and the destination folder `Dottio`.
+`panel.css`, seeded with a static history and the destination folder `Dotio`.
 **Render them at 500px wide or more.** Headless Chrome clamps its window to a
 minimum width of around 500px, so a narrower `--window-size` lays the page out
 at 500 and then captures the width you asked for, cropping the right-hand side:
 that is how these ended up with 16px of padding on the left and 2px on the
 right, and the whole extension UI looking shifted.
+
+Two things keep the panel centred once it is on the page, and both are easy to
+undo by accident:
+
+- **The column that holds it must have no border.** An absolutely positioned
+  child resolves `inset` against the padding box, so a `border-left` on
+  `.cap-panel` pushed the bitmap 1px right and left it flush on the right. The
+  divider is drawn with `.cap-panel::after` instead.
+- **The image URLs carry `?v=`.** `styles.css?v=` does not version images, so a
+  browser that has seen an older render keeps showing it. Bump the image query
+  whenever you re-render these.
 | `demo/page-dotto.jpg` | A real Kapture capture of a real webpage |
 | `demo/thumb-1…7.png` | The seven curated captures |
 
@@ -200,7 +211,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=14`.
+`styles.css` or `script.js`.** Currently `v=15`.
 
 ## SEO and discoverability
 
