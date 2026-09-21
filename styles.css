@@ -1354,10 +1354,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 }
 .cap-lights { display: flex; gap: 6px; flex: none; }
 .cap-lights i { width: 9px; height: 9px; border-radius: 50%; background: #3a3f3d; }
-.cap-tab {
-  padding: 3px 12px; border-radius: 6px;
-  background: rgba(255, 255, 255, .06); color: var(--text-dim);
-}
 .cap-url {
   flex: 1;
   padding: 3px 12px; border-radius: 999px;
@@ -1411,7 +1407,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 /* the selected region, and the shade over everything outside it */
 .cap-region {
   position: absolute;
-  left: 8%; top: 14%;
+  left: 15%; top: 12%;
   width: 0; height: 0;
   border: 2px solid var(--teal);
   border-radius: 4px;
@@ -1427,7 +1423,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 }
 .cap-cursor {
   position: absolute;
-  left: 8%; top: 14%;
+  left: 15%; top: 12%;
   width: 14px; height: 18px;
   opacity: 0;
   background: #fff;
@@ -1465,17 +1461,20 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap[data-phase="draw"] .cap-p-full,
 .cap[data-phase="crop"] .cap-p-full { opacity: 0; }
 
+/* the cursor is 14px wide, so a percentage translate moved it by 8px, not to
+   the corner it was supposed to be dragging. Percentages on left/top resolve
+   against the page box, which is what this needs. */
 .cap[data-phase="draw"] .cap-cursor,
-.cap[data-phase="crop"] .cap-cursor { opacity: 1; transform: translate(58%, 46%); }
+.cap[data-phase="crop"] .cap-cursor { opacity: 1; left: 85%; top: 53%; }
 .cap[data-phase="draw"] .cap-cursor { animation: cap-drag 1.5s var(--ease) forwards; }
 .cap[data-phase="draw"] .cap-region { opacity: 1; animation: cap-draw 1.5s var(--ease) forwards; }
-.cap[data-phase="crop"] .cap-region { opacity: 1; width: 62%; height: 50%; }
+.cap[data-phase="crop"] .cap-region { opacity: 1; width: 70%; height: 41%; }
 .cap-p, .cap-region, .cap-cursor { transition: opacity .35s var(--ease); }
 
 @keyframes cap-sweep { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes cap-line  { from { transform: translateY(0); } to { transform: translateY(100%); } }
-@keyframes cap-draw  { from { width: 0; height: 0; } to { width: 62%; height: 50%; } }
-@keyframes cap-drag  { from { transform: translate(0, 0); } to { transform: translate(58%, 46%); } }
+@keyframes cap-draw  { from { width: 0; height: 0; } to { width: 70%; height: 41%; } }
+@keyframes cap-drag  { from { left: 15%; top: 12%; } to { left: 85%; top: 53%; } }
 
 /* ---- the caption tracks the phase ---- */
 .cap-steps {
@@ -1501,7 +1500,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 
 @media (max-width: 900px) {
   .cap-body { grid-template-columns: 1fr 38%; }
-  .cap-tab { display: none; }
 }
 @media (max-width: 620px) {
   .cap-page { aspect-ratio: 1 / 1; }

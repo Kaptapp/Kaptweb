@@ -168,6 +168,14 @@ mock-up, an illustration or an approximation.
 | `screenshots/kapture-chrome-0-4-7.png` | Kapture 0.4.7 in Chrome (structured data only) |
 | `demo/panel-light-full.png`, `panel-dark-full.png` | The 0.4.7 side panel, Full page, both themes |
 | `demo/panel-light-area.png`, `panel-dark-area.png` | The same panel switched to Select area |
+
+The four panel renders come from the shipped extension's own `panel.html` and
+`panel.css`, seeded with a static history and the destination folder `Dottio`.
+**Render them at 500px wide or more.** Headless Chrome clamps its window to a
+minimum width of around 500px, so a narrower `--window-size` lays the page out
+at 500 and then captures the width you asked for, cropping the right-hand side:
+that is how these ended up with 16px of padding on the left and 2px on the
+right, and the whole extension UI looking shifted.
 | `demo/page-dotto.jpg` | A real Kapture capture of a real webpage |
 | `demo/thumb-1…7.png` | The seven curated captures |
 
@@ -192,7 +200,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=13`.
+`styles.css` or `script.js`.** Currently `v=14`.
 
 ## SEO and discoverability
 
