@@ -208,6 +208,7 @@ SENTINELS = [
     'One workflow', 'Project folders', 'History previews', 'Local only',
     'Visual library', 'Tags and notes', 'One-time purchase', 'Free</p>',
     'Privacy</a>', 'Add to Chrome', 'In the extension',
+    'How it works', 'Three steps', 'Open the page', 'Click Kapture',
 ]
 
 
