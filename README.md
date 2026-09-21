@@ -177,10 +177,11 @@ The seven curated captures are the set in
 
 `kapture-pro-curated.png` is a render of the `.kp` component described below,
 not a photograph of a window. Regenerate it by rendering that markup at
-1160×700 with `--force-device-scale-factor=2`, with the inspector populated so
-the window reads at desktop proportions rather than as a letterbox strip. If
-its size changes, update the `width`/`height` on the hero `<img>` and rerun
-`python3 tools/build_i18n.py`.
+1160×825 with `--force-device-scale-factor=2`, with the inspector populated and
+the library grid forced to three columns. Three columns is what makes the seven
+curated captures fill a window of that height; at four they occupy two rows and
+leave the bottom half of the library empty. If its size changes, update the
+`width`/`height` on the hero `<img>` and rerun `python3 tools/build_i18n.py`.
 
 ## Cache busting
 
@@ -191,7 +192,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=12`.
+`styles.css` or `script.js`.** Currently `v=13`.
 
 ## SEO and discoverability
 
