@@ -43,46 +43,39 @@
     });
   });
 
-  /* ---- Six benefits, spotlit on the real library screenshot ----
-     Each point carries the region it describes as data-spot="x,y,w,h" in
-     percentages of that capture. Hover or focus takes over; otherwise it
-     cycles. Nothing moves when the visitor prefers reduced motion. */
-  var spotlight = document.getElementById('proSpotlight');
+  /* ---- Kapture Pro: the six controls switch the app to a real state ----
+     Each control names a state; the component re-renders to it. No overlay,
+     no highlight box: the screen itself changes. */
+  var kp = document.getElementById('kpDemo');
+  var kpPoints = document.getElementById('kpPoints');
 
-  if (spotlight) {
-    var box = spotlight.querySelector('.spotlight-box');
-    var items = Array.prototype.slice.call(spotlight.querySelectorAll('li[data-spot]'));
-    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var timer = null;
-    var at = 0;
+  if (kp && kpPoints) {
+    var kpItems = Array.prototype.slice.call(kpPoints.querySelectorAll('li[data-state]'));
+    var kpStill = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var kpTimer = null;
+    var kpAt = 2;   // start on the plain library
 
-    var light = function (i) {
-      at = i;
-      var parts = items[i].getAttribute('data-spot').split(',');
-      box.style.left = parts[0] + '%';
-      box.style.top = parts[1] + '%';
-      box.style.width = parts[2] + '%';
-      box.style.height = parts[3] + '%';
-      spotlight.classList.add('is-lit');
-      items.forEach(function (li, n) { li.classList.toggle('is-active', n === i); });
+    var kpShow = function (i) {
+      kpAt = i;
+      kp.setAttribute('data-state', kpItems[i].getAttribute('data-state'));
+      kpItems.forEach(function (li, n) { li.classList.toggle('is-active', n === i); });
     };
-
-    var cycle = function () {
-      if (still) return;
-      timer = window.setInterval(function () { light((at + 1) % items.length); }, 3200);
+    var kpCycle = function () {
+      if (kpStill) return;
+      kpTimer = window.setInterval(function () { kpShow((kpAt + 1) % kpItems.length); }, 4200);
     };
-    var hold = function () { window.clearInterval(timer); timer = null; };
+    var kpHold = function () { window.clearInterval(kpTimer); kpTimer = null; };
 
-    items.forEach(function (li, i) {
-      var trigger = li.querySelector('button') || li;
-      trigger.addEventListener('mouseenter', function () { hold(); light(i); });
-      trigger.addEventListener('focus', function () { hold(); light(i); });
-      trigger.addEventListener('click', function () { hold(); light(i); });
+    kpItems.forEach(function (li, i) {
+      var t = li.querySelector('button') || li;
+      ['mouseenter', 'focus', 'click'].forEach(function (evt) {
+        t.addEventListener(evt, function () { kpHold(); kpShow(i); });
+      });
     });
-    spotlight.addEventListener('mouseleave', function () { if (!timer) cycle(); });
+    kpPoints.addEventListener('mouseleave', function () { if (!kpTimer) kpCycle(); });
 
-    light(0);
-    cycle();
+    kpShow(kpAt);
+    kpCycle();
   }
 
   /* ---- Reveal sections on scroll ---- */
