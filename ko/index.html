@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=7">
+<link rel="stylesheet" href="../styles.css?v=8">
 </head>
 <body>
 
@@ -251,6 +251,7 @@
         <div class="hero-stage-glow" aria-hidden="true"></div>
 
         <div class="hero-stage-mac">
+          <p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac용</em></p>
           <img src="../assets/screenshots/kapture-pro-mac.png"
                alt="macOS의 Kapture Pro: 사이드바의 프로젝트 목록, 캡처 격자, 그리고 선택한 파일의 정보를 보여 주는 인스펙터."
                width="2048" height="1326" decoding="async">
@@ -260,13 +261,14 @@
           <!-- Focus ring cycles over three real regions of the panel: the project
                field, the capture button, then the newest history row. Annotation
                only: nothing in the screenshot itself is faked or altered. -->
+          <p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome용</em></p>
           <div class="flow-focus" aria-hidden="true"><i></i></div>
           <img src="../assets/screenshots/kapture-chrome-panel.png"
                alt="Chrome의 Kapture 0.4.7 사이드 패널. 캡처 모드, 화면 크기, 파일 형식, 저장할 프로젝트 폴더가 보입니다."
                width="972" height="1400" decoding="async">
         </div>
 
-        <figcaption>오른쪽은 Chrome에서 캡처, 뒤쪽은 Kapture Pro에서 정리.</figcaption>
+        <figcaption>Chrome 확장 프로그램이 캡처하고, Mac 앱이 그 캡처를 정리합니다.</figcaption>
       </figure>
     </div>
   </section>
@@ -295,10 +297,11 @@
             <div class="mode-art-frame"></div>
           </div>
           <h3>전체 페이지</h3>
-          <p>
-            Kapture가 문서를 처음부터 끝까지 스크롤하며 캡처합니다. 아주 긴 페이지는
-            8,000픽셀 단위로 나눠 파일을 다루기 쉽게 유지합니다.
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>프로젝트 폴더를 고르고 <b>Capture page</b>를 누릅니다.</li>
+            <li><span>2</span>Kapture가 보이는 부분만이 아니라 문서 전체를 스크롤합니다.</li>
+            <li><span>3</span>프로젝트에 저장되고, 8,000&nbsp;픽셀 단위로 나뉩니다.</li>
+          </ol>
         </article>
 
         <article class="mode-card reveal">
@@ -316,10 +319,11 @@
             </div>
           </div>
           <h3>영역 선택</h3>
-          <p>
-            보이는 화면에서 드래그해 원하는 영역을 지정하세요. 자유 비율, 1:1, 16:9, 9:16 중에서
-            고르고 캡처 전에 위치와 크기를 조정할 수 있습니다.
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>패널을 <b>Select area</b>로 바꿉니다.</li>
+            <li><span>2</span>페이지 위를 드래그하세요. 자유 비율, 1:1, 16:9, 9:16으로 확정 전에 조정할 수 있습니다.</li>
+            <li><span>3</span>그 영역만 같은 프로젝트에 캡처됩니다.</li>
+          </ol>
         </article>
       </div>
     </div>
@@ -399,20 +403,30 @@
 
       <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
-        <img src="../assets/screenshots/kapture-pro-mac.png"
-             alt="macOS의 Kapture Pro: 사이드바에 프로젝트 목록, 가운데에 미리보기 격자, 오른쪽 인스펙터에 선택한 파일의 정보가 있는 스크린샷 시각 라이브러리."
+        <img src="../assets/screenshots/kapture-pro-onboarding.png"
+             alt="새 라이브러리를 맞이하는 macOS의 Kapture Pro: Your captures deserve better 문구 위로 캡처들이 펼쳐져 있습니다."
              width="2048" height="1326" loading="lazy" decoding="async">
-        <figcaption>Mac용 Kapture Pro.</figcaption>
+        <figcaption>Kapture Pro를 처음 실행했을 때.</figcaption>
       </figure>
 
-      <ul class="pro-points reveal">
-        <li><h3>프로젝트</h3><p>캡처 폴더 하나하나가 오가며 작업할 수 있는 프로젝트가 됩니다.</p></li>
-        <li><h3>검색</h3><p>Finder를 열지 않고도 이름, 사이트, 프로젝트로 캡처를 찾을 수 있습니다.</p></li>
-        <li><h3>시각 라이브러리</h3><p>파일 이름이 아니라 미리보기로 전체를 훑어봅니다.</p></li>
-        <li><h3>인스펙터</h3><p>고른 항목의 크기, 형식, 출처, 캡처 시각을 바로 확인합니다.</p></li>
-        <li><h3>태그와 메모</h3><p>직접 맥락을 남겨 두면 나중에 봐도 무슨 캡처인지 알 수 있습니다.</p></li>
-        <li><h3>로컬 저장</h3><p>클라우드도, 동기화도, 계정도 없습니다. 이미 있는 디스크를 읽을 뿐입니다.</p></li>
-      </ul>
+      <!-- Each point spotlights the region of the real library screenshot it
+           describes. Percentages are measured against that capture. -->
+      <div class="spotlight reveal" id="proSpotlight">
+        <figure class="spotlight-shot">
+          <img src="../assets/screenshots/kapture-pro-mac.png"
+               alt="macOS의 Kapture Pro 라이브러리: 사이드바의 프로젝트, 헤더의 검색창, 캡처 격자, 오른쪽의 인스펙터."
+               width="2048" height="1326" loading="lazy" decoding="async">
+          <span class="spotlight-box" aria-hidden="true"></span>
+        </figure>
+        <ul class="pro-points">
+          <li data-spot="1,29,13,20"><button type="button"><h3>프로젝트</h3><p>캡처 폴더 하나하나가 오가며 작업할 수 있는 프로젝트가 됩니다.</p></button></li>
+          <li data-spot="39,0.5,22,4.5"><button type="button"><h3>검색</h3><p>Finder를 열지 않고도 이름, 사이트, 프로젝트로 캡처를 찾습니다.</p></button></li>
+          <li data-spot="14.5,12,69,86"><button type="button"><h3>시각 라이브러리</h3><p>파일 이름이 아니라 미리보기로 전체를 훑어봅니다.</p></button></li>
+          <li data-spot="83,11,17,88"><button type="button"><h3>인스펙터</h3><p>고른 항목의 크기, 형식, 출처, 캡처 시각을 바로 확인합니다.</p></button></li>
+          <li data-spot="21,40,10,5"><button type="button"><h3>태그와 메모</h3><p>직접 맥락을 남겨 두면 나중에 봐도 무슨 캡처인지 압니다.</p></button></li>
+          <li data-spot="1,91,13,7"><button type="button"><h3>로컬 저장</h3><p>클라우드도, 동기화도, 계정도 없습니다. 이미 있는 디스크를 읽을 뿐입니다.</p></button></li>
+        </ul>
+      </div>
 
       <p class="pro-statement reveal">
         파일은 원래 있던 자리에 그대로 있습니다.<br>
@@ -584,6 +598,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=7"></script>
+<script src="../script.js?v=8"></script>
 </body>
 </html>

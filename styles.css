@@ -1202,3 +1202,123 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   .hero-stage-chrome { position: relative; }
   .flow-focus { border-radius: var(--radius); }
 }
+
+/* ---------- Hero product labels ----------
+   The composition is only useful if you can tell which product is which. */
+.stage-label {
+  position: absolute;
+  top: -34px;
+  left: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 650;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.stage-label em { font-style: normal; color: var(--text-muted); }
+.stage-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--text-muted);
+}
+.stage-label-front { color: var(--teal); left: auto; right: 2px; }
+.stage-label-front em { color: rgba(25, 215, 192, .65); }
+.stage-label-front .stage-dot {
+  background: var(--teal);
+  box-shadow: 0 0 0 3px rgba(25, 215, 192, .18);
+}
+/* Only the Mac layer needs positioning added. .hero-stage-chrome is already
+   absolute on desktop, and the stacked rule below handles small screens. */
+.hero-stage-mac { position: relative; }
+.hero-stage { margin-top: clamp(76px, 9vw, 116px); }
+@media (max-width: 760px) {
+  .hero-stage-chrome { width: 64%; }
+  .stage-label { position: static; margin-bottom: 10px; }
+}
+
+/* ---------- Chrome mode flows ----------
+   Each mode explains its own sequence instead of a single static paragraph. */
+.modes { margin-top: clamp(52px, 7vw, 88px); }   /* was touching the screenshot */
+.mode-steps { display: grid; gap: 12px; }
+.mode-steps li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+  align-items: start;
+  font-size: 15.5px;
+  color: var(--text-dim);
+}
+.mode-steps li span {
+  display: grid;
+  place-items: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(25, 215, 192, .35);
+  background: rgba(25, 215, 192, .1);
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 680;
+}
+.mode-steps b { color: var(--text); font-weight: 650; white-space: nowrap; }
+
+/* ---------- Six benefits, spotlit on the real interface ---------- */
+.spotlight {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: clamp(28px, 4vw, 52px);
+  align-items: center;
+  margin-top: clamp(48px, 6vw, 76px);
+}
+.spotlight-shot { position: relative; margin: 0; }
+.spotlight-shot img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  /* dimmed so the lit region carries the eye; also calms a busy library */
+  filter: brightness(.55) saturate(.85);
+  transition: filter .4s var(--ease);
+}
+.spotlight-box {
+  position: absolute;
+  border-radius: 7px;
+  border: 2px solid var(--teal);
+  box-shadow: 0 0 0 3px rgba(25, 215, 192, .14),
+              0 0 30px rgba(25, 215, 192, .35),
+              0 0 0 9999px rgba(10, 12, 11, .52);
+  opacity: 0;
+  transition: all .45s var(--ease);
+  pointer-events: none;
+}
+.spotlight.is-lit .spotlight-box { opacity: 1; }
+.spotlight.is-lit .spotlight-shot img { filter: brightness(.82) saturate(1); }
+
+.spotlight .pro-points { grid-template-columns: 1fr; gap: 0; margin-top: 0; }
+.spotlight .pro-points li { border-top: 1px solid var(--line); padding-top: 0; }
+.spotlight .pro-points li:first-child { border-top: 0; }
+.spotlight .pro-points button {
+  display: block;
+  width: 100%;
+  padding: 15px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .25s var(--ease);
+}
+.spotlight .pro-points h3 { margin-bottom: 5px; font-size: 17.5px; transition: color .25s var(--ease); }
+.spotlight .pro-points p { font-size: 15px; color: var(--text-muted); }
+.spotlight .pro-points li.is-active button { background: rgba(25, 215, 192, .07); }
+.spotlight .pro-points li.is-active h3 { color: var(--teal); }
+
+@media (max-width: 900px) {
+  .spotlight { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-box, .spotlight-shot img { transition: none; }
+}

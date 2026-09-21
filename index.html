@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -251,6 +251,7 @@
         <div class="hero-stage-glow" aria-hidden="true"></div>
 
         <div class="hero-stage-mac">
+          <p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>for Mac</em></p>
           <img src="assets/screenshots/kapture-pro-mac.png"
                alt="Kapture Pro on macOS: projects in the sidebar, a grid of captured screenshots, and an inspector with the selected file's details."
                width="2048" height="1326" decoding="async">
@@ -260,13 +261,14 @@
           <!-- Focus ring cycles over three real regions of the panel: the project
                field, the capture button, then the newest history row. Annotation
                only: nothing in the screenshot itself is faked or altered. -->
+          <p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>for Chrome</em></p>
           <div class="flow-focus" aria-hidden="true"><i></i></div>
           <img src="assets/screenshots/kapture-chrome-panel.png"
                alt="The Kapture 0.4.7 side panel in Chrome, with capture mode, viewport, file format and the destination project folder."
                width="972" height="1400" decoding="async">
         </div>
 
-        <figcaption>Capture in Chrome, on the right. Organise in Kapture Pro, behind it.</figcaption>
+        <figcaption>The Chrome extension captures. The Mac app organises what it captures.</figcaption>
       </figure>
     </div>
   </section>
@@ -295,10 +297,11 @@
             <div class="mode-art-frame"></div>
           </div>
           <h3>Full page</h3>
-          <p>
-            Kapture scrolls the main document and captures it end to end, splitting very long
-            pages into 8,000&nbsp;pixel sections so the files stay usable.
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>Pick a project folder and hit <b>Capture page</b>.</li>
+            <li><span>2</span>Kapture scrolls the whole document, not just the visible part.</li>
+            <li><span>3</span>Saved to your project, split at 8,000&nbsp;pixels so files stay usable.</li>
+          </ol>
         </article>
 
         <article class="mode-card reveal">
@@ -316,10 +319,11 @@
             </div>
           </div>
           <h3>Select area</h3>
-          <p>
-            Drag over the visible page to grab one region. Choose Freeform, 1:1, 16:9 or 9:16,
-            then move or resize the selection before you capture.
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>Switch the panel to <b>Select area</b>.</li>
+            <li><span>2</span>Drag over the page. Freeform, 1:1, 16:9 or 9:16, resize before you commit.</li>
+            <li><span>3</span>Only that region is captured, into the same project.</li>
+          </ol>
         </article>
       </div>
     </div>
@@ -399,20 +403,30 @@
 
       <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
-        <img src="assets/screenshots/kapture-pro-mac.png"
-             alt="Kapture Pro on macOS: a visual library of captured screenshots with projects in the sidebar, a grid of previews, and an inspector showing the selected file's details."
+        <img src="assets/screenshots/kapture-pro-onboarding.png"
+             alt="Kapture Pro on macOS welcoming a new library: captures fanned out above the line Your captures deserve better."
              width="2048" height="1326" loading="lazy" decoding="async">
-        <figcaption>Kapture Pro for Mac.</figcaption>
+        <figcaption>Kapture Pro on first run.</figcaption>
       </figure>
 
-      <ul class="pro-points reveal">
-        <li><h3>Projects</h3><p>Every capture folder becomes a project you can move between.</p></li>
-        <li><h3>Search</h3><p>Find a capture by name, site or project without opening Finder.</p></li>
-        <li><h3>Visual library</h3><p>Browse everything as previews instead of filenames.</p></li>
-        <li><h3>Inspector</h3><p>Size, format, source and capture time for whatever you select.</p></li>
-        <li><h3>Tags and notes</h3><p>Add your own context so a capture still makes sense later.</p></li>
-        <li><h3>Local storage</h3><p>No cloud, no sync, no account. It reads the disk you already have.</p></li>
-      </ul>
+      <!-- Each point spotlights the region of the real library screenshot it
+           describes. Percentages are measured against that capture. -->
+      <div class="spotlight reveal" id="proSpotlight">
+        <figure class="spotlight-shot">
+          <img src="assets/screenshots/kapture-pro-mac.png"
+               alt="The Kapture Pro library on macOS: projects in the sidebar, a search field in the header, a grid of captures, and the inspector on the right."
+               width="2048" height="1326" loading="lazy" decoding="async">
+          <span class="spotlight-box" aria-hidden="true"></span>
+        </figure>
+        <ul class="pro-points">
+          <li data-spot="1,29,13,20"><button type="button"><h3>Projects</h3><p>Every capture folder becomes a project you can move between.</p></button></li>
+          <li data-spot="39,0.5,22,4.5"><button type="button"><h3>Search</h3><p>Find a capture by name, site or project without opening Finder.</p></button></li>
+          <li data-spot="14.5,12,69,86"><button type="button"><h3>Visual library</h3><p>Browse everything as previews instead of filenames.</p></button></li>
+          <li data-spot="83,11,17,88"><button type="button"><h3>Inspector</h3><p>Size, format, source and capture time for whatever you select.</p></button></li>
+          <li data-spot="21,40,10,5"><button type="button"><h3>Tags and notes</h3><p>Add your own context so a capture still makes sense later.</p></button></li>
+          <li data-spot="1,91,13,7"><button type="button"><h3>Local storage</h3><p>No cloud, no sync, no account. It reads the disk you already have.</p></button></li>
+        </ul>
+      </div>
 
       <p class="pro-statement reveal">
         Your files stay where they already live.<br>
@@ -585,6 +599,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>

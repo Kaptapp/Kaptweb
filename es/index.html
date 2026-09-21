@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=7">
+<link rel="stylesheet" href="../styles.css?v=8">
 </head>
 <body>
 
@@ -251,6 +251,7 @@
         <div class="hero-stage-glow" aria-hidden="true"></div>
 
         <div class="hero-stage-mac">
+          <p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>para Mac</em></p>
           <img src="../assets/screenshots/kapture-pro-mac.png"
                alt="Kapture Pro en macOS: los proyectos en la barra lateral, una cuadrícula de capturas y un inspector con los datos del archivo seleccionado."
                width="2048" height="1326" decoding="async">
@@ -260,13 +261,14 @@
           <!-- Focus ring cycles over three real regions of the panel: the project
                field, the capture button, then the newest history row. Annotation
                only: nothing in the screenshot itself is faked or altered. -->
+          <p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>para Chrome</em></p>
           <div class="flow-focus" aria-hidden="true"><i></i></div>
           <img src="../assets/screenshots/kapture-chrome-panel.png"
                alt="El panel lateral de Kapture 0.4.7 en Chrome, con el modo de captura, el tamaño de pantalla, el formato y la carpeta de proyecto de destino."
                width="972" height="1400" decoding="async">
         </div>
 
-        <figcaption>Captura en Chrome, a la derecha. Organiza en Kapture Pro, detrás.</figcaption>
+        <figcaption>La extensión de Chrome captura. La app de Mac organiza lo capturado.</figcaption>
       </figure>
     </div>
   </section>
@@ -295,10 +297,11 @@
             <div class="mode-art-frame"></div>
           </div>
           <h3>Páginas completas</h3>
-          <p>
-            Kapture recorre el documento y lo captura de principio a fin. Las páginas muy
-            largas se dividen en secciones de 8.000 píxeles para que los archivos sigan siendo manejables.
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>Elige una carpeta de proyecto y pulsa <b>Capture page</b>.</li>
+            <li><span>2</span>Kapture recorre todo el documento, no solo la parte visible.</li>
+            <li><span>3</span>Se guarda en tu proyecto, dividido en secciones de 8.000&nbsp;píxeles.</li>
+          </ol>
         </article>
 
         <article class="mode-card reveal">
@@ -316,10 +319,11 @@
             </div>
           </div>
           <h3>Seleccionar zona</h3>
-          <p>
-            Arrastra sobre la parte visible para marcar una zona. Elige formato libre, 1:1,
-            16:9 o 9:16, y mueve o ajusta la selección antes de capturar.
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>Cambia el panel a <b>Select area</b>.</li>
+            <li><span>2</span>Arrastra sobre la página. Formato libre, 1:1, 16:9 o 9:16, y ajusta antes de confirmar.</li>
+            <li><span>3</span>Solo se captura esa zona, en el mismo proyecto.</li>
+          </ol>
         </article>
       </div>
     </div>
@@ -399,20 +403,30 @@
 
       <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
-        <img src="../assets/screenshots/kapture-pro-mac.png"
-             alt="Kapture Pro en macOS: una biblioteca visual de capturas con los proyectos en la barra lateral, una cuadrícula de vistas previas y un inspector con los datos del archivo seleccionado."
+        <img src="../assets/screenshots/kapture-pro-onboarding.png"
+             alt="Kapture Pro en macOS dando la bienvenida a una biblioteca nueva: capturas desplegadas sobre la frase Your captures deserve better."
              width="2048" height="1326" loading="lazy" decoding="async">
-        <figcaption>Kapture Pro para Mac.</figcaption>
+        <figcaption>Kapture Pro al abrirlo por primera vez.</figcaption>
       </figure>
 
-      <ul class="pro-points reveal">
-        <li><h3>Proyectos</h3><p>Cada carpeta de capturas se convierte en un proyecto por el que puedes moverte.</p></li>
-        <li><h3>Búsqueda</h3><p>Encuentra una captura por nombre, sitio o proyecto sin abrir el Finder.</p></li>
-        <li><h3>Biblioteca visual</h3><p>Navega por todo con vistas previas en lugar de nombres de archivo.</p></li>
-        <li><h3>Inspector</h3><p>Tamaño, formato, origen y hora de captura de lo que selecciones.</p></li>
-        <li><h3>Etiquetas y notas</h3><p>Añade tu propio contexto para que una captura siga teniendo sentido más adelante.</p></li>
-        <li><h3>Todo en local</h3><p>Sin nube, sin sincronización, sin cuenta. Lee el disco que ya tienes.</p></li>
-      </ul>
+      <!-- Each point spotlights the region of the real library screenshot it
+           describes. Percentages are measured against that capture. -->
+      <div class="spotlight reveal" id="proSpotlight">
+        <figure class="spotlight-shot">
+          <img src="../assets/screenshots/kapture-pro-mac.png"
+               alt="La biblioteca de Kapture Pro en macOS: los proyectos en la barra lateral, un campo de búsqueda en la cabecera, una cuadrícula de capturas y el inspector a la derecha."
+               width="2048" height="1326" loading="lazy" decoding="async">
+          <span class="spotlight-box" aria-hidden="true"></span>
+        </figure>
+        <ul class="pro-points">
+          <li data-spot="1,29,13,20"><button type="button"><h3>Proyectos</h3><p>Cada carpeta de capturas es un proyecto por el que puedes moverte.</p></button></li>
+          <li data-spot="39,0.5,22,4.5"><button type="button"><h3>Búsqueda</h3><p>Encuentra una captura por nombre, sitio o proyecto sin abrir el Finder.</p></button></li>
+          <li data-spot="14.5,12,69,86"><button type="button"><h3>Biblioteca visual</h3><p>Navega con vistas previas en lugar de nombres de archivo.</p></button></li>
+          <li data-spot="83,11,17,88"><button type="button"><h3>Inspector</h3><p>Tamaño, formato, origen y hora de captura de lo que selecciones.</p></button></li>
+          <li data-spot="21,40,10,5"><button type="button"><h3>Etiquetas y notas</h3><p>Añade tu propio contexto para que una captura siga teniendo sentido.</p></button></li>
+          <li data-spot="1,91,13,7"><button type="button"><h3>Todo en local</h3><p>Sin nube, sin sincronización, sin cuenta. Lee el disco que ya tienes.</p></button></li>
+        </ul>
+      </div>
 
       <p class="pro-statement reveal">
         Tus archivos siguen donde ya estaban.<br>
@@ -585,6 +599,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=7"></script>
+<script src="../script.js?v=8"></script>
 </body>
 </html>

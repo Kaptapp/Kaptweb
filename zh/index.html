@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=7">
+<link rel="stylesheet" href="../styles.css?v=8">
 </head>
 <body>
 
@@ -251,6 +251,7 @@
         <div class="hero-stage-glow" aria-hidden="true"></div>
 
         <div class="hero-stage-mac">
+          <p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac 版</em></p>
           <img src="../assets/screenshots/kapture-pro-mac.png"
                alt="macOS 上的 Kapture Pro：侧边栏是项目列表，中间是截图网格，检查器显示所选文件的详细信息。"
                width="2048" height="1326" decoding="async">
@@ -260,13 +261,14 @@
           <!-- Focus ring cycles over three real regions of the panel: the project
                field, the capture button, then the newest history row. Annotation
                only: nothing in the screenshot itself is faked or altered. -->
+          <p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome 版</em></p>
           <div class="flow-focus" aria-hidden="true"><i></i></div>
           <img src="../assets/screenshots/kapture-chrome-panel.png"
                alt="Chrome 中的 Kapture 0.4.7 侧边栏，显示截图模式、画面宽度、文件格式和目标项目文件夹。"
                width="972" height="1400" decoding="async">
         </div>
 
-        <figcaption>右边是在 Chrome 里截图，后面是在 Kapture Pro 里整理。</figcaption>
+        <figcaption>Chrome 扩展负责截图，Mac 应用负责整理这些截图。</figcaption>
       </figure>
     </div>
   </section>
@@ -295,10 +297,11 @@
             <div class="mode-art-frame"></div>
           </div>
           <h3>整页截图</h3>
-          <p>
-            Kapture 会滚动整个文档，从头截到尾。超长页面会按 8,000 像素分段，
-            文件不至于大到不好用。
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>选好项目文件夹，点 <b>Capture page</b>。</li>
+            <li><span>2</span>Kapture 会滚动整个文档，而不只是可见的部分。</li>
+            <li><span>3</span>保存到你的项目里，按 8,000&nbsp;像素分段，文件好用。</li>
+          </ol>
         </article>
 
         <article class="mode-card reveal">
@@ -316,10 +319,11 @@
             </div>
           </div>
           <h3>区域截图</h3>
-          <p>
-            在可见区域拖动，框出想要的部分。可选自由比例、1:1、16:9 或 9:16，
-            截图前还能移动或调整选区。
-          </p>
+          <ol class="mode-steps">
+            <li><span>1</span>把面板切到 <b>Select area</b>。</li>
+            <li><span>2</span>在页面上拖动。自由比例、1:1、16:9 或 9:16，确认前还能调整。</li>
+            <li><span>3</span>只截取那块区域，存进同一个项目。</li>
+          </ol>
         </article>
       </div>
     </div>
@@ -399,20 +403,30 @@
 
       <figure class="shot shot-pro reveal">
         <div class="shot-glow" aria-hidden="true"></div>
-        <img src="../assets/screenshots/kapture-pro-mac.png"
-             alt="macOS 上的 Kapture Pro：截图的可视化图库，侧边栏是项目列表，中间是预览网格，右侧的检查器显示所选文件的详细信息。"
+        <img src="../assets/screenshots/kapture-pro-onboarding.png"
+             alt="macOS 上的 Kapture Pro 欢迎新图库：一排截图展开在 Your captures deserve better 这句话上方。"
              width="2048" height="1326" loading="lazy" decoding="async">
-        <figcaption>Mac 版 Kapture Pro。</figcaption>
+        <figcaption>第一次打开 Kapture Pro 时。</figcaption>
       </figure>
 
-      <ul class="pro-points reveal">
-        <li><h3>项目</h3><p>每个截图文件夹都会变成一个可以随时切换的项目。</p></li>
-        <li><h3>搜索</h3><p>不用打开访达，按名称、网站或项目就能找到截图。</p></li>
-        <li><h3>可视化图库</h3><p>用预览图浏览一切，而不是一串文件名。</p></li>
-        <li><h3>检查器</h3><p>选中任意一张，就能看到尺寸、格式、来源和截图时间。</p></li>
-        <li><h3>标签与备注</h3><p>加上自己的说明，过段时间再看也知道这张是什么。</p></li>
-        <li><h3>本地存储</h3><p>没有云端，不用同步，不用账号。它读的就是你现有的硬盘。</p></li>
-      </ul>
+      <!-- Each point spotlights the region of the real library screenshot it
+           describes. Percentages are measured against that capture. -->
+      <div class="spotlight reveal" id="proSpotlight">
+        <figure class="spotlight-shot">
+          <img src="../assets/screenshots/kapture-pro-mac.png"
+               alt="macOS 上的 Kapture Pro 图库：侧边栏是项目，顶部是搜索框，中间是截图网格，右侧是检查器。"
+               width="2048" height="1326" loading="lazy" decoding="async">
+          <span class="spotlight-box" aria-hidden="true"></span>
+        </figure>
+        <ul class="pro-points">
+          <li data-spot="1,29,13,20"><button type="button"><h3>项目</h3><p>每个截图文件夹都会变成一个可以随时切换的项目。</p></button></li>
+          <li data-spot="39,0.5,22,4.5"><button type="button"><h3>搜索</h3><p>不用打开访达，按名称、网站或项目就能找到截图。</p></button></li>
+          <li data-spot="14.5,12,69,86"><button type="button"><h3>可视化图库</h3><p>用预览图浏览一切，而不是一串文件名。</p></button></li>
+          <li data-spot="83,11,17,88"><button type="button"><h3>检查器</h3><p>选中任意一张，就能看到尺寸、格式、来源和截图时间。</p></button></li>
+          <li data-spot="21,40,10,5"><button type="button"><h3>标签与备注</h3><p>加上自己的说明，过段时间再看也知道这张是什么。</p></button></li>
+          <li data-spot="1,91,13,7"><button type="button"><h3>本地存储</h3><p>没有云端，不用同步，不用账号。它读的就是你现有的硬盘。</p></button></li>
+        </ul>
+      </div>
 
       <p class="pro-statement reveal">
         你的文件还在原来的地方。<br>
@@ -584,6 +598,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=7"></script>
+<script src="../script.js?v=8"></script>
 </body>
 </html>

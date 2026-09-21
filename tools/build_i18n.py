@@ -17,13 +17,14 @@ from t_home2 import HOME2
 from t_home3 import HOME3
 from t_eco1 import ECO1
 from t_eco2 import ECO2
+from t_eco3 import ECO3
 from t_privacy import PRIV
 from t_ld import (APP_DESC, FEATURES, PRO_DESC, PRO_FEATURES, SELECTOR_LABEL, NATIVE_NAME, SHORT_NAME,
                   LANGS, HTMLLANG, BASE, home_url, privacy_url)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # ECO* are the ecosystem pass and win over any older entry with the same key.
-HOME_ALL = {**HOME, **HOME2, **HOME3, **ECO1, **ECO2}
+HOME_ALL = {**HOME, **HOME2, **HOME3, **ECO1, **ECO2, **ECO3}
 
 
 # ---------------------------------------------------------------- selector
