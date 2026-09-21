@@ -78,4 +78,11 @@ FIX = {
  'ja': '''          Kapture Pro は Mac にすでにあるスクリーンショットを索引化し、検索できる
           ビジュアルライブラリにします。ファイルは移動せず、アップロードもされず、ディスクから出ません。'''},
 
+# ---------------------------------------------------------------- two products
+'<p class="plan-note">Pricing is not final. One payment, no subscription.</p>': {
+ 'es': '<p class="plan-note">El precio no es definitivo. Un solo pago, sin suscripción.</p>',
+ 'zh': '<p class="plan-note">价格尚未最终确定。一次付费，无订阅。</p>',
+ 'ko': '<p class="plan-note">가격은 아직 확정되지 않았습니다. 1회 결제, 구독 없음.</p>',
+ 'ja': '<p class="plan-note">価格は未確定です。買い切りで、サブスクリプションはありません。</p>'},
+
 }

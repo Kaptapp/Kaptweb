@@ -654,7 +654,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cta-band {
   position: relative;
   padding-block: clamp(72px, 10vw, 124px);
-  border-top: 1px solid var(--line);
   background:
     radial-gradient(70% 100% at 50% 100%, rgba(25, 215, 192, .14), transparent 70%),
     var(--bg-deep);
@@ -671,12 +670,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   justify-content: center;
   gap: 12px;
   margin-top: 32px;
-}
-.cta-note {
-  max-width: 46ch;
-  margin-top: 22px !important;
-  font-size: 14px !important;
-  color: var(--text-muted) !important;
 }
 /* ---------- Footer ---------- */
 .site-footer {
@@ -913,7 +906,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   gap: clamp(26px, 3.4vw, 40px) clamp(28px, 4vw, 56px);
   margin-top: clamp(48px, 6vw, 76px);
 }
-.pro-points li { border-top: 1px solid var(--line); padding-top: 18px; }
+.pro-points li { padding-top: 0; }
 .pro-points h3 { margin-bottom: 8px; font-size: 18.5px; }
 .pro-points p { font-size: 15.5px; color: var(--text-dim); }
 
@@ -921,15 +914,15 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cta-head { max-width: none; margin-bottom: clamp(40px, 5vw, 60px); text-align: center; }
 .cta-head h2 { font-size: clamp(32px, 5vw, 52px); }
 
+/* Full width and editorial: two columns across the whole shell, separated by
+   space rather than rules. */
 .plans {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(28px, 4vw, 56px);
-  max-width: 880px;
-  margin-inline: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(36px, 6vw, 96px);
   text-align: left;
 }
-.plan { border-top: 1px solid var(--line-strong); padding-top: 26px; }
+.plan { padding-top: 0; }
 .plan h3 { font-size: 22px; }
 .plan-price {
   margin-top: 10px;
@@ -938,9 +931,9 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   color: var(--teal);
 }
 .plan-copy { margin-top: 14px; margin-bottom: 26px; font-size: 16px; color: var(--text-dim); }
+.plan-note { margin-top: 14px; font-size: 14px; color: var(--text-muted); }
 .plan .btn { width: 100%; }
 
-.cta-band .cta-note { margin-top: clamp(32px, 4vw, 44px) !important; text-align: center; }
 
 /* ---------- Hero product composition ----------
    Two real screenshots, layered. The Mac window sits behind at full weight and
@@ -949,7 +942,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .hero-stage {
   position: relative;
   margin: clamp(48px, 7vw, 88px) 0 0;
-  padding-right: 4%;
 }
 .hero-stage-glow {
   position: absolute;
@@ -958,7 +950,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   filter: blur(70px);
   pointer-events: none;
 }
-.hero-stage-mac { position: relative; width: 84%; }
+.hero-stage-mac { position: relative; width: 79%; }
 .hero-stage-mac img {
   display: block;
   width: 100%;
@@ -968,22 +960,30 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   background: var(--bg-deep);
   box-shadow: 0 44px 100px -44px rgba(0, 0, 0, .85);
 }
+/* The panel sits in its own padded surface so the extension UI is never flush
+   against a border, and so the whole panel is visible rather than cropped. */
 .hero-stage-chrome {
+  --panel-pad: clamp(8px, .8vw, 12px);
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-44%);
-  width: 25%;
+  transform: translateY(-46%);
+  width: 27%;
+  padding: var(--panel-pad);
+  border: 1px solid var(--line-strong);
+  border-radius: calc(var(--radius) + var(--panel-pad));
+  background: #101312;
+  /* a touch more lift than the layer behind, so the overlap reads as depth */
+  box-shadow: 0 30px 70px -26px rgba(0, 0, 0, .9);
 }
 .hero-stage-chrome img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--line-strong);
+  border: 0;
   border-radius: var(--radius);
   background: var(--bg-deep);
-  /* a touch more lift than the layer behind, so the overlap reads as depth */
-  box-shadow: 0 30px 70px -26px rgba(0, 0, 0, .9);
+  box-shadow: none;
 }
 .hero-stage figcaption {
   position: relative;
@@ -995,7 +995,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 
 /* Stack rather than shrink: a desktop app window at 25% of a phone is unreadable. */
 @media (max-width: 760px) {
-  .hero-stage { padding-right: 0; display: grid; justify-items: center; gap: 20px; }
+  .hero-stage { display: grid; justify-items: center; gap: clamp(20px, 4vw, 34px); }
   .hero-stage-mac { width: 100%; }
   /* relative, never static: the dark panel layer is absolute, so this element
      has to stay its containing block once the stage stops being absolute. */
@@ -1255,8 +1255,8 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .kp-demo[data-state="storage"] .kp-drive::after { background: #2CC2B0; }
 
 /* the six controls */
-#kpPoints { grid-template-columns: repeat(3, 1fr); gap: 0 10px; margin-top: clamp(56px, 7vw, 92px); }
-#kpPoints li { border-top: 1px solid var(--line); padding-top: 0; }
+#kpPoints { grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 30px) clamp(16px, 2vw, 28px); margin-top: clamp(56px, 7vw, 92px); }
+#kpPoints li { padding-top: 0; }   /* spacing, not a rule line */
 #kpPoints button {
   display: block; width: 100%; padding: 14px 12px;
   border: 0; border-radius: 10px; background: transparent; color: inherit;
@@ -1292,7 +1292,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .hero-stage-chrome { isolation: isolate; }   /* stays positioned at every width */
 .hero-panel-dark {
   position: absolute;
-  inset: 0;
+  inset: var(--panel-pad);
   opacity: 0;
   animation: hero-theme 11s var(--ease) infinite;
 }
@@ -1344,7 +1344,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   border: 1px solid rgba(255, 255, 255, .07);
 }
 
-.cap-body { display: grid; grid-template-columns: 1fr 30%; }
+.cap-body { display: grid; grid-template-columns: 1fr 28%; }
 
 /* ---- the page being captured ---- */
 /* align-self: start keeps the row height driven by this box's own ratio, so the
@@ -1353,7 +1353,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   position: relative;
   align-self: start;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;   /* a real browser viewport, not a tall frame */
   overflow: hidden;
   background: #0f1110;
 }
@@ -1378,16 +1378,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   transform: scaleY(0);
   transform-origin: top;
 }
-.cap-flash {
-  position: absolute; inset: 0;
-  border: 2px solid var(--teal);
-  border-radius: 2px;
-  box-shadow: 0 0 44px rgba(25, 215, 192, .3) inset;
-  opacity: 0;
-}
-
 /* the selected region, and the shade over everything outside it */
-.cap-shade { position: absolute; inset: 0; background: rgba(8, 10, 9, .62); opacity: 0; }
 .cap-region {
   position: absolute;
   left: 8%; top: 14%;
@@ -1429,21 +1420,8 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 }
 .cap-p-area { opacity: 0; }
 
-/* the two real controls the sequence touches, located over the screenshot */
-.cap-hit {
-  position: absolute;
-  border-radius: 8px;
-  border: 2px solid var(--teal);
-  box-shadow: 0 0 0 4px rgba(25, 215, 192, .16);
-  opacity: 0;
-}
-.cap-hit-go   { left: 6.2%; top: 40.1%; width: 90.5%; height: 5.4%; }
-.cap-hit-mode { left: 50%;  top: 15.4%; width: 44%;   height: 5.3%; }
-
 /* ---- the phases ---- */
-.cap[data-phase="scan"] .cap-scan  { opacity: 1; animation: cap-sweep 1.6s linear forwards; }
-.cap[data-phase="scan"] .cap-hit-go { opacity: 1; }
-.cap[data-phase="kept"] .cap-flash { animation: cap-flash 1.1s var(--ease) forwards; }
+.cap[data-phase="scan"] .cap-scan { opacity: 1; animation: cap-sweep 1.9s linear forwards; }
 
 .cap[data-phase="area"] .cap-p-area,
 .cap[data-phase="draw"] .cap-p-area,
@@ -1451,17 +1429,15 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap[data-phase="area"] .cap-p-full,
 .cap[data-phase="draw"] .cap-p-full,
 .cap[data-phase="crop"] .cap-p-full { opacity: 0; }
-.cap[data-phase="area"] .cap-hit-mode { opacity: 1; }
 
 .cap[data-phase="draw"] .cap-cursor,
 .cap[data-phase="crop"] .cap-cursor { opacity: 1; transform: translate(58%, 46%); }
 .cap[data-phase="draw"] .cap-cursor { animation: cap-drag 1.5s var(--ease) forwards; }
 .cap[data-phase="draw"] .cap-region { opacity: 1; animation: cap-draw 1.5s var(--ease) forwards; }
 .cap[data-phase="crop"] .cap-region { opacity: 1; width: 62%; height: 50%; }
-.cap-p, .cap-hit, .cap-region, .cap-cursor { transition: opacity .35s var(--ease); }
+.cap-p, .cap-region, .cap-cursor { transition: opacity .35s var(--ease); }
 
 @keyframes cap-sweep { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-@keyframes cap-flash { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes cap-draw  { from { width: 0; height: 0; } to { width: 62%; height: 50%; } }
 @keyframes cap-drag  { from { transform: translate(0, 0); } to { transform: translate(58%, 46%); } }
 
@@ -1492,16 +1468,16 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   .cap-tab { display: none; }
 }
 @media (max-width: 620px) {
-  .cap-page { aspect-ratio: 1 / 1; }
-  .cap-body { grid-template-columns: 1fr 42%; }
+  .cap-page { aspect-ratio: 4 / 3; }
+  .cap-body { grid-template-columns: 1fr 40%; }
   .cap-region i { font-size: 10px; bottom: -22px; }
 }
 
 /* Reduced motion: no sweep, no drag. The composition holds the finished
    Select area state, which still explains the product. */
 @media (prefers-reduced-motion: reduce) {
-  .cap-scan, .cap-flash, .cap-cursor { display: none; }
-  .cap-p, .cap-hit, .cap-region, .cap-steps span { transition: none; }
+  .cap-scan, .cap-cursor { display: none; }
+  .cap-p, .cap-region, .cap-steps span { transition: none; }
   .cap[data-phase] .cap-region { animation: none; }
 }
 

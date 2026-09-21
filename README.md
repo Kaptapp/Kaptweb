@@ -177,8 +177,10 @@ The seven curated captures are the set in
 
 `kapture-pro-curated.png` is a render of the `.kp` component described below,
 not a photograph of a window. Regenerate it by rendering that markup at
-1024×514 with `--force-device-scale-factor=2`. If its size changes, update the
-`width`/`height` on the hero `<img>` and rerun `python3 tools/build_i18n.py`.
+1160×700 with `--force-device-scale-factor=2`, with the inspector populated so
+the window reads at desktop proportions rather than as a letterbox strip. If
+its size changes, update the `width`/`height` on the hero `<img>` and rerun
+`python3 tools/build_i18n.py`.
 
 ## Cache busting
 
@@ -189,7 +191,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=10`.
+`styles.css` or `script.js`.** Currently `v=11`.
 
 ## SEO and discoverability
 
@@ -264,10 +266,11 @@ is expressible in CSS alone and the page still reads with scripting off.
 **`#capDemo` (`data-phase`)** replays the real Chrome workflow across six
 phases: `full`, `scan`, `kept`, `area`, `draw`, `crop`. The left half is a real
 capture of a real page; the right half is the shipped 0.4.7 side panel, swapped
-between its Full page and Select area screenshots. Everything drawn on top (the
-sweep, the region, the cursor, the two control rings) is annotation over real
-pixels. `.cap-hit-go` and `.cap-hit-mode` are positioned in percentages over the
-panel screenshot, so they move if the panel render is ever replaced.
+between its Full page and Select area screenshots. Only two things are drawn on
+top: the capture sweep, and the selection box while an area is being dragged.
+**Do not add highlight rings over the panel's own controls.** The panel already
+shows which mode is active, and ringing its buttons made the composition read
+as a tutorial rather than a product.
 
 **`#kpDemo` (`data-state`)** is Kapture Pro rebuilt in HTML from the app's own
 `Brand.swift` tokens, real Phosphor icons out of `KapturePro/Assets/Icons`, and
