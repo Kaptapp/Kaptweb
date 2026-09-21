@@ -1163,3 +1163,42 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
    product moments on the page do not all get the same treatment. */
 .shot-flat { margin-top: clamp(36px, 5vw, 56px); }
 .shot-flat img { border-radius: var(--radius); }
+
+/* ---------- Capture-flow highlight ----------
+   A soft teal focus ring that steps over three real regions of the panel
+   screenshot: project folder, Capture page, then the newest history row. It
+   annotates the real UI rather than animating invented interface. */
+/* On desktop .hero-stage-chrome is already absolute, which is enough of a
+   containing block. Only the stacked layout needs positioning added back. */
+.flow-focus {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.flow-focus i {
+  position: absolute;
+  left: 3.5%;
+  width: 93%;
+  border-radius: 9px;
+  border: 2px solid var(--teal);
+  background: rgba(25, 215, 192, .12);
+  box-shadow: 0 0 0 4px rgba(25, 215, 192, .10), 0 0 26px rgba(25, 215, 192, .35);
+  animation: capture-flow 7.5s var(--ease) infinite;
+}
+/* Percentages map to the real panel: folder row, capture button, first history card. */
+@keyframes capture-flow {
+  0%, 6%    { top: 10.6%; height: 4.4%; opacity: 0; }
+  10%, 26%  { top: 10.6%; height: 4.4%; opacity: 1; }
+  32%, 50%  { top: 16.4%; height: 5.6%; opacity: 1; }
+  56%, 76%  { top: 45.5%; height: 7.6%; opacity: 1; }
+  84%, 100% { top: 45.5%; height: 7.6%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .flow-focus { display: none; } }
+/* Stacked layout keeps the ring aligned to the same image. */
+@media (max-width: 760px) {
+  .hero-stage-chrome { position: relative; }
+  .flow-focus { border-radius: var(--radius); }
+}

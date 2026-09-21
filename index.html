@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -253,13 +253,17 @@
         <div class="hero-stage-mac">
           <img src="assets/screenshots/kapture-pro-mac.png"
                alt="Kapture Pro on macOS: projects in the sidebar, a grid of captured screenshots, and an inspector with the selected file's details."
-               width="2560" height="1600" decoding="async">
+               width="2048" height="1326" decoding="async">
         </div>
 
         <div class="hero-stage-chrome">
+          <!-- Focus ring cycles over three real regions of the panel: the project
+               field, the capture button, then the newest history row. Annotation
+               only: nothing in the screenshot itself is faked or altered. -->
+          <div class="flow-focus" aria-hidden="true"><i></i></div>
           <img src="assets/screenshots/kapture-chrome-panel.png"
                alt="The Kapture 0.4.7 side panel in Chrome, with capture mode, viewport, file format and the destination project folder."
-               width="900" height="1400" decoding="async">
+               width="972" height="1400" decoding="async">
         </div>
 
         <figcaption>Capture in Chrome, on the right. Organise in Kapture Pro, behind it.</figcaption>
@@ -279,7 +283,7 @@
       <figure class="shot shot-flat reveal">
         <img src="assets/screenshots/kapture-chrome-0-4-7.png"
              alt="Kapture 0.4.7 running in Chrome: the side panel sits beside the webpage being captured."
-             width="2560" height="1600" loading="lazy" decoding="async">
+             width="2048" height="1280" loading="lazy" decoding="async">
       </figure>
 
       <div class="modes">
@@ -397,7 +401,7 @@
         <div class="shot-glow" aria-hidden="true"></div>
         <img src="assets/screenshots/kapture-pro-mac.png"
              alt="Kapture Pro on macOS: a visual library of captured screenshots with projects in the sidebar, a grid of previews, and an inspector showing the selected file's details."
-             width="2560" height="1600" loading="lazy" decoding="async">
+             width="2048" height="1326" loading="lazy" decoding="async">
         <figcaption>Kapture Pro for Mac.</figcaption>
       </figure>
 
@@ -581,6 +585,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>
