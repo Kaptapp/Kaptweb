@@ -18,13 +18,15 @@ from t_home3 import HOME3
 from t_eco1 import ECO1
 from t_eco2 import ECO2
 from t_eco3 import ECO3
+from t_fix import FIX
 from t_privacy import PRIV
 from t_ld import (APP_DESC, FEATURES, PRO_DESC, PRO_FEATURES, SELECTOR_LABEL, NATIVE_NAME, SHORT_NAME,
                   LANGS, HTMLLANG, BASE, home_url, privacy_url)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # ECO* are the ecosystem pass and win over any older entry with the same key.
-HOME_ALL = {**HOME, **HOME2, **HOME3, **ECO1, **ECO2, **ECO3}
+# FIX is the correction pass and wins over every earlier entry.
+HOME_ALL = {**HOME, **HOME2, **HOME3, **ECO1, **ECO2, **ECO3, **FIX}
 
 
 # ---------------------------------------------------------------- selector
@@ -202,10 +204,10 @@ def patch_english():
 
 SENTINELS = [
     'Capture in Chrome', 'Organise on Mac', 'Your screenshots,', 'finally organised',
-    'Chrome captures', 'Mac organises', 'Local by default', 'Two products',
+    'Local by default', 'Two products',
     'One workflow', 'Project folders', 'History previews', 'Local only',
     'Visual library', 'Tags and notes', 'One-time purchase', 'Free</p>',
-    'How it works', 'Privacy</a>', 'Add to Chrome', 'In the extension',
+    'Privacy</a>', 'Add to Chrome', 'In the extension',
 ]
 
 

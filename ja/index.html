@@ -130,7 +130,7 @@
         "タグとメモ",
         "クラウド同期なしのローカル保存"
       ],
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-pro-mac.png",
+      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-pro-curated.png",
       "releaseNotes": "Not yet released.",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
@@ -158,7 +158,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=9">
+<link rel="stylesheet" href="../styles.css?v=10">
 </head>
 <body>
 
@@ -174,7 +174,6 @@
     <nav class="header-nav" aria-label="メインナビゲーション">
       <a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
-      <a href="#how">使い方</a>
       <a href="#privacy">プライバシー</a>
     </nav>
     <div class="header-ctas">
@@ -237,7 +236,7 @@
           <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
           <span class="store-cta-label">Mac 版 Kapture Pro</span>
         </a>
-        <a class="btn btn-ghost" href="#how">使い方を見る</a>
+        <a class="btn btn-ghost" href="#capture">撮るところを見る</a>
       </div>
 
       <p class="hero-note">Chrome 120 以降が必要です。Chrome 版 Kapture は無料。Mac 版 Kapture Pro は近日公開です。</p>
@@ -252,18 +251,20 @@
 
         <div class="hero-stage-mac">
           <p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac 版</em></p>
-          <img src="../assets/screenshots/kapture-pro-mac.png"
+          <img src="../assets/screenshots/kapture-pro-curated.png"
                alt="macOS 上の Kapture Pro：サイドバーのプロジェクト、キャプチャの一覧、選択したファイルの詳細を示すインスペクタ。"
-               width="2048" height="1326" decoding="async">
+               width="2048" height="1028" decoding="async">
         </div>
 
         <div class="hero-stage-chrome">
-          <!-- Focus ring cycles over three real regions of the panel: the project
-               field, the capture button, then the newest history row. Annotation
-               only: nothing in the screenshot itself is faked or altered. -->
+          <!-- The panel's own two themes, cross-fading. Both frames are renders of
+               the shipped 0.4.7 side panel, so nothing here is invented. -->
           <p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome 版</em></p>
-          <img src="../assets/screenshots/kapture-chrome-panel.png"
+          <img class="hero-panel hero-panel-light" src="../assets/demo/panel-light-full.png"
                alt="Chrome の Kapture 0.4.7 サイドパネル。キャプチャモード、画面幅、ファイル形式、保存先のプロジェクトフォルダが表示されています。"
+               width="972" height="1400" decoding="async">
+          <img class="hero-panel hero-panel-dark" src="../assets/demo/panel-dark-full.png"
+               alt="" aria-hidden="true"
                width="972" height="1400" decoding="async">
         </div>
 
@@ -281,44 +282,51 @@
         <p class="section-lead">2 つのキャプチャ方法と 4 つの保存先。端末の外に出るものはありません。</p>
       </header>
 
-      <figure class="shot shot-flat reveal">
-        <img src="../assets/screenshots/kapture-chrome-0-4-7.png"
-             alt="Chrome で動作中の Kapture 0.4.7：サイドパネルがキャプチャ中のページの横にあります。"
-             width="2048" height="1280" loading="lazy" decoding="async">
+      <!-- ONE composition: the real Dotto capture on the left, the real 0.4.7
+           side panel on the right. The phases below replay the actual workflow.
+           Nothing here is a mock: both images come out of the shipped products. -->
+      <figure class="cap reveal" id="capDemo" data-phase="full">
+        <div class="cap-win">
+          <div class="cap-bar" aria-hidden="true">
+            <span class="cap-lights"><i></i><i></i><i></i></span>
+            <span class="cap-tab">Dotto</span>
+            <span class="cap-url">get.dot.io</span>
+          </div>
+
+          <div class="cap-body">
+            <div class="cap-page">
+              <img src="../assets/demo/page-dotto.jpg"
+                   alt="Chrome で開いた Web ページを Kapture が撮っているところ。"
+                   width="1280" height="1030" loading="lazy" decoding="async">
+              <span class="cap-scan" aria-hidden="true"></span>
+              <span class="cap-flash" aria-hidden="true"></span>
+              <span class="cap-shade" aria-hidden="true"></span>
+              <span class="cap-region" aria-hidden="true"><i>912 &times; 590</i></span>
+              <span class="cap-cursor" aria-hidden="true"></span>
+            </div>
+
+            <div class="cap-panel">
+              <img class="cap-p cap-p-full" src="../assets/demo/panel-light-full.png"
+                   alt="Full page に設定された Kapture のサイドパネル。"
+                   width="972" height="1400" loading="lazy" decoding="async">
+              <img class="cap-p cap-p-area" src="../assets/demo/panel-light-area.png"
+                   alt="Select area に設定された Kapture のサイドパネル。"
+                   width="972" height="1400" loading="lazy" decoding="async">
+              <span class="cap-hit cap-hit-mode" aria-hidden="true"></span>
+              <span class="cap-hit cap-hit-go" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <figcaption class="cap-steps">
+          <span data-for="full">Full page が選ばれています。</span>
+          <span data-for="scan">Capture page がドキュメント全体をスクロールします。</span>
+          <span data-for="kept">プロジェクトに保存され、8,000&nbsp;ピクセルごとに分割されます。</span>
+          <span data-for="area">パネルを Select area に切り替えます。</span>
+          <span data-for="draw">本当に必要な部分をドラッグします。</span>
+          <span data-for="crop">その範囲だけが撮られます。</span>
+        </figcaption>
       </figure>
-
-      <div class="modes">
-        <article class="mode-card reveal">
-          <!-- The real 0.4.7 panel, cross-fading between its own light and dark themes. -->
-          <div class="mode-shot mode-shot-theme" aria-hidden="true">
-            <img class="is-light" src="../assets/demo/panel-light-full.png" alt="" width="972" height="1400" loading="lazy" decoding="async">
-            <img class="is-dark" src="../assets/demo/panel-dark-full.png" alt="" width="972" height="1400" loading="lazy" decoding="async">
-            <span class="mode-tag">Light &amp; dark</span>
-          </div>
-          <h3>ページ全体</h3>
-          <ol class="mode-steps">
-            <li><span>1</span>プロジェクトフォルダを選んで <b>Capture page</b> を押します。</li>
-            <li><span>2</span>Kapture が表示範囲だけでなくドキュメント全体をスクロールします。</li>
-            <li><span>3</span>プロジェクトに保存。8,000&nbsp;ピクセルごとに分割されます。</li>
-          </ol>
-        </article>
-
-        <article class="mode-card reveal">
-          <!-- The same panel switched to Select area, showing the product's own guide. -->
-          <div class="mode-shot" aria-hidden="true">
-            <img src="../assets/demo/panel-light-area.png" alt="" width="972" height="1400" loading="lazy" decoding="async">
-            <span class="mode-tag">Select area</span>
-          </div>
-          <h3>範囲を選ぶ</h3>
-          <ol class="mode-steps">
-            <li><span>1</span>パネルを <b>Select area</b> に切り替えます。</li>
-            <li><span>2</span>ページ上をドラッグ。フリー、1:1、16:9、9:16 から選び、決める前に調整できます。</li>
-            <li><span>3</span>その範囲だけを、同じプロジェクトに保存します。</li>
-          </ol>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <!-- ============ FEATURES ============ -->
   <section class="section section-tight">
@@ -387,8 +395,8 @@
         <p class="kicker">Mac 版 Kapture Pro</p>
         <h2>散らばったスクリーンショットが、<br>やっと整理される。</h2>
         <p class="section-lead">
-          Kapture Pro は、すでに Mac に保存されているスクリーンショットを取り込み、
-          検索できるビジュアルな作業スペースに変えます。
+          Kapture Pro は Mac にすでにあるスクリーンショットを索引化し、検索できる
+          ビジュアルライブラリにします。ファイルは移動せず、アップロードもされず、ディスクから出ません。
         </p>
       </header>
 
@@ -401,14 +409,20 @@
           <div class="kp-bar"><span class="kp-lights"><i></i><i></i><i></i></span><span class="kp-title">Kapture Pro</span></div>
           <div class="kp-body">
             <aside class="kp-side">
-              <div class="kp-brand"><img src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128"><span>Kapture <b>Pro</b></span></div>
+              <div class="kp-brand"><img class="kp-appicon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128"><img class="kp-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="" width="843" height="233"><b>Pro</b></div>
               <p class="kp-sec">Library</p>
               <ul><li class="is-on"><span>All Captures</span><em>7</em></li><li><span>Recents</span><em>7</em></li><li><span>Favorites</span><em>2</em></li></ul>
-              <p class="kp-sec">Projects <i class="kp-new">+ New</i></p>
+              <p class="kp-sec">Projects <i class="kp-new"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>New</i></p>
               <ul><li><span>All Projects</span><em>3</em></li><li><span>Design Review</span><em>3</em></li><li><span>Competitor Research</span><em>2</em></li><li><span>Brand Refresh</span><em>2</em></li></ul>
-              <p class="kp-sec">Collections <i class="kp-new">+ New</i></p>
+              <p class="kp-sec">Collections <i class="kp-new"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>New</i></p>
               <ul><li><span>All Collections</span><em>0</em></li></ul>
-              <div class="kp-foot"><p class="kp-settings-row">Settings</p><p class="kp-store"><b>7 captures</b> indexed locally<br><span>24.1 MB in Kapture</span></p></div>
+              <div class="kp-foot">
+                <p class="kp-settings-row"><span class="kp-gear" aria-hidden="true"><svg viewBox="0 0 256 256"><path fill="currentColor" d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"/></svg></span>Settings</p>
+                <div class="kp-store">
+                  <span class="kp-drive" aria-hidden="true"></span>
+                  <div><b>7 captures indexed locally</b><span>24.1 MB in Kapture</span><span>318.4 GB free on Mac</span></div>
+                </div>
+              </div>
             </aside>
             <main class="kp-main">
               <div class="kp-head">
@@ -464,8 +478,44 @@
               </div>
             </aside>
           </div>
-          <div class="kp-sheet kp-sheet-project"><div class="kp-sheet-box"><h4>New Project</h4><p>Projects map to folders inside your Kapture folder.</p><label class="kp-field"><i>Name</i><b>Pricing Teardown</b></label><div class="kp-sheet-acts"><span>Cancel</span><span class="kp-go">Create Project</span></div></div></div>
-          <div class="kp-sheet kp-sheet-store"><div class="kp-sheet-box"><h4>Storage</h4><p>Kapture Pro reads the folder you chose. Nothing is uploaded.</p><dl class="kp-rows"><div><dt>Kapture folder</dt><dd>~/Downloads/Kapture</dd></div><div><dt>Indexed</dt><dd>7 captures</dd></div><div><dt>On disk</dt><dd>24.1 MB</dd></div><div><dt>Cloud sync</dt><dd>None</dd></div></dl></div></div>
+          <!-- The real New Project sheet from ProjectEditorView.swift: header and
+               explanation, live preview tile, Name field, icon grid, colour row,
+               Cancel / Create. -->
+          <div class="kp-sheet kp-sheet-project">
+            <div class="kp-sheet-box">
+              <h4>New Project</h4>
+              <p>Creates a folder inside your Kapture folder. Screenshots saved there appear in this project.</p>
+
+              <div class="kp-pv">
+                <span class="kp-pv-tile" aria-hidden="true"><svg viewBox="0 0 256 256"><path fill="currentColor" d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"/></svg></span>
+                <span class="kp-pv-text"><b>Pricing Teardown</b><i>Downloads / Kapture / Pricing Teardown</i></span>
+              </div>
+
+              <label class="kp-field"><i>Name</i><b>Pricing Teardown</b></label>
+
+              <p class="kp-field-lab">Icon</p>
+              <div class="kp-icons" aria-hidden="true">
+                <span class="is-on"><svg viewBox="0 0 256 256"><path fill="currentColor" d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"/></svg></span>
+                <span><svg viewBox="0 0 256 256"><path fill="currentColor" d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg></span>
+              </div>
+
+              <p class="kp-field-lab">Color</p>
+              <div class="kp-swatches" aria-hidden="true">
+                <span class="is-on" style="--sw:#2CC2B0"></span><span style="--sw:#5B9BF8"></span><span style="--sw:#A286F2"></span>
+                <span style="--sw:#EE77AE"></span><span style="--sw:#F2944F"></span><span style="--sw:#E9BE45"></span>
+                <span style="--sw:#5CC27F"></span><span style="--sw:#9AA19D"></span>
+              </div>
+
+              <div class="kp-sheet-acts"><span>Cancel</span><span class="kp-go">Create</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -478,48 +528,6 @@
         <li data-state="storage"><button type="button"><h3>ローカル保存</h3><p>クラウドも同期もアカウントも不要。手元のディスクを読むだけです。</p></button></li>
       </ul>
 
-      <p class="pro-statement reveal">
-        ファイルは元の場所にあるままです。<br>
-        <span>Kapture Pro は、それを見つけて整理する手助けをするだけです。</span>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="section" id="how">
-    <div class="shell">
-      <header class="section-head reveal">
-        <p class="kicker">使い方</p>
-        <h2>Chrome が撮って、<br>Mac が整える。</h2>
-      </header>
-
-      <!-- Onboarding-style storytelling: the captures fan out and settle, the
-           same visual language the app uses on first run. -->
-      <div class="fan reveal" aria-hidden="true">
-        <span class="fan-card"><img src="../assets/demo/thumb-4.png" alt="" loading="lazy" width="520" height="390"></span>
-        <span class="fan-card"><img src="../assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></span>
-        <span class="fan-card"><img src="../assets/demo/thumb-1.png" alt="" loading="lazy" width="520" height="390"></span>
-        <span class="fan-card"><img src="../assets/demo/thumb-3.png" alt="" loading="lazy" width="520" height="390"></span>
-        <span class="fan-card"><img src="../assets/demo/thumb-6.png" alt="" loading="lazy" width="520" height="390"></span>
-      </div>
-
-      <ol class="flow">
-        <li class="reveal">
-          <p class="flow-step">撮る</p>
-          <h3>Chrome で</h3>
-          <p>サイドパネルを開き、ページ全体か範囲を選んで、保存先のプロジェクトを決めます。</p>
-        </li>
-        <li class="reveal">
-          <p class="flow-step">保存</p>
-          <h3>Mac に</h3>
-          <p>ファイルは <code>Downloads/Kapture/</code> のプロジェクトへ直接、連番で保存されます。</p>
-        </li>
-        <li class="reveal">
-          <p class="flow-step">整理</p>
-          <h3>Kapture Pro で</h3>
-          <p>同じフォルダが、見渡して・タグを付けて・見比べられるライブラリとして開きます。</p>
-        </li>
-      </ol>
     </div>
   </section>
 
@@ -638,7 +646,6 @@
     <nav class="footer-nav" aria-label="フッター">
       <a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
-      <a href="#how">使い方</a>
       <a href="/ja/privacy/">プライバシー</a>
       <a href="mailto:pequelord@gmail.com">お問い合わせ</a>
     </nav>
@@ -658,6 +665,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=9"></script>
+<script src="../script.js?v=10"></script>
 </body>
 </html>

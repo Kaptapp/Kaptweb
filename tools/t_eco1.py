@@ -22,11 +22,11 @@ ECO1 = {
  'ja': 'aria-label="Mac 版 Kapture Pro。近日公開。"'},
 
 # ---------------------------------------------------------------- nav
-'<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">How it works</a>\n      <a href="#privacy">Privacy</a>': {
- 'es': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">Cómo funciona</a>\n      <a href="#privacy">Privacidad</a>',
- 'zh': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">使用方法</a>\n      <a href="#privacy">隐私</a>',
- 'ko': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">사용 방법</a>\n      <a href="#privacy">개인정보</a>',
- 'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">使い方</a>\n      <a href="#privacy">プライバシー</a>'},
+'<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Privacy</a>': {
+ 'es': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Privacidad</a>',
+ 'zh': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">隐私</a>',
+ 'ko': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">개인정보</a>',
+ 'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">プライバシー</a>'},
 
 # ---------------------------------------------------------------- hero
 'Chrome extension 0.4.7 &middot; Kapture Pro for Mac': {

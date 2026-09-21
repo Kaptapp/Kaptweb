@@ -195,11 +195,11 @@ ECO2 = {
  'ja': '<p class="cta-note">Kapture Pro の価格はまだ確定していません。サブスクではありません。</p>'},
 
 # ---------------------------------------------------------------- footer
-'<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">How it works</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>': {
- 'es': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">Cómo funciona</a>\n      <a href="/privacy/">Privacidad</a>\n      <a href="mailto:pequelord@gmail.com">Contacto</a>',
- 'zh': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">使用方法</a>\n      <a href="/privacy/">隐私</a>\n      <a href="mailto:pequelord@gmail.com">联系我们</a>',
- 'ko': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">사용 방법</a>\n      <a href="/privacy/">개인정보</a>\n      <a href="mailto:pequelord@gmail.com">문의</a>',
- 'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#how">使い方</a>\n      <a href="/privacy/">プライバシー</a>\n      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
+'<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>': {
+ 'es': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/privacy/">Privacidad</a>\n      <a href="mailto:pequelord@gmail.com">Contacto</a>',
+ 'zh': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/privacy/">隐私</a>\n      <a href="mailto:pequelord@gmail.com">联系</a>',
+ 'ko': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/privacy/">개인정보</a>\n      <a href="mailto:pequelord@gmail.com">문의</a>',
+ 'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/privacy/">プライバシー</a>\n      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
 }
 
 # ---- hero composition + Chrome section visual (added in the visual pass) ----

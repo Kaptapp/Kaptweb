@@ -43,6 +43,38 @@
     });
   });
 
+  /* ---- Kapture for Chrome: replay the real capture workflow ----
+     One composition, six phases. Full page is selected, Capture page runs the
+     sweep, the file is kept; then the panel switches to Select area, a region
+     is dragged, and only that region is captured. */
+  var cap = document.getElementById('capDemo');
+
+  if (cap) {
+    var capStill = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var capPhases = [
+      { name: 'full', hold: 2000 },
+      { name: 'scan', hold: 2300 },
+      { name: 'kept', hold: 1500 },
+      { name: 'area', hold: 1900 },
+      { name: 'draw', hold: 2100 },
+      { name: 'crop', hold: 2000 }
+    ];
+
+    if (capStill) {
+      // No sweep and no drag: hold the finished Select area state, which still
+      // shows both the panel and what it produced.
+      cap.setAttribute('data-phase', 'crop');
+    } else {
+      var capAt = 0;
+      var capStep = function () {
+        capAt = (capAt + 1) % capPhases.length;
+        cap.setAttribute('data-phase', capPhases[capAt].name);
+        window.setTimeout(capStep, capPhases[capAt].hold);
+      };
+      window.setTimeout(capStep, capPhases[0].hold);
+    }
+  }
+
   /* ---- Kapture Pro: the six controls switch the app to a real state ----
      Each control names a state; the component re-renders to it. No overlay,
      no highlight box: the screen itself changes. */

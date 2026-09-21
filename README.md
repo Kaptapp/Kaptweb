@@ -32,9 +32,10 @@ review on the deployed URL.
 ├── favicon-512x512.png   Large square for modern browsers and search
 ├── apple-touch-icon.png  180px, opaque, for iOS home screens
 └── assets/
-    ├── logo/             Supplied Kapture icon (source of truth)
+    ├── logo/             Supplied Kapture icon and wordmark (source of truth)
     ├── social/           1200×630 Open Graph image
-    └── screenshots/      Empty. Real extension screenshots go here
+    ├── demo/             Real panel renders, curated thumbnails, the captured page
+    └── screenshots/      Real product captures
 ```
 
 Every favicon is rendered from `assets/logo/kapture-icon.svg`, the supplied icon.
@@ -116,7 +117,7 @@ default and stays at the root.
 
 **The translated pages are generated, not hand-edited.** `index.html` and
 `privacy/index.html` are the source of truth for markup; the copy lives in
-`tools/t_*.py`. After changing either English page, or any translation, run:
+`tools/t_*.py`, where later tables override earlier ones (`t_fix.py` last). After changing either English page, or any translation, run:
 
 ```sh
 python3 tools/build_i18n.py
@@ -158,17 +159,26 @@ header and footer on every page. It is an outlined vector with no font dependenc
 it stays sharp at any pixel ratio. The icon (`kapture-icon.svg`) is still the favicon,
 app icon and Open Graph mark.
 
-`assets/screenshots/` holds the two product visuals the homepage renders:
+Every product visual comes from the shipped products. Nothing on the page is a
+mock-up, an illustration or an approximation.
 
 | File | Shows |
 | ---- | ----- |
-| `kapture-chrome-0-4-7.png` | Kapture 0.4.7 side panel in Chrome |
-| `kapture-pro-mac.png` | Kapture Pro library on macOS |
+| `screenshots/kapture-pro-curated.png` | The Kapture Pro window, hero layer |
+| `screenshots/kapture-chrome-0-4-7.png` | Kapture 0.4.7 in Chrome (structured data only) |
+| `demo/panel-light-full.png`, `panel-dark-full.png` | The 0.4.7 side panel, Full page, both themes |
+| `demo/panel-light-area.png`, `panel-dark-area.png` | The same panel switched to Select area |
+| `demo/page-dotto.jpg` | A real Kapture capture of a real webpage |
+| `demo/thumb-1…7.png` | The seven curated captures |
 
-**Both are placeholders right now.** Replace the files in place and the site picks
-them up. If the replacement is not 2400x1500, update the `width`/`height` attributes
-on the matching `<img>` in `index.html` and rerun `python3 tools/build_i18n.py`, or
-the reserved space will be the wrong shape.
+The seven curated captures are the set in
+`KapturePro/Assets/kapture_screenshots`. **Do not use the full library from
+`~/Downloads/Kapture`**: it is personal and it makes the product look cluttered.
+
+`kapture-pro-curated.png` is a render of the `.kp` component described below,
+not a photograph of a window. Regenerate it by rendering that markup at
+1024×514 with `--force-device-scale-factor=2`. If its size changes, update the
+`width`/`height` on the hero `<img>` and rerun `python3 tools/build_i18n.py`.
 
 ## Cache busting
 
@@ -179,7 +189,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=5`.
+`styles.css` or `script.js`.** Currently `v=10`.
 
 ## SEO and discoverability
 
@@ -246,18 +256,33 @@ Apex `kaptapp.com`, A records:
 Enable **Enforce HTTPS** once GitHub offers it. DNS propagation can take a while.
 Cloudflare is not needed.
 
-## Still to supply
+## The two animated compositions
 
-- **Real extension screenshots**: the hero currently uses a faithful HTML/CSS
-  recreation of the side panel. Drop real PNGs into `assets/screenshots/` and swap
-  the `.window` block in `index.html` for an `<img>` when they are available.
+Both are driven by one attribute that JavaScript steps through, so every state
+is expressible in CSS alone and the page still reads with scripting off.
 
-## Hero mock scaling
+**`#capDemo` (`data-phase`)** replays the real Chrome workflow across six
+phases: `full`, `scan`, `kept`, `area`, `draw`, `crop`. The left half is a real
+capture of a real page; the right half is the shipped 0.4.7 side panel, swapped
+between its Full page and Select area screenshots. Everything drawn on top (the
+sweep, the region, the cursor, the two control rings) is annotation over real
+pixels. `.cap-hit-go` and `.cap-hit-mode` are positioned in percentages over the
+panel screenshot, so they move if the panel render is ever replaced.
 
-Kapture only runs on the desktop, so the hero mock never reflows into a phone
-layout. It is laid out at a fixed design width (1040px, the shell's maximum
-content width) inside `.product-scaler`, and `fitMock()` in `script.js` scales
-it down as a single unit and sets the wrapper's height to match. The result is
-the same desktop composition at every viewport, the way a real screenshot of a
-desktop window behaves. Change `DESIGN_WIDTH` in `script.js` if the shell width
-ever changes.
+**`#kpDemo` (`data-state`)** is Kapture Pro rebuilt in HTML from the app's own
+`Brand.swift` tokens, real Phosphor icons out of `KapturePro/Assets/Icons`, and
+the real New Project sheet from `ProjectEditorView.swift`. The six controls in
+`#kpPoints` switch it between `library`, `search`, `projects`, `inspector`,
+`tags` and `storage`.
+
+**The window must never change size between states.** `.kp-body` has a fixed
+height and the three panes clip, so searching down to three results cannot make
+the page jump. Keep it that way: if you add a state, check the height rather
+than trusting it.
+
+Under `prefers-reduced-motion: reduce` neither composition cycles. `#capDemo`
+holds its finished `crop` state and `#kpDemo` stays on `library`.
+
+The Kapture Pro interface and the side-panel screenshots stay in English on
+every language version. Neither product is localised, so translating their
+interface would show software that does not exist.

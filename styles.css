@@ -358,120 +358,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   color: var(--text-muted);
 }
 
-/* ---------- Modes ---------- */
-.modes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(18px, 2.4vw, 26px);
-}
-
-.mode-card {
-  padding: clamp(22px, 3vw, 30px);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, var(--surface), var(--bg-deep));
-  transition: border-color .25s var(--ease), transform .25s var(--ease);
-}
-.mode-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
-.mode-card h3 { margin-bottom: 10px; font-size: 22px; }
-.mode-card p { color: var(--text-dim); font-size: 16px; }
-
-@media (prefers-reduced-motion: reduce) {
-  .mode-card:hover { transform: none; }
-}
-
-.mode-art {
-  position: relative;
-  height: 190px;
-  margin-bottom: 24px;
-  border-radius: var(--radius);
-  background: var(--bg-deep);
-  border: 1px solid var(--line);
-  overflow: hidden;
-}
-.mode-art-page {
-  position: absolute;
-  inset: 16px;
-  display: grid;
-  gap: 9px;
-  grid-auto-rows: 12px;
-}
-.mode-art-page span { background: var(--surface-2); border-radius: 5px; }
-.mode-art-page span:nth-child(1) { background: rgba(25, 215, 192, .3); width: 55%; }
-.mode-art-page span:nth-child(2) { width: 88%; }
-.mode-art-page span:nth-child(3) { width: 72%; }
-.mode-art-page span:nth-child(4) { grid-row: span 3; }
-.mode-art-page span:nth-child(5) { width: 80%; }
-.mode-art-page span:nth-child(6) { width: 60%; }
-.mode-art-page.dim { opacity: .38; }
-
-.mode-art-frame {
-  position: absolute;
-  inset: 9px;
-  border: 2px solid var(--teal);
-  border-radius: 12px;
-  box-shadow: 0 0 0 4px rgba(25, 215, 192, .1), 0 0 32px rgba(25, 215, 192, .2) inset;
-}
-
-.mode-art-selection {
-  position: absolute;
-  left: 18%; top: 26%;
-  width: 58%; height: 46%;
-  animation: select-settle 4.4s var(--ease) infinite;
-  border: 2px solid var(--teal);
-  border-radius: 8px;
-  background: rgba(25, 215, 192, .1);
-}
-.mode-art-selection .h {
-  position: absolute;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--teal);
-}
-/* Cursor holding the bottom-right handle, nudging it very slightly. */
-.mode-art-cursor {
-  position: absolute;
-  right: -20px;
-  bottom: -29px;
-  width: 26px;
-  color: var(--text);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .55));
-  animation: drag-nudge 4.4s var(--ease) infinite;
-}
-.mode-art-cursor svg {
-  width: 100%;
-  height: auto;
-  fill: currentColor;
-  stroke: var(--bg-deep);
-  stroke-width: 1.4;
-  stroke-linejoin: round;
-}
-@keyframes select-settle {
-  0%, 100% { width: 58%; height: 46%; }
-  45%      { width: 60.5%; height: 49%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .mode-art-selection { animation: none; }
-}
-
-@keyframes drag-nudge {
-  0%, 100% { transform: translate(0, 0); }
-  45%      { transform: translate(5px, 4px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .mode-art-cursor { animation: none; }
-}
-
-.mode-art-selection .tl { left: -5px; top: -5px; }
-.mode-art-selection .tr { right: -5px; top: -5px; }
-.mode-art-selection .bl { left: -5px; bottom: -5px; }
-.mode-art-selection .br {
-  right: -5px; bottom: -5px;
-  width: 11px; height: 11px;
-  margin: 1px -1px -1px 0;
-  box-shadow: 0 0 0 4px rgba(25, 215, 192, .18);
-}
-
 /* ---------- Feature grid ---------- */
 .grid {
   display: grid;
@@ -1031,47 +917,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .pro-points h3 { margin-bottom: 8px; font-size: 18.5px; }
 .pro-points p { font-size: 15.5px; color: var(--text-dim); }
 
-.pro-statement {
-  margin-top: clamp(44px, 6vw, 72px);
-  font-size: clamp(21px, 3vw, 30px);
-  font-weight: 620;
-  letter-spacing: -.025em;
-  line-height: 1.25;
-  max-width: 36ch;
-}
-.pro-statement span { color: var(--text-muted); }
-
-/* ---------- Workflow ---------- */
-.flow {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: clamp(28px, 4vw, 48px);
-}
-.flow li { position: relative; border-top: 1px solid var(--line); padding-top: 22px; }
-/* the connector reads as a handoff, not a technical diagram */
-.flow li + li::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: calc(-1 * clamp(28px, 4vw, 48px) / 2 - 4px);
-  width: 8px; height: 8px;
-  border-top: 1px solid var(--teal);
-  border-right: 1px solid var(--teal);
-  transform: translateY(-50%) rotate(45deg);
-}
-@media (max-width: 700px) { .flow li + li::before { display: none; } }
-.flow-step {
-  margin-bottom: 12px;
-  font-size: 12.5px;
-  font-weight: 650;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--teal);
-}
-.flow h3 { margin-bottom: 9px; font-size: 21px; }
-.flow p { font-size: 16px; color: var(--text-dim); }
-.flow code { font-size: .92em; }
-
 /* ---------- Two-product choice ---------- */
 .cta-head { max-width: none; margin-bottom: clamp(40px, 5vw, 60px); text-align: center; }
 .cta-head h2 { font-size: clamp(32px, 5vw, 52px); }
@@ -1152,55 +997,19 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 @media (max-width: 760px) {
   .hero-stage { padding-right: 0; display: grid; justify-items: center; gap: 20px; }
   .hero-stage-mac { width: 100%; }
-  .hero-stage-chrome { position: static; width: 60%; transform: none; }
-  .hero-stage figcaption { margin-top: 4px; }
+  /* relative, never static: the dark panel layer is absolute, so this element
+     has to stay its containing block once the stage stops being absolute. */
+  .hero-stage-chrome {
+    position: relative;   /* never static: it is the dark layer's containing block */
+    top: auto; right: auto; transform: none;
+    width: 60%;
+  }
+  /* A centred grid item is fit-content by default, which lets a long caption
+     size itself past the column. Stretch it so it can only wrap. */
+  .hero-stage figcaption { justify-self: stretch; max-width: 100%; margin-top: 4px; }
 }
 @media (max-width: 420px) {
   .hero-stage-chrome { width: 72%; }
-}
-
-/* The Chrome section visual is deliberately flat and full width, so the three
-   product moments on the page do not all get the same treatment. */
-.shot-flat { margin-top: clamp(36px, 5vw, 56px); }
-.shot-flat img { border-radius: var(--radius); }
-
-/* ---------- Capture-flow highlight ----------
-   A soft teal focus ring that steps over three real regions of the panel
-   screenshot: project folder, Capture page, then the newest history row. It
-   annotates the real UI rather than animating invented interface. */
-/* On desktop .hero-stage-chrome is already absolute, which is enough of a
-   containing block. Only the stacked layout needs positioning added back. */
-.flow-focus {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.flow-focus i {
-  position: absolute;
-  left: 3.5%;
-  width: 93%;
-  border-radius: 9px;
-  border: 2px solid var(--teal);
-  background: rgba(25, 215, 192, .12);
-  box-shadow: 0 0 0 4px rgba(25, 215, 192, .10), 0 0 26px rgba(25, 215, 192, .35);
-  animation: capture-flow 7.5s var(--ease) infinite;
-}
-/* Percentages map to the real panel: folder row, capture button, first history card. */
-@keyframes capture-flow {
-  0%, 6%    { top: 10.6%; height: 4.4%; opacity: 0; }
-  10%, 26%  { top: 10.6%; height: 4.4%; opacity: 1; }
-  32%, 50%  { top: 16.4%; height: 5.6%; opacity: 1; }
-  56%, 76%  { top: 45.5%; height: 7.6%; opacity: 1; }
-  84%, 100% { top: 45.5%; height: 7.6%; opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) { .flow-focus { display: none; } }
-/* Stacked layout keeps the ring aligned to the same image. */
-@media (max-width: 760px) {
-  .hero-stage-chrome { position: relative; }
-  .flow-focus { border-radius: var(--radius); }
 }
 
 /* ---------- Hero product labels ----------
@@ -1239,32 +1048,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   .stage-label { position: static; margin-bottom: 10px; }
 }
 
-/* ---------- Chrome mode flows ----------
-   Each mode explains its own sequence instead of a single static paragraph. */
-.modes { margin-top: clamp(52px, 7vw, 88px); }   /* was touching the screenshot */
-.mode-steps { display: grid; gap: 12px; }
-.mode-steps li {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 12px;
-  align-items: start;
-  font-size: 15.5px;
-  color: var(--text-dim);
-}
-.mode-steps li span {
-  display: grid;
-  place-items: center;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  border: 1px solid rgba(25, 215, 192, .35);
-  background: rgba(25, 215, 192, .1);
-  color: var(--teal);
-  font-size: 12px;
-  font-weight: 680;
-}
-.mode-steps b { color: var(--text); font-weight: 650; white-space: nowrap; }
-
-
 /* ==========================================================================
    Kapture Pro, rebuilt in HTML. Colours come from the app's Brand.swift dark
    values; proportions are matched to a capture of the running build. The six
@@ -1292,7 +1075,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .kp-lights i { width: 9px; height: 9px; border-radius: 50%; background: #3a3f3d; }
 .kp-title { font-size: 11.5px; color: #8b9490; }
 
-.kp-body { display: grid; grid-template-columns: 172px 1fr 200px; min-height: 430px; }
+.kp-body { display: grid; grid-template-columns: 186px 1fr 200px; height: 480px; }
 
 /* sidebar: Brand.sidebarBackground dark */
 .kp-side {
@@ -1301,16 +1084,26 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   padding: 12px 10px;
   display: flex; flex-direction: column;
 }
-.kp-brand { display: flex; align-items: center; gap: 7px; padding: 2px 4px 14px; }
-.kp-brand img { width: 18px; height: 18px; border-radius: 5px; }
-.kp-brand span { font-size: 12.5px; font-weight: 640; letter-spacing: -.01em; }
-.kp-brand b { color: #2CC2B0; font-weight: 640; }
+/* BrandLockup: the app icon, the supplied wordmark, then "Pro" in teal.
+   Sizes follow BrandWordmark.swift (icon = wordmark height x1.45). */
+.kp-brand { display: flex; align-items: baseline; gap: 7px; padding: 2px 4px 15px; }
+.kp-appicon { width: 19px; height: 19px; align-self: center; border-radius: 5px; flex: none; }
+.kp-wordmark { height: 13px; width: auto; align-self: center; }
+.kp-brand b { color: #2CC2B0; font-weight: 640; font-size: 10.5px; align-self: center; }
 .kp-sec {
   display: flex; align-items: center; justify-content: space-between;
   margin: 12px 4px 5px; font-size: 9.5px; letter-spacing: .1em;
   text-transform: uppercase; color: #6f7874;
 }
-.kp-new { font-style: normal; color: #2CC2B0; font-size: 9.5px; }
+/* SidebarAddButton: a teal capsule, not a text link. */
+.kp-new {
+  display: inline-flex; align-items: center; gap: 3px;
+  height: 15px; padding: 0 7px; border-radius: 999px;
+  background: rgba(44, 194, 176, .12); color: #2CC2B0;
+  font-style: normal; font-size: 9px; font-weight: 650;
+  letter-spacing: 0; text-transform: none;
+}
+.kp-new svg { width: 7.5px; height: 7.5px; flex: none; }
 .kp-side ul { display: grid; gap: 1px; }
 .kp-side li {
   display: flex; align-items: center; justify-content: space-between;
@@ -1319,10 +1112,24 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .kp-side li em { font-style: normal; color: #6f7874; font-size: 10.5px; }
 .kp-side li.is-on { background: rgba(44, 194, 176, .14); color: #2CC2B0; }
 .kp-side li.is-on em { color: #2CC2B0; }
-.kp-foot { margin-top: auto; padding: 10px 6px 2px; border-top: 1px solid rgba(255,255,255,.07); }
-.kp-settings-row { font-size: 11.5px; color: #c3cac7; margin-bottom: 8px; }
-.kp-store { font-size: 10px; color: #6f7874; }
-.kp-store b { color: #c3cac7; font-weight: 600; }
+.kp-foot {
+  margin-top: auto; padding: 9px 7px 4px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-radius: 8px;
+  transition: background-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.kp-settings-row { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: #c3cac7; margin-bottom: 9px; }
+.kp-gear { width: 12px; height: 12px; flex: none; display: grid; place-items: center; }
+.kp-gear svg { width: 100%; height: 100%; }
+.kp-store { display: flex; gap: 8px; font-size: 9.5px; color: #6f7874; }
+.kp-store b { display: block; color: #c3cac7; font-weight: 600; font-size: 9.5px; margin-bottom: 2px; white-space: nowrap; }
+.kp-store span { display: block; }
+.kp-drive {
+  width: 12px; height: 9px; flex: none; margin-top: 2px;
+  border: 1.4px solid #6f7874; border-radius: 2px;
+  position: relative;
+}
+.kp-drive::after { content: ""; position: absolute; right: 1.5px; top: 2px; width: 2px; height: 2px; border-radius: 50%; background: #6f7874; }
 
 /* content */
 .kp-main { padding: 14px 16px; min-width: 0; }
@@ -1431,15 +1238,24 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .kp-demo[data-state="search"] .kp-q::after { content: "design"; color: #ECEFEE; }
 .kp-demo[data-state="search"] .kp-q { font-size: 0; }
 .kp-demo[data-state="search"] .kp-q::after { font-size: 10.5px; }
+/* The three matches stay in place; the library area keeps its size because
+   .kp-grid fills the fixed window, so nothing reflows. */
 .kp-demo[data-state="search"] .kp-card[data-match="other"] { display: none; }
 .kp-demo[data-state="search"] .kp-chips span:first-child::after { content: " → 3"; }
 .kp-demo[data-state="projects"] .kp-sheet-project { display: grid; }
 .kp-demo[data-state="projects"] .kp-sec .kp-new { color: #ECEFEE; }
-.kp-demo[data-state="storage"] .kp-sheet-store { display: grid; }
-.kp-demo[data-state="storage"] .kp-settings-row { color: #2CC2B0; }
+.kp-demo[data-state="storage"] .kp-foot {
+  background: rgba(44, 194, 176, .10);
+  box-shadow: 0 0 0 1px rgba(44, 194, 176, .5);
+}
+.kp-demo[data-state="storage"] .kp-settings-row,
+.kp-demo[data-state="storage"] .kp-store b { color: #2CC2B0; }
+.kp-demo[data-state="storage"] .kp-store span { color: #a9b1ad; }
+.kp-demo[data-state="storage"] .kp-drive { border-color: #2CC2B0; }
+.kp-demo[data-state="storage"] .kp-drive::after { background: #2CC2B0; }
 
 /* the six controls */
-#kpPoints { grid-template-columns: repeat(3, 1fr); gap: 0 10px; margin-top: clamp(26px, 3vw, 36px); }
+#kpPoints { grid-template-columns: repeat(3, 1fr); gap: 0 10px; margin-top: clamp(56px, 7vw, 92px); }
 #kpPoints li { border-top: 1px solid var(--line); padding-top: 0; }
 #kpPoints button {
   display: block; width: 100%; padding: 14px 12px;
@@ -1453,13 +1269,13 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 #kpPoints li.is-active h3 { color: var(--teal); }
 
 @media (max-width: 900px) {
-  .kp-body { grid-template-columns: 150px 1fr; }
+  .kp-body { grid-template-columns: 168px 1fr; height: 560px; }
   .kp-insp { display: none; }
   .kp-grid { grid-template-columns: repeat(3, 1fr); }
   #kpPoints { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 620px) {
-  .kp-body { grid-template-columns: 1fr; }
+  .kp-body { grid-template-columns: 1fr; height: 520px; }
   .kp-side { display: none; }
   .kp-grid { grid-template-columns: repeat(2, 1fr); }
   #kpPoints { grid-template-columns: 1fr; }
@@ -1468,90 +1284,292 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   .kp-card, .kp-search, #kpPoints button, #kpPoints h3 { transition: none; }
 }
 
-/* ---------- Chrome modes: real panel states, not abstractions ---------- */
-.mode-shot {
-  position: relative;
-  height: 210px;
-  margin-bottom: 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-deep);
-  overflow: hidden;
-}
-.mode-shot img {
+/* ==========================================================================
+   Hero: the side panel cross-fades between its own two themes
+   Both frames are renders of the shipped 0.4.7 panel. It is the only thing
+   that moves in the hero, so the composition still reads as a screenshot.
+   ========================================================================== */
+.hero-stage-chrome { isolation: isolate; }   /* stays positioned at every width */
+.hero-panel-dark {
   position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 78%;
-  height: auto;
-  border-radius: 10px 10px 0 0;
+  inset: 0;
+  opacity: 0;
+  animation: hero-theme 11s var(--ease) infinite;
 }
-/* light and dark are the product's own two themes, cross-fading */
-.mode-shot-theme .is-dark { opacity: 0; animation: theme-swap 9s var(--ease) infinite; }
-.mode-shot-theme .is-light { animation: theme-swap-out 9s var(--ease) infinite; }
-@keyframes theme-swap     { 0%, 42% { opacity: 0; } 52%, 92% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes theme-swap-out { 0%, 42% { opacity: 1; } 52%, 92% { opacity: 0; } 100% { opacity: 1; } }
-.mode-tag {
-  position: absolute;
-  left: 12px; bottom: 12px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(25, 215, 192, .3);
-  background: rgba(23, 25, 24, .9);
-  font-size: 11px;
-  font-weight: 620;
-  color: var(--teal);
-}
+.hero-panel-light { animation: hero-theme-out 11s var(--ease) infinite; }
+@keyframes hero-theme     { 0%, 40% { opacity: 0; } 48%, 90% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes hero-theme-out { 0%, 40% { opacity: 1; } 48%, 90% { opacity: 0; } 98%, 100% { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-  .mode-shot-theme .is-dark, .mode-shot-theme .is-light { animation: none; }
-  .mode-shot-theme .is-dark { opacity: 0; }
+  .hero-panel-dark { display: none; }
+  .hero-panel-light { animation: none; }
 }
 
-/* ---------- How it works: onboarding-style fan ----------
-   Echoes the app's first-run screen, where captures fan out and settle. */
-.fan {
-  position: relative;
-  height: 190px;
-  margin: 0 auto clamp(40px, 5vw, 64px);
-  max-width: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* The labels are helpful at desktop width and noise once the pair stacks. */
+@media (max-width: 900px) {
+  .stage-label { display: none; }
 }
-.fan-card {
-  position: absolute;
-  width: 168px;
-  border-radius: 10px;
-  overflow: hidden;
+
+
+/* ==========================================================================
+   Kapture for Chrome: one composition, the real workflow
+   Left, a real Kapture capture of a real page. Right, the shipped 0.4.7 side
+   panel. Six phases replay what the extension actually does: full page, then
+   select area. Everything drawn on top is annotation over real pixels.
+   ========================================================================== */
+.cap { margin: clamp(40px, 5vw, 64px) 0 0; }   /* drop the UA figure margin */
+.cap-win {
   border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   background: var(--bg-deep);
-  box-shadow: 0 18px 44px -18px rgba(0, 0, 0, .85);
-  transform-origin: bottom center;
-  animation: fan-settle 900ms var(--ease) both;
+  box-shadow: 0 44px 100px -44px rgba(0, 0, 0, .85);
 }
-.fan-card img { display: block; width: 100%; height: auto; }
-.fan-card:nth-child(1) { transform: translateX(-214px) rotate(-11deg); animation-delay: 0ms;   z-index: 1; }
-.fan-card:nth-child(2) { transform: translateX(-108px) rotate(-5.5deg); animation-delay: 70ms;  z-index: 2; }
-.fan-card:nth-child(3) { transform: translateX(0)      rotate(0deg);   animation-delay: 140ms; z-index: 3; }
-.fan-card:nth-child(4) { transform: translateX(108px)  rotate(5.5deg);  animation-delay: 210ms; z-index: 2; }
-.fan-card:nth-child(5) { transform: translateX(214px)  rotate(11deg);  animation-delay: 280ms; z-index: 1; }
-@keyframes fan-settle {
-  from { opacity: 0; transform: translateX(0) rotate(0deg) translateY(16px) scale(.94); }
+.cap-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 14px;
+  background: #151817;
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+  font-size: 11.5px; color: var(--text-muted);
 }
-@media (max-width: 760px) {
-  .fan { height: 140px; max-width: 380px; }
-  .fan-card { width: 120px; }
-  .fan-card:nth-child(1) { transform: translateX(-152px) rotate(-11deg); }
-  .fan-card:nth-child(2) { transform: translateX(-76px)  rotate(-5.5deg); }
-  .fan-card:nth-child(4) { transform: translateX(76px)   rotate(5.5deg); }
-  .fan-card:nth-child(5) { transform: translateX(152px)  rotate(11deg); }
+.cap-lights { display: flex; gap: 6px; flex: none; }
+.cap-lights i { width: 9px; height: 9px; border-radius: 50%; background: #3a3f3d; }
+.cap-tab {
+  padding: 3px 12px; border-radius: 6px;
+  background: rgba(255, 255, 255, .06); color: var(--text-dim);
 }
-@media (max-width: 460px) {
-  .fan { height: 118px; max-width: 300px; }
-  .fan-card { width: 96px; }
-  .fan-card:nth-child(1) { transform: translateX(-120px) rotate(-11deg); }
-  .fan-card:nth-child(2) { transform: translateX(-60px)  rotate(-5.5deg); }
-  .fan-card:nth-child(4) { transform: translateX(60px)   rotate(5.5deg); }
-  .fan-card:nth-child(5) { transform: translateX(120px)  rotate(11deg); }
+.cap-url {
+  flex: 1;
+  padding: 3px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .07);
 }
-@media (prefers-reduced-motion: reduce) { .fan-card { animation: none; } }
+
+.cap-body { display: grid; grid-template-columns: 1fr 30%; }
+
+/* ---- the page being captured ---- */
+/* align-self: start keeps the row height driven by this box's own ratio, so the
+   panel beside it stretches to match instead of setting the height itself. */
+.cap-page {
+  position: relative;
+  align-self: start;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0f1110;
+}
+.cap-page > img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* the capture sweep: a teal line travelling top to bottom, with the part it
+   has already read tinted behind it */
+.cap-scan {
+  position: absolute; left: 0; right: 0; top: 0;
+  height: 100%;
+  opacity: 0;
+  background:
+    linear-gradient(180deg, rgba(25, 215, 192, .12), rgba(25, 215, 192, .02) 88%, transparent);
+  border-bottom: 2px solid var(--teal);
+  box-shadow: 0 6px 26px rgba(25, 215, 192, .45);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.cap-flash {
+  position: absolute; inset: 0;
+  border: 2px solid var(--teal);
+  border-radius: 2px;
+  box-shadow: 0 0 44px rgba(25, 215, 192, .3) inset;
+  opacity: 0;
+}
+
+/* the selected region, and the shade over everything outside it */
+.cap-shade { position: absolute; inset: 0; background: rgba(8, 10, 9, .62); opacity: 0; }
+.cap-region {
+  position: absolute;
+  left: 8%; top: 14%;
+  width: 0; height: 0;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  box-shadow: 0 0 0 100vmax rgba(8, 10, 9, .6);
+  opacity: 0;
+}
+.cap-region i {
+  position: absolute; left: 0; bottom: -26px;
+  padding: 2px 8px; border-radius: 5px;
+  background: var(--teal); color: #0f1615;
+  font-style: normal; font-size: 11px; font-weight: 650;
+  white-space: nowrap;
+}
+.cap-cursor {
+  position: absolute;
+  left: 8%; top: 14%;
+  width: 14px; height: 18px;
+  opacity: 0;
+  background: #fff;
+  clip-path: polygon(0 0, 0 100%, 27% 74%, 46% 100%, 66% 88%, 47% 62%, 100% 58%);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .6));
+}
+
+/* ---- the real side panel ---- */
+.cap-panel {
+  position: relative;
+  border-left: 1px solid rgba(255, 255, 255, .07);
+  background: #f7f8f7;
+  overflow: hidden;
+}
+.cap-p {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.cap-p-area { opacity: 0; }
+
+/* the two real controls the sequence touches, located over the screenshot */
+.cap-hit {
+  position: absolute;
+  border-radius: 8px;
+  border: 2px solid var(--teal);
+  box-shadow: 0 0 0 4px rgba(25, 215, 192, .16);
+  opacity: 0;
+}
+.cap-hit-go   { left: 6.2%; top: 40.1%; width: 90.5%; height: 5.4%; }
+.cap-hit-mode { left: 50%;  top: 15.4%; width: 44%;   height: 5.3%; }
+
+/* ---- the phases ---- */
+.cap[data-phase="scan"] .cap-scan  { opacity: 1; animation: cap-sweep 1.6s linear forwards; }
+.cap[data-phase="scan"] .cap-hit-go { opacity: 1; }
+.cap[data-phase="kept"] .cap-flash { animation: cap-flash 1.1s var(--ease) forwards; }
+
+.cap[data-phase="area"] .cap-p-area,
+.cap[data-phase="draw"] .cap-p-area,
+.cap[data-phase="crop"] .cap-p-area { opacity: 1; }
+.cap[data-phase="area"] .cap-p-full,
+.cap[data-phase="draw"] .cap-p-full,
+.cap[data-phase="crop"] .cap-p-full { opacity: 0; }
+.cap[data-phase="area"] .cap-hit-mode { opacity: 1; }
+
+.cap[data-phase="draw"] .cap-cursor,
+.cap[data-phase="crop"] .cap-cursor { opacity: 1; transform: translate(58%, 46%); }
+.cap[data-phase="draw"] .cap-cursor { animation: cap-drag 1.5s var(--ease) forwards; }
+.cap[data-phase="draw"] .cap-region { opacity: 1; animation: cap-draw 1.5s var(--ease) forwards; }
+.cap[data-phase="crop"] .cap-region { opacity: 1; width: 62%; height: 50%; }
+.cap-p, .cap-hit, .cap-region, .cap-cursor { transition: opacity .35s var(--ease); }
+
+@keyframes cap-sweep { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cap-flash { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes cap-draw  { from { width: 0; height: 0; } to { width: 62%; height: 50%; } }
+@keyframes cap-drag  { from { transform: translate(0, 0); } to { transform: translate(58%, 46%); } }
+
+/* ---- the caption tracks the phase ---- */
+.cap-steps {
+  position: relative;
+  display: grid;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+.cap-steps span {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+.cap-steps span b { color: var(--text); font-weight: 650; }
+.cap[data-phase="full"] [data-for="full"],
+.cap[data-phase="scan"] [data-for="scan"],
+.cap[data-phase="kept"] [data-for="kept"],
+.cap[data-phase="area"] [data-for="area"],
+.cap[data-phase="draw"] [data-for="draw"],
+.cap[data-phase="crop"] [data-for="crop"] { opacity: 1; }
+
+@media (max-width: 900px) {
+  .cap-body { grid-template-columns: 1fr 36%; }
+  .cap-tab { display: none; }
+}
+@media (max-width: 620px) {
+  .cap-page { aspect-ratio: 1 / 1; }
+  .cap-body { grid-template-columns: 1fr 42%; }
+  .cap-region i { font-size: 10px; bottom: -22px; }
+}
+
+/* Reduced motion: no sweep, no drag. The composition holds the finished
+   Select area state, which still explains the product. */
+@media (prefers-reduced-motion: reduce) {
+  .cap-scan, .cap-flash, .cap-cursor { display: none; }
+  .cap-p, .cap-hit, .cap-region, .cap-steps span { transition: none; }
+  .cap[data-phase] .cap-region { animation: none; }
+}
+
+/* ==========================================================================
+   Kapture Pro, corrections
+   The window keeps one size across all six states, and the New Project sheet
+   is the real one from ProjectEditorView.swift rather than a stand-in.
+   ========================================================================== */
+
+/* A real window does not resize when you search it. The three panes clip
+   instead, so switching state never moves anything else on the page. */
+.kp-side, .kp-insp { overflow: hidden; }
+.kp-main { display: flex; flex-direction: column; overflow: hidden; }
+.kp-grid { flex: 1; align-content: start; overflow: hidden; }
+
+/* ---- New Project: header, live preview, name, icon grid, colours ---- */
+.kp-sheet-box { width: min(332px, 82%); padding: 15px 16px; }
+.kp-sheet-box > p { line-height: 1.45; }
+
+.kp-pv {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px; margin-bottom: 13px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .09);
+}
+.kp-pv-tile {
+  display: grid; place-items: center;
+  width: 30px; height: 30px; flex: none;
+  border-radius: 8px;
+  background: rgba(44, 194, 176, .16);
+  border: 1px solid rgba(44, 194, 176, .35);
+  color: #2CC2B0;
+}
+.kp-pv-tile svg { width: 17px; height: 17px; }
+.kp-pv-text { min-width: 0; }
+.kp-pv-text b { display: block; font-size: 11.5px; font-weight: 640; }
+.kp-pv-text i {
+  display: block; font-style: normal; font-size: 9px; color: #6f7874;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.kp-field-lab { font-size: 9.5px; font-weight: 650; color: #6f7874; margin-bottom: 6px; }
+
+.kp-icons { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; margin-bottom: 13px; }
+.kp-icons span {
+  display: grid; place-items: center;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .09);
+  color: #cfd5d2;
+}
+.kp-icons svg { width: 13px; height: 13px; }
+.kp-icons .is-on {
+  background: rgba(44, 194, 176, .16);
+  border-color: #2CC2B0;
+  color: #2CC2B0;
+}
+
+.kp-swatches { display: flex; gap: 8px; margin-bottom: 15px; }
+.kp-swatches span {
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--sw);
+}
+.kp-swatches .is-on { box-shadow: 0 0 0 2px #282B2A, 0 0 0 3.5px var(--sw); }
+
+@media (max-width: 620px) {
+  .kp-sheet-box { width: min(300px, 90%); }
+  .kp-icons { grid-template-columns: repeat(9, 1fr); gap: 4px; }
+}
