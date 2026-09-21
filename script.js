@@ -33,7 +33,9 @@
     var nodes = document.querySelectorAll('[' + state.attr + ']');
     Array.prototype.forEach.call(nodes, function (el) {
       el.setAttribute('aria-disabled', 'true');
-      el.setAttribute('title', state.title);
+      /* The aria-label is already localised in the markup, so the tooltip uses
+         it rather than the English fallback baked in above. */
+      el.setAttribute('title', el.getAttribute('aria-label') || state.title);
       el.addEventListener('click', function (event) {
         // Let the final CTA anchor scroll to its own explanatory note; block the rest.
         if (el.getAttribute('href') === '#cta' && el.closest('.cta-band')) {

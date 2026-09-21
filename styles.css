@@ -1472,7 +1472,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap-p-foot {
   flex: none;
   aspect-ratio: 1000 / 83;
-  background: url("assets/demo/panel-light-full.png?v=2") bottom center / 100% auto no-repeat;
+  background: url("assets/demo/panel-light-full.png?v=3") bottom center / 100% auto no-repeat;
 }
 .cap-panel::after {
   content: "";

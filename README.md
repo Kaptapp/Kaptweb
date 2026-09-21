@@ -211,7 +211,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=21`.
+`styles.css` or `script.js`.** Currently `v=23`.
 
 ## SEO and discoverability
 
@@ -327,3 +327,9 @@ and the panel reads as a box inside a box.
 The Kapture Pro interface and the side-panel screenshots stay in English on
 every language version. Neither product is localised, so translating their
 interface would show software that does not exist.
+
+Everything outside that interface is translated, attributes included. The
+"Soon" pill is a CSS `content` keyed off `html[lang]`, and the disabled Mac
+buttons take their tooltip from their own `aria-label`, which the build already
+localises. Do not hard-code that tooltip in `script.js` again: it silently
+reverts every language to English.
