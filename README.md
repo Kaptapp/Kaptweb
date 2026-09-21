@@ -211,7 +211,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=17`.
+`styles.css` or `script.js`.** Currently `v=18`.
 
 ## SEO and discoverability
 

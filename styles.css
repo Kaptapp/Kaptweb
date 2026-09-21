@@ -1391,8 +1391,16 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   position: absolute; left: 0; right: 0; top: 0;
   height: 100%;
   opacity: 0;
+  /* The stops sit on the scaled box, whose bottom edge rides with the beam, so
+     the wash is densest right behind the beam and thins out towards the top of
+     the page. The old gradient ran the other way: its strongest point was
+     pinned to the top of the page and the beam travelled with almost nothing
+     behind it, which is why the sweep read as a bare line. */
   background:
-    linear-gradient(180deg, rgba(25, 215, 192, .12), rgba(25, 215, 192, .02) 88%, transparent);
+    linear-gradient(180deg,
+      rgba(25, 215, 192, .05) 0%,
+      rgba(25, 215, 192, .11) 58%,
+      rgba(25, 215, 192, .30) 100%);
   transform: scaleY(0);
   transform-origin: top;
 }
@@ -1402,7 +1410,11 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   border-top: 2px solid var(--teal);
   opacity: 0;
   transform: translateY(0);
-  filter: drop-shadow(0 3px 14px rgba(25, 215, 192, .65));
+  /* a tight core and a wide soft halo, so the beam has depth rather than being
+     a flat hairline */
+  filter:
+    drop-shadow(0 0 6px rgba(25, 215, 192, .95))
+    drop-shadow(0 4px 22px rgba(25, 215, 192, .55));
 }
 /* the selected region, and the shade over everything outside it */
 .cap-region {
