@@ -85,4 +85,48 @@ FIX = {
  'ko': '<p class="plan-note">가격은 아직 확정되지 않았습니다. 1회 결제, 구독 없음.</p>',
  'ja': '<p class="plan-note">価格は未確定です。買い切りで、サブスクリプションはありません。</p>'},
 
+# ---------------------------------------------------------------- copy pass
+'''        Kapture saves full webpages or selected areas straight from Chrome.
+        Kapture Pro turns them into an organised, searchable visual library on your Mac.''': {
+ 'es': '''        Kapture guarda páginas web completas o el área que elijas, directamente desde Chrome.
+        Kapture Pro las convierte en una biblioteca visual ordenada y con búsqueda en tu Mac.''',
+ 'zh': '''        Kapture 直接在 Chrome 里保存整张网页或你框选的区域。
+        Kapture Pro 把它们变成 Mac 上一个井井有条、可搜索的可视化图库。''',
+ 'ko': '''        Kapture는 Chrome에서 바로 전체 웹페이지나 선택한 영역을 저장합니다.
+        Kapture Pro는 그것들을 Mac 안에서 정돈되고 검색 가능한 시각적 라이브러리로 만듭니다.''',
+ 'ja': '''        Kapture は Chrome から直接、Web ページ全体や選んだ範囲を保存します。
+        Kapture Pro はそれらを Mac 上の整理された、検索できるビジュアルライブラリにします。'''},
+
+'<p class="section-lead">Capture a complete webpage or select exactly the area you need. Save it locally as PNG, JPEG or PDF.</p>': {
+ 'es': '<p class="section-lead">Captura una página web completa o selecciona justo el área que necesitas. Guárdala en local como PNG, JPEG o PDF.</p>',
+ 'zh': '<p class="section-lead">截取整张网页，或只框选你需要的那块区域。以 PNG、JPEG 或 PDF 保存在本地。</p>',
+ 'ko': '<p class="section-lead">웹페이지 전체를 캡처하거나 필요한 영역만 정확히 선택하세요. PNG, JPEG, PDF로 로컬에 저장됩니다.</p>',
+ 'ja': '<p class="section-lead">Web ページ全体を撮るか、必要な範囲だけを選びます。PNG、JPEG、PDF でローカルに保存できます。</p>'},
+
+'<li data-mode="full"><h3>Full page</h3><p>Kapture scrolls the page from top to bottom and saves the complete webpage.</p></li>': {
+ 'es': '<li data-mode="full"><h3>Página completa</h3><p>Kapture recorre la página de arriba abajo y guarda la web entera.</p></li>',
+ 'zh': '<li data-mode="full"><h3>整页截取</h3><p>Kapture 从上到下滚动页面，保存完整的网页。</p></li>',
+ 'ko': '<li data-mode="full"><h3>전체 페이지</h3><p>Kapture가 페이지를 위에서 아래까지 스크롤해 웹페이지 전체를 저장합니다.</p></li>',
+ 'ja': '<li data-mode="full"><h3>ページ全体</h3><p>Kapture がページを上から下までスクロールし、Web ページ全体を保存します。</p></li>'},
+
+'<li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need and save only that part.</p></li>': {
+ 'es': '<li data-mode="area"><h3>Selecciona un área</h3><p>Dibuja justo sobre lo que necesitas y guarda solo esa parte.</p></li>',
+ 'zh': '<li data-mode="area"><h3>框选区域</h3><p>在你真正需要的地方拖出选框，只保存那一部分。</p></li>',
+ 'ko': '<li data-mode="area"><h3>영역 선택</h3><p>필요한 부분만 정확히 드래그해서 그 부분만 저장합니다.</p></li>',
+ 'ja': '<li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグして、その部分だけを保存します。</p></li>'},
+
+'<h2>Built for the screenshot<br>you actually needed.</h2>': {
+ 'es': '<h2>Hecho para la captura<br>que de verdad necesitabas.</h2>',
+ 'zh': '<h2>为你真正需要的<br>那张截图而做。</h2>',
+ 'ko': '<h2>정말 필요했던<br>그 스크린샷을 위해.</h2>',
+ 'ja': '<h2>本当に必要だった<br>その一枚のために。</h2>'},
+
+# The meta description repeated the same 'captures / captures' wording the hero
+# used, so it moves with it.
+'Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your Mac. Everything stays local.': {
+ 'es': 'Kapture guarda páginas web completas o el área que elijas, directamente desde Chrome. Kapture Pro las convierte en una biblioteca visual ordenada y con búsqueda en tu Mac. Todo se queda en local.',
+ 'zh': 'Kapture 直接在 Chrome 里保存整张网页或你框选的区域。Kapture Pro 把它们变成 Mac 上一个井井有条、可搜索的可视化图库。一切都留在本地。',
+ 'ko': 'Kapture는 Chrome에서 바로 전체 웹페이지나 선택한 영역을 저장합니다. Kapture Pro는 그것들을 Mac 안에서 정돈되고 검색 가능한 시각적 라이브러리로 만듭니다. 모든 것이 기기 안에 남습니다.',
+ 'ja': 'Kapture は Chrome から直接、Web ページ全体や選んだ範囲を保存します。Kapture Pro はそれらを Mac 上の整理された、検索できるビジュアルライブラリにします。すべてローカルのままです。'},
+
 }

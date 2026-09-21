@@ -48,6 +48,17 @@
      sweep, the file is kept; then the panel switches to Select area, a region
      is dragged, and only that region is captured. */
   var cap = document.getElementById('capDemo');
+  var capPoints = document.getElementById('capPoints');
+
+  /* The two points below the composition name the state it is in. Colour only,
+     so stepping the animation never moves anything. */
+  var capMark = function (name) {
+    if (!capPoints) return;
+    var mode = (name === 'area' || name === 'draw' || name === 'crop') ? 'area' : 'full';
+    Array.prototype.forEach.call(capPoints.querySelectorAll('li[data-mode]'), function (li) {
+      li.classList.toggle('is-active', li.getAttribute('data-mode') === mode);
+    });
+  };
 
   if (cap) {
     var capStill = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -64,13 +75,16 @@
       // No sweep and no drag: hold the finished Select area state, which still
       // shows both the panel and what it produced.
       cap.setAttribute('data-phase', 'crop');
+      capMark('crop');
     } else {
       var capAt = 0;
       var capStep = function () {
         capAt = (capAt + 1) % capPhases.length;
         cap.setAttribute('data-phase', capPhases[capAt].name);
+        capMark(capPhases[capAt].name);
         window.setTimeout(capStep, capPhases[capAt].hold);
       };
+      capMark(capPhases[0].name);
       window.setTimeout(capStep, capPhases[0].hold);
     }
   }

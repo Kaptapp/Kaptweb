@@ -1488,6 +1488,23 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 @keyframes cap-draw  { from { width: 0; height: 0; } to { width: 70%; height: 41%; } }
 @keyframes cap-drag  { from { left: 15%; top: 12%; } to { left: 85%; top: 53%; } }
 
+/* ---- the two states the composition is replaying ----
+   Same type and rhythm as #kpPoints. The active one only shifts colour, so
+   nothing moves as the animation steps. */
+.cap-points {
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2.4vw, 30px) clamp(16px, 2vw, 28px);
+  margin-top: clamp(40px, 5vw, 64px);
+}
+/* type and inset copied from #kpPoints so the two lists read as one family */
+.cap-points li { padding: 14px 12px; }
+.cap-points h3 { margin-bottom: 5px; font-size: 17px; transition: color .3s var(--ease); }
+.cap-points p { font-size: 14.5px; color: var(--text-muted); }
+.cap-points li.is-active h3 { color: var(--teal); }
+@media (max-width: 900px) { .cap-points { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .cap-points { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .cap-points h3 { transition: none; } }
+
 /* ---- the caption tracks the phase ---- */
 .cap-steps {
   position: relative;
