@@ -191,7 +191,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=11`.
+`styles.css` or `script.js`.** Currently `v=12`.
 
 ## SEO and discoverability
 
@@ -285,6 +285,13 @@ than trusting it.
 
 Under `prefers-reduced-motion: reduce` neither composition cycles. `#capDemo`
 holds its finished `crop` state and `#kpDemo` stays on `library`.
+
+The hero panel cross-fades between the shipped panel's own light and dark
+renders. Its padded surround carries the **panel's own paper colour** and swaps
+on the same 11s timeline (`hero-frame` and `hero-theme` keyframes), so the
+gutter always belongs to the panel that is showing. Change one keyframe set and
+you must change the other, or one theme ends up framed in the other's colour
+and the panel reads as a box inside a box.
 
 The Kapture Pro interface and the side-panel screenshots stay in English on
 every language version. Neither product is localised, so translating their

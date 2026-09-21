@@ -22,8 +22,8 @@
   --teal-ink:      #08241f;
 
   --radius-sm:     10px;
-  --radius:        16px;
-  --radius-lg:     24px;
+  --radius:        12px;
+  --radius-lg:     18px;
 
   --shell:         1120px;
   --gutter:        clamp(20px, 5vw, 40px);
@@ -634,7 +634,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.privacy-art .pl-lock rect { fill: var(--bg-deep); }
+.privacy-art .pl-lock rect { fill: var(--teal); fill-opacity: .22; }
 
 @media (prefers-reduced-motion: reduce) {
   .privacy-art .pl-card,
@@ -960,29 +960,34 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   background: var(--bg-deep);
   box-shadow: 0 44px 100px -44px rgba(0, 0, 0, .85);
 }
-/* The panel sits in its own padded surface so the extension UI is never flush
-   against a border, and so the whole panel is visible rather than cropped. */
+/* The panel sits in a padded surface so the extension UI is never flush against
+   a border. The surface carries the *panel's own* paper colour and swaps with
+   it, so the gutter reads as part of the panel instead of a second box around
+   it, and light and dark are framed identically. */
 .hero-stage-chrome {
-  --panel-pad: clamp(8px, .8vw, 12px);
+  --panel-pad: clamp(9px, .9vw, 13px);
+  --panel-paper: #FAF9F6;          /* the light panel's own background */
+  --panel-edge: rgba(0, 0, 0, .18);
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-46%);
-  width: 27%;
+  width: 30%;
   padding: var(--panel-pad);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--panel-edge);
   border-radius: calc(var(--radius) + var(--panel-pad));
-  background: #101312;
+  background-color: var(--panel-paper);
   /* a touch more lift than the layer behind, so the overlap reads as depth */
   box-shadow: 0 30px 70px -26px rgba(0, 0, 0, .9);
+  animation: hero-frame 11s var(--ease) infinite;
 }
 .hero-stage-chrome img {
   display: block;
   width: 100%;
   height: auto;
   border: 0;
-  border-radius: var(--radius);
-  background: var(--bg-deep);
+  border-radius: calc(var(--radius) - 4px);
+  background: transparent;
   box-shadow: none;
 }
 .hero-stage figcaption {
@@ -1299,9 +1304,16 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .hero-panel-light { animation: hero-theme-out 11s var(--ease) infinite; }
 @keyframes hero-theme     { 0%, 40% { opacity: 0; } 48%, 90% { opacity: 1; } 98%, 100% { opacity: 0; } }
 @keyframes hero-theme-out { 0%, 40% { opacity: 1; } 48%, 90% { opacity: 0; } 98%, 100% { opacity: 1; } }
+/* Same timing as the cross-fade, so the gutter is never the wrong theme. */
+@keyframes hero-frame {
+  0%, 40%   { background-color: #FAF9F6; border-color: rgba(0, 0, 0, .18); }
+  48%, 90%  { background-color: #1F1F1D; border-color: rgba(255, 255, 255, .13); }
+  98%, 100% { background-color: #FAF9F6; border-color: rgba(0, 0, 0, .18); }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero-panel-dark { display: none; }
   .hero-panel-light { animation: none; }
+  .hero-stage-chrome { animation: none; }
 }
 
 /* The labels are helpful at desktop width and noise once the pair stacks. */
@@ -1344,7 +1356,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   border: 1px solid rgba(255, 255, 255, .07);
 }
 
-.cap-body { display: grid; grid-template-columns: 1fr 28%; }
+.cap-body { display: grid; grid-template-columns: 1fr 35%; }
 
 /* ---- the page being captured ---- */
 /* align-self: start keeps the row height driven by this box's own ratio, so the
@@ -1353,7 +1365,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   position: relative;
   align-self: start;
   width: 100%;
-  aspect-ratio: 16 / 9;   /* a real browser viewport, not a tall frame */
+  aspect-ratio: 13 / 10;   /* tall enough to read as a real page */
   overflow: hidden;
   background: #0f1110;
 }
@@ -1366,17 +1378,26 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 }
 
 /* the capture sweep: a teal line travelling top to bottom, with the part it
-   has already read tinted behind it */
+   has already read tinted behind it.
+   The line is its own element. Putting it on the tint's border meant scaleY
+   scaled the border away too, so the sweep appeared to begin part-way down
+   instead of at the very top of the page. */
 .cap-scan {
   position: absolute; left: 0; right: 0; top: 0;
   height: 100%;
   opacity: 0;
   background:
     linear-gradient(180deg, rgba(25, 215, 192, .12), rgba(25, 215, 192, .02) 88%, transparent);
-  border-bottom: 2px solid var(--teal);
-  box-shadow: 0 6px 26px rgba(25, 215, 192, .45);
   transform: scaleY(0);
   transform-origin: top;
+}
+.cap-line {
+  position: absolute; left: 0; right: 0; top: 0;
+  height: 100%;
+  border-top: 2px solid var(--teal);
+  opacity: 0;
+  transform: translateY(0);
+  filter: drop-shadow(0 3px 14px rgba(25, 215, 192, .65));
 }
 /* the selected region, and the shade over everything outside it */
 .cap-region {
@@ -1422,6 +1443,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 
 /* ---- the phases ---- */
 .cap[data-phase="scan"] .cap-scan { opacity: 1; animation: cap-sweep 1.9s linear forwards; }
+.cap[data-phase="scan"] .cap-line { opacity: 1; animation: cap-line 1.9s linear forwards; }
 
 .cap[data-phase="area"] .cap-p-area,
 .cap[data-phase="draw"] .cap-p-area,
@@ -1438,6 +1460,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap-p, .cap-region, .cap-cursor { transition: opacity .35s var(--ease); }
 
 @keyframes cap-sweep { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cap-line  { from { transform: translateY(0); } to { transform: translateY(100%); } }
 @keyframes cap-draw  { from { width: 0; height: 0; } to { width: 62%; height: 50%; } }
 @keyframes cap-drag  { from { transform: translate(0, 0); } to { transform: translate(58%, 46%); } }
 
@@ -1445,9 +1468,9 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap-steps {
   position: relative;
   display: grid;
-  margin-top: 20px;
+  margin-top: 22px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;   /* matches the hero figcaption */
   color: var(--text-muted);
 }
 .cap-steps span {
@@ -1464,19 +1487,19 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap[data-phase="crop"] [data-for="crop"] { opacity: 1; }
 
 @media (max-width: 900px) {
-  .cap-body { grid-template-columns: 1fr 36%; }
+  .cap-body { grid-template-columns: 1fr 38%; }
   .cap-tab { display: none; }
 }
 @media (max-width: 620px) {
-  .cap-page { aspect-ratio: 4 / 3; }
-  .cap-body { grid-template-columns: 1fr 40%; }
+  .cap-page { aspect-ratio: 5 / 4; }
+  .cap-body { grid-template-columns: 1fr 42%; }
   .cap-region i { font-size: 10px; bottom: -22px; }
 }
 
 /* Reduced motion: no sweep, no drag. The composition holds the finished
    Select area state, which still explains the product. */
 @media (prefers-reduced-motion: reduce) {
-  .cap-scan, .cap-cursor { display: none; }
+  .cap-scan, .cap-line, .cap-cursor { display: none; }
   .cap-p, .cap-region, .cap-steps span { transition: none; }
   .cap[data-phase] .cap-region { animation: none; }
 }
