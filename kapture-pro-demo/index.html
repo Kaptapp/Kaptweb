@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kapture Pro Product Demo | Kapture</title>
+<meta name="description" content="A recorded product demo of Kapture: capturing full webpages or selected areas in Chrome, and organising those captures into a local, searchable visual library with Kapture Pro for Mac.">
+<!-- Direct-link demo page for product verification. Deliberately not in the site
+     navigation and not in the sitemap, so it is reached by its URL only. -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#1b1d1c">
+<link rel="canonical" href="https://kaptapp.com/kapture-pro-demo/">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/kapture-icon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<meta property="og:type" content="video.other">
+<meta property="og:site_name" content="Kapture">
+<meta property="og:url" content="https://kaptapp.com/kapture-pro-demo/">
+<meta property="og:title" content="Kapture Pro Product Demo">
+<meta property="og:description" content="A recorded product demo of Kapture for Chrome and Kapture Pro for Mac.">
+<meta property="og:image" content="https://kaptapp.com/assets/video/kapture-pro-demo-poster.jpg">
+
+<link rel="stylesheet" href="../styles.css?v=23">
+<style>
+  /* Page-scoped: the shared stylesheet is untouched so the main site is not
+     affected by this page existing. */
+  .demo { padding-block: clamp(40px, 6vw, 72px) clamp(64px, 9vw, 104px); }
+  .demo-shell { max-width: 940px; }
+
+  .demo-head { max-width: 62ch; }
+  .demo-head h1 { margin-bottom: 18px; font-size: clamp(32px, 5.4vw, 52px); }
+  .demo-head p { font-size: 17.5px; line-height: 1.6; color: var(--text-dim); }
+
+  .demo-figure { margin: clamp(32px, 5vw, 52px) 0 0; }
+  .demo-player {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-lg);
+    background: var(--bg-deep);
+    box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8);
+  }
+  .demo-figure figcaption {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .demo-summary { margin-top: clamp(40px, 6vw, 68px); }
+  .demo-summary h2 { margin-bottom: 18px; font-size: clamp(22px, 2.8vw, 27px); }
+  .demo-summary ul { display: grid; gap: 12px; max-width: 70ch; }
+  .demo-summary li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 16.5px;
+    color: var(--text-dim);
+  }
+  .demo-summary li::before {
+    content: "";
+    position: absolute;
+    left: 4px; top: .62em;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .demo-back { margin-top: clamp(40px, 6vw, 64px); }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+    <a class="brand" href="/">
+      <img class="brand-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="brand-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+    </a>
+    <a class="btn btn-ghost btn-sm store-cta" href="/">Back to Kapture</a>
+  </div>
+</header>
+
+<main id="main" class="demo">
+  <div class="shell demo-shell">
+
+    <header class="demo-head">
+      <p class="kicker">Kapture Pro for Mac</p>
+      <h1>Kapture Pro &mdash; Product Demo</h1>
+      <p>
+        See how Kapture captures webpages in Chrome and how Kapture Pro turns those captures
+        into an organised, searchable visual library on your Mac.
+      </p>
+    </header>
+
+    <figure class="demo-figure">
+      <video class="demo-player" controls preload="metadata" playsinline
+             width="1576" height="1080"
+             poster="../assets/video/kapture-pro-demo-poster.jpg"
+             aria-label="Kapture product demo: capturing a webpage in Chrome, then browsing, searching and organising the result in Kapture Pro for Mac.">
+        <source src="../assets/video/kapture-pro-demo.mp4" type="video/mp4">
+        <p>
+          Your browser cannot play this video.
+          <a href="../assets/video/kapture-pro-demo.mp4">Download the demo as MP4</a>.
+        </p>
+      </video>
+      <figcaption>Recorded product demo. The video has no audio track.</figcaption>
+    </figure>
+
+    <section class="demo-summary">
+      <h2>What the demo shows</h2>
+      <ul>
+        <li>Kapture for Chrome captures full webpages or selected areas.</li>
+        <li>Captures are saved locally.</li>
+        <li>Kapture Pro organises screenshots into a visual library.</li>
+        <li>Users can browse, search, organise projects, add tags and notes, and inspect file details.</li>
+        <li>Kapture Pro is local-first and does not require cloud storage.</li>
+      </ul>
+    </section>
+
+    <p class="demo-back">
+      <a class="btn btn-ghost" href="https://kaptapp.com/">Back to Kapture</a>
+    </p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-brand">
+      <img class="footer-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="footer-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+      <span>kaptapp.com</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="mailto:pequelord@gmail.com">Contact</a>
+    </nav>
+    <p class="copyright">&copy; <span id="year">2026</span> Kapture</p>
+  </div>
+</footer>
+
+<script src="../script.js?v=23"></script>
+</body>
+</html>
