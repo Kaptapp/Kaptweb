@@ -1682,3 +1682,105 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   .kp-sheet-box { width: min(300px, 90%); }
   .kp-icons { grid-template-columns: repeat(9, 1fr); gap: 4px; }
 }
+
+/* ==========================================================================
+   The two products together
+   A clarification table, not a pricing table: restrained borders, one tinted
+   column, and marks rather than words. It stays a table at every width and
+   scrolls inside its own container on small screens, with the feature column
+   pinned so the labels never leave the screen.
+   ========================================================================== */
+.cmp { margin-top: clamp(36px, 5vw, 60px); }
+.cmp-note {
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.cmp-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.cmp-table {
+  width: 100%;
+  min-width: 660px;          /* below this the table scrolls instead of squeezing */
+  border-collapse: collapse;
+  text-align: left;
+}
+/* header row */
+.cmp-table thead th {
+  padding: 0 18px 16px;
+  font-size: 14.5px;
+  font-weight: 640;
+  letter-spacing: -.01em;
+  color: var(--text);
+  border-bottom: 1px solid var(--line-strong);
+  vertical-align: bottom;
+}
+.cmp-table thead th:first-child {
+  font-size: 12.5px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* rows */
+.cmp-table tbody th {
+  padding: 15px 18px;
+  font-size: 15.5px;
+  font-weight: 450;
+  letter-spacing: normal;
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+.cmp-table tbody td { padding: 15px 18px; }
+.cmp-table tbody tr + tr th,
+.cmp-table tbody tr + tr td { border-top: 1px solid var(--line); }
+
+/* the feature column stays put while the rest scrolls */
+.cmp-table th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--bg);
+  padding-left: 0;
+}
+
+/* the third column is the point of the section, so it is tinted end to end */
+.cmp-table .is-both { background: rgba(25, 215, 192, .055); }
+.cmp-table thead .is-both {
+  color: var(--teal);
+  border-bottom-color: rgba(25, 215, 192, .45);
+}
+.cmp-table tbody tr:first-child .is-both { border-top-left-radius: 10px; border-top-right-radius: 10px; }
+.cmp-table tbody tr:last-child  .is-both { border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+
+/* marks, drawn rather than typed, so no glyph or dash character is involved */
+.cmp-y, .cmp-n { display: inline-block; }
+.cmp-y {
+  position: relative;
+  width: 16px; height: 16px;
+  vertical-align: -3px;
+}
+.cmp-y::after {
+  content: "";
+  position: absolute;
+  left: 5px; top: 1px;
+  width: 5px; height: 10px;
+  border: solid var(--teal);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.cmp-n {
+  width: 14px; height: 2px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  vertical-align: 4px;
+}
+
+@media (max-width: 760px) {
+  .cmp-table thead th,
+  .cmp-table tbody th,
+  .cmp-table tbody td { padding-inline: 14px; }
+  .cmp-table tbody th { font-size: 15px; }
+}

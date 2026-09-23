@@ -145,4 +145,99 @@ FIX = {
  'es': '<p class="kicker plan-price">Pago único</p>', 'zh': '<p class="kicker plan-price">一次性买断</p>',
  'ko': '<p class="kicker plan-price">1회 구매</p>', 'ja': '<p class="kicker plan-price">買い切り</p>'},
 
+# ---------------------------------------------------------------- the two products together
+# Product names follow the form the rest of the site already uses in each
+# language (Kapture para Chrome, Mac 版 Kapture Pro), so this section reads
+# consistently with the footer plans rather than switching to English mid-page.
+'<p class="kicker">The Kapture workflow</p>': {
+ 'es': '<p class="kicker">El flujo de Kapture</p>',
+ 'zh': '<p class="kicker">Kapture 工作流</p>',
+ 'ko': '<p class="kicker">Kapture 워크플로</p>',
+ 'ja': '<p class="kicker">Kapture のワークフロー</p>'},
+
+'<h2>Kapture, Kapture Pro,<br>or both?</h2>': {
+ 'es': '<h2>¿Kapture, Kapture Pro<br>o los dos?</h2>',
+ 'zh': '<h2>Kapture、Kapture Pro，<br>还是两个一起用？</h2>',
+ 'ko': '<h2>Kapture, Kapture Pro,<br>아니면 둘 다?</h2>',
+ 'ja': '<h2>Kapture、Kapture Pro、<br>それとも両方？</h2>'},
+
+'<p class="section-lead">Kapture handles capture in Chrome. Kapture Pro organises everything on your Mac. Use them together for the complete workflow.</p>': {
+ 'es': '<p class="section-lead">Kapture se encarga de capturar en Chrome. Kapture Pro lo organiza todo en tu Mac. Juntos completan el flujo de trabajo.</p>',
+ 'zh': '<p class="section-lead">Kapture 负责在 Chrome 里截图，Kapture Pro 负责在 Mac 上整理。两个一起用，流程才完整。</p>',
+ 'ko': '<p class="section-lead">Kapture는 Chrome에서 캡처하고, Kapture Pro는 Mac에서 정리합니다. 둘을 함께 쓰면 작업 흐름이 완성됩니다.</p>',
+ 'ja': '<p class="section-lead">Kapture は Chrome で撮り、Kapture Pro は Mac で整理します。両方そろってワークフローが完成します。</p>'},
+
+'<p class="cmp-note" id="cmpNote">What each product does on its own, and what they do together.</p>': {
+ 'es': '<p class="cmp-note" id="cmpNote">Lo que hace cada producto por separado y lo que hacen juntos.</p>',
+ 'zh': '<p class="cmp-note" id="cmpNote">每个产品单独能做什么，以及一起用能做什么。</p>',
+ 'ko': '<p class="cmp-note" id="cmpNote">각 제품이 따로 할 수 있는 일과, 함께 쓸 때 할 수 있는 일.</p>',
+ 'ja': '<p class="cmp-note" id="cmpNote">それぞれの製品が単体でできること、そして両方でできること。</p>'},
+
+# ---- column headers ----
+'<th scope="col">Feature</th>': {
+ 'es': '<th scope="col">Función</th>', 'zh': '<th scope="col">功能</th>',
+ 'ko': '<th scope="col">기능</th>', 'ja': '<th scope="col">機能</th>'},
+
+'<th scope="col">Kapture for Chrome</th>': {
+ 'es': '<th scope="col">Kapture para Chrome</th>', 'zh': '<th scope="col">Chrome 版 Kapture</th>',
+ 'ko': '<th scope="col">Chrome용 Kapture</th>', 'ja': '<th scope="col">Chrome 版 Kapture</th>'},
+
+'<th scope="col">Kapture Pro for Mac</th>': {
+ 'es': '<th scope="col">Kapture Pro para Mac</th>', 'zh': '<th scope="col">Mac 版 Kapture Pro</th>',
+ 'ko': '<th scope="col">Mac용 Kapture Pro</th>', 'ja': '<th scope="col">Mac 版 Kapture Pro</th>'},
+
+'<th scope="col" class="is-both">Together</th>': {
+ 'es': '<th scope="col" class="is-both">Juntos</th>', 'zh': '<th scope="col" class="is-both">一起用</th>',
+ 'ko': '<th scope="col" class="is-both">함께</th>', 'ja': '<th scope="col" class="is-both">両方</th>'},
+
+# ---- row labels ----
+'<th scope="row">Full-page capture</th>': {
+ 'es': '<th scope="row">Captura de página completa</th>', 'zh': '<th scope="row">整页截图</th>',
+ 'ko': '<th scope="row">전체 페이지 캡처</th>', 'ja': '<th scope="row">ページ全体の撮影</th>'},
+
+'<th scope="row">Select-area capture</th>': {
+ 'es': '<th scope="row">Captura de un área</th>', 'zh': '<th scope="row">框选区域截图</th>',
+ 'ko': '<th scope="row">영역 선택 캡처</th>', 'ja': '<th scope="row">範囲を選んで撮影</th>'},
+
+'<th scope="row">PNG, JPEG or PDF</th>': {
+ 'es': '<th scope="row">PNG, JPEG o PDF</th>', 'zh': '<th scope="row">PNG、JPEG 或 PDF</th>',
+ 'ko': '<th scope="row">PNG, JPEG, PDF</th>', 'ja': '<th scope="row">PNG・JPEG・PDF</th>'},
+
+'<th scope="row">Save locally</th>': {
+ 'es': '<th scope="row">Guardado en local</th>', 'zh': '<th scope="row">保存到本地</th>',
+ 'ko': '<th scope="row">로컬 저장</th>', 'ja': '<th scope="row">ローカルに保存</th>'},
+
+'<th scope="row">Visual screenshot library</th>': {
+ 'es': '<th scope="row">Biblioteca visual de capturas</th>', 'zh': '<th scope="row">可视化截图图库</th>',
+ 'ko': '<th scope="row">시각적 스크린샷 라이브러리</th>', 'ja': '<th scope="row">ビジュアルなスクリーンショット一覧</th>'},
+
+'<th scope="row">Projects and collections</th>': {
+ 'es': '<th scope="row">Proyectos y colecciones</th>', 'zh': '<th scope="row">项目与合集</th>',
+ 'ko': '<th scope="row">프로젝트와 컬렉션</th>', 'ja': '<th scope="row">プロジェクトとコレクション</th>'},
+
+'<th scope="row">Search and filters</th>': {
+ 'es': '<th scope="row">Búsqueda y filtros</th>', 'zh': '<th scope="row">搜索与筛选</th>',
+ 'ko': '<th scope="row">검색과 필터</th>', 'ja': '<th scope="row">検索とフィルター</th>'},
+
+'<th scope="row">Tags and notes</th>': {
+ 'es': '<th scope="row">Etiquetas y notas</th>', 'zh': '<th scope="row">标签与备注</th>',
+ 'ko': '<th scope="row">태그와 메모</th>', 'ja': '<th scope="row">タグとメモ</th>'},
+
+'<th scope="row">File inspector</th>': {
+ 'es': '<th scope="row">Inspector de archivos</th>', 'zh': '<th scope="row">文件信息面板</th>',
+ 'ko': '<th scope="row">파일 인스펙터</th>', 'ja': '<th scope="row">ファイルインスペクタ</th>'},
+
+'<th scope="row">Capture to organise workflow</th>': {
+ 'es': '<th scope="row">Flujo de captura a organización</th>', 'zh': '<th scope="row">从截图到整理的完整流程</th>',
+ 'ko': '<th scope="row">캡처에서 정리까지의 흐름</th>', 'ja': '<th scope="row">撮影から整理までの流れ</th>'},
+
+# ---- the marks' accessible names (replaced everywhere they appear) ----
+'aria-label="Yes"': {
+ 'es': 'aria-label="Sí"', 'zh': 'aria-label="支持"',
+ 'ko': 'aria-label="지원"', 'ja': 'aria-label="対応"'},
+
+'aria-label="No"': {
+ 'es': 'aria-label="No"', 'zh': 'aria-label="不支持"',
+ 'ko': 'aria-label="미지원"', 'ja': 'aria-label="非対応"'},
+
 }

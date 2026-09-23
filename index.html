@@ -159,7 +159,7 @@
 </script>
 
 <link rel="preload" href="assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=25">
+<link rel="stylesheet" href="styles.css?v=26">
 </head>
 <body>
 
@@ -625,6 +625,79 @@
     </div>
   </section>
 
+  <!-- ============ THE TWO PRODUCTS TOGETHER ============ -->
+  <!-- A clarification, not a pricing table: the two products are complementary,
+       and the third column is what you get when both are in place. -->
+  <section class="section" id="workflow">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">The Kapture workflow</p>
+        <h2>Kapture, Kapture Pro,<br>or both?</h2>
+        <p class="section-lead">Kapture handles capture in Chrome. Kapture Pro organises everything on your Mac. Use them together for the complete workflow.</p>
+      </header>
+
+      <div class="cmp reveal">
+        <!-- The note sits outside the scroll container so it wraps to the page
+             rather than to the table's min-width and getting clipped on phones. -->
+        <p class="cmp-note" id="cmpNote">What each product does on its own, and what they do together.</p>
+        <div class="cmp-scroll">
+        <table class="cmp-table" aria-describedby="cmpNote">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Kapture for Chrome</th>
+              <th scope="col">Kapture Pro for Mac</th>
+              <th scope="col" class="is-both">Together</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">Full-page capture</th>
+            <td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td><i class="cmp-n" role="img" aria-label="No"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Select-area capture</th>
+            <td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td><i class="cmp-n" role="img" aria-label="No"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">PNG, JPEG or PDF</th>
+            <td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td><i class="cmp-n" role="img" aria-label="No"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Save locally</th>
+            <td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Visual screenshot library</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Projects and collections</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Search and filters</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Tags and notes</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">File inspector</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Capture to organise workflow</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-n" role="img" aria-label="No"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PRIVACY ============ -->
   <section class="section section-tight" id="privacy">
     <div class="shell">
@@ -759,6 +832,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=25"></script>
+<script src="script.js?v=26"></script>
 </body>
 </html>

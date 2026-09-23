@@ -101,7 +101,7 @@ HOME2 = {
  'es': '<p class="kicker">Cómo funciona</p>', 'zh': '<p class="kicker">使用方法</p>',
  'ko': '<p class="kicker">사용 방법</p>', 'ja': '<p class="kicker">使い方</p>'},
 '<h2>Three steps. No setup.</h2>': {
- 'es': '<h2>Tres pasos. Sin configurar nada.</h2>', 'zh': '<h2>三步搞定，无需设置。</h2>',
+ 'es': '<h2>Tres pasos.<br>Sin configurar nada.</h2>', 'zh': '<h2>三步搞定，无需设置。</h2>',
  'ko': '<h2>세 단계. 설정은 없습니다.</h2>', 'ja': '<h2>3 ステップ。設定は不要。</h2>'},
 
 '<h3>Open the page</h3>\n          <p>Go to whatever you want to keep.</p>': {

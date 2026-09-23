@@ -220,7 +220,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=25`.
+`styles.css` or `script.js`.** Currently `v=26`.
 
 ## SEO and discoverability
 
@@ -290,13 +290,19 @@ Cloudflare is not needed.
 ## Page order
 
 Hero, How it works, Kapture for Chrome, In the extension, Kapture Pro for Mac,
-Privacy, then the two-product CTA. The three steps sit between the hero and the
+The Kapture workflow, Privacy, then the two-product CTA. The three steps sit between the hero and the
 product sections deliberately: they give a mental model before the detail, and
 they are not a replacement for either product section.
 
 `.steps` and its artwork were written for the first build and stayed in
 `styles.css` even while the markup was out of the page, which is why restoring
 the section needed no new CSS. Keep them together.
+
+`#workflow` is a comparison of the two products, not a pricing table. Every row
+is checked against the shipped code before it goes in. One row is a deliberate
+simplification: the extension does have a destination project folder, so
+"Projects and collections" reads as a Kapture Pro feature because Pro is where
+projects and collections are managed, not merely named.
 
 ## The two animated compositions
 
