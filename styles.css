@@ -1553,10 +1553,16 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 /* ---- the two states the composition is replaying ----
    Same type and rhythm as #kpPoints. The active one only shifts colour, so
    nothing moves as the animation steps. */
+/* Two cards, so a two-column grid centred as a pair. It used to inherit the
+   three-column rhythm of #kpPoints, which left an empty third column and read
+   as a missing card. The max-width keeps each card about the width of a
+   Kapture Pro one, so the two lists still feel like the same component. */
 .cap-points {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(18px, 2.4vw, 30px) clamp(16px, 2vw, 28px);
+  max-width: 700px;
   margin-top: clamp(40px, 5vw, 64px);
+  margin-inline: auto;
 }
 /* The same surface #kpPoints gives its button: these items are not controls,
    so the <li> carries it. Type, inset, radius, fill and timing all match, so an
@@ -1571,7 +1577,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cap-points p { font-size: 14.5px; color: var(--text-muted); }
 .cap-points li.is-active { background: rgba(25, 215, 192, .07); }
 .cap-points li.is-active h3 { color: var(--teal); }
-@media (max-width: 900px) { .cap-points { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .cap-points { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .cap-points li, .cap-points h3 { transition: none; } }
 
