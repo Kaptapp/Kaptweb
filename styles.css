@@ -1691,11 +1691,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
    pinned so the labels never leave the screen.
    ========================================================================== */
 .cmp { margin-top: clamp(36px, 5vw, 60px); }
-.cmp-note {
-  margin-bottom: 18px;
-  font-size: 14px;
-  color: var(--text-muted);
-}
 .cmp-scroll {
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -1708,15 +1703,19 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 }
 /* header row */
 .cmp-table thead th {
-  padding: 0 18px 16px;
+  padding: 14px 18px;
   font-size: 14.5px;
   font-weight: 640;
   letter-spacing: -.01em;
   color: var(--text);
   border-bottom: 1px solid var(--line-strong);
-  vertical-align: bottom;
+  /* middle, not bottom: the tinted Together cell has to read as centred inside
+     its own box, and the other two headers follow it so the row is even. */
+  vertical-align: middle;
+  text-align: center;
 }
 .cmp-table thead th:first-child {
+  text-align: left;
   font-size: 12.5px;
   font-weight: 650;
   letter-spacing: .12em;
@@ -1727,13 +1726,14 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 /* rows */
 .cmp-table tbody th {
   padding: 15px 18px;
+  text-align: left;
   font-size: 15.5px;
   font-weight: 450;
   letter-spacing: normal;
   line-height: 1.35;
   color: var(--text-dim);
 }
-.cmp-table tbody td { padding: 15px 18px; }
+.cmp-table tbody td { padding: 15px 18px; text-align: center; vertical-align: middle; }
 .cmp-table tbody tr + tr th,
 .cmp-table tbody tr + tr td { border-top: 1px solid var(--line); }
 
@@ -1760,7 +1760,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 .cmp-y {
   position: relative;
   width: 16px; height: 16px;
-  vertical-align: -3px;
+  vertical-align: middle;
 }
 .cmp-y::after {
   content: "";
@@ -1775,7 +1775,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
   width: 14px; height: 2px;
   border-radius: 2px;
   background: var(--line-strong);
-  vertical-align: 4px;
+  vertical-align: middle;
 }
 
 @media (max-width: 760px) {

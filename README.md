@@ -220,7 +220,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=26`.
+`styles.css` or `script.js`.** Currently `v=27`.
 
 ## SEO and discoverability
 
@@ -299,10 +299,15 @@ they are not a replacement for either product section.
 the section needed no new CSS. Keep them together.
 
 `#workflow` is a comparison of the two products, not a pricing table. Every row
-is checked against the shipped code before it goes in. One row is a deliberate
-simplification: the extension does have a destination project folder, so
-"Projects and collections" reads as a Kapture Pro feature because Pro is where
-projects and collections are managed, not merely named.
+is checked against the shipped code before it goes in. The row that needed the
+most care is "Project & collection management": the extension does have a
+destination project folder, so the row says *management* rather than
+*projects*, because managing them is what only Kapture Pro does.
+
+The feature column is left aligned and sticky; the three product columns are
+centred, header and marks alike. The marks use `vertical-align: middle` rather
+than a pixel nudge so a tick and a dash land on the same line regardless of
+which one a row carries.
 
 ## The two animated compositions
 

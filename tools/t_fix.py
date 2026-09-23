@@ -161,17 +161,12 @@ FIX = {
  'ko': '<h2>Kapture, Kapture Pro,<br>아니면 둘 다?</h2>',
  'ja': '<h2>Kapture、Kapture Pro、<br>それとも両方？</h2>'},
 
-'<p class="section-lead">Kapture handles capture in Chrome. Kapture Pro organises everything on your Mac. Use them together for the complete workflow.</p>': {
- 'es': '<p class="section-lead">Kapture se encarga de capturar en Chrome. Kapture Pro lo organiza todo en tu Mac. Juntos completan el flujo de trabajo.</p>',
- 'zh': '<p class="section-lead">Kapture 负责在 Chrome 里截图，Kapture Pro 负责在 Mac 上整理。两个一起用，流程才完整。</p>',
- 'ko': '<p class="section-lead">Kapture는 Chrome에서 캡처하고, Kapture Pro는 Mac에서 정리합니다. 둘을 함께 쓰면 작업 흐름이 완성됩니다.</p>',
- 'ja': '<p class="section-lead">Kapture は Chrome で撮り、Kapture Pro は Mac で整理します。両方そろってワークフローが完成します。</p>'},
+'<p class="section-lead">Kapture handles capture in Chrome. Kapture Pro organises everything on your Mac. See what each product does on its own and what they unlock together.</p>': {
+ 'es': '<p class="section-lead">Kapture se encarga de capturar en Chrome. Kapture Pro lo organiza todo en tu Mac. Mira lo que hace cada uno por separado y lo que consigues con los dos.</p>',
+ 'zh': '<p class="section-lead">Kapture 负责在 Chrome 里截图，Kapture Pro 负责在 Mac 上整理。看看每个产品单独能做什么，以及两个一起用能带来什么。</p>',
+ 'ko': '<p class="section-lead">Kapture는 Chrome에서 캡처하고, Kapture Pro는 Mac에서 정리합니다. 각 제품이 따로 할 수 있는 일과, 둘을 함께 썼을 때 열리는 것들을 살펴보세요.</p>',
+ 'ja': '<p class="section-lead">Kapture は Chrome で撮り、Kapture Pro は Mac で整理します。それぞれが単体でできることと、両方そろって初めてできることをご覧ください。</p>'},
 
-'<p class="cmp-note" id="cmpNote">What each product does on its own, and what they do together.</p>': {
- 'es': '<p class="cmp-note" id="cmpNote">Lo que hace cada producto por separado y lo que hacen juntos.</p>',
- 'zh': '<p class="cmp-note" id="cmpNote">每个产品单独能做什么，以及一起用能做什么。</p>',
- 'ko': '<p class="cmp-note" id="cmpNote">각 제품이 따로 할 수 있는 일과, 함께 쓸 때 할 수 있는 일.</p>',
- 'ja': '<p class="cmp-note" id="cmpNote">それぞれの製品が単体でできること、そして両方でできること。</p>'},
 
 # ---- column headers ----
 '<th scope="col">Feature</th>': {
@@ -211,9 +206,9 @@ FIX = {
  'es': '<th scope="row">Biblioteca visual de capturas</th>', 'zh': '<th scope="row">可视化截图图库</th>',
  'ko': '<th scope="row">시각적 스크린샷 라이브러리</th>', 'ja': '<th scope="row">ビジュアルなスクリーンショット一覧</th>'},
 
-'<th scope="row">Projects and collections</th>': {
- 'es': '<th scope="row">Proyectos y colecciones</th>', 'zh': '<th scope="row">项目与合集</th>',
- 'ko': '<th scope="row">프로젝트와 컬렉션</th>', 'ja': '<th scope="row">プロジェクトとコレクション</th>'},
+'<th scope="row">Project &amp; collection management</th>': {
+ 'es': '<th scope="row">Gestión de proyectos y colecciones</th>', 'zh': '<th scope="row">项目与合集管理</th>',
+ 'ko': '<th scope="row">프로젝트 및 컬렉션 관리</th>', 'ja': '<th scope="row">プロジェクトとコレクションの管理</th>'},
 
 '<th scope="row">Search and filters</th>': {
  'es': '<th scope="row">Búsqueda y filtros</th>', 'zh': '<th scope="row">搜索与筛选</th>',
@@ -239,5 +234,13 @@ FIX = {
 'aria-label="No"': {
  'es': 'aria-label="No"', 'zh': 'aria-label="不支持"',
  'ko': 'aria-label="미지원"', 'ja': 'aria-label="非対応"'},
+
+
+# ---------------------------------------------------------------- Chrome headline
+'<h2>Capture everything.<br>Or exactly one part of it.</h2>': {
+ 'es': '<h2>Captura todo.<br>O exactamente una parte.</h2>',
+ 'zh': '<h2>整页全都要，<br>或者只要其中一块。</h2>',
+ 'ko': '<h2>전부 담거나,<br>딱 필요한 부분만.</h2>',
+ 'ja': '<h2>すべてを撮る。<br>あるいは必要な一部だけ。</h2>'},
 
 }
