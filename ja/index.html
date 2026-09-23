@@ -159,7 +159,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=28">
+<link rel="stylesheet" href="../styles.css?v=29">
 </head>
 <body>
 
@@ -403,21 +403,17 @@
           </div>
         </div>
 
-        <figcaption class="cap-steps">
-          <span data-for="full">Full page が選ばれています。</span>
-          <span data-for="scan">Capture page がドキュメント全体をスクロールします。</span>
-          <span data-for="kept">プロジェクトに保存され、8,000&nbsp;ピクセルごとに分割されます。</span>
-          <span data-for="area">パネルを Select area に切り替えます。</span>
-          <span data-for="draw">本当に必要な部分をドラッグします。</span>
-          <span data-for="crop">その範囲だけが撮られます。</span>
-        </figcaption>
+        <!-- One static caption, not announced repeatedly: the six phases are a
+             visual demonstration, and the two cards below carry the same
+             information as text. -->
+        <figcaption class="cap-caption">Chrome で動く Kapture。まずページ全体を撮り、続いて同じページ上で範囲を選びます。</figcaption>
       </figure>
 
       <!-- The two states the composition above is replaying. Same typography as
            the six Kapture Pro points; the active one follows the animation. -->
       <ul class="pro-points cap-points" id="capPoints">
-        <li data-mode="full"><h3>ページ全体</h3><p>Kapture がページを上から下までスクロールし、Web ページ全体を保存します。</p></li>
-        <li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグして、その部分だけを保存します。</p></li>
+        <li data-mode="full"><h3>ページ全体</h3><p>Kapture がページ全体をスクロールしてプロジェクトに保存します。長いページは 8,000&nbsp;ピクセルごとに分割されます。</p></li>
+        <li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグして、その範囲だけを保存します。</p></li>
       </ul>
     </div>
   </section>
@@ -828,6 +824,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=28"></script>
+<script src="../script.js?v=29"></script>
 </body>
 </html>

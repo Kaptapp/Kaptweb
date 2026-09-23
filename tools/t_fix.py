@@ -35,37 +35,6 @@ FIX = {
  'ko': '''                   alt="Select area 모드로 설정된 Kapture 사이드 패널."''',
  'ja': '''                   alt="Select area に設定された Kapture のサイドパネル。"'''},
 
-'''          <span data-for="full">Full page is selected.</span>
-          <span data-for="scan">Capture page scrolls the whole document.</span>
-          <span data-for="kept">Saved to your project, split at 8,000&nbsp;pixels.</span>
-          <span data-for="area">Switch the panel to Select area.</span>
-          <span data-for="draw">Drag over the part you actually need.</span>
-          <span data-for="crop">Only that region is captured.</span>''': {
- 'es': '''          <span data-for="full">Full page está seleccionado.</span>
-          <span data-for="scan">Capture page recorre el documento entero.</span>
-          <span data-for="kept">Se guarda en tu proyecto, en secciones de 8.000&nbsp;píxeles.</span>
-          <span data-for="area">Cambia el panel a Select area.</span>
-          <span data-for="draw">Arrastra sobre la parte que de verdad necesitas.</span>
-          <span data-for="crop">Solo se captura esa zona.</span>''',
- 'zh': '''          <span data-for="full">已选中 Full page。</span>
-          <span data-for="scan">Capture page 会滚动整个文档。</span>
-          <span data-for="kept">保存到你的项目，按 8,000&nbsp;像素分段。</span>
-          <span data-for="area">把面板切换到 Select area。</span>
-          <span data-for="draw">在页面上拖出你真正需要的部分。</span>
-          <span data-for="crop">只有这块区域会被截取。</span>''',
- 'ko': '''          <span data-for="full">Full page가 선택되어 있습니다.</span>
-          <span data-for="scan">Capture page가 문서 전체를 스크롤합니다.</span>
-          <span data-for="kept">프로젝트에 저장되며 8,000&nbsp;픽셀 단위로 나뉩니다.</span>
-          <span data-for="area">패널을 Select area로 바꿉니다.</span>
-          <span data-for="draw">실제로 필요한 부분만 드래그합니다.</span>
-          <span data-for="crop">그 영역만 캡처됩니다.</span>''',
- 'ja': '''          <span data-for="full">Full page が選ばれています。</span>
-          <span data-for="scan">Capture page がドキュメント全体をスクロールします。</span>
-          <span data-for="kept">プロジェクトに保存され、8,000&nbsp;ピクセルごとに分割されます。</span>
-          <span data-for="area">パネルを Select area に切り替えます。</span>
-          <span data-for="draw">本当に必要な部分をドラッグします。</span>
-          <span data-for="crop">その範囲だけが撮られます。</span>'''},
-
 # ---------------------------------------------------------------- Kapture Pro intro
 '''          Kapture Pro indexes the screenshots already on your Mac and turns them into a
           searchable visual library. The files never move, never upload, never leave the disk.''': {
@@ -103,17 +72,17 @@ FIX = {
  'ko': '<p class="section-lead">웹페이지 전체를 캡처하거나 필요한 영역만 정확히 선택하세요. PNG, JPEG, PDF로 로컬에 저장됩니다.</p>',
  'ja': '<p class="section-lead">Web ページ全体を撮るか、必要な範囲だけを選びます。PNG、JPEG、PDF でローカルに保存できます。</p>'},
 
-'<li data-mode="full"><h3>Full page</h3><p>Kapture scrolls the page from top to bottom and saves the complete webpage.</p></li>': {
- 'es': '<li data-mode="full"><h3>Página completa</h3><p>Kapture recorre la página de arriba abajo y guarda la web entera.</p></li>',
- 'zh': '<li data-mode="full"><h3>整页截取</h3><p>Kapture 从上到下滚动页面，保存完整的网页。</p></li>',
- 'ko': '<li data-mode="full"><h3>전체 페이지</h3><p>Kapture가 페이지를 위에서 아래까지 스크롤해 웹페이지 전체를 저장합니다.</p></li>',
- 'ja': '<li data-mode="full"><h3>ページ全体</h3><p>Kapture がページを上から下までスクロールし、Web ページ全体を保存します。</p></li>'},
+'<li data-mode="full"><h3>Full page</h3><p>Kapture scrolls the whole page and saves it to your project, splitting long pages at 8,000&nbsp;pixels.</p></li>': {
+ 'es': '<li data-mode="full"><h3>Página completa</h3><p>Kapture recorre la página entera y la guarda en tu proyecto, dividiendo las páginas largas cada 8.000&nbsp;píxeles.</p></li>',
+ 'zh': '<li data-mode="full"><h3>整页截取</h3><p>Kapture 会滚动整张网页并保存到你的项目里，过长的页面按 8,000&nbsp;像素分段。</p></li>',
+ 'ko': '<li data-mode="full"><h3>전체 페이지</h3><p>Kapture가 페이지 전체를 스크롤해 프로젝트에 저장하고, 긴 페이지는 8,000&nbsp;픽셀 단위로 나눕니다.</p></li>',
+ 'ja': '<li data-mode="full"><h3>ページ全体</h3><p>Kapture がページ全体をスクロールしてプロジェクトに保存します。長いページは 8,000&nbsp;ピクセルごとに分割されます。</p></li>'},
 
-'<li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need and save only that part.</p></li>': {
- 'es': '<li data-mode="area"><h3>Selecciona un área</h3><p>Dibuja justo sobre lo que necesitas y guarda solo esa parte.</p></li>',
- 'zh': '<li data-mode="area"><h3>框选区域</h3><p>在你真正需要的地方拖出选框，只保存那一部分。</p></li>',
- 'ko': '<li data-mode="area"><h3>영역 선택</h3><p>필요한 부분만 정확히 드래그해서 그 부분만 저장합니다.</p></li>',
- 'ja': '<li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグして、その部分だけを保存します。</p></li>'},
+'<li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need and save only that region.</p></li>': {
+ 'es': '<li data-mode="area"><h3>Selecciona un área</h3><p>Dibuja justo sobre lo que necesitas y guarda solo esa zona.</p></li>',
+ 'zh': '<li data-mode="area"><h3>框选区域</h3><p>在你真正需要的地方拖出选框，只保存那一块区域。</p></li>',
+ 'ko': '<li data-mode="area"><h3>영역 선택</h3><p>필요한 부분만 정확히 드래그해서 그 영역만 저장합니다.</p></li>',
+ 'ja': '<li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグして、その範囲だけを保存します。</p></li>'},
 
 '<h2>Built for the screenshot<br>you actually needed.</h2>': {
  'es': '<h2>Hecho para la captura<br>que de verdad necesitabas.</h2>',
@@ -166,7 +135,6 @@ FIX = {
  'zh': '<p class="section-lead">Kapture 负责在 Chrome 里截图，Kapture Pro 负责在 Mac 上整理。看看每个产品单独能做什么，以及两个一起用能带来什么。</p>',
  'ko': '<p class="section-lead">Kapture는 Chrome에서 캡처하고, Kapture Pro는 Mac에서 정리합니다. 각 제품이 따로 할 수 있는 일과, 둘을 함께 썼을 때 열리는 것들을 살펴보세요.</p>',
  'ja': '<p class="section-lead">Kapture は Chrome で撮り、Kapture Pro は Mac で整理します。それぞれが単体でできることと、両方そろって初めてできることをご覧ください。</p>'},
-
 
 # ---- column headers ----
 '<th scope="col">Feature</th>': {
@@ -235,12 +203,21 @@ FIX = {
  'es': 'aria-label="No"', 'zh': 'aria-label="不支持"',
  'ko': 'aria-label="미지원"', 'ja': 'aria-label="非対応"'},
 
-
 # ---------------------------------------------------------------- Chrome headline
 '<h2>Capture everything.<br>Or exactly one part of it.</h2>': {
  'es': '<h2>Captura todo.<br>O exactamente una parte.</h2>',
  'zh': '<h2>整页全都要，<br>或者只要其中一块。</h2>',
  'ko': '<h2>전부 담거나,<br>딱 필요한 부분만.</h2>',
  'ja': '<h2>すべてを撮る。<br>あるいは必要な一部だけ。</h2>'},
+
+
+# ---------------------------------------------------------------- figure caption
+# Static and visually hidden: it names the figure for assistive technology and
+# is never re-announced as the phases cycle.
+'<figcaption class="cap-caption">Kapture running in Chrome: first a full page capture, then an area drawn on the same page.</figcaption>': {
+ 'es': '<figcaption class="cap-caption">Kapture funcionando en Chrome: primero una captura de la página completa y después un área dibujada sobre esa misma página.</figcaption>',
+ 'zh': '<figcaption class="cap-caption">Kapture 在 Chrome 中运行：先截取整张网页，再在同一页面上框选一块区域。</figcaption>',
+ 'ko': '<figcaption class="cap-caption">Chrome에서 실행 중인 Kapture: 먼저 전체 페이지를 캡처하고, 이어서 같은 페이지에서 영역을 드래그합니다.</figcaption>',
+ 'ja': '<figcaption class="cap-caption">Chrome で動く Kapture。まずページ全体を撮り、続いて同じページ上で範囲を選びます。</figcaption>'},
 
 }

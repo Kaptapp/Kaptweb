@@ -159,7 +159,7 @@
 </script>
 
 <link rel="preload" href="assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=29">
 </head>
 <body>
 
@@ -403,21 +403,17 @@
           </div>
         </div>
 
-        <figcaption class="cap-steps">
-          <span data-for="full">Full page is selected.</span>
-          <span data-for="scan">Capture page scrolls the whole document.</span>
-          <span data-for="kept">Saved to your project, split at 8,000&nbsp;pixels.</span>
-          <span data-for="area">Switch the panel to Select area.</span>
-          <span data-for="draw">Drag over the part you actually need.</span>
-          <span data-for="crop">Only that region is captured.</span>
-        </figcaption>
+        <!-- One static caption, not announced repeatedly: the six phases are a
+             visual demonstration, and the two cards below carry the same
+             information as text. -->
+        <figcaption class="cap-caption">Kapture running in Chrome: first a full page capture, then an area drawn on the same page.</figcaption>
       </figure>
 
       <!-- The two states the composition above is replaying. Same typography as
            the six Kapture Pro points; the active one follows the animation. -->
       <ul class="pro-points cap-points" id="capPoints">
-        <li data-mode="full"><h3>Full page</h3><p>Kapture scrolls the page from top to bottom and saves the complete webpage.</p></li>
-        <li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need and save only that part.</p></li>
+        <li data-mode="full"><h3>Full page</h3><p>Kapture scrolls the whole page and saves it to your project, splitting long pages at 8,000&nbsp;pixels.</p></li>
+        <li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need and save only that region.</p></li>
       </ul>
     </div>
   </section>
@@ -829,6 +825,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=28"></script>
+<script src="script.js?v=29"></script>
 </body>
 </html>

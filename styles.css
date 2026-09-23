@@ -1369,6 +1369,16 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
    select area. Everything drawn on top is annotation over real pixels.
    ========================================================================== */
 .cap { margin: clamp(40px, 5vw, 64px) 0 0; }   /* drop the UA figure margin */
+/* The figure keeps a name for assistive technology without the sentence being
+   drawn. It is static, so nothing is announced as the phases cycle. */
+.cap-caption {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .cap-win {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
@@ -1580,28 +1590,6 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
 @media (max-width: 620px) { .cap-points { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .cap-points li, .cap-points h3 { transition: none; } }
 
-/* ---- the caption tracks the phase ---- */
-.cap-steps {
-  position: relative;
-  display: grid;
-  margin-top: 22px;
-  text-align: center;
-  font-size: 14px;   /* matches the hero figcaption */
-  color: var(--text-muted);
-}
-.cap-steps span {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transition: opacity .3s var(--ease);
-}
-.cap-steps span b { color: var(--text); font-weight: 650; }
-.cap[data-phase="full"] [data-for="full"],
-.cap[data-phase="scan"] [data-for="scan"],
-.cap[data-phase="kept"] [data-for="kept"],
-.cap[data-phase="area"] [data-for="area"],
-.cap[data-phase="draw"] [data-for="draw"],
-.cap[data-phase="crop"] [data-for="crop"] { opacity: 1; }
-
 @media (max-width: 900px) {
   .cap-body { grid-template-columns: 1fr 38%; }
 }
@@ -1615,7 +1603,7 @@ html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
    Select area state, which still explains the product. */
 @media (prefers-reduced-motion: reduce) {
   .cap-scan, .cap-line, .cap-cursor { display: none; }
-  .cap-p, .cap-region, .cap-steps span { transition: none; }
+  .cap-p, .cap-region { transition: none; }
   .cap[data-phase] .cap-region { animation: none; }
 }
 
