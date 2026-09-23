@@ -1,4 +1,20 @@
 /* ==========================================================================
+   Chillax, for titles only
+   The supplied package ships one @font-face per weight under separate family
+   names, which cannot be selected with font-weight. This uses the variable font
+   under one family instead, so titles pick their weight the normal way and a
+   change of mind costs nothing: one file, one request, 200 to 700 available.
+   Licensed under the ITF Free Font License, see assets/fonts/chillax/LICENSE.txt
+   ========================================================================== */
+@font-face {
+  font-family: "Chillax";
+  src: url("assets/fonts/chillax/Chillax-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
    Kapture site · kaptapp.com
    Dark charcoal + solid teal. Plain CSS, no dependencies.
    ========================================================================== */
@@ -36,6 +52,11 @@
           "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
+  /* Titles. Chillax is Latin only, so the body stack follows it and the browser
+     falls back per glyph: Latin renders in Chillax, CJK in the same platform
+     fonts the rest of the site already uses. */
+  --font-title: "Chillax", var(--font);
+
   --ease: cubic-bezier(.2, .7, .3, 1);
 }
 
@@ -59,6 +80,17 @@ body {
 img, svg { display: block; max-width: 100%; height: auto; }
 
 h1, h2, h3 { margin: 0; font-weight: 660; letter-spacing: -.03em; line-height: 1.08; }
+/* Titles only. h3 is left on the body font because it carries small card and
+   control labels (.tile, .steps, .pro-points, .cap-points); the one h3 that is
+   a real product title opts in below. The Kapture Pro mock uses h4 and is not
+   touched at all. */
+h1, h2, .plan h3 {
+  font-family: var(--font-title);
+  /* Chillax Semibold. 600 is a real master on the variable axis, so this is the
+     drawn Semibold rather than a synthesised weight. The h3s that stay on the
+     body font keep 660 from the rule above. */
+  font-weight: 600;
+}
 p  { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 

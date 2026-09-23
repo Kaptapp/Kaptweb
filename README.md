@@ -143,9 +143,18 @@ reproduces the real extension interface, which is not localised, so translating
 it would show a product that does not exist. The badge, caption and the
 descriptive `aria-label` around it are translated.
 
-Fonts are system-only. The stack gains PingFang SC, Hiragino Sans, Yu Gothic UI,
-Apple SD Gothic Neo, Malgun Gothic and the Noto CJK fallbacks, so nothing is
+Body copy is system-only. The stack gains PingFang SC, Hiragino Sans, Yu Gothic
+UI, Apple SD Gothic Neo, Malgun Gothic and the Noto CJK fallbacks, so nothing is
 downloaded for CJK or Hangul.
+
+Titles are the one exception. `h1`, `h2` and the two footer product titles use
+Chillax, shipped as a single variable woff2 in `assets/fonts/chillax/` and
+preloaded from each page. Chillax is Latin only, so `--font-title` puts the body
+stack behind it: Latin glyphs come from Chillax and CJK falls back per glyph to
+the same platform fonts as the rest of the site, with no missing glyphs and no
+extra download. Every other `h3` stays on the body font on purpose, because
+`.tile`, `.steps`, `.pro-points` and `.cap-points` use `h3` for small labels
+rather than titles, and the Kapture Pro mock uses `h4` and is untouched.
 
 Privacy pages use directory URLs (`/privacy/`, `/es/privacy/`) rather than
 `.html`, so each is an `index.html` inside a `privacy/` folder. Internal links
@@ -211,7 +220,7 @@ a stale stylesheet against fresh HTML and render the page wrong in ways that
 look like a broken deploy.
 
 **Bump the number in both `index.html` and `privacy/index.html` whenever you change
-`styles.css` or `script.js`.** Currently `v=23`.
+`styles.css` or `script.js`.** Currently `v=25`.
 
 ## SEO and discoverability
 
