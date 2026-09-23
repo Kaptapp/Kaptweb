@@ -72,17 +72,17 @@ FIX = {
  'ko': '<p class="section-lead">웹페이지 전체를 캡처하거나 필요한 영역만 정확히 선택하세요. PNG, JPEG, PDF로 로컬에 저장됩니다.</p>',
  'ja': '<p class="section-lead">Web ページ全体を撮るか、必要な範囲だけを選びます。PNG、JPEG、PDF でローカルに保存できます。</p>'},
 
-'<li data-mode="full"><h3>Full page</h3><p>Kapture scrolls the whole page and saves it to your project, splitting long pages at 8,000&nbsp;pixels.</p></li>': {
- 'es': '<li data-mode="full"><h3>Página completa</h3><p>Kapture recorre la página entera y la guarda en tu proyecto, dividiendo las páginas largas cada 8.000&nbsp;píxeles.</p></li>',
- 'zh': '<li data-mode="full"><h3>整页截取</h3><p>Kapture 会滚动整张网页并保存到你的项目里，过长的页面按 8,000&nbsp;像素分段。</p></li>',
- 'ko': '<li data-mode="full"><h3>전체 페이지</h3><p>Kapture가 페이지 전체를 스크롤해 프로젝트에 저장하고, 긴 페이지는 8,000&nbsp;픽셀 단위로 나눕니다.</p></li>',
- 'ja': '<li data-mode="full"><h3>ページ全体</h3><p>Kapture がページ全体をスクロールしてプロジェクトに保存します。長いページは 8,000&nbsp;ピクセルごとに分割されます。</p></li>'},
+'<li data-mode="full"><h3>Full page</h3><p>Save the whole page to your project. Long pages split at 8,000&nbsp;pixels.</p></li>': {
+ 'es': '<li data-mode="full"><h3>Página completa</h3><p>Guarda la página entera en tu proyecto. Las páginas largas se dividen cada 8.000&nbsp;píxeles.</p></li>',
+ 'zh': '<li data-mode="full"><h3>整页截取</h3><p>把整张网页保存到你的项目里。过长的页面按 8,000&nbsp;像素分段。</p></li>',
+ 'ko': '<li data-mode="full"><h3>전체 페이지</h3><p>페이지 전체를 프로젝트에 저장합니다. 긴 페이지는 8,000&nbsp;픽셀 단위로 나뉩니다.</p></li>',
+ 'ja': '<li data-mode="full"><h3>ページ全体</h3><p>ページ全体をプロジェクトに保存します。長いページは 8,000&nbsp;ピクセルごとに分割されます。</p></li>'},
 
-'<li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need and save only that region.</p></li>': {
- 'es': '<li data-mode="area"><h3>Selecciona un área</h3><p>Dibuja justo sobre lo que necesitas y guarda solo esa zona.</p></li>',
- 'zh': '<li data-mode="area"><h3>框选区域</h3><p>在你真正需要的地方拖出选框，只保存那一块区域。</p></li>',
- 'ko': '<li data-mode="area"><h3>영역 선택</h3><p>필요한 부분만 정확히 드래그해서 그 영역만 저장합니다.</p></li>',
- 'ja': '<li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグして、その範囲だけを保存します。</p></li>'},
+'<li data-mode="area"><h3>Select area</h3><p>Draw over exactly what you need. Save only that region.</p></li>': {
+ 'es': '<li data-mode="area"><h3>Selecciona un área</h3><p>Dibuja justo sobre lo que necesitas. Guarda solo esa zona.</p></li>',
+ 'zh': '<li data-mode="area"><h3>框选区域</h3><p>在你需要的地方拖出选框。只保存那一块区域。</p></li>',
+ 'ko': '<li data-mode="area"><h3>영역 선택</h3><p>필요한 부분만 정확히 드래그하세요. 그 영역만 저장됩니다.</p></li>',
+ 'ja': '<li data-mode="area"><h3>範囲を選ぶ</h3><p>必要なところだけをドラッグ。その範囲だけを保存します。</p></li>'},
 
 '<h2>Built for the screenshot<br>you actually needed.</h2>': {
  'es': '<h2>Hecho para la captura<br>que de verdad necesitabas.</h2>',
