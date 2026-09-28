@@ -26,7 +26,8 @@
      app is not released, so `data-mac-pending` still renders it as a disabled
      control that announces why. */
   var pendingStates = [
-    { attr: 'data-mac-pending', title: 'The Kapture Mac app is coming soon' }
+    { attr: 'data-mac-pending', title: 'The Kapture Mac app is coming soon' },
+    { attr: 'data-win-pending', title: 'The Kapture Windows app is coming soon' }
   ];
 
   pendingStates.forEach(function (state) {

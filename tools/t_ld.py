@@ -63,11 +63,11 @@ def privacy_url(lang):
 
 # ---- Kapture Pro: localised JSON-LD prose. Factual fields stay identical. ----
 PRO_DESC = {
- 'en': 'Kapture Pro indexes the screenshots already saved on your Mac and turns them into a searchable visual library with projects, tags and an inspector.',
- 'es': 'Kapture Pro indexa las capturas que ya tienes guardadas en el Mac y las convierte en una biblioteca visual con proyectos, etiquetas e inspector en la que puedes buscar.',
- 'zh': 'Kapture Pro 会索引 Mac 上已经保存的截图，把它们变成一个带项目、标签和检查器的可搜索可视化图库。',
- 'ko': 'Kapture Pro는 이미 Mac에 저장된 스크린샷을 색인해 프로젝트, 태그, 인스펙터를 갖춘 검색 가능한 시각 라이브러리로 만들어 줍니다.',
- 'ja': 'Kapture Pro は、すでに Mac に保存されているスクリーンショットを取り込み、プロジェクト・タグ・インスペクタを備えた検索できるビジュアルライブラリに変えます。'}
+ 'en': 'Kapture Pro indexes the screenshots already on your computer and turns them into a searchable visual library with projects, tags and an inspector.',
+ 'es': 'Kapture Pro indexa las capturas que ya tienes en el ordenador y las convierte en una biblioteca visual con proyectos, etiquetas e inspector en la que puedes buscar.',
+ 'zh': 'Kapture Pro 会索引电脑上已经保存的截图，把它们变成一个带项目、标签和检查器的可搜索可视化图库。',
+ 'ko': 'Kapture Pro는 이미 컴퓨터에 저장된 스크린샷을 색인해 프로젝트, 태그, 인스펙터를 갖춘 검색 가능한 시각 라이브러리로 만들어 줍니다.',
+ 'ja': 'Kapture Pro は、すでにパソコンに保存されているスクリーンショットを取り込み、プロジェクト・タグ・インスペクタを備えた検索できるビジュアルライブラリに変えます。'}
 
 PRO_FEATURES = {
  'en': ['Projects', 'Search', 'Visual library', 'Inspector', 'Tags and notes',

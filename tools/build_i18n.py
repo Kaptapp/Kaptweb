@@ -203,8 +203,9 @@ def patch_english():
 
 
 SENTINELS = [
-    'Capture in Chrome', 'Organise on Mac', 'Your screenshots,', 'finally organised',
-    'Local by default', 'Two products',
+    'Capture in Chrome', 'Organise on your desktop', 'Your screenshots,', 'finally organised',
+    'Kapture Pro for Windows', 'Kapture Pro for Mac',
+    'Local by default', 'Wherever you capture',
     'One workflow', 'Project folders', 'History previews', 'Local only',
     'Visual library', 'Tags and notes', 'One-time purchase', 'Free</p>',
     'Privacy</a>', 'Add to Chrome', 'In the extension',

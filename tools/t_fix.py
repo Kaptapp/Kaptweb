@@ -99,11 +99,11 @@ FIX = {
  'ja': 'Kapture は Chrome から直接、Web ページ全体や選んだ範囲を保存します。Kapture Pro はそれらを Mac 上の整理された、検索できるビジュアルライブラリにします。すべてローカルのままです。'},
 
 # ---------------------------------------------------------------- closing statement
-'<h2>Two products.<br><span class="accent">One workflow.</span></h2>': {
- 'es': '<h2>Dos productos.<br><span class="accent">Un mismo flujo.</span></h2>',
- 'zh': '<h2>两款产品，<br><span class="accent">一套流程。</span></h2>',
- 'ko': '<h2>두 개의 제품,<br><span class="accent">하나의 흐름.</span></h2>',
- 'ja': '<h2>2 つのプロダクト、<br><span class="accent">ひとつの流れ。</span></h2>'},
+'<h2>One workflow.<br><span class="accent">Wherever you capture.</span></h2>': {
+ 'es': '<h2>Un mismo flujo.<br><span class="accent">Captures donde captures.</span></h2>',
+ 'zh': '<h2>一套流程，<br><span class="accent">无论你在哪里截图。</span></h2>',
+ 'ko': '<h2>하나의 흐름,<br><span class="accent">어디서 캡처하든.</span></h2>',
+ 'ja': '<h2>ひとつの流れ。<br><span class="accent">どこで撮っても。</span></h2>'},
 
 # The pricing labels became .kicker eyebrows above the product titles.
 '<p class="kicker plan-price">Free</p>': {
@@ -219,5 +219,144 @@ FIX = {
  'zh': '<figcaption class="cap-caption">Kapture 在 Chrome 中运行：先截取整张网页，再在同一页面上框选一块区域。</figcaption>',
  'ko': '<figcaption class="cap-caption">Chrome에서 실행 중인 Kapture: 먼저 전체 페이지를 캡처하고, 이어서 같은 페이지에서 영역을 드래그합니다.</figcaption>',
  'ja': '<figcaption class="cap-caption">Chrome で動く Kapture。まずページ全体を撮り、続いて同じページ上で範囲を選びます。</figcaption>'},
+
+# ---------------------------------------------------------------- Windows platform
+# Same product as the Mac build, second platform, same unreleased state.
+'aria-label="Kapture Pro for Windows. Coming soon."': {
+ 'es': 'aria-label="Kapture Pro para Windows. Muy pronto."',
+ 'zh': 'aria-label="Windows 版 Kapture Pro。即将推出。"',
+ 'ko': 'aria-label="Windows용 Kapture Pro. 곧 출시됩니다."',
+ 'ja': 'aria-label="Windows 版 Kapture Pro。近日公開。"'},
+
+'<span class="store-cta-label">Pro for Mac</span>': {
+ 'es': '<span class="store-cta-label">Pro para Mac</span>',
+ 'zh': '<span class="store-cta-label">Mac 版 Pro</span>',
+ 'ko': '<span class="store-cta-label">Mac용 Pro</span>',
+ 'ja': '<span class="store-cta-label">Mac 版 Pro</span>'},
+
+'<span class="store-cta-label">Pro for Windows</span>': {
+ 'es': '<span class="store-cta-label">Pro para Windows</span>',
+ 'zh': '<span class="store-cta-label">Windows 版 Pro</span>',
+ 'ko': '<span class="store-cta-label">Windows용 Pro</span>',
+ 'ja': '<span class="store-cta-label">Windows 版 Pro</span>'},
+
+'<h3>Kapture<br>for Chrome</h3>': {
+ 'es': '<h3>Kapture<br>para Chrome</h3>',
+ 'zh': '<h3>Kapture<br>Chrome 版</h3>',
+ 'ko': '<h3>Kapture<br>Chrome용</h3>',
+ 'ja': '<h3>Kapture<br>Chrome 版</h3>'},
+
+'<h3>Kapture Pro<br>for Mac</h3>': {
+ 'es': '<h3>Kapture Pro<br>para Mac</h3>',
+ 'zh': '<h3>Kapture Pro<br>Mac 版</h3>',
+ 'ko': '<h3>Kapture Pro<br>Mac용</h3>',
+ 'ja': '<h3>Kapture Pro<br>Mac 版</h3>'},
+
+'<h3>Kapture Pro<br>for Windows</h3>': {
+ 'es': '<h3>Kapture Pro<br>para Windows</h3>',
+ 'zh': '<h3>Kapture Pro<br>Windows 版</h3>',
+ 'ko': '<h3>Kapture Pro<br>Windows용</h3>',
+ 'ja': '<h3>Kapture Pro<br>Windows 版</h3>'},
+
+# ---------------------------------------------------------------- company credit
+'<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; A <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> product</p>': {
+ 'es': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; Un producto de <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a></p>',
+ 'zh': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> 出品</p>',
+ 'ko': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> 제품</p>',
+ 'ja': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> のプロダクト</p>'},
+
+# ---------------------------------------------------------------- platform-neutral positioning
+# Kapture Pro is one product on two desktop platforms, so the general copy no
+# longer names Mac. "Desktop" becomes the everyday word for a personal computer
+# in each language, never the Desktop folder.
+'<title>Kapture: Capture in Chrome, organise on your desktop</title>': {
+ 'es': '<title>Kapture: captura en Chrome, organiza en tu ordenador</title>',
+ 'zh': '<title>Kapture：在 Chrome 截图，在电脑上整理</title>',
+ 'ko': '<title>Kapture: Chrome에서 캡처하고 컴퓨터에서 정리하세요</title>',
+ 'ja': '<title>Kapture：Chrome で撮って、パソコンで整理する</title>'},
+
+'Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your desktop. Everything stays local.': {
+ 'es': 'Kapture guarda páginas web completas o el área que elijas, directamente desde Chrome. Kapture Pro las convierte en una biblioteca visual ordenada y con búsqueda en tu ordenador. Todo se queda en local.',
+ 'zh': 'Kapture 直接在 Chrome 里保存整张网页或你框选的区域。Kapture Pro 把它们变成电脑上一个井井有条、可搜索的可视化图库。一切都留在本地。',
+ 'ko': 'Kapture는 Chrome에서 바로 전체 웹페이지나 선택한 영역을 저장합니다. Kapture Pro는 그것들을 컴퓨터 안에서 정돈되고 검색 가능한 시각적 라이브러리로 만듭니다. 모든 것이 기기 안에 남습니다.',
+ 'ja': 'Kapture は Chrome から直接、Web ページ全体や選んだ範囲を保存します。Kapture Pro はそれらをパソコン上の整理された、検索できるビジュアルライブラリにします。すべてローカルのままです。'},
+
+'Chrome extension 0.4.7 &middot; Kapture Pro': {
+ 'es': 'Extensión de Chrome 0.4.7 &middot; Kapture Pro',
+ 'zh': 'Chrome 扩展程序 0.4.7 &middot; Kapture Pro',
+ 'ko': 'Chrome 확장 프로그램 0.4.7 &middot; Kapture Pro',
+ 'ja': 'Chrome 拡張機能 0.4.7 &middot; Kapture Pro'},
+
+'''        Capture in Chrome.<br>
+        <span class="accent">Organise on your desktop.</span>''': {
+ 'es': '''        Captura en Chrome.<br>
+        <span class="accent">Organiza en tu ordenador.</span>''',
+ 'zh': '''        在 Chrome 截图。<br>
+        <span class="accent">在电脑上整理。</span>''',
+ 'ko': '''        Chrome에서 캡처.<br>
+        <span class="accent">컴퓨터에서 정리.</span>''',
+ 'ja': '''        Chrome で撮る。<br>
+        <span class="accent">パソコンで整理する。</span>'''},
+
+# og:title and twitter:title carry the title without its tag. They were left in
+# English before this pass; keying the bare string localises all three at once.
+'Kapture: Capture in Chrome, organise on your desktop': {
+ 'es': 'Kapture: captura en Chrome, organiza en tu ordenador',
+ 'zh': 'Kapture：在 Chrome 截图，在电脑上整理',
+ 'ko': 'Kapture: Chrome에서 캡처하고 컴퓨터에서 정리하세요',
+ 'ja': 'Kapture：Chrome で撮って、パソコンで整理する'},
+
+'<p class="hero-note">Requires Chrome 120 or later. Kapture for Chrome is free. Kapture Pro is coming soon for Mac and Windows.</p>': {
+ 'es': '<p class="hero-note">Requiere Chrome 120 o posterior. Kapture para Chrome es gratis. Kapture Pro llega pronto para Mac y Windows.</p>',
+ 'zh': '<p class="hero-note">需要 Chrome 120 或更高版本。Chrome 版 Kapture 免费，Kapture Pro 即将推出 Mac 版和 Windows 版。</p>',
+ 'ko': '<p class="hero-note">Chrome 120 이상이 필요합니다. Chrome용 Kapture는 무료이고, Kapture Pro는 Mac과 Windows용으로 곧 출시됩니다.</p>',
+ 'ja': '<p class="hero-note">Chrome 120 以降が必要です。Chrome 版 Kapture は無料。Kapture Pro は Mac 版と Windows 版を近日公開予定です。</p>'},
+
+'<figcaption>The Chrome extension captures. The desktop app organises what it captures.</figcaption>': {
+ 'es': '<figcaption>La extensión de Chrome captura. La app de escritorio organiza lo capturado.</figcaption>',
+ 'zh': '<figcaption>Chrome 扩展负责截图，桌面应用负责整理这些截图。</figcaption>',
+ 'ko': '<figcaption>Chrome 확장 프로그램이 캡처하고, 데스크톱 앱이 그 캡처를 정리합니다.</figcaption>',
+ 'ja': '<figcaption>Chrome 拡張機能が撮り、デスクトップアプリがそれを整理します。</figcaption>'},
+
+'''          Kapture Pro indexes the screenshots already on your computer and turns them into a
+          searchable visual library. The files never move, never upload, never leave the disk.''': {
+ 'es': '''          Kapture Pro indexa las capturas que ya tienes en el ordenador y las convierte en una
+          biblioteca visual con búsqueda. Los archivos no se mueven, no se suben, no salen del disco.''',
+ 'zh': '''          Kapture Pro 会索引你电脑上已有的截图，把它们变成一个可搜索的可视化图库。
+          文件不会被移动，不会被上传，也不会离开硬盘。''',
+ 'ko': '''          Kapture Pro는 컴퓨터에 이미 있는 스크린샷을 색인해 검색 가능한 시각적 라이브러리로
+          만듭니다. 파일은 옮겨지지도, 업로드되지도, 디스크를 벗어나지도 않습니다.''',
+ 'ja': '''          Kapture Pro はパソコンにすでにあるスクリーンショットを索引化し、検索できる
+          ビジュアルライブラリにします。ファイルは移動せず、アップロードもされず、ディスクから出ません。'''},
+
+'<p class="section-lead">Kapture handles capture in Chrome. Kapture Pro organises everything on your desktop. See what each product does on its own and what they unlock together.</p>': {
+ 'es': '<p class="section-lead">Kapture se encarga de capturar en Chrome. Kapture Pro lo organiza todo en tu ordenador. Mira lo que hace cada uno por separado y lo que consigues con los dos.</p>',
+ 'zh': '<p class="section-lead">Kapture 负责在 Chrome 里截图，Kapture Pro 负责在电脑上整理。看看每个产品单独能做什么，以及两个一起用能带来什么。</p>',
+ 'ko': '<p class="section-lead">Kapture는 Chrome에서 캡처하고, Kapture Pro는 컴퓨터에서 정리합니다. 각 제품이 따로 할 수 있는 일과, 둘을 함께 썼을 때 열리는 것들을 살펴보세요.</p>',
+ 'ja': '<p class="section-lead">Kapture は Chrome で撮り、Kapture Pro はパソコンで整理します。それぞれが単体でできることと、両方そろって初めてできることをご覧ください。</p>'},
+
+'''            Kapture creates screenshots on your computer and saves them through Chrome's own
+            Downloads system. Kapture Pro reads the files already sitting on your computer. Nothing
+            is uploaded, neither product needs an account, and there is no analytics,
+            advertising or tracking in either one.''': {
+ 'es': '''            Kapture crea las capturas en tu ordenador y las guarda con el sistema de descargas
+            de Chrome. Kapture Pro lee los archivos que ya están en tu ordenador. No se sube nada,
+            ninguno de los dos necesita cuenta y ninguno incluye analíticas, publicidad ni
+            seguimiento.''',
+ 'zh': '''            Kapture 在你的电脑上生成截图，并通过 Chrome 自带的下载功能保存。Kapture Pro
+            读取的是电脑上已有的文件。没有任何东西被上传，两款产品都不需要账号，也都不含
+            分析、广告或追踪。''',
+ 'ko': '''            Kapture는 사용자의 컴퓨터에서 스크린샷을 만들고 Chrome의 다운로드 기능으로
+            저장합니다. Kapture Pro는 이미 컴퓨터에 있는 파일을 읽습니다. 업로드되는 것은 없고,
+            두 제품 모두 계정이 필요 없으며, 분석·광고·추적도 들어 있지 않습니다.''',
+ 'ja': '''            Kapture はあなたのパソコン上でスクリーンショットを作り、Chrome のダウンロード機能で
+            保存します。Kapture Pro は、すでにパソコンにあるファイルを読むだけです。アップロードは
+            一切なく、どちらの製品もアカウント不要で、解析・広告・トラッキングも含まれていません。'''},
+
+'<figcaption>Captured in Chrome, kept on your computer.</figcaption>': {
+ 'es': '<figcaption>Capturado en Chrome, guardado en tu ordenador.</figcaption>',
+ 'zh': '<figcaption>在 Chrome 截图，留在你的电脑上。</figcaption>',
+ 'ko': '<figcaption>Chrome에서 캡처하고, 컴퓨터에 그대로 보관.</figcaption>',
+ 'ja': '<figcaption>Chrome で撮って、パソコンに置いたまま。</figcaption>'},
 
 }
