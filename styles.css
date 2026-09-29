@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ==========================================================================
    Chillax, for titles only
    The supplied package ships one @font-face per weight under separate family
@@ -1015,15 +1016,25 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   pointer-events: none;
 }
 .hero-stage-mac { position: relative; width: 79%; }
-.hero-stage-mac img {
-  display: block;
-  width: 100%;
-  height: auto;
+.kp-fit { display: block; container-type: inline-size; width: 100%; }
+.kp-fit > .kp { width: 1180px; }
+@supports (zoom: 1) and (width: 1cqw) {
+  .kp-fit > .kp { zoom: calc(100cqw / 1180px); }
+}
+.hero-stage-mac .kp {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
-  background: var(--bg-deep);
   box-shadow: 0 44px 100px -44px rgba(0, 0, 0, .85);
 }
+.hero-stage-mac .kp-body { height: 660px; }
+/* The hero render has no state machine, so the inspector simply shows the
+   selected capture rather than waiting to be switched on. */
+.hero-stage-mac .kp-insp-full,
+.hero-stage-mac .kp-tags { display: block; }
+/* The hero panel carries no Pro banner: at this size it would be unreadable,
+   and the page around it is already the Kapture Pro pitch. */
+.cp-lean .cp-pro { display: none; }
+
 /* The panel sits in a padded surface so the extension UI is never flush against
    a border. The surface carries the *panel's own* paper colour and swaps with
    it, so the gutter reads as part of the panel instead of a second box around
@@ -1045,14 +1056,11 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   box-shadow: 0 30px 70px -26px rgba(0, 0, 0, .9);
   animation: hero-frame 11s var(--ease) infinite;
 }
-.hero-stage-chrome img {
+.hero-stage-chrome .hero-panel {
   display: block;
   width: 100%;
-  height: auto;
-  border: 0;
   border-radius: calc(var(--radius) - 4px);
-  background: transparent;
-  box-shadow: none;
+  overflow: hidden;
 }
 .hero-stage figcaption {
   position: relative;
@@ -1122,6 +1130,10 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
    values; proportions are matched to a capture of the running build. The six
    controls below switch data-state, and the app screen itself changes.
    ========================================================================== */
+/* The icon sprite is a definitions-only SVG: it must never occupy layout. */
+.i-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.i { width: 1em; height: 1em; flex: none; display: block; }
+
 .kp-demo { margin-top: clamp(40px, 5vw, 64px); }
 .kp {
   position: relative;
@@ -1155,7 +1167,15 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 }
 /* BrandLockup: the app icon, the supplied wordmark, then "Pro" in teal.
    Sizes follow BrandWordmark.swift (icon = wordmark height x1.45). */
-.kp-brand { display: flex; align-items: baseline; gap: 7px; padding: 2px 4px 15px; }
+.kp-brand { display: flex; align-items: center; gap: 7px; padding: 2px 2px 15px; }
+/* HeaderIconButton, emphasis .action: it keeps a surface at rest, unlike the
+   panel toggles, so Settings reads as something you can do. */
+.kp-gear {
+  margin-left: auto; width: 21px; height: 18px; border-radius: 5px;
+  display: grid; place-items: center; color: #c3cac7;
+  background: rgba(255, 255, 255, .055);
+}
+.kp-gear .i { width: 11px; height: 11px; }
 .kp-appicon { width: 19px; height: 19px; align-self: center; border-radius: 5px; flex: none; }
 .kp-wordmark { height: 13px; width: auto; align-self: center; }
 .kp-brand b { color: #2CC2B0; font-weight: 640; font-size: 10.5px; align-self: center; }
@@ -1174,20 +1194,27 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 }
 .kp-new svg { width: 7.5px; height: 7.5px; flex: none; }
 .kp-side ul { display: grid; gap: 1px; }
+/* SidebarNavRow: icon in its own column, label, count. 8px radius and the teal
+   wash at .14 are the app's own values. */
 .kp-side li {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 5px 8px; border-radius: 6px; color: #c3cac7; font-size: 11.5px;
+  display: flex; align-items: center; gap: 7px;
+  padding: 5px 7px; border-radius: 8px; color: #c3cac7; font-size: 11.5px;
 }
-.kp-side li em { font-style: normal; color: #6f7874; font-size: 10.5px; }
-.kp-side li.is-on { background: rgba(44, 194, 176, .14); color: #2CC2B0; }
-.kp-side li.is-on em { color: #2CC2B0; }
+.kp-side li > span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kp-side li .i { width: 12px; height: 12px; flex: none; color: #7d8783; }
+.kp-side li em { font-style: normal; color: #6f7874; font-size: 10.5px; font-variant-numeric: tabular-nums; }
+.kp-side li.is-on { background: rgba(44, 194, 176, .14); color: #2CC2B0; font-weight: 640; }
+.kp-side li.is-on em, .kp-side li.is-on .i { color: #2CC2B0; }
+/* Projects carry their own accent, the way the app tints a project's folder. */
+.kp-side li .i-teal   { color: #2CC2B0; }
+.kp-side li .i-blue   { color: #5B9BF8; }
+.kp-side li .i-orange { color: #F2944F; }
 .kp-foot {
   margin-top: auto; padding: 9px 7px 4px;
   border-top: 1px solid rgba(255,255,255,.07);
   border-radius: 8px;
   transition: background-color .3s var(--ease), box-shadow .3s var(--ease);
 }
-.kp-settings-row { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: #c3cac7; margin-bottom: 9px; }
 .kp-gear { width: 12px; height: 12px; flex: none; display: grid; place-items: center; }
 .kp-gear svg { width: 100%; height: 100%; }
 .kp-store { display: flex; gap: 8px; font-size: 9.5px; color: #6f7874; }
@@ -1201,9 +1228,27 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 .kp-drive::after { content: ""; position: absolute; right: 1.5px; top: 2px; width: 2px; height: 2px; border-radius: 50%; background: #6f7874; }
 
 /* content */
-.kp-main { padding: 14px 16px; min-width: 0; }
+.kp-main { padding: 0; min-width: 0; display: flex; flex-direction: column; }
+/* WindowChrome.topStripHeight, scaled: it spans the content column only, never
+   the sidebar or the inspector. */
+.kp-util {
+  position: relative; flex: none; height: 33px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 9px; border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+.kp-ibtn {
+  width: 21px; height: 19px; border-radius: 5px; flex: none;
+  display: grid; place-items: center; color: #7d8783;
+}
+.kp-ibtn .i { width: 12px; height: 12px; }
+.kp-ibtn.is-on { background: rgba(44, 194, 176, .14); color: #2CC2B0; }
+.kp-util .kp-search {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 54%; max-width: 218px; padding: 4px 9px; border-radius: 6px;
+}
+.kp-pane { padding: 13px 16px 0; min-width: 0; }
 .kp-head { display: flex; align-items: flex-start; gap: 14px; justify-content: space-between; }
-.kp-head h4 { font-size: 16px; font-weight: 650; letter-spacing: -.02em; margin: 0 0 3px; }
+.kp-head .kp-h4 { font-size: 16px; font-weight: 650; letter-spacing: -.02em; margin: 0 0 3px; }
 .kp-head p { font-size: 10.5px; color: #6f7874; }
 .kp-search {
   display: flex; align-items: center; gap: 7px;
@@ -1213,11 +1258,7 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   border: 1px solid rgba(255, 255, 255, .09);
   transition: border-color .3s var(--ease), background-color .3s var(--ease);
 }
-.kp-mag {
-  width: 11px; height: 11px; flex: none; border-radius: 50%;
-  border: 1.4px solid #6f7874; position: relative;
-}
-.kp-mag::after { content: ""; position: absolute; right: -4px; bottom: -3px; width: 5px; height: 1.4px; background: #6f7874; transform: rotate(45deg); }
+.kp-mag { width: 11px; height: 11px; flex: none; color: #6f7874; }
 .kp-q { font-style: normal; font-size: 10.5px; color: #6f7874; }
 
 .kp-chips { display: flex; align-items: center; gap: 6px; margin: 12px 0 12px; flex-wrap: wrap; }
@@ -1280,7 +1321,7 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   background: #282B2A; border: 1px solid rgba(255,255,255,.12);
   border-radius: 12px; box-shadow: 0 24px 60px -20px rgba(0,0,0,.7);
 }
-.kp-sheet-box h4 { font-size: 14px; margin-bottom: 5px; font-weight: 650; }
+.kp-sheet-box .kp-h4 { font-size: 14px; margin-bottom: 5px; font-weight: 650; }
 .kp-sheet-box > p { font-size: 10.5px; color: #6f7874; margin-bottom: 12px; }
 .kp-field { display: block; margin-bottom: 14px; }
 .kp-field i { display: block; font-style: normal; font-size: 9.5px; color: #6f7874; margin-bottom: 4px; }
@@ -1317,7 +1358,6 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   background: rgba(44, 194, 176, .10);
   box-shadow: 0 0 0 1px rgba(44, 194, 176, .5);
 }
-.kp-demo[data-state="storage"] .kp-settings-row,
 .kp-demo[data-state="storage"] .kp-store b { color: #2CC2B0; }
 .kp-demo[data-state="storage"] .kp-store span { color: #a9b1ad; }
 .kp-demo[data-state="storage"] .kp-drive { border-color: #2CC2B0; }
@@ -1325,17 +1365,17 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 
 /* the six controls */
 #kpPoints { grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 30px) clamp(16px, 2vw, 28px); margin-top: clamp(56px, 7vw, 92px); }
-#kpPoints li { padding-top: 0; }   /* spacing, not a rule line */
-#kpPoints button {
+#kpPoints li, #smPoints li { padding-top: 0; }   /* spacing, not a rule line */
+#kpPoints button, #smPoints button {
   display: block; width: 100%; padding: 14px 12px;
   border: 0; border-radius: 10px; background: transparent; color: inherit;
   font: inherit; text-align: left; cursor: pointer;
   transition: background-color .25s var(--ease);
 }
-#kpPoints h3 { margin-bottom: 5px; font-size: 17px; transition: color .25s var(--ease); }
-#kpPoints p { font-size: 14.5px; color: var(--text-muted); }
-#kpPoints li.is-active button { background: rgba(25, 215, 192, .07); }
-#kpPoints li.is-active h3 { color: var(--teal); }
+#kpPoints h3, #smPoints h3 { margin-bottom: 5px; font-size: 17px; transition: color .25s var(--ease); }
+#kpPoints p, #smPoints p { font-size: 14.5px; color: var(--text-muted); }
+#kpPoints li.is-active button, #smPoints li.is-active button { background: rgba(25, 215, 192, .07); }
+#kpPoints li.is-active h3, #smPoints li.is-active h3 { color: var(--teal); }
 
 @media (max-width: 900px) {
   .kp-body { grid-template-columns: 168px 1fr; height: 610px; }
@@ -1350,7 +1390,547 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   #kpPoints { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .kp-card, .kp-search, #kpPoints button, #kpPoints h3 { transition: none; }
+  .kp-card, .kp-search, #kpPoints button, #kpPoints h3, #smPoints button, #smPoints h3 { transition: none; }
+}
+
+/* ==========================================================================
+   Languages
+   Every term below is the app's own approved translation, taken from the Mac
+   String Catalog and the extension's _locales. None of it is translated here
+   for the first time. The words live in custom properties rather than in the
+   markup so one set of elements can speak five languages without five copies
+   of the DOM, which is the same trick the Soon and Free pills already use.
+   ========================================================================== */
+.lg {
+  --lg-library: "Library";          --lg-all: "All Captures";
+  --lg-recents: "Recents";          --lg-favorites: "Favorites";
+  --lg-desktop: "Desktop Screenshots"; --lg-smart: "Smart";
+  --lg-collections: "Collections";  --lg-projects: "Projects";
+  --lg-allprojects: "All Projects"; --lg-settings: "Settings";
+  --lg-language: "Language";        --lg-rules: "Rules";
+  --lg-sources: "Sources";          --lg-duplicates: "Duplicates";
+  --lg-unorganised: "Unorganised";  --lg-cleanup: "Cleanup";
+  --lg-tags: "Tags";                --lg-notes: "Notes";
+  --lg-native: "English";
+  --lg-local: "Everything stays local on your Mac.";
+}
+.lg[data-lang="es"] {
+  --lg-library: "Biblioteca";       --lg-all: "Todas las capturas";
+  --lg-recents: "Recientes";        --lg-favorites: "Favoritos";
+  --lg-desktop: "Capturas del Escritorio"; --lg-smart: "Inteligente";
+  --lg-collections: "Colecciones";  --lg-projects: "Proyectos";
+  --lg-allprojects: "Todos los proyectos"; --lg-settings: "Ajustes";
+  --lg-language: "Idioma";          --lg-rules: "Reglas";
+  --lg-sources: "Fuentes";          --lg-duplicates: "Duplicados";
+  --lg-unorganised: "Sin organizar"; --lg-cleanup: "Limpieza";
+  --lg-tags: "Etiquetas";           --lg-notes: "Notas";
+  --lg-native: "Español";
+  --lg-local: "Todo se queda en tu Mac.";
+}
+.lg[data-lang="zh"] {
+  --lg-library: "图库";             --lg-all: "所有截图";
+  --lg-recents: "最近";             --lg-favorites: "收藏";
+  --lg-desktop: "桌面截图";          --lg-smart: "智能";
+  --lg-collections: "收藏集";        --lg-projects: "项目";
+  --lg-allprojects: "所有项目";      --lg-settings: "设置";
+  --lg-language: "语言";            --lg-rules: "规则";
+  --lg-sources: "来源";             --lg-duplicates: "重复项";
+  --lg-unorganised: "未整理";        --lg-cleanup: "清理";
+  --lg-tags: "标签";                --lg-notes: "备注";
+  --lg-native: "简体中文";
+  --lg-local: "一切都留在你的 Mac 上。";
+}
+.lg[data-lang="ko"] {
+  --lg-library: "라이브러리";        --lg-all: "모든 캡처";
+  --lg-recents: "최근 항목";         --lg-favorites: "즐겨찾기";
+  --lg-desktop: "데스크탑 스크린샷";  --lg-smart: "스마트";
+  --lg-collections: "컬렉션";        --lg-projects: "프로젝트";
+  --lg-allprojects: "모든 프로젝트";  --lg-settings: "설정";
+  --lg-language: "언어";            --lg-rules: "규칙";
+  --lg-sources: "출처";             --lg-duplicates: "중복 항목";
+  --lg-unorganised: "미정리";        --lg-cleanup: "정리";
+  --lg-tags: "태그";                --lg-notes: "메모";
+  --lg-native: "한국어";
+  --lg-local: "모든 것이 Mac 안에 남습니다.";
+}
+.lg[data-lang="ja"] {
+  --lg-library: "ライブラリ";        --lg-all: "すべてのキャプチャ";
+  --lg-recents: "最近の項目";        --lg-favorites: "お気に入り";
+  --lg-desktop: "デスクトップのスクリーンショット"; --lg-smart: "スマート";
+  --lg-collections: "コレクション";   --lg-projects: "プロジェクト";
+  --lg-allprojects: "すべてのプロジェクト"; --lg-settings: "設定";
+  --lg-language: "言語";            --lg-rules: "ルール";
+  --lg-sources: "ソース";           --lg-duplicates: "重複";
+  --lg-unorganised: "未整理";        --lg-cleanup: "クリーンアップ";
+  --lg-tags: "タグ";                --lg-notes: "メモ";
+  --lg-native: "日本語";
+  --lg-local: "すべて Mac のなかに残ります。";
+}
+/* System keeps the app in English here but names itself in every language. */
+.lg[data-lang="sys"] { --lg-native: "System / Default"; }
+
+.lg-t::after { content: var(--lg-t); }
+.lg-t[data-t="library"]      { --lg-t: var(--lg-library); }
+.lg-t[data-t="all"]          { --lg-t: var(--lg-all); }
+.lg-t[data-t="recents"]      { --lg-t: var(--lg-recents); }
+.lg-t[data-t="favorites"]    { --lg-t: var(--lg-favorites); }
+.lg-t[data-t="desktop"]      { --lg-t: var(--lg-desktop); }
+.lg-t[data-t="smart"]        { --lg-t: var(--lg-smart); }
+.lg-t[data-t="collections"]  { --lg-t: var(--lg-collections); }
+.lg-t[data-t="projects"]     { --lg-t: var(--lg-projects); }
+.lg-t[data-t="allprojects"]  { --lg-t: var(--lg-allprojects); }
+.lg-t[data-t="settings"]     { --lg-t: var(--lg-settings); }
+.lg-t[data-t="language"]     { --lg-t: var(--lg-language); }
+.lg-t[data-t="rules"]        { --lg-t: var(--lg-rules); }
+.lg-t[data-t="sources"]      { --lg-t: var(--lg-sources); }
+.lg-t[data-t="duplicates"]   { --lg-t: var(--lg-duplicates); }
+.lg-t[data-t="unorganised"]  { --lg-t: var(--lg-unorganised); }
+.lg-t[data-t="cleanup"]      { --lg-t: var(--lg-cleanup); }
+.lg-t[data-t="tags"]         { --lg-t: var(--lg-tags); }
+.lg-t[data-t="notes"]        { --lg-t: var(--lg-notes); }
+.lg-native::after { content: var(--lg-native); }
+.lg-t[data-t="local"]        { --lg-t: var(--lg-local); }
+
+/* The whole interface changes at once, as it does in the app: one group, one
+   crossfade, no per-item stagger. */
+.lg-app .lg-t, .lg-native, .lg-cloud li { transition: opacity .22s ease-in-out; }
+.lg.is-turning .lg-app .lg-t,
+.lg.is-turning .lg-native,
+.lg.is-turning .lg-cloud li { opacity: 0; }
+
+.lg {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px); align-items: center;
+}
+.lg-app { min-width: 0; }
+.lg-kp { font-size: 12px; }
+.lg-body { display: grid; grid-template-columns: 186px 1fr; min-height: 320px; }
+.lg-kp .kp-side { padding: 12px 10px; }
+.lg-set { padding: 16px 16px 14px; min-width: 0; }
+.lg-set-h { font-size: 15px; font-weight: 650; letter-spacing: -.02em; margin-bottom: 14px; }
+.lg-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 9px 11px; border-radius: 10px;
+  background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09);
+}
+.lg-row-l { display: flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; min-width: 0; }
+.lg-row-l .i { width: 13px; height: 13px; color: #6f7874; flex: none; }
+.lg-sel {
+  display: flex; align-items: center; gap: 7px; flex: none; max-width: 56%;
+  padding: 5px 8px; border-radius: 7px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+  font-size: 11px; color: #ECEFEE;
+}
+.lg-car { width: 11px; height: 11px; color: #6f7874; margin-left: auto; }
+.lg-note { margin-top: 12px; font-size: 10px; color: #6f7874; }
+
+/* Controlled, not a cloud of confetti: a plain wrap, the terms set at three
+   sizes so the field has rhythm without anything moving on its own. */
+.lg-cloud { display: flex; flex-wrap: wrap; gap: 10px 14px; align-content: center; min-width: 0; }
+.lg-cloud li {
+  padding: 7px 14px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--text-dim);
+  font-size: 15px; white-space: nowrap;
+}
+.lg-cloud li:nth-child(3n+1) { font-size: 18px; color: var(--text); }
+.lg-cloud li:nth-child(4n+3) { border-color: rgba(25, 215, 192, .34); color: var(--teal); }
+
+.lg-pick {
+  display: flex; flex-wrap: wrap; gap: 9px;
+  margin-top: clamp(28px, 3.5vw, 44px); justify-content: center;
+}
+.lg-pick button {
+  padding: 9px 17px; border-radius: 999px;
+  border: 1px solid var(--line); background: transparent; color: var(--text-dim);
+  font: inherit; font-size: 15px; cursor: pointer;
+  transition: color .25s var(--ease), border-color .25s var(--ease), background-color .25s var(--ease);
+}
+.lg-pick button:hover { color: var(--text); border-color: var(--line-strong); }
+.lg-pick li.is-active button {
+  background: rgba(25, 215, 192, .10);
+  border-color: rgba(25, 215, 192, .42);
+  color: var(--teal);
+}
+
+@media (max-width: 900px) {
+  .lg { grid-template-columns: minmax(0, 1fr); }
+  .lg-cloud { justify-content: center; }
+}
+@media (max-width: 560px) {
+  .lg-body { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .lg-kp .kp-side { display: none; }
+  .lg-cloud li { font-size: 14px; padding: 6px 12px; }
+  .lg-cloud li:nth-child(3n+1) { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-app .lg-t, .lg-native, .lg-cloud li, .lg-pick button { transition: none; }
+}
+
+/* ==========================================================================
+   Kapture for Chrome 0.4.9, rebuilt as a live render
+   Values come from the extension's own panel.css: the 450px panel, the 76px
+   header and 38px footer, the two themes, the radial teal washes at 3.5% and
+   7%, and the segmented control with one travelling thumb. Drawing it rather
+   than photographing it keeps the interface text sharp at any size and means
+   the panel can be shown in a state, not just a still.
+   ========================================================================== */
+.cp-fit {
+  display: block;
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 450 / 648;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.cp {
+  width: 450px; height: 100%;
+  display: flex; flex-direction: column;
+  font: 14px/1.5 var(--font);
+  border-radius: 10px; overflow: hidden;
+  /* light is the panel's default theme */
+  --c-bg: #f3f5f4; --c-surface: #fff; --c-soft: #eaeeec; --c-border: #e0e5e2;
+  --c-hair: rgba(0,0,0,.08); --c-muted: #646e69; --c-text: #191c1b;
+  --c-accent: #159F91; --c-glow: .035;
+  background: var(--c-bg); color: var(--c-text);
+}
+/* Length over length resolves to the unitless number zoom needs. zoom is used
+   rather than a transform because it establishes a real coordinate space, so a
+   percentage height still resolves against the box the panel is sitting in. */
+@supports (zoom: 1) and (width: 1cqw) {
+  .cp { zoom: calc(100cqw / 450px); }
+}
+.cp[data-theme="dark"] {
+  --c-bg: #1b1e1c; --c-surface: #242826; --c-soft: #2c312e; --c-border: #3a403d;
+  --c-hair: rgba(255,255,255,.07); --c-muted: #9aa39e; --c-text: #ecefee;
+  --c-glow: .07;
+}
+
+/* ---- header: 76px, radial teal wash anchored top centre ---- */
+.cp-head {
+  flex: none; display: flex; align-items: center; gap: 10px;
+  height: 76px; padding: 0 18px;
+  border-bottom: 1px solid var(--c-hair);
+  background-image: radial-gradient(75% 150% at 50% 0%, rgba(25,215,192,var(--c-glow)), transparent 72%);
+}
+.cp-brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.cp-icon { width: 30px; height: 30px; flex: none; display: block; }
+.cp-copy { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.cp-wm { display: block; width: 92px; height: 25px; object-fit: contain; object-position: left center; }
+.cp-wm-d { display: none; }
+.cp[data-theme="dark"] .cp-wm-l { display: none; }
+.cp[data-theme="dark"] .cp-wm-d { display: block; }
+.cp-ver { font-style: normal; font-size: 11px; color: var(--c-muted); line-height: 1.2; }
+.cp-theme {
+  margin-left: auto; flex: none; width: 52px; height: 27px; padding: 2px;
+  border: 1px solid var(--c-border); border-radius: 15px; background: var(--c-soft);
+  display: flex; align-items: center; justify-content: space-around;
+}
+.cp-theme i { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: var(--c-muted); }
+.cp-theme .i { width: 12px; height: 12px; }
+.cp-sun { background: var(--c-surface); color: var(--c-text); box-shadow: 0 1px 4px rgba(0,0,0,.13); }
+.cp[data-theme="dark"] .cp-sun { background: transparent; color: var(--c-muted); box-shadow: none; }
+.cp[data-theme="dark"] .cp-moon { background: var(--c-surface); color: var(--c-text); box-shadow: 0 1px 4px rgba(0,0,0,.13); }
+
+/* ---- main ---- */
+.cp-main { flex: 1; min-height: 0; padding: 16px; display: flex; flex-direction: column; }
+
+/* Pro banner, the expanded form, with the shipped gradient. */
+.cp-pro {
+  flex: none; margin-bottom: 12px; padding: 14px 15px; border-radius: 14px;
+  background: linear-gradient(135deg, #e9f6f3 0%, #dcefea 55%, #cfe8e1 100%);
+  border: 1px solid #bde0d8;
+}
+.cp[data-theme="dark"] .cp-pro {
+  background: linear-gradient(135deg, #0d2b28 0%, #10413a 55%, #0b2320 100%);
+  border-color: #1d5a52;
+}
+.cp-pro-copy { display: block; }
+.cp-pro-eye { display: block; margin-bottom: 6px; font-size: 9.5px; font-weight: 750; letter-spacing: .9px; text-transform: uppercase; color: #0e7a6f; }
+.cp-pro-h { display: block; margin-bottom: 6px; font-size: 16px; line-height: 1.2; letter-spacing: -.3px; font-weight: 700; color: #10312c; }
+.cp-pro-b { display: block; margin-bottom: 11px; font-style: normal; font-size: 10.5px; line-height: 1.35; color: #3f5f59; }
+.cp[data-theme="dark"] .cp-pro-eye { color: #4fd1c0; }
+.cp[data-theme="dark"] .cp-pro-h { color: #f2fbf9; }
+.cp[data-theme="dark"] .cp-pro-b { color: #a9cfc8; }
+.cp-pro-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  background: var(--c-accent); color: #06302b; font-size: 11.5px; font-weight: 700;
+}
+.cp-pro-cta .i { width: 12px; height: 12px; }
+
+/* Capture card */
+.cp-card {
+  flex: none; padding: 13px; border-radius: 14px;
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+}
+.cp-seg {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+  margin-bottom: 11px; padding: 3px; border-radius: 10px; background: var(--c-soft);
+}
+.cp-seg b, .cp-tabs b {
+  position: relative; z-index: 1; padding: 7px; text-align: center;
+  font-size: 11px; font-weight: 500; color: var(--c-muted);
+  transition: color .16s ease-out;
+}
+.cp-seg b.is-on, .cp-tabs b.is-on { color: var(--c-text); font-weight: 650; }
+.cp-thumb {
+  position: absolute; top: 3px; bottom: 3px; left: 3px; z-index: 0;
+  width: calc(50% - 5px);
+  border-radius: 7px; background: var(--c-surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,.13);
+  transition: left .16s ease-out, width .16s ease-out;
+}
+.cp-opts { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 9px; }
+.cp-opts-area { display: none; }
+.cp[data-cp="area"] .cp-opts-full { display: none; }
+.cp[data-cp="area"] .cp-opts-area { display: grid; }
+.cp-f { display: block; min-width: 0; }
+.cp-lab { display: block; font-style: normal; font-size: 11px; color: var(--c-muted); margin-bottom: 5px; }
+.cp-ctl {
+  display: flex; align-items: center; gap: 7px; height: 34px; padding: 6px 8px;
+  border: 1px solid var(--c-border); border-radius: 9px; background: var(--c-surface);
+  font-size: 11px; color: var(--c-text); min-width: 0;
+}
+.cp-ctl .i { width: 15px; height: 15px; flex: none; color: var(--c-muted); }
+.cp-car { margin-left: auto; width: 13px; height: 13px; }
+.cp-guide {
+  display: block; padding: 8px 9px; border-radius: 9px; background: var(--c-soft);
+}
+.cp-guide .i { width: 20px; height: 20px; color: var(--c-accent); margin-bottom: 5px; }
+.cp-guide b { display: block; font-size: 10px; font-weight: 650; }
+.cp-guide i { display: block; font-style: normal; font-size: 8.5px; color: var(--c-muted); margin-top: 2px; }
+.cp-notice {
+  display: flex; align-items: center; gap: 8px; margin-top: 9px;
+  padding: 7px 9px; border-radius: 9px; background: var(--c-soft);
+  font-size: 10px; color: var(--c-muted); min-width: 0;
+}
+.cp-notice .i { width: 16px; height: 16px; flex: none; }
+.cp-save { font-style: normal; white-space: nowrap; }
+.cp-proj { font-style: normal; color: var(--c-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-go {
+  display: grid; place-items: center; margin-top: 9px; height: 34px; border-radius: 9px;
+  background: var(--c-accent); color: #17312e; font-size: 11px; font-weight: 650;
+}
+.cp-go-area { display: none; }
+.cp[data-cp="area"] .cp-go-full { display: none; }
+.cp[data-cp="area"] .cp-go-area { display: block; }
+
+/* History */
+.cp-hist { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.cp-hist-top { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+.cp-h2 { font-size: 15px; font-weight: 650; }
+.cp-count { font-style: normal; font-size: 11px; background: var(--c-soft); border-radius: 12px; padding: 2px 7px; margin-left: 5px; color: var(--c-muted); }
+.cp-hacts { display: flex; gap: 4px; }
+.cp-hacts i { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 7px; color: var(--c-muted); }
+.cp-hacts .i { width: 18px; height: 18px; }
+.cp-hacts .is-off { opacity: .46; }
+.cp-tabs {
+  position: relative; display: inline-flex; align-self: flex-start; gap: 3px;
+  margin: 8px 0 6px; padding: 3px; border-radius: 9px; background: var(--c-soft);
+}
+.cp-tabs b { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 7px; }
+.cp-tabs b i { font-style: normal; font-size: 9.5px; font-weight: 650; padding: 1px 5px; border-radius: 9px; background: var(--c-surface); color: var(--c-muted); }
+.cp-tabs b.is-on i { background: var(--c-soft); color: var(--c-text); }
+.cp-thumb-t { box-shadow: 0 1px 3px rgba(0,0,0,.12); width: 74px; }
+.cp-selbar { display: flex; justify-content: space-between; margin: 0 1px 8px; color: var(--c-muted); font-size: 10px; }
+.cp-selbar span { display: flex; align-items: center; gap: 6px; }
+.cp-box { width: 13px; height: 13px; border: 1.5px solid var(--c-border); border-radius: 3px; flex: none; }
+.cp-rows { display: grid; gap: 7px; min-height: 0; }
+.cp-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 9px; border-radius: 10px;
+  background: var(--c-surface); border: 1px solid var(--c-border);
+}
+.cp-prev { width: 72px; height: 46px; flex: none; border: 1px solid var(--c-border); border-radius: 7px; overflow: hidden; background: var(--c-soft); }
+.cp-prev img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cp-det { min-width: 0; flex: 1; }
+.cp-det b { display: block; font-size: 11px; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-det i { display: block; font-style: normal; color: var(--c-muted); font-size: 9px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-open { width: 30px; height: 30px; flex: none; display: grid; place-items: center; border-radius: 7px; color: var(--c-muted); }
+.cp-open .i { width: 18px; height: 18px; }
+
+/* Settings view: it replaces the card and the history, never overlays them. */
+.cp-set { display: none; flex: 1; min-height: 0; flex-direction: column; gap: 6px; padding: 4px 2px; }
+.cp[data-cp="settings"] .cp-set { display: flex; }
+.cp[data-cp="settings"] .cp-card,
+.cp[data-cp="settings"] .cp-hist,
+.cp[data-cp="settings"] .cp-pro { display: none; }
+.cp-back {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 10px 5px 7px; border: 1px solid var(--c-border); border-radius: 9px;
+  background: var(--c-surface); font-size: 11px; font-weight: 600;
+}
+.cp-car-l { width: 12px; height: 12px; transform: rotate(90deg); color: var(--c-muted); }
+.cp-set-h { display: block; margin-top: 10px; font-size: 17px; letter-spacing: -.2px; font-weight: 650; }
+.cp-set-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 14px; padding: 10px 12px;
+  background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 11px;
+}
+.cp-set-l { display: flex; align-items: center; gap: 8px; font-style: normal; font-size: 12px; font-weight: 600; }
+.cp-set-l .i { width: 15px; height: 15px; color: var(--c-muted); }
+.cp-set-sel { flex: none; min-width: 150px; height: 34px; }
+.cp-set-go { width: 13px; height: 13px; color: var(--c-muted); }
+
+/* ---- footer: 38px, the wash anchored bottom centre ---- */
+.cp-foot {
+  flex: none; height: 38px; padding: 0 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  border-top: 1px solid var(--c-hair);
+  background-image: radial-gradient(80% 240% at 50% 100%, rgba(25,215,192,var(--c-glow)), transparent 70%);
+  font-size: 10px; color: var(--c-muted);
+}
+.cp-foot span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-foot-l { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(100,110,105,.45); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-thumb, .cp-seg b, .cp-tabs b { transition: none; }
+}
+
+/* ==========================================================================
+   Smart: one workspace, five tools
+   The app renders a single heading and lets the tab name the tool, and only
+   the region under the description swaps. This mirrors that exactly, including
+   the distinction the app is careful about: the tab bar is one container with
+   one travelling indicator and no per-segment background, while the filter
+   chips below it are separate capsules. Confusing the two was the thing the
+   app deliberately moved away from.
+   ========================================================================== */
+.sm-demo { margin-top: clamp(40px, 5vw, 64px); }
+
+.sm-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sm-top .kp-h4 { font-size: 16px; font-weight: 650; letter-spacing: -.02em; margin: 0; }
+
+/* SmartTabBar: 9px container, 7px segments, 2px inset. */
+.sm-tabs {
+  position: relative;
+  display: inline-flex; gap: 2px; margin-top: 11px; padding: 2px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .09);
+  max-width: 100%;
+}
+.sm-tabs b {
+  position: relative; z-index: 1;
+  padding: 4px 10px; border-radius: 7px;
+  font-size: 10.5px; font-weight: 500; color: #a9b1ad;
+  white-space: nowrap;
+  transition: color .16s ease-out;
+}
+.sm-tabs b.is-on { color: #0F1615; font-weight: 640; }
+/* One indicator travels. It is measured in JS so any translation fits. */
+.sm-thumb {
+  position: absolute; top: 2px; left: 0; z-index: 0;
+  height: calc(100% - 4px);
+  width: var(--sm-w, 0); transform: translateX(var(--sm-x, 0));
+  border-radius: 7px; background: #2CC2B0;
+  opacity: 0; pointer-events: none;
+}
+.sm-ready .sm-thumb {
+  opacity: 1;
+  transition: transform .16s ease-out, width .16s ease-out;
+}
+
+.sm-descs { position: relative; height: 15px; margin-top: 8px; }
+.sm-desc {
+  position: absolute; inset: 0;
+  font-size: 10.5px; color: #6f7874;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  opacity: 0; transition: opacity .22s ease-in-out;
+}
+.sm-demo[data-tool="unorganised"] .sm-desc[data-desc="unorganised"],
+.sm-demo[data-tool="duplicates"]  .sm-desc[data-desc="duplicates"],
+.sm-demo[data-tool="cleanup"]     .sm-desc[data-desc="cleanup"],
+.sm-demo[data-tool="sources"]     .sm-desc[data-desc="sources"],
+.sm-demo[data-tool="rules"]       .sm-desc[data-desc="rules"] { opacity: 1; }
+
+/* The shell must not resize when a tool changes, so the body holds its height
+   and the views cross-fade inside it. */
+.sm-body { position: relative; height: 352px; margin-top: 12px; }
+.sm-view {
+  position: absolute; inset: 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity .22s ease-in-out, visibility .22s;
+}
+.sm-demo[data-tool="unorganised"] .sm-view[data-view="unorganised"],
+.sm-demo[data-tool="duplicates"]  .sm-view[data-view="duplicates"],
+.sm-demo[data-tool="cleanup"]     .sm-view[data-view="cleanup"],
+.sm-demo[data-tool="sources"]     .sm-view[data-view="sources"],
+.sm-demo[data-tool="rules"]       .sm-view[data-view="rules"] { opacity: 1; visibility: visible; }
+
+.sm-view .kp-chips { margin-top: 0; }
+.sm-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.sm-grid .kp-thumb { aspect-ratio: 4 / 3; }
+
+/* Duplicates */
+.sm-dup { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.sm-dup-card { padding: 11px; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; background: rgba(255,255,255,.045); }
+.sm-dup-h { font-size: 11px; font-weight: 640; display: flex; justify-content: space-between; gap: 8px; }
+.sm-dup-h em { font-style: normal; font-weight: 400; color: #6f7874; font-size: 10px; }
+.sm-dup-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 9px 0 8px; }
+.sm-dup-t { position: relative; display: block; border-radius: 6px; overflow: hidden; background: #141414; aspect-ratio: 4 / 3; }
+.sm-dup-t img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.sm-keep {
+  position: absolute; left: 6px; bottom: 6px;
+  padding: 2px 7px; border-radius: 999px; font-style: normal;
+  font-size: 9px; font-weight: 650; background: #2CC2B0; color: #0F1615;
+}
+.sm-dup-m { font-size: 9.5px; color: #6f7874; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Sources */
+.sm-src { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-content: start; }
+.sm-src-card { padding: 13px 12px; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; background: rgba(255,255,255,.045); }
+.sm-src-i { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; background: rgba(255,255,255,.06); color: #a9b1ad; margin-bottom: 10px; }
+.sm-src-i .i { width: 14px; height: 14px; }
+.sm-src-i.i-teal { background: rgba(44,194,176,.14); color: #2CC2B0; }
+.sm-src-n { font-size: 11.5px; font-weight: 640; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sm-src-c { font-size: 10px; color: #6f7874; margin-top: 2px; }
+
+/* Rules */
+.sm-rules { display: grid; gap: 8px; }
+.sm-rule {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 11px 12px; border: 1px solid rgba(255,255,255,.09);
+  border-radius: 10px; background: rgba(255,255,255,.045);
+}
+.sm-rule-t { min-width: 0; }
+.sm-rule-t b { display: block; font-size: 11.5px; font-weight: 640; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sm-rule-t i { display: block; font-style: normal; font-size: 10px; color: #6f7874; margin-top: 2px; }
+.sm-sw {
+  flex: none; width: 28px; height: 16px; border-radius: 999px;
+  background: rgba(255,255,255,.12); position: relative;
+}
+.sm-sw::after {
+  content: ""; position: absolute; top: 2px; left: 2px;
+  width: 12px; height: 12px; border-radius: 50%; background: #ECEFEE;
+  transition: transform .16s ease-out;
+}
+.sm-sw.is-on { background: #2CC2B0; }
+.sm-sw.is-on::after { transform: translateX(12px); background: #0F1615; }
+
+.sm-note { margin-top: 12px; font-size: 10px; color: #6f7874; }
+
+/* The five controls below the render, five across where there is room. */
+#smPoints { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 30px) clamp(14px, 1.6vw, 22px); margin-top: clamp(48px, 6vw, 76px); }
+@media (max-width: 1000px) { #smPoints { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px)  { #smPoints { grid-template-columns: minmax(0, 1fr); } }
+
+/* Narrow: the tab bar scrolls rather than wrapping, as the app's own
+   ViewThatFits fallback does. */
+@media (max-width: 760px) {
+  .sm-tabs { overflow-x: auto; scrollbar-width: none; }
+  .sm-tabs::-webkit-scrollbar { display: none; }
+  .sm-grid, .sm-src { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm-dup { grid-template-columns: minmax(0, 1fr); }
+  .sm-body { height: 400px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sm-ready .sm-thumb { transition: none; }
+  .sm-view, .sm-desc, .sm-sw::after { transition: none; }
 }
 
 /* ==========================================================================
@@ -1365,11 +1945,7 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
    intrinsic ratio and ignores the opposite offset, so the dark render came out
    26px wider and 37px taller than the light one and spilled over the frame. */
 .hero-panel-stack { display: grid; }
-.hero-panel-stack > .hero-panel {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: auto;
-}
+.hero-panel-stack > .hero-panel { grid-area: 1 / 1; width: 100%; }
 .hero-panel-dark {
   opacity: 0;
   animation: hero-theme 11s var(--ease) infinite;
@@ -1536,19 +2112,7 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   background: #FAF9F6;
   overflow: hidden;
 }
-.cap-p-body {
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden;
-}
-/* The render's bottom 83 of 1400 pixels are its footer. Those are clipped off
-   here and redrawn by .cap-p-foot, at the same scale, against the bottom edge. */
-.cap-p-foot {
-  flex: none;
-  aspect-ratio: 1000 / 83;
-  background: url("assets/demo/panel-light-full.png?v=3") bottom center / 100% auto no-repeat;
-}
+.cap-panel .cp-fit { flex: 1; min-height: 0; aspect-ratio: auto; height: auto; }
 .cap-panel::after {
   content: "";
   position: absolute;
@@ -1557,26 +2121,34 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   background: rgba(0, 0, 0, .10);
   z-index: 2;
 }
-/* Drawn at the column's width and its own aspect, anchored to the top, clipped
-   by .cap-p-body. Never scaled to the column's height, so the extension's own
-   controls can't be cropped off the sides. */
-.cap-p {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: auto;
-  clip-path: inset(0 0 5.93% 0);   /* 83 / 1400: the footer, drawn separately */
-}
-.cap-p-area { opacity: 0; }
 
 /* ---- the phases ---- */
 .cap[data-phase="scan"] .cap-scan { opacity: 1; animation: cap-sweep 1.9s linear forwards; }
 .cap[data-phase="scan"] .cap-line { opacity: 1; animation: cap-line 1.9s linear forwards; }
 
-.cap[data-phase="area"] .cap-p-area,
-.cap[data-phase="draw"] .cap-p-area,
-.cap[data-phase="crop"] .cap-p-area { opacity: 1; }
-.cap[data-phase="area"] .cap-p-full,
-.cap[data-phase="draw"] .cap-p-full,
-.cap[data-phase="crop"] .cap-p-full { opacity: 0; }
+/* Select area is chosen in the panel for the second half of the loop, so the
+   panel switches its own options, its button label and its segmented thumb. */
+.cap[data-phase="area"] .cp-opts-full,
+.cap[data-phase="draw"] .cp-opts-full,
+.cap[data-phase="crop"] .cp-opts-full { display: none; }
+.cap[data-phase="area"] .cp-opts-area,
+.cap[data-phase="draw"] .cp-opts-area,
+.cap[data-phase="crop"] .cp-opts-area { display: grid; }
+.cap[data-phase="area"] .cp-go-full,
+.cap[data-phase="draw"] .cp-go-full,
+.cap[data-phase="crop"] .cp-go-full { display: none; }
+.cap[data-phase="area"] .cp-go-area,
+.cap[data-phase="draw"] .cp-go-area,
+.cap[data-phase="crop"] .cp-go-area { display: block; }
+.cap[data-phase="area"] .cp-seg .cp-thumb,
+.cap[data-phase="draw"] .cp-seg .cp-thumb,
+.cap[data-phase="crop"] .cp-seg .cp-thumb { left: calc(50% + 2px); }
+.cap[data-phase="area"] .cp-seg b:first-of-type,
+.cap[data-phase="draw"] .cp-seg b:first-of-type,
+.cap[data-phase="crop"] .cp-seg b:first-of-type { color: var(--c-muted); font-weight: 500; }
+.cap[data-phase="area"] .cp-seg b:last-of-type,
+.cap[data-phase="draw"] .cp-seg b:last-of-type,
+.cap[data-phase="crop"] .cp-seg b:last-of-type { color: var(--c-text); font-weight: 650; }
 
 /* the cursor is 14px wide, so a percentage translate moved it by 8px, not to
    the corner it was supposed to be dragging. Percentages on left/top resolve

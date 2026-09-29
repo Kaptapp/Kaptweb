@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kapture: Capture in Chrome, organise on your desktop</title>
-<meta name="description" content="Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your desktop. Everything stays local.">
+<meta name="description" content="Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1b1d1c">
 <link rel="canonical" href="https://kaptapp.com/">
@@ -35,7 +35,7 @@
 <meta property="og:site_name" content="Kapture">
 <meta property="og:url" content="https://kaptapp.com/">
 <meta property="og:title" content="Kapture: Capture in Chrome, organise on your desktop">
-<meta property="og:description" content="Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your desktop. Everything stays local.">
+<meta property="og:description" content="Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.">
 <meta property="og:image" content="https://kaptapp.com/assets/social/kapture-og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -44,7 +44,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@kaptapp">
 <meta name="twitter:title" content="Kapture: Capture in Chrome, organise on your desktop">
-<meta name="twitter:description" content="Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your desktop. Everything stays local.">
+<meta name="twitter:description" content="Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.">
 <meta name="twitter:image" content="https://kaptapp.com/assets/social/kapture-og.png">
 <meta name="twitter:image:alt" content="Kapture, full page screenshots for Chrome.">
 
@@ -57,7 +57,7 @@
       "@id": "https://kaptapp.com/#website",
       "url": "https://kaptapp.com/",
       "name": "Kapture",
-      "description": "Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your desktop. Everything stays local.",
+      "description": "Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.",
       "inLanguage": "en",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
@@ -91,7 +91,7 @@
       "applicationCategory": "BrowserApplication",
       "applicationSubCategory": "Screenshot utility",
       "browserRequirements": "Requires Google Chrome 120 or later",
-      "softwareVersion": "0.4.7",
+      "softwareVersion": "0.4.9",
       "featureList": [
         "Full page capture, including content below the fold",
         "Select and capture an area of the visible page",
@@ -119,7 +119,7 @@
       "@id": "https://kaptapp.com/#kapture-pro",
       "name": "Kapture Pro",
       "url": "https://kaptapp.com/#pro",
-      "description": "Kapture Pro indexes the screenshots already on your computer and turns them into a searchable visual library with projects, tags and an inspector.",
+      "description": "Kapture Pro indexes the screenshots already on your computer and turns them into a searchable visual library, with Projects, Collections, Smart, tags and an inspector.",
       "applicationCategory": "DesignApplication",
       "operatingSystem": "macOS, Windows",
       "featureList": [
@@ -141,7 +141,7 @@
       "@id": "https://kaptapp.com/#webpage",
       "url": "https://kaptapp.com/",
       "name": "Kapture: Capture in Chrome, organise on your desktop",
-      "description": "Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into an organised, searchable visual library on your desktop. Everything stays local.",
+      "description": "Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.",
       "isPartOf": {
         "@id": "https://kaptapp.com/#website"
       },
@@ -159,11 +159,41 @@
 </script>
 
 <link rel="preload" href="assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=33">
+<link rel="stylesheet" href="styles.css?v=34">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ PRODUCT ICON SPRITE ============
+     Phosphor Regular, the icon family both apps use, lifted from the shipped
+     assets (KapturePro/Assets/Icons and the extension's icons/phosphor). One
+     sprite so the app renders below stay sharp text and vector rather than
+     screenshots, without repeating a path every time an icon appears. -->
+<svg class="i-sprite" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-squares" viewBox="0 0 256 256"><path fill="currentColor" d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 256 256"><path fill="currentColor" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+<symbol id="i-star" viewBox="0 0 256 256"><path fill="currentColor" d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></symbol>
+<symbol id="i-desktop" viewBox="0 0 256 256"><path fill="currentColor" d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 256 256"><path fill="currentColor" d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"/></symbol>
+<symbol id="i-stack" viewBox="0 0 256 256"><path fill="currentColor" d="M230.91,172A8,8,0,0,1,228,182.91l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,36,169.09l92,53.65,92-53.65A8,8,0,0,1,230.91,172ZM220,121.09l-92,53.65L36,121.09A8,8,0,0,0,28,134.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,121.09ZM24,80a8,8,0,0,1,4-6.91l96-56a8,8,0,0,1,8.06,0l96,56a8,8,0,0,1,0,13.82l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,24,80Zm23.88,0L128,126.74,208.12,80,128,33.26Z"/></symbol>
+<symbol id="i-folders" viewBox="0 0 256 256"><path fill="currentColor" d="M224,64H154.67L126.93,43.2a16.12,16.12,0,0,0-9.6-3.2H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H192.89A15.13,15.13,0,0,0,208,200.89V184h16.89A15.13,15.13,0,0,0,240,168.89V80A16,16,0,0,0,224,64ZM192,200H40V88H85.33l29.87,22.4A8,8,0,0,0,120,112h72Zm32-32H208V112a16,16,0,0,0-16-16H122.67L94.93,75.2a16.12,16.12,0,0,0-9.6-3.2H72V56h45.33L147.2,78.4A8,8,0,0,0,152,80h72Z"/></symbol>
+<symbol id="i-folder" viewBox="0 0 256 256"><path fill="currentColor" d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"/></symbol>
+<symbol id="i-gear" viewBox="0 0 256 256"><path fill="currentColor" d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"/></symbol>
+<symbol id="i-mag" viewBox="0 0 256 256"><path fill="currentColor" d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 256 256"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 256 256"><path fill="currentColor" d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"/></symbol>
+<symbol id="i-question" viewBox="0 0 256 256"><path fill="currentColor" d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+<symbol id="i-arrow-ur" viewBox="0 0 256 256"><path fill="currentColor" d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+<symbol id="i-caret" viewBox="0 0 256 256"><path fill="currentColor" d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 256 256"><path fill="currentColor" d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm22.63-74.63a8,8,0,0,0-11.32,0l-16,16a8,8,0,0,0,11.32,11.32l16-16A8,8,0,0,0,214.63,53.37ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm5.37-74.63A8,8,0,0,0,42.05,64.69l16,16A8,8,0,0,0,69.37,69.37ZM128,208a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Zm-42.34,55.31a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM58.05,175.31l-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32Z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 256 256"><path fill="currentColor" d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol>
+<symbol id="i-sel" viewBox="0 0 256 256"><path fill="currentColor" d="M152,48h32a24,24,0,0,1,24,24V96a8,8,0,0,1-16,0V72a8,8,0,0,0-8-8H152a8,8,0,0,1,0-16ZM72,64h32a8,8,0,0,0,0-16H72A24,24,0,0,0,48,72V96a8,8,0,0,0,16,0V72A8,8,0,0,1,72,64ZM200,152a8,8,0,0,0-8,8v24a8,8,0,0,1-8,8H152a8,8,0,0,0,0,16h32a24,24,0,0,0,24-24V160A8,8,0,0,0,200,152Zm-96,40H72a8,8,0,0,1-8-8V160a8,8,0,0,0-16,0v24a24,24,0,0,0,24,24h32a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-sb-left" viewBox="0 0 256 256"><path fill="currentColor" d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H92V200H40ZM216,200H108V56H216V200Z"/></symbol>
+<symbol id="i-sb-right" viewBox="0 0 256 256"><path fill="currentColor" d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H148V200H40ZM216,200H164V56h52V200Z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 256 256"><path fill="currentColor" d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z"/></symbol>
+<symbol id="i-trash" viewBox="0 0 256 256"><path fill="currentColor" d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></symbol>
+</defs></svg>
 
 <header class="site-header" id="siteHeader">
   <div class="shell header-inner">
@@ -202,7 +232,7 @@
     <div class="shell">
       <p class="eyebrow">
         <span class="dot" aria-hidden="true"></span>
-        Chrome extension 0.4.7 &middot; Kapture Pro
+        Chrome extension 0.4.9 &middot; Kapture Pro
       </p>
 
       <h1 class="hero-title">
@@ -246,22 +276,160 @@
 
         <div class="hero-stage-mac">
           <p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>for Mac</em></p>
-          <img src="assets/screenshots/kapture-pro-curated.png?v=2"
-               alt="Kapture Pro on macOS: projects in the sidebar, a grid of captured screenshots, and an inspector with the selected file's details."
-               width="2320" height="1650" decoding="async">
+          <!-- The same render as the Kapture Pro section, drawn at hero scale.
+               Live HTML rather than a screenshot, so the interface text stays
+               sharp and there is only ever one version of the app on the site. -->
+          <div class="kp-fit" role="img"
+               aria-label="Kapture Pro: Library with All Captures, Recents, Favorites, Desktop Screenshots, Smart and Collections, Projects below it, a grid of captured screenshots, and an inspector with the selected file's details.">
+            <div class="kp kp-hero">
+              <div class="kp-bar"><span class="kp-lights"><i></i><i></i><i></i></span><span class="kp-title">Kapture Pro</span></div>
+              <div class="kp-body">
+                <aside class="kp-side">
+                  <div class="kp-brand">
+                    <img class="kp-appicon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                    <img class="kp-wordmark" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                    <b>Pro</b>
+                    <span class="kp-gear" aria-hidden="true"><svg class="i"><use href="#i-gear"/></svg></span>
+                  </div>
+                  <p class="kp-sec">Library</p>
+                  <ul>
+                    <li class="is-on"><svg class="i"><use href="#i-squares"/></svg><span>All Captures</span><em>7</em></li>
+                    <li><svg class="i"><use href="#i-clock"/></svg><span>Recents</span><em>7</em></li>
+                    <li><svg class="i"><use href="#i-star"/></svg><span>Favorites</span><em>2</em></li>
+                    <li><svg class="i"><use href="#i-desktop"/></svg><span>Desktop Screenshots</span><em>5</em></li>
+                    <li><svg class="i"><use href="#i-bulb"/></svg><span>Smart</span></li>
+                    <li><svg class="i"><use href="#i-stack"/></svg><span>Collections</span><em>2</em></li>
+                  </ul>
+                  <p class="kp-sec">Projects <i class="kp-new"><svg class="i"><use href="#i-plus"/></svg>New</i></p>
+                  <ul>
+                    <li><svg class="i"><use href="#i-folders"/></svg><span>All Projects</span><em>3</em></li>
+                    <li><svg class="i i-teal"><use href="#i-folder"/></svg><span>Design Review</span><em>3</em></li>
+                    <li><svg class="i i-blue"><use href="#i-folder"/></svg><span>Competitor Research</span><em>2</em></li>
+                    <li><svg class="i i-orange"><use href="#i-folder"/></svg><span>Brand Refresh</span><em>2</em></li>
+                  </ul>
+                  <div class="kp-foot">
+                    <div class="kp-store">
+                      <span class="kp-drive" aria-hidden="true"></span>
+                      <div><b>7 captures indexed locally</b><span>24.1 MB in Kapture</span><span>318.4 GB free on Mac</span></div>
+                    </div>
+                  </div>
+                </aside>
+                <main class="kp-main">
+                  <div class="kp-util">
+                    <span class="kp-ibtn is-on" aria-hidden="true"><svg class="i"><use href="#i-sb-left"/></svg></span>
+                    <label class="kp-search"><svg class="i kp-mag"><use href="#i-mag"/></svg><i class="kp-q">Search captures, projects or tags</i></label>
+                    <span class="kp-ibtn is-on" aria-hidden="true"><svg class="i"><use href="#i-sb-right"/></svg></span>
+                  </div>
+                  <div class="kp-pane">
+                    <div class="kp-head"><div><p class="kp-h4">All Captures</p><p>Every screenshot and PDF in your Kapture folder.</p></div></div>
+                    <div class="kp-chips"><span class="is-on">All 7</span><span>Desktop 5</span><span>Mobile 2</span><span>Selected Areas 1</span><span>PNG 6</span><span>JPEG 1</span><em class="kp-sort">Sort by Newest</em></div>
+                    <div class="kp-grid">
+                      <article class="kp-card is-sel"><div class="kp-thumb"><img src="assets/demo/thumb-1.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">PNG</span></div><p class="kp-name">getdotio_001.png</p><p class="kp-meta">Design Review</p><p class="kp-when">2 hours ago<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-2.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">PNG</span></div><p class="kp-name">ohmywork_001.png</p><p class="kp-meta">Design Review</p><p class="kp-when">4 hours ago<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-3.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">JPG</span></div><p class="kp-name">bargly_001.png</p><p class="kp-meta">Design Review</p><p class="kp-when">Yesterday<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-4.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">PNG</span></div><p class="kp-name">sloooths_001.png</p><p class="kp-meta">Brand Refresh</p><p class="kp-when">Yesterday<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-5.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">PNG</span></div><p class="kp-name">kaptapp_001.png</p><p class="kp-meta">Brand Refresh</p><p class="kp-when">2 days ago<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-6.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">PNG</span></div><p class="kp-name">getdotio_002.png</p><p class="kp-meta">Competitor Research</p><p class="kp-when">3 days ago<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-7.png" alt="" width="520" height="390" decoding="async"><span class="kp-fmt">PNG</span></div><p class="kp-name">sloooths_002.png</p><p class="kp-meta">Competitor Research</p><p class="kp-when">3 days ago<span class="kp-acts">&#9734; &#8943;</span></p></article>
+                    </div>
+                  </div>
+                </main>
+                <aside class="kp-insp">
+                  <div class="kp-insp-full">
+                    <div class="kp-insp-prev"><img src="assets/demo/thumb-1.png" alt="" width="520" height="390" decoding="async"></div>
+                    <p class="kp-insp-name">getdotio_001.png</p><p class="kp-insp-sub">PNG image &middot; 2.6 MB</p>
+                    <dl class="kp-rows"><div><dt>Project</dt><dd>Design Review</dd></div><div><dt>Dimensions</dt><dd>1471 &times; 1184</dd></div><div><dt>Source</dt><dd>getdotio.com</dd></div><div><dt>Captured</dt><dd>Today, 09:14</dd></div></dl>
+                    <div class="kp-tags"><p class="kp-lab">Tags</p><span class="kp-tag">pricing</span><span class="kp-tag">competitor</span><p class="kp-lab">Notes</p><p class="kp-note">Pricing layout worth revisiting.</p></div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="hero-stage-chrome">
           <!-- The panel's own two themes, cross-fading. Both frames are renders of
-               the shipped 0.4.7 side panel, so nothing here is invented. -->
+               the shipped 0.4.9 side panel, so nothing here is invented. -->
           <p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>for Chrome</em></p>
           <span class="hero-panel-stack">
-            <img class="hero-panel hero-panel-light" src="assets/demo/panel-light-full.png?v=3"
-                 alt="The Kapture 0.4.7 side panel in Chrome, with capture mode, viewport, file format and the destination project folder."
-                 width="1000" height="1400" decoding="async">
-            <img class="hero-panel hero-panel-dark" src="assets/demo/panel-dark-full.png?v=3"
-                 alt="" aria-hidden="true"
-                 width="1000" height="1400" decoding="async">
+            <!-- The panel's own two themes, cross-fading, as before. Both are the
+                 shipped 0.4.9 panel drawn in HTML rather than photographed. -->
+            <span class="hero-panel hero-panel-light" role="img" aria-label="The Kapture 0.4.9 side panel in Chrome: capture mode, viewport, file format, the destination project folder and the history list.">
+              <span class="cp-fit">
+              <span class="cp cp-lean" data-theme="light">
+                <span class="cp-head">
+                  <span class="cp-brand">
+                    <img class="cp-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                    <span class="cp-copy">
+                      <img class="cp-wm cp-wm-l" src="assets/logo/kapture_wordmark-dark.svg" alt="" width="843" height="233">
+                      <img class="cp-wm cp-wm-d" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                      <i class="cp-ver">Version 0.4.9</i>
+                    </span>
+                  </span>
+                  <span class="cp-theme"><i class="cp-sun"><svg class="i"><use href="#i-sun"/></svg></i><i class="cp-moon"><svg class="i"><use href="#i-moon"/></svg></i></span>
+                </span>
+                <span class="cp-main">
+                  <span class="cp-card">
+                    <span class="cp-seg"><span class="cp-thumb"></span><b class="is-on">Full page</b><b>Select area</b></span>
+                    <span class="cp-opts cp-opts-full">
+                      <span class="cp-f"><i class="cp-lab">Viewport</i><span class="cp-ctl"><svg class="i"><use href="#i-desktop"/></svg>Current browser<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                      <span class="cp-f"><i class="cp-lab">Format</i><span class="cp-ctl">PNG<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                    </span>
+                    <span class="cp-notice"><svg class="i"><use href="#i-folder"/></svg><i class="cp-save">Save to Downloads/Kapture/</i><i class="cp-proj">Design Review</i></span>
+                    <span class="cp-go"><b class="cp-go-full">Capture page</b></span>
+                  </span>
+                  <span class="cp-hist">
+                    <span class="cp-hist-top"><span class="cp-h2">History <i class="cp-count">7</i></span><span class="cp-hacts"><i><svg class="i"><use href="#i-refresh"/></svg></i><i class="is-off"><svg class="i"><use href="#i-trash"/></svg></i></span></span>
+                    <span class="cp-tabs"><span class="cp-thumb cp-thumb-t"></span><b class="is-on">Kept <i>7</i></b><b>Deleted <i>0</i></b></span>
+                    <span class="cp-rows">
+                      <span class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-1.png" alt="" width="520" height="390" decoding="async"></span><span class="cp-det"><b>kapture-getdotio-2026-09-29.png</b><i>getdotio.com &middot; Sep 29, 2026, 9:14 AM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></span>
+                      <span class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-2.png" alt="" width="520" height="390" decoding="async"></span><span class="cp-det"><b>kapture-ohmywork-2026-09-29.png</b><i>ohmywork.com &middot; Sep 29, 2026, 8:41 AM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></span>
+                      <span class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-3.png" alt="" width="520" height="390" decoding="async"></span><span class="cp-det"><b>kapture-bargly-2026-09-28.png</b><i>bargly.com &middot; Sep 28, 2026, 6:02 PM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></span>
+                    </span>
+                  </span>
+                </span>
+                <span class="cp-foot"><span class="cp-foot-l">Settings &middot; Privacy</span><span>kaptapp.com</span></span>
+              </span>
+              </span>
+            </span>
+            <span class="hero-panel hero-panel-dark" aria-hidden="true">
+              <span class="cp-fit">
+              <span class="cp cp-lean" data-theme="dark">
+                <span class="cp-head">
+                  <span class="cp-brand">
+                    <img class="cp-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                    <span class="cp-copy">
+                      <img class="cp-wm cp-wm-l" src="assets/logo/kapture_wordmark-dark.svg" alt="" width="843" height="233">
+                      <img class="cp-wm cp-wm-d" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                      <i class="cp-ver">Version 0.4.9</i>
+                    </span>
+                  </span>
+                  <span class="cp-theme"><i class="cp-sun"><svg class="i"><use href="#i-sun"/></svg></i><i class="cp-moon"><svg class="i"><use href="#i-moon"/></svg></i></span>
+                </span>
+                <span class="cp-main">
+                  <span class="cp-card">
+                    <span class="cp-seg"><span class="cp-thumb"></span><b class="is-on">Full page</b><b>Select area</b></span>
+                    <span class="cp-opts cp-opts-full">
+                      <span class="cp-f"><i class="cp-lab">Viewport</i><span class="cp-ctl"><svg class="i"><use href="#i-desktop"/></svg>Current browser<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                      <span class="cp-f"><i class="cp-lab">Format</i><span class="cp-ctl">PNG<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                    </span>
+                    <span class="cp-notice"><svg class="i"><use href="#i-folder"/></svg><i class="cp-save">Save to Downloads/Kapture/</i><i class="cp-proj">Design Review</i></span>
+                    <span class="cp-go"><b class="cp-go-full">Capture page</b></span>
+                  </span>
+                  <span class="cp-hist">
+                    <span class="cp-hist-top"><span class="cp-h2">History <i class="cp-count">7</i></span><span class="cp-hacts"><i><svg class="i"><use href="#i-refresh"/></svg></i><i class="is-off"><svg class="i"><use href="#i-trash"/></svg></i></span></span>
+                    <span class="cp-tabs"><span class="cp-thumb cp-thumb-t"></span><b class="is-on">Kept <i>7</i></b><b>Deleted <i>0</i></b></span>
+                    <span class="cp-rows">
+                      <span class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-1.png" alt="" width="520" height="390" decoding="async"></span><span class="cp-det"><b>kapture-getdotio-2026-09-29.png</b><i>getdotio.com &middot; Sep 29, 2026, 9:14 AM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></span>
+                      <span class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-2.png" alt="" width="520" height="390" decoding="async"></span><span class="cp-det"><b>kapture-ohmywork-2026-09-29.png</b><i>ohmywork.com &middot; Sep 29, 2026, 8:41 AM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></span>
+                      <span class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-3.png" alt="" width="520" height="390" decoding="async"></span><span class="cp-det"><b>kapture-bargly-2026-09-28.png</b><i>bargly.com &middot; Sep 28, 2026, 6:02 PM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></span>
+                    </span>
+                  </span>
+                </span>
+                <span class="cp-foot"><span class="cp-foot-l">Settings &middot; Privacy</span><span>kaptapp.com</span></span>
+              </span>
+              </span>
+            </span>
           </span>
         </div>
 
@@ -357,12 +525,12 @@
   <section class="section" id="capture">
     <div class="shell">
       <header class="section-head reveal">
-        <p class="kicker">Kapture for Chrome &middot; 0.4.7</p>
+        <p class="kicker">Kapture for Chrome &middot; 0.4.9</p>
         <h2>Capture everything.<br>Or exactly one part of it.</h2>
         <p class="section-lead">Capture a complete webpage or select exactly the area you need. Save it locally as PNG, JPEG or PDF.</p>
       </header>
 
-      <!-- ONE composition: the real Dotto capture on the left, the real 0.4.7
+      <!-- ONE composition: the real Dotto capture on the left, the real 0.4.9
            side panel on the right. The phases below replay the actual workflow.
            Nothing here is a mock: both images come out of the shipped products. -->
       <figure class="cap reveal" id="capDemo" data-phase="full">
@@ -383,17 +551,86 @@
               <span class="cap-cursor" aria-hidden="true"></span>
             </div>
 
-            <div class="cap-panel">
-              <span class="cap-p-body">
-                <img class="cap-p cap-p-full" src="assets/demo/panel-light-full.png?v=3"
-                     alt="The Kapture side panel set to Full page."
-                     width="1000" height="1400" loading="lazy" decoding="async">
-                <img class="cap-p cap-p-area" src="assets/demo/panel-light-area.png?v=3"
-                     alt="The Kapture side panel set to Select area."
-                     width="1000" height="1400" loading="lazy" decoding="async">
-              </span>
-              <!-- the panel's own sticky footer, pinned to the bottom of the column -->
-              <span class="cap-p-foot" aria-hidden="true"></span>
+            <div class="cap-panel" role="img"
+                 aria-label="The Kapture 0.4.9 side panel: capture mode, viewport, file format, the destination project folder, the capture button and the history list.">
+              <!-- Kapture for Chrome 0.4.9, rebuilt in HTML from panel.html and panel.css so
+                   the interface text stays real text instead of a screenshot. Light and dark
+                   are the panel's own two themes. -->
+              <div class="cp-fit">
+              <div class="cp">
+                <div class="cp-head">
+                  <span class="cp-brand">
+                    <img class="cp-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                    <span class="cp-copy">
+                      <img class="cp-wm cp-wm-l" src="assets/logo/kapture_wordmark-dark.svg" alt="" width="843" height="233">
+                      <img class="cp-wm cp-wm-d" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                      <i class="cp-ver">Version 0.4.9</i>
+                    </span>
+                  </span>
+                  <span class="cp-theme" aria-hidden="true"><i class="cp-sun"><svg class="i"><use href="#i-sun"/></svg></i><i class="cp-moon"><svg class="i"><use href="#i-moon"/></svg></i></span>
+                </div>
+
+                <div class="cp-main">
+                  <div class="cp-pro">
+                    <span class="cp-pro-copy">
+                      <b class="cp-pro-eye">Kapture Pro for Mac</b>
+                      <b class="cp-pro-h">Finally, a home<br>for your screenshots.</b>
+                      <i class="cp-pro-b">Organise, search and manage<br>everything on your Mac.</i>
+                      <span class="cp-pro-cta">Learn more <svg class="i"><use href="#i-arrow-ur"/></svg></span>
+                    </span>
+                  </div>
+
+                  <div class="cp-card">
+                    <!-- One container, one travelling thumb, measured so any translation fits. -->
+                    <div class="cp-seg" aria-hidden="true">
+                      <span class="cp-thumb"></span>
+                      <b class="is-on">Full page</b><b>Select area</b>
+                    </div>
+
+                    <div class="cp-opts cp-opts-full">
+                      <span class="cp-f"><i class="cp-lab">Viewport</i><span class="cp-ctl"><svg class="i"><use href="#i-desktop"/></svg>Current browser<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                      <span class="cp-f"><i class="cp-lab">Format</i><span class="cp-ctl">PNG<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                    </div>
+                    <div class="cp-opts cp-opts-area">
+                      <span class="cp-guide"><svg class="i"><use href="#i-sel"/></svg><b>Drag to select an area</b><i>Select the part of the page you want to capture.</i></span>
+                      <span class="cp-f"><i class="cp-lab">Format</i><span class="cp-ctl">PNG<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                    </div>
+
+                    <span class="cp-notice"><svg class="i"><use href="#i-folder"/></svg><i class="cp-save">Save to Downloads/Kapture/</i><i class="cp-proj">Design Review</i></span>
+                    <span class="cp-go"><b class="cp-go-full">Capture page</b><b class="cp-go-area">Capture selected area</b></span>
+                  </div>
+
+                  <div class="cp-hist">
+                    <div class="cp-hist-top">
+                      <span class="cp-h2">History <i class="cp-count">7</i></span>
+                      <span class="cp-hacts" aria-hidden="true"><i><svg class="i"><use href="#i-refresh"/></svg></i><i class="is-off"><svg class="i"><use href="#i-trash"/></svg></i></span>
+                    </div>
+                    <div class="cp-tabs" aria-hidden="true">
+                      <span class="cp-thumb cp-thumb-t"></span>
+                      <b class="is-on">Kept <i>7</i></b><b>Deleted <i>0</i></b>
+                    </div>
+                    <div class="cp-selbar"><span><i class="cp-box"></i>Select all</span><span>0 selected</span></div>
+                    <div class="cp-rows">
+                      <article class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-1.png" alt="" loading="lazy" width="520" height="390"></span><span class="cp-det"><b>kapture-getdotio-2026-09-29.png</b><i>getdotio.com &middot; Sep 29, 2026, 9:14 AM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></article>
+                      <article class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></span><span class="cp-det"><b>kapture-ohmywork-2026-09-29.png</b><i>ohmywork.com &middot; Sep 29, 2026, 8:41 AM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></article>
+                      <article class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-3.png" alt="" loading="lazy" width="520" height="390"></span><span class="cp-det"><b>kapture-bargly-2026-09-28.png</b><i>bargly.com &middot; Sep 28, 2026, 6:02 PM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></article>
+        <article class="cp-row"><i class="cp-box"></i><span class="cp-prev"><img src="assets/demo/thumb-4.png" alt="" loading="lazy" width="520" height="390"></span><span class="cp-det"><b>kapture-sloooths-2026-09-28.png</b><i>sloooths.com &middot; Sep 28, 2026, 2:27 PM</i></span><span class="cp-open"><svg class="i"><use href="#i-arrow-ur"/></svg></span></article>
+                    </div>
+                  </div>
+
+                  <!-- Settings is a view swap inside the panel, not a separate page. Language
+                       and Help live here; they are not in the footer. -->
+                  <div class="cp-set">
+                    <span class="cp-back"><svg class="i cp-car-l"><use href="#i-caret"/></svg>Back</span>
+                    <b class="cp-set-h">Settings</b>
+                    <span class="cp-set-row"><i class="cp-set-l"><svg class="i"><use href="#i-globe"/></svg>Language</i><span class="cp-ctl cp-set-sel">English<svg class="i cp-car"><use href="#i-caret"/></svg></span></span>
+                    <span class="cp-set-row"><i class="cp-set-l"><svg class="i"><use href="#i-question"/></svg>Help</i><svg class="i cp-set-go"><use href="#i-arrow-ur"/></svg></span>
+                  </div>
+                </div>
+
+                <div class="cp-foot"><span class="cp-foot-l">Settings &middot; Privacy</span><span>kaptapp.com</span></div>
+              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -493,16 +730,37 @@
         <div class="kp">
           <div class="kp-bar"><span class="kp-lights"><i></i><i></i><i></i></span><span class="kp-title">Kapture Pro</span></div>
           <div class="kp-body">
+            <!-- Sidebar as the app draws it at ad14922: two section headers only,
+                 Library and Projects. Collections is a Library row now, Smart sits
+                 beside it and carries no count on purpose, and Settings is the gear
+                 next to the app's name rather than a row among its places. -->
             <aside class="kp-side">
-              <div class="kp-brand"><img class="kp-appicon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128"><img class="kp-wordmark" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233"><b>Pro</b></div>
+              <div class="kp-brand">
+                <img class="kp-appicon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                <img class="kp-wordmark" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                <b>Pro</b>
+                <span class="kp-gear" aria-hidden="true"><svg class="i"><use href="#i-gear"/></svg></span>
+              </div>
+
               <p class="kp-sec">Library</p>
-              <ul><li class="is-on"><span>All Captures</span><em>7</em></li><li><span>Recents</span><em>7</em></li><li><span>Favorites</span><em>2</em></li></ul>
-              <p class="kp-sec">Projects <i class="kp-new"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>New</i></p>
-              <ul><li><span>All Projects</span><em>3</em></li><li><span>Design Review</span><em>3</em></li><li><span>Competitor Research</span><em>2</em></li><li><span>Brand Refresh</span><em>2</em></li></ul>
-              <p class="kp-sec">Collections <i class="kp-new"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>New</i></p>
-              <ul><li><span>All Collections</span><em>0</em></li></ul>
+              <ul>
+                <li class="is-on"><svg class="i"><use href="#i-squares"/></svg><span>All Captures</span><em>7</em></li>
+                <li><svg class="i"><use href="#i-clock"/></svg><span>Recents</span><em>7</em></li>
+                <li><svg class="i"><use href="#i-star"/></svg><span>Favorites</span><em>2</em></li>
+                <li><svg class="i"><use href="#i-desktop"/></svg><span>Desktop Screenshots</span><em>5</em></li>
+                <li class="kp-smart-row"><svg class="i"><use href="#i-bulb"/></svg><span>Smart</span></li>
+                <li><svg class="i"><use href="#i-stack"/></svg><span>Collections</span><em>2</em></li>
+              </ul>
+
+              <p class="kp-sec">Projects <i class="kp-new"><svg class="i"><use href="#i-plus"/></svg>New</i></p>
+              <ul>
+                <li><svg class="i"><use href="#i-folders"/></svg><span>All Projects</span><em>3</em></li>
+                <li><svg class="i i-teal"><use href="#i-folder"/></svg><span>Design Review</span><em>3</em></li>
+                <li><svg class="i i-blue"><use href="#i-folder"/></svg><span>Competitor Research</span><em>2</em></li>
+                <li><svg class="i i-orange"><use href="#i-folder"/></svg><span>Brand Refresh</span><em>2</em></li>
+              </ul>
+
               <div class="kp-foot">
-                <p class="kp-settings-row"><span class="kp-gear" aria-hidden="true"><svg viewBox="0 0 256 256"><path fill="currentColor" d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"/></svg></span>Settings</p>
                 <div class="kp-store">
                   <span class="kp-drive" aria-hidden="true"></span>
                   <div><b>7 captures indexed locally</b><span>24.1 MB in Kapture</span><span>318.4 GB free on Mac</span></div>
@@ -510,9 +768,18 @@
               </div>
             </aside>
             <main class="kp-main">
+              <!-- The app has no window toolbar. This 52pt utility row belongs to the
+                   content column: the two panel toggles at its ends, the search field
+                   optically centred. The folder button that used to sit beside it is
+                   gone; it lives on the Library menu and in Settings now. -->
+              <div class="kp-util">
+                <span class="kp-ibtn is-on" aria-hidden="true"><svg class="i"><use href="#i-sb-left"/></svg></span>
+                <label class="kp-search"><svg class="i kp-mag"><use href="#i-mag"/></svg><i class="kp-q">Search captures, projects or tags</i></label>
+                <span class="kp-ibtn is-on" aria-hidden="true"><svg class="i"><use href="#i-sb-right"/></svg></span>
+              </div>
+              <div class="kp-pane">
               <div class="kp-head">
-                <div><h4>All Captures</h4><p>Every screenshot and PDF in your Kapture folder.</p></div>
-                <label class="kp-search"><span class="kp-mag" aria-hidden="true"></span><i class="kp-q">Search captures, projects or tags</i></label>
+                <div><p class="kp-h4">All Captures</p><p>Every screenshot and PDF in your Kapture folder.</p></div>
               </div>
               <div class="kp-chips"><span class="is-on">All 7</span><span>Desktop 5</span><span>Mobile 2</span><span>Selected Areas 1</span><span>PNG 6</span><span>JPEG 1</span><em class="kp-sort">Sort by Newest</em></div>
               <div class="kp-grid">
@@ -552,6 +819,7 @@
               <p class="kp-when">3 days ago<span class="kp-acts">☆ ⋯</span></p>
             </article>
               </div>
+              </div>
             </main>
             <aside class="kp-insp">
               <div class="kp-insp-empty"><span class="kp-insp-icon" aria-hidden="true"></span><p><b>No Capture Selected</b>Select a capture to see a larger preview and its details.</p></div>
@@ -568,7 +836,7 @@
                Cancel / Create. -->
           <div class="kp-sheet kp-sheet-project">
             <div class="kp-sheet-box">
-              <h4>New Project</h4>
+              <p class="kp-h4">New Project</p>
               <p>Creates a folder inside your Kapture folder. Screenshots saved there appear in this project.</p>
 
               <div class="kp-pv">
@@ -605,7 +873,7 @@
       </div>
 
       <ul class="pro-points" id="kpPoints">
-        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Every capture folder becomes a project you can move between.</p></button></li>
+        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Folders inside Kapture become projects automatically. Projects are the work you are doing; Collections, in the Library, are things you want kept together.</p></button></li>
         <li data-state="search"><button type="button"><h3>Search</h3><p>Find a capture by name, site or project without opening Finder.</p></button></li>
         <li data-state="library"><button type="button"><h3>Visual library</h3><p>Browse everything as previews instead of filenames.</p></button></li>
         <li data-state="inspector"><button type="button"><h3>Inspector</h3><p>Size, format, source and capture time for whatever you select.</p></button></li>
@@ -613,6 +881,173 @@
         <li data-state="storage"><button type="button"><h3>Local storage</h3><p>No cloud, no sync, no account. It reads the disk you already have.</p></button></li>
       </ul>
 
+    </div>
+  </section>
+
+  <!-- ============ SMART ============ -->
+  <!-- One workspace, five tools. The app names the workspace once and lets the
+       tab name the tool, so this section does the same: a single heading, the
+       real segmented control, and only the area under the description changes. -->
+  <section class="section" id="smart">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">Smart</p>
+        <h2>Find what your library<br>has been hiding.</h2>
+        <p class="section-lead">Smart is one place in Kapture Pro with five tools. It shows you what still needs organising, which files are exact copies, what is worth a second look, where your captures came from, and the tidying you asked Kapture to do for you.</p>
+      </header>
+
+      <div class="sm-demo reveal" id="smDemo" data-tool="unorganised">
+        <div class="kp">
+          <div class="kp-bar"><span class="kp-lights"><i></i><i></i><i></i></span><span class="kp-title">Kapture Pro</span></div>
+          <div class="kp-body">
+            <aside class="kp-side">
+              <div class="kp-brand">
+                <img class="kp-appicon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                <img class="kp-wordmark" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                <b>Pro</b>
+                <span class="kp-gear" aria-hidden="true"><svg class="i"><use href="#i-gear"/></svg></span>
+              </div>
+              <p class="kp-sec">Library</p>
+              <ul>
+                <li><svg class="i"><use href="#i-squares"/></svg><span>All Captures</span><em>7</em></li>
+                <li><svg class="i"><use href="#i-clock"/></svg><span>Recents</span><em>7</em></li>
+                <li><svg class="i"><use href="#i-star"/></svg><span>Favorites</span><em>2</em></li>
+                <li><svg class="i"><use href="#i-desktop"/></svg><span>Desktop Screenshots</span><em>5</em></li>
+                <li class="is-on"><svg class="i"><use href="#i-bulb"/></svg><span>Smart</span></li>
+                <li><svg class="i"><use href="#i-stack"/></svg><span>Collections</span><em>2</em></li>
+              </ul>
+              <p class="kp-sec">Projects <i class="kp-new"><svg class="i"><use href="#i-plus"/></svg>New</i></p>
+              <ul>
+                <li><svg class="i"><use href="#i-folders"/></svg><span>All Projects</span><em>3</em></li>
+                <li><svg class="i i-teal"><use href="#i-folder"/></svg><span>Design Review</span><em>3</em></li>
+                <li><svg class="i i-blue"><use href="#i-folder"/></svg><span>Competitor Research</span><em>2</em></li>
+                <li><svg class="i i-orange"><use href="#i-folder"/></svg><span>Brand Refresh</span><em>2</em></li>
+              </ul>
+              <div class="kp-foot">
+                <div class="kp-store">
+                  <span class="kp-drive" aria-hidden="true"></span>
+                  <div><b>7 captures indexed locally</b><span>24.1 MB in Kapture</span><span>318.4 GB free on Mac</span></div>
+                </div>
+              </div>
+            </aside>
+
+            <main class="kp-main">
+              <div class="kp-util">
+                <span class="kp-ibtn is-on" aria-hidden="true"><svg class="i"><use href="#i-sb-left"/></svg></span>
+                <label class="kp-search"><svg class="i kp-mag"><use href="#i-mag"/></svg><i class="kp-q">Search captures, projects or tags</i></label>
+                <span class="kp-ibtn is-on" aria-hidden="true"><svg class="i"><use href="#i-sb-right"/></svg></span>
+              </div>
+              <div class="kp-pane">
+                <!-- The workspace owns the heading; the tool is named by its tab. -->
+                <div class="sm-top"><p class="kp-h4">Smart</p><span class="sm-act" aria-hidden="true"></span></div>
+
+                <!-- One container, one travelling indicator. Inactive segments have
+                     no background of their own: that is what separates this control
+                     from the filter chips below it. -->
+                <div class="sm-tabs" id="smTabs" aria-hidden="true">
+                  <span class="sm-thumb"></span>
+                  <b data-tool="unorganised" class="is-on">Unorganised</b>
+                  <b data-tool="duplicates">Duplicates</b>
+                  <b data-tool="cleanup">Cleanup</b>
+                  <b data-tool="sources">Sources</b>
+                  <b data-tool="rules">Rules</b>
+                </div>
+
+                <!-- All five descriptions live in the markup so each one is a normal
+                     translatable string; the active tool reveals its own. -->
+                <div class="sm-descs">
+                  <p class="sm-desc" data-desc="unorganised">Captures that are not in a Project yet, from every source.</p>
+                  <p class="sm-desc" data-desc="duplicates">Captures whose files are exactly the same, byte for byte.</p>
+                  <p class="sm-desc" data-desc="cleanup">Captures worth a second look. Nothing here is removed for you.</p>
+                  <p class="sm-desc" data-desc="sources">Where your captures came from.</p>
+                  <p class="sm-desc" data-desc="rules">Tidying you asked Kapture to do for you.</p>
+                </div>
+
+                <div class="sm-body">
+                  <!-- Unorganised -->
+                  <div class="sm-view" data-view="unorganised">
+                    <div class="kp-chips"><span class="is-on">All 8</span><span>Desktop 6</span><span>Mobile 2</span><span>PNG 7</span><span>JPEG 1</span><em class="kp-sort">Sort by Newest</em></div>
+                    <div class="sm-grid">
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">ohmywork_001.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-3.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">bargly_001.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-6.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">getdotio_002.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-7.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">sloooths_002.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-4.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">sloooths_001.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-5.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">kaptapp_002.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-1.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">getdotio_003.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">ohmywork_002.png</p><p class="kp-meta">No project</p></article>
+                    </div>
+                  </div>
+
+                  <!-- Duplicates: the app compares the files themselves, so only exact copies count. -->
+                  <div class="sm-view" data-view="duplicates">
+                    <div class="sm-dup">
+                      <article class="sm-dup-card">
+                        <p class="sm-dup-h">2 identical files <em>2.6 MB each</em></p>
+                        <div class="sm-dup-row">
+                          <span class="sm-dup-t"><img src="assets/demo/thumb-1.png" alt="" loading="lazy" width="520" height="390"><i class="sm-keep">Keep</i></span>
+                          <span class="sm-dup-t"><img src="assets/demo/thumb-1.png" alt="" loading="lazy" width="520" height="390"></span>
+                        </div>
+                        <p class="sm-dup-m">getdotio_001.png &middot; getdotio_001 copy.png</p>
+                      </article>
+                      <article class="sm-dup-card">
+                        <p class="sm-dup-h">2 identical files <em>1.4 MB each</em></p>
+                        <div class="sm-dup-row">
+                          <span class="sm-dup-t"><img src="assets/demo/thumb-5.png" alt="" loading="lazy" width="520" height="390"><i class="sm-keep">Keep</i></span>
+                          <span class="sm-dup-t"><img src="assets/demo/thumb-5.png" alt="" loading="lazy" width="520" height="390"></span>
+                        </div>
+                        <p class="sm-dup-m">kaptapp_001.png &middot; kaptapp_001 (1).png</p>
+                      </article>
+                    </div>
+                  </div>
+
+                  <!-- Cleanup: the format chips give way to the age buckets. -->
+                  <div class="sm-view" data-view="cleanup">
+                    <div class="kp-chips"><span>Older than 30 days</span><span class="is-on">Older than 90 days</span><span>Large files</span><span>Recently added</span></div>
+                    <div class="sm-grid">
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-4.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">sloooths_001.png</p><p class="kp-meta">6.1 MB &middot; 4 months ago</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-7.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">sloooths_002.png</p><p class="kp-meta">5.8 MB &middot; 5 months ago</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-3.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">bargly_001.png</p><p class="kp-meta">4.9 MB &middot; 6 months ago</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-6.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">getdotio_002.png</p><p class="kp-meta">4.2 MB &middot; 7 months ago</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">ohmywork_001.png</p><p class="kp-meta">3.7 MB &middot; 8 months ago</p></article>
+                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-5.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">kaptapp_001.png</p><p class="kp-meta">3.3 MB &middot; 9 months ago</p></article>
+                    </div>
+                    <p class="sm-note">Nothing here is removed for you.</p>
+                  </div>
+
+                  <!-- Sources: worked out from what is already indexed. No favicons, no network. -->
+                  <div class="sm-view" data-view="sources">
+                    <div class="sm-src">
+                      <article class="sm-src-card"><span class="sm-src-i i-teal"><svg class="i"><use href="#i-desktop"/></svg></span><p class="sm-src-n">Desktop Screenshots</p><p class="sm-src-c">5 captures</p></article>
+                      <article class="sm-src-card"><span class="sm-src-i"><svg class="i"><use href="#i-globe"/></svg></span><p class="sm-src-n">getdotio.com</p><p class="sm-src-c">2 captures</p></article>
+                      <article class="sm-src-card"><span class="sm-src-i"><svg class="i"><use href="#i-globe"/></svg></span><p class="sm-src-n">kaptapp.com</p><p class="sm-src-c">1 capture</p></article>
+                      <article class="sm-src-card"><span class="sm-src-i"><svg class="i"><use href="#i-globe"/></svg></span><p class="sm-src-n">ohmywork.com</p><p class="sm-src-c">1 capture</p></article>
+                    </div>
+                  </div>
+
+                  <!-- Rules: a rule files new captures for you. Rules never delete anything. -->
+                  <div class="sm-view" data-view="rules">
+                    <div class="sm-rules">
+                      <article class="sm-rule"><span class="sm-rule-t"><b>When the source is getdotio.com</b><i>File into Competitor Research</i></span><span class="sm-sw is-on" aria-hidden="true"></span></article>
+                      <article class="sm-rule"><span class="sm-rule-t"><b>When the capture is a selected area</b><i>Tag it detail</i></span><span class="sm-sw is-on" aria-hidden="true"></span></article>
+                      <article class="sm-rule"><span class="sm-rule-t"><b>When the file is a PDF</b><i>File into Reading</i></span><span class="sm-sw" aria-hidden="true"></span></article>
+                    </div>
+                    <p class="sm-note">Rules never delete anything.</p>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+
+      <ul class="pro-points sm-points" id="smPoints">
+        <li data-tool="unorganised"><button type="button"><h3>Unorganised</h3><p>Everything that is not in a project yet, from every source.</p></button></li>
+        <li data-tool="duplicates"><button type="button"><h3>Duplicates</h3><p>Files that are exactly the same, byte for byte. You choose which copy to keep.</p></button></li>
+        <li data-tool="cleanup"><button type="button"><h3>Cleanup</h3><p>Older and larger captures worth a second look. Nothing is removed for you.</p></button></li>
+        <li data-tool="sources"><button type="button"><h3>Sources</h3><p>Where your captures came from, grouped by site. Worked out locally.</p></button></li>
+        <li data-tool="rules"><button type="button"><h3>Rules</h3><p>Tidying you asked Kapture to do for you. Rules never delete anything.</p></button></li>
+      </ul>
     </div>
   </section>
 
@@ -624,7 +1059,7 @@
       <header class="section-head reveal">
         <p class="kicker">The Kapture workflow</p>
         <h2>Kapture, Kapture Pro,<br>or both?</h2>
-        <p class="section-lead">Kapture handles capture in Chrome. Kapture Pro organises everything on your desktop. See what each product does on its own and what they unlock together.</p>
+        <p class="section-lead">Kapture captures in Chrome. Kapture Pro turns what you captured into a library, then Smart, Collections and Projects keep it in order. See what each product does on its own and what they unlock together.</p>
       </header>
 
       <div class="cmp reveal">
@@ -664,6 +1099,10 @@
             <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
           </tr>
           <tr>
+            <th scope="row">Smart organisation</th>
+            <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
             <th scope="row">Search and filters</th>
             <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
           </tr>
@@ -683,6 +1122,86 @@
         </table>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ LANGUAGES ============ -->
+  <!-- The product terms below are the app's own approved translations, not new
+       ones: they come from the Mac String Catalog and the extension's locales.
+       Changing the selector changes the interface around it, which is what the
+       apps actually do. -->
+  <section class="section section-tight" id="languages">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">Languages</p>
+        <h2>Five languages.<br><span class="accent">Or simply follow your system.</span></h2>
+        <p class="section-lead">Kapture for Chrome and Kapture Pro both speak English, Spanish, Simplified Chinese, Korean and Japanese. Pick one, or leave it on System and Kapture follows whatever your computer is already set to.</p>
+      </header>
+
+      <div class="lg reveal" id="lgDemo" data-lang="en">
+        <div class="lg-app">
+          <div class="kp lg-kp">
+            <div class="kp-bar"><span class="kp-lights"><i></i><i></i><i></i></span><span class="kp-title">Kapture Pro</span></div>
+            <div class="lg-body">
+              <aside class="kp-side">
+                <div class="kp-brand">
+                  <img class="kp-appicon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+                  <img class="kp-wordmark" src="assets/logo/kapture_wordmark.svg" alt="" width="843" height="233">
+                  <b>Pro</b>
+                  <span class="kp-gear" aria-hidden="true"><svg class="i"><use href="#i-gear"/></svg></span>
+                </div>
+                <p class="kp-sec"><i class="lg-t" data-t="library"></i></p>
+                <ul>
+                  <li class="is-on"><svg class="i"><use href="#i-squares"/></svg><span class="lg-t" data-t="all"></span><em>7</em></li>
+                  <li><svg class="i"><use href="#i-clock"/></svg><span class="lg-t" data-t="recents"></span><em>7</em></li>
+                  <li><svg class="i"><use href="#i-star"/></svg><span class="lg-t" data-t="favorites"></span><em>2</em></li>
+                  <li><svg class="i"><use href="#i-desktop"/></svg><span class="lg-t" data-t="desktop"></span><em>5</em></li>
+                  <li><svg class="i"><use href="#i-bulb"/></svg><span class="lg-t" data-t="smart"></span></li>
+                  <li><svg class="i"><use href="#i-stack"/></svg><span class="lg-t" data-t="collections"></span><em>2</em></li>
+                </ul>
+                <p class="kp-sec"><i class="lg-t" data-t="projects"></i></p>
+                <ul>
+                  <li><svg class="i"><use href="#i-folders"/></svg><span class="lg-t" data-t="allprojects"></span><em>3</em></li>
+                </ul>
+              </aside>
+              <div class="lg-set">
+                <p class="lg-set-h"><span class="lg-t" data-t="settings"></span></p>
+                <div class="lg-row">
+                  <span class="lg-row-l"><svg class="i"><use href="#i-globe"/></svg><span class="lg-t" data-t="language"></span></span>
+                  <span class="lg-sel"><span class="lg-native"></span><svg class="i lg-car"><use href="#i-caret"/></svg></span>
+                </div>
+                <p class="lg-note"><span class="lg-t" data-t="local"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decoration, and already said by the section above it, so it is not
+             announced twice. -->
+        <ul class="lg-cloud" aria-hidden="true">
+          <li class="lg-t" data-t="library"></li>
+          <li class="lg-t" data-t="smart"></li>
+          <li class="lg-t" data-t="collections"></li>
+          <li class="lg-t" data-t="projects"></li>
+          <li class="lg-t" data-t="rules"></li>
+          <li class="lg-t" data-t="sources"></li>
+          <li class="lg-t" data-t="duplicates"></li>
+          <li class="lg-t" data-t="unorganised"></li>
+          <li class="lg-t" data-t="cleanup"></li>
+          <li class="lg-t" data-t="tags"></li>
+          <li class="lg-t" data-t="notes"></li>
+          <li class="lg-t" data-t="favorites"></li>
+        </ul>
+      </div>
+
+      <ul class="lg-pick" id="lgPick">
+        <li data-lang="en"><button type="button" lang="en">English</button></li>
+        <li data-lang="es"><button type="button" lang="es">Espa&ntilde;ol</button></li>
+        <li data-lang="zh"><button type="button" lang="zh-CN">&#31616;&#20307;&#20013;&#25991;</button></li>
+        <li data-lang="ko"><button type="button" lang="ko">&#54620;&#44397;&#50612;</button></li>
+        <li data-lang="ja"><button type="button" lang="ja">&#26085;&#26412;&#35486;</button></li>
+        <li data-lang="sys"><button type="button">System / Default</button></li>
+      </ul>
     </div>
   </section>
 
@@ -833,6 +1352,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=33"></script>
+<script src="script.js?v=34"></script>
 </body>
 </html>

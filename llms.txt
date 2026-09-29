@@ -2,7 +2,8 @@
 
 > Kapture is two products. Kapture for Chrome captures a complete webpage, or a
 > selected area of one, and saves it on the user's own device as a PNG, JPEG or PDF.
-> Kapture Pro organises those captures into a searchable local library on the desktop.
+> Kapture Pro organises those captures into a searchable local library on the desktop,
+> with Projects, Collections and a Smart workspace that keeps the library in order.
 
 Kapture runs in Chrome's side panel. In full page mode it scrolls the whole
 document rather than capturing only the visible viewport, splitting very long
@@ -11,13 +12,19 @@ drags over the visible page, with Freeform, 1:1, 16:9 and 9:16 ratios.
 
 Files are saved through Chrome's own Downloads system, into a Downloads
 subfolder the user names per capture, so different pages or projects can be kept
-in different folders. Kapture keeps a local capture history and offers light and
-dark side panel themes.
+in different folders. Kapture keeps a local capture history, split into Kept and
+Deleted, and offers light and dark side panel themes. Settings holds the language
+choice and a link to Help.
+
+Both products are available in English, Spanish, Simplified Chinese, Korean and
+Japanese, and both can follow the system language instead.
 
 Kapture for Chrome requires Google Chrome 120 or later and is free. Kapture Pro is a
 companion desktop app that indexes the screenshots already saved on the user's
-computer and turns them into a searchable visual library with projects, tags and an
-inspector. Kapture Pro is not yet available to buy. It is planned for Mac and for
+computer and turns them into a searchable visual library. Its Library holds All
+Captures, Recents, Favorites, Desktop Screenshots, Smart and Collections, with
+Projects alongside it. Smart is a single workspace with five tools: Unorganised,
+Duplicates, Cleanup, Sources and Rules. It never deletes anything for the user. Kapture Pro is not yet available to buy. It is planned for Mac and for
 Windows, and the Windows build has not been released.
 
 ## Privacy
@@ -28,7 +35,8 @@ tracking, requires no account, and downloads no remote code.
 
 ## Pages
 
-- [Home](https://kaptapp.com/): what Kapture is, the two capture modes, formats, viewport presets, folders, history and themes.
+- [Home](https://kaptapp.com/): what Kapture is, the two capture modes, formats, viewport presets, folders, history, themes, Smart and languages.
+- [Help](https://kaptapp.com/help/): how to use Kapture, permissions and release notes.
 - [Privacy Policy](https://kaptapp.com/privacy/): what information Kapture handles, how it is stored locally, and what is never transmitted.
 
 ## Contact

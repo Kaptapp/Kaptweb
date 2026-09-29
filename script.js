@@ -127,6 +127,108 @@
     kpCycle();
   }
 
+  /* ---- Smart: one workspace, five tools ----
+     The app keeps a single indicator that travels between segments, measured
+     rather than assumed so a translated label of any width still fits. Only
+     the region under the description swaps; the shell never moves. */
+  var sm = document.getElementById('smDemo');
+  var smTabs = document.getElementById('smTabs');
+  var smPoints = document.getElementById('smPoints');
+
+  if (sm && smTabs && smPoints) {
+    var smSegs = Array.prototype.slice.call(smTabs.querySelectorAll('b[data-tool]'));
+    var smThumb = smTabs.querySelector('.sm-thumb');
+    var smStill = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var smTimer = null;
+    var smAt = 0;
+
+    var smPlace = function () {
+      var on = smSegs[smAt];
+      if (!on || !smThumb) return;
+      smThumb.style.setProperty('--sm-w', on.offsetWidth + 'px');
+      smThumb.style.setProperty('--sm-x', on.offsetLeft - smTabs.scrollLeft + 'px');
+      if (!smTabs.classList.contains('sm-ready')) {
+        window.requestAnimationFrame(function () { smTabs.classList.add('sm-ready'); });
+      }
+    };
+
+    var smShow = function (i) {
+      smAt = i;
+      var name = smSegs[i].getAttribute('data-tool');
+      sm.setAttribute('data-tool', name);
+      smSegs.forEach(function (b, n) { b.classList.toggle('is-on', n === i); });
+      Array.prototype.forEach.call(smPoints.querySelectorAll('li[data-tool]'), function (li) {
+        li.classList.toggle('is-active', li.getAttribute('data-tool') === name);
+      });
+      smPlace();
+    };
+
+    var smCycle = function () {
+      if (smStill) return;
+      smTimer = window.setInterval(function () { smShow((smAt + 1) % smSegs.length); }, 4200);
+    };
+    var smHold = function () { window.clearInterval(smTimer); smTimer = null; };
+
+    Array.prototype.forEach.call(smPoints.querySelectorAll('li[data-tool]'), function (li, i) {
+      var t = li.querySelector('button') || li;
+      ['mouseenter', 'focus', 'click'].forEach(function (evt) {
+        t.addEventListener(evt, function () { smHold(); smShow(i); });
+      });
+    });
+    smPoints.addEventListener('mouseleave', function () { if (!smTimer) smCycle(); });
+
+    smShow(0);
+    // Measure once the webfont has settled, so the indicator matches the drawn text.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(smPlace);
+    window.addEventListener('load', smPlace);
+    if ('ResizeObserver' in window) new ResizeObserver(smPlace).observe(smTabs);
+    smCycle();
+  }
+
+  /* ---- Languages: the selector changes the interface around it ----
+     The words themselves live in CSS custom properties, so switching language
+     is one attribute change and the whole interface crossfades as one group,
+     the way the apps do it. Nothing here is translated by the website. */
+  var lg = document.getElementById('lgDemo');
+  var lgPick = document.getElementById('lgPick');
+
+  if (lg && lgPick) {
+    var lgItems = Array.prototype.slice.call(lgPick.querySelectorAll('li[data-lang]'));
+    var lgStill = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lgTimer = null, lgFade = null, lgAt = 0;
+
+    var lgShow = function (i) {
+      lgAt = i;
+      var code = lgItems[i].getAttribute('data-lang');
+      lgItems.forEach(function (li, n) { li.classList.toggle('is-active', n === i); });
+      if (lgStill) { lg.setAttribute('data-lang', code); return; }
+      // Out, swap, back in: the interface never shows two languages at once.
+      lg.classList.add('is-turning');
+      window.clearTimeout(lgFade);
+      lgFade = window.setTimeout(function () {
+        lg.setAttribute('data-lang', code);
+        lg.classList.remove('is-turning');
+      }, 220);
+    };
+
+    var lgCycle = function () {
+      if (lgStill) return;
+      lgTimer = window.setInterval(function () { lgShow((lgAt + 1) % lgItems.length); }, 3600);
+    };
+    var lgHold = function () { window.clearInterval(lgTimer); lgTimer = null; };
+
+    lgItems.forEach(function (li, i) {
+      var t = li.querySelector('button') || li;
+      ['mouseenter', 'focus', 'click'].forEach(function (evt) {
+        t.addEventListener(evt, function () { lgHold(); lgShow(i); });
+      });
+    });
+    lgPick.addEventListener('mouseleave', function () { if (!lgTimer) lgCycle(); });
+
+    lgShow(0);
+    lgCycle();
+  }
+
   /* ---- Reveal sections on scroll ---- */
   var reveals = document.querySelectorAll('.reveal');
 

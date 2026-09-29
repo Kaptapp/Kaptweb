@@ -359,4 +359,139 @@ FIX = {
  'ko': '<figcaption>Chrome에서 캡처하고, 컴퓨터에 그대로 보관.</figcaption>',
  'ja': '<figcaption>Chrome で撮って、パソコンに置いたまま。</figcaption>'},
 
+# ---------------------------------------------------------------- Smart
+# Smart, its five tools and their names are the app's own approved terms from
+# Localizable.xcstrings. Nothing here is translated for the first time.
+'<p class="kicker">Smart</p>': {
+ 'es': '<p class="kicker">Inteligente</p>',
+ 'zh': '<p class="kicker">智能</p>',
+ 'ko': '<p class="kicker">스마트</p>',
+ 'ja': '<p class="kicker">スマート</p>'},
+
+'<h2>Find what your library<br>has been hiding.</h2>': {
+ 'es': '<h2>Descubre lo que tu<br>biblioteca escondía.</h2>',
+ 'zh': '<h2>找出图库里<br>一直藏着的东西。</h2>',
+ 'ko': '<h2>라이브러리가 숨기고 있던<br>것을 찾아보세요.</h2>',
+ 'ja': '<h2>ライブラリが隠していた<br>ものを見つける。</h2>'},
+
+'<p class="section-lead">Smart is one place in Kapture Pro with five tools. It shows you what still needs organising, which files are exact copies, what is worth a second look, where your captures came from, and the tidying you asked Kapture to do for you.</p>': {
+ 'es': '<p class="section-lead">Inteligente es un único lugar dentro de Kapture Pro con cinco herramientas. Te enseña lo que aún está sin organizar, qué archivos son copias exactas, qué merece un segundo vistazo, de dónde vienen tus capturas y el orden que le has pedido a Kapture que ponga por ti.</p>',
+ 'zh': '<p class="section-lead">智能是 Kapture Pro 里的一个地方，包含五个工具。它会告诉你哪些还没整理、哪些文件是完全相同的副本、哪些值得再看一眼、你的截图来自哪里，以及你让 Kapture 替你做的整理。</p>',
+ 'ko': '<p class="section-lead">스마트는 Kapture Pro 안의 한 곳으로, 다섯 가지 도구가 있습니다. 아직 정리가 필요한 것, 완전히 동일한 파일, 다시 살펴볼 만한 것, 캡처가 어디에서 왔는지, 그리고 Kapture에 맡긴 정리를 보여 줍니다.</p>',
+ 'ja': '<p class="section-lead">スマートは Kapture Pro のなかの一か所で、5 つのツールがあります。まだ整理が必要なもの、完全に同じファイル、見直す価値のあるもの、キャプチャの取得元、そして Kapture に依頼した整理を教えてくれます。</p>'},
+
+'<li data-tool="unorganised"><button type="button"><h3>Unorganised</h3><p>Everything that is not in a project yet, from every source.</p></button></li>': {
+ 'es': '<li data-tool="unorganised"><button type="button"><h3>Sin organizar</h3><p>Todo lo que todavía no está en un proyecto, venga de donde venga.</p></button></li>',
+ 'zh': '<li data-tool="unorganised"><button type="button"><h3>未整理</h3><p>还没有归入项目的所有内容，涵盖所有来源。</p></button></li>',
+ 'ko': '<li data-tool="unorganised"><button type="button"><h3>미정리</h3><p>출처와 관계없이, 아직 프로젝트에 들어가지 않은 모든 것.</p></button></li>',
+ 'ja': '<li data-tool="unorganised"><button type="button"><h3>未整理</h3><p>まだプロジェクトに入っていないもの、すべてのソースから。</p></button></li>'},
+
+'<li data-tool="duplicates"><button type="button"><h3>Duplicates</h3><p>Files that are exactly the same, byte for byte. You choose which copy to keep.</p></button></li>': {
+ 'es': '<li data-tool="duplicates"><button type="button"><h3>Duplicados</h3><p>Archivos exactamente iguales, byte a byte. Tú eliges qué copia se queda.</p></button></li>',
+ 'zh': '<li data-tool="duplicates"><button type="button"><h3>重复项</h3><p>逐字节完全相同的文件。由你决定保留哪一份。</p></button></li>',
+ 'ko': '<li data-tool="duplicates"><button type="button"><h3>중복 항목</h3><p>바이트 단위까지 완전히 같은 파일. 어떤 복사본을 남길지는 사용자가 정합니다.</p></button></li>',
+ 'ja': '<li data-tool="duplicates"><button type="button"><h3>重複</h3><p>バイト単位で完全に同じファイル。どちらを残すかはあなたが選びます。</p></button></li>'},
+
+'<li data-tool="cleanup"><button type="button"><h3>Cleanup</h3><p>Older and larger captures worth a second look. Nothing is removed for you.</p></button></li>': {
+ 'es': '<li data-tool="cleanup"><button type="button"><h3>Limpieza</h3><p>Capturas antiguas y pesadas que merecen un segundo vistazo. Aquí no se elimina nada por ti.</p></button></li>',
+ 'zh': '<li data-tool="cleanup"><button type="button"><h3>清理</h3><p>值得再看一眼的旧截图和大文件。这里的内容不会替你移除。</p></button></li>',
+ 'ko': '<li data-tool="cleanup"><button type="button"><h3>정리</h3><p>다시 살펴볼 만한 오래되고 큰 캡처. 임의로 삭제되지는 않습니다.</p></button></li>',
+ 'ja': '<li data-tool="cleanup"><button type="button"><h3>クリーンアップ</h3><p>見直す価値のある古くて大きいキャプチャ。自動で削除されることはありません。</p></button></li>'},
+
+'<li data-tool="sources"><button type="button"><h3>Sources</h3><p>Where your captures came from, grouped by site. Worked out locally.</p></button></li>': {
+ 'es': '<li data-tool="sources"><button type="button"><h3>Fuentes</h3><p>De dónde vienen tus capturas, agrupadas por sitio. Se calcula en local.</p></button></li>',
+ 'zh': '<li data-tool="sources"><button type="button"><h3>来源</h3><p>你的截图来自哪里，按网站分组。完全在本地算出。</p></button></li>',
+ 'ko': '<li data-tool="sources"><button type="button"><h3>출처</h3><p>캡처가 어디에서 왔는지, 사이트별로 묶어서. 기기 안에서 계산됩니다.</p></button></li>',
+ 'ja': '<li data-tool="sources"><button type="button"><h3>ソース</h3><p>キャプチャの取得元を、サイトごとにまとめて。すべてローカルで判定します。</p></button></li>'},
+
+'<li data-tool="rules"><button type="button"><h3>Rules</h3><p>Tidying you asked Kapture to do for you. Rules never delete anything.</p></button></li>': {
+ 'es': '<li data-tool="rules"><button type="button"><h3>Reglas</h3><p>El orden que le has pedido a Kapture que ponga por ti. Las reglas nunca borran nada.</p></button></li>',
+ 'zh': '<li data-tool="rules"><button type="button"><h3>规则</h3><p>你让 Kapture 替你做的整理。规则永远不会删除任何东西。</p></button></li>',
+ 'ko': '<li data-tool="rules"><button type="button"><h3>규칙</h3><p>Kapture에 맡긴 정리. 규칙이 무언가를 삭제하는 일은 없습니다.</p></button></li>',
+ 'ja': '<li data-tool="rules"><button type="button"><h3>ルール</h3><p>Kapture に依頼した整理。ルールが何かを削除することはありません。</p></button></li>'},
+
+# ---------------------------------------------------------------- Languages
+'<p class="kicker">Languages</p>': {
+ 'es': '<p class="kicker">Idiomas</p>',
+ 'zh': '<p class="kicker">语言</p>',
+ 'ko': '<p class="kicker">언어</p>',
+ 'ja': '<p class="kicker">言語</p>'},
+
+'<h2>Five languages.<br><span class="accent">Or simply follow your system.</span></h2>': {
+ 'es': '<h2>Cinco idiomas.<br><span class="accent">O simplemente el de tu sistema.</span></h2>',
+ 'zh': '<h2>五种语言。<br><span class="accent">或者直接跟随系统。</span></h2>',
+ 'ko': '<h2>다섯 가지 언어.<br><span class="accent">또는 시스템 설정 그대로.</span></h2>',
+ 'ja': '<h2>5 つの言語。<br><span class="accent">あるいはシステムのままで。</span></h2>'},
+
+'<p class="section-lead">Kapture for Chrome and Kapture Pro both speak English, Spanish, Simplified Chinese, Korean and Japanese. Pick one, or leave it on System and Kapture follows whatever your computer is already set to.</p>': {
+ 'es': '<p class="section-lead">Kapture para Chrome y Kapture Pro hablan inglés, español, chino simplificado, coreano y japonés. Elige uno, o déjalo en Sistema y Kapture seguirá el idioma que ya tenga tu ordenador.</p>',
+ 'zh': '<p class="section-lead">Chrome 版 Kapture 和 Kapture Pro 都支持英语、西班牙语、简体中文、韩语和日语。你可以自己选一个，也可以保持“系统”，让 Kapture 跟随电脑已有的设置。</p>',
+ 'ko': '<p class="section-lead">Chrome용 Kapture와 Kapture Pro 모두 영어, 스페인어, 중국어 간체, 한국어, 일본어를 지원합니다. 직접 고르거나, 시스템으로 두면 Kapture가 컴퓨터에 설정된 언어를 따릅니다.</p>',
+ 'ja': '<p class="section-lead">Chrome 版 Kapture と Kapture Pro は、英語・スペイン語・簡体中国語・韓国語・日本語に対応しています。ひとつを選んでも、システムのままにしてパソコンの設定に従わせても構いません。</p>'},
+
+# ---------------------------------------------------------------- workflow
+'<p class="section-lead">Kapture captures in Chrome. Kapture Pro turns what you captured into a library, then Smart, Collections and Projects keep it in order. See what each product does on its own and what they unlock together.</p>': {
+ 'es': '<p class="section-lead">Kapture captura en Chrome. Kapture Pro convierte lo capturado en una biblioteca, y luego Inteligente, Colecciones y Proyectos la mantienen en orden. Mira lo que hace cada uno por separado y lo que consigues con los dos.</p>',
+ 'zh': '<p class="section-lead">Kapture 负责在 Chrome 里截图。Kapture Pro 把截下来的东西变成一个图库，再由智能、收藏集和项目让它保持有序。看看每个产品单独能做什么，以及两个一起用能带来什么。</p>',
+ 'ko': '<p class="section-lead">Kapture는 Chrome에서 캡처합니다. Kapture Pro는 캡처한 것을 라이브러리로 만들고, 스마트와 컬렉션과 프로젝트가 그것을 정돈된 상태로 유지합니다. 각 제품이 따로 할 수 있는 일과, 둘을 함께 썼을 때 열리는 것들을 살펴보세요.</p>',
+ 'ja': '<p class="section-lead">Kapture は Chrome で撮ります。Kapture Pro は撮ったものをライブラリに変え、スマート・コレクション・プロジェクトがそれを整った状態に保ちます。それぞれが単体でできることと、両方そろって初めてできることをご覧ください。</p>'},
+
+'<th scope="row">Smart organisation</th>': {
+ 'es': '<th scope="row">Organización inteligente</th>',
+ 'zh': '<th scope="row">智能整理</th>',
+ 'ko': '<th scope="row">스마트 정리</th>',
+ 'ja': '<th scope="row">スマートによる整理</th>'},
+
+# ---------------------------------------------------------------- version and metadata
+'Chrome extension 0.4.9 &middot; Kapture Pro': {
+ 'es': 'Extensión de Chrome 0.4.9 &middot; Kapture Pro',
+ 'zh': 'Chrome 扩展程序 0.4.9 &middot; Kapture Pro',
+ 'ko': 'Chrome 확장 프로그램 0.4.9 &middot; Kapture Pro',
+ 'ja': 'Chrome 拡張機能 0.4.9 &middot; Kapture Pro'},
+
+'<p class="kicker">Kapture for Chrome &middot; 0.4.9</p>': {
+ 'es': '<p class="kicker">Kapture para Chrome &middot; 0.4.9</p>',
+ 'zh': '<p class="kicker">Chrome 版 Kapture &middot; 0.4.9</p>',
+ 'ko': '<p class="kicker">Chrome용 Kapture &middot; 0.4.9</p>',
+ 'ja': '<p class="kicker">Chrome 版 Kapture &middot; 0.4.9</p>'},
+
+'Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.': {
+ 'es': 'Kapture guarda páginas web completas o el área que elijas, directamente desde Chrome. Kapture Pro las convierte en una biblioteca visual con búsqueda en tu ordenador, con Proyectos, Colecciones e Inteligente para mantenerla en orden. Todo se queda en local.',
+ 'zh': 'Kapture 直接在 Chrome 里保存整张网页或你框选的区域。Kapture Pro 把它们变成电脑上一个可搜索的可视化图库，并用项目、收藏集和智能保持有序。一切都留在本地。',
+ 'ko': 'Kapture는 Chrome에서 바로 전체 웹페이지나 선택한 영역을 저장합니다. Kapture Pro는 그것들을 컴퓨터 안에서 검색 가능한 시각적 라이브러리로 만들고, 프로젝트와 컬렉션과 스마트로 정돈된 상태를 유지합니다. 모든 것이 기기 안에 남습니다.',
+ 'ja': 'Kapture は Chrome から直接、Web ページ全体や選んだ範囲を保存します。Kapture Pro はそれらをパソコン上の検索できるビジュアルライブラリに変え、プロジェクト・コレクション・スマートで整った状態に保ちます。すべてローカルのままです。'},
+
+# The Projects item now draws the Projects / Collections distinction, so the
+# whole control block is re-keyed; every other item keeps its approved wording.
+'''        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Folders inside Kapture become projects automatically. Projects are the work you are doing; Collections, in the Library, are things you want kept together.</p></button></li>
+        <li data-state="search"><button type="button"><h3>Search</h3><p>Find a capture by name, site or project without opening Finder.</p></button></li>
+        <li data-state="library"><button type="button"><h3>Visual library</h3><p>Browse everything as previews instead of filenames.</p></button></li>
+        <li data-state="inspector"><button type="button"><h3>Inspector</h3><p>Size, format, source and capture time for whatever you select.</p></button></li>
+        <li data-state="tags"><button type="button"><h3>Tags and notes</h3><p>Add your own context so a capture still makes sense later.</p></button></li>
+        <li data-state="storage"><button type="button"><h3>Local storage</h3><p>No cloud, no sync, no account. It reads the disk you already have.</p></button></li>''': {
+ 'es': '''        <li data-state="projects"><button type="button"><h3>Proyectos</h3><p>Las carpetas dentro de Kapture se convierten en proyectos automáticamente. Los proyectos son el trabajo que tienes entre manos; las colecciones, dentro de la biblioteca, son las cosas que quieres mantener juntas.</p></button></li>
+        <li data-state="search"><button type="button"><h3>Búsqueda</h3><p>Encuentra una captura por nombre, sitio o proyecto sin abrir el Finder.</p></button></li>
+        <li data-state="library"><button type="button"><h3>Biblioteca visual</h3><p>Navega con vistas previas en lugar de nombres de archivo.</p></button></li>
+        <li data-state="inspector"><button type="button"><h3>Inspector</h3><p>Tamaño, formato, origen y hora de captura de lo que selecciones.</p></button></li>
+        <li data-state="tags"><button type="button"><h3>Etiquetas y notas</h3><p>Añade tu propio contexto para que una captura siga teniendo sentido.</p></button></li>
+        <li data-state="storage"><button type="button"><h3>Todo en local</h3><p>Sin nube, sin sincronización, sin cuenta. Lee el disco que ya tienes.</p></button></li>''',
+ 'zh': '''        <li data-state="projects"><button type="button"><h3>项目</h3><p>Kapture 文件夹里的子文件夹会自动变成项目。项目是你正在做的事；收藏集在图库里，是你想放在一起的东西。</p></button></li>
+        <li data-state="search"><button type="button"><h3>搜索</h3><p>不用打开访达，按名称、网站或项目就能找到截图。</p></button></li>
+        <li data-state="library"><button type="button"><h3>可视化图库</h3><p>用预览图浏览一切，而不是一串文件名。</p></button></li>
+        <li data-state="inspector"><button type="button"><h3>检查器</h3><p>选中任意一张，就能看到尺寸、格式、来源和截图时间。</p></button></li>
+        <li data-state="tags"><button type="button"><h3>标签与备注</h3><p>加上自己的说明，过段时间再看也知道这张是什么。</p></button></li>
+        <li data-state="storage"><button type="button"><h3>本地存储</h3><p>没有云端，不用同步，不用账号。它读的就是你现有的硬盘。</p></button></li>''',
+ 'ko': '''        <li data-state="projects"><button type="button"><h3>프로젝트</h3><p>Kapture 폴더 안의 폴더는 자동으로 프로젝트가 됩니다. 프로젝트는 지금 하고 있는 일이고, 라이브러리 안의 컬렉션은 함께 두고 싶은 것들입니다.</p></button></li>
+        <li data-state="search"><button type="button"><h3>검색</h3><p>Finder를 열지 않고도 이름, 사이트, 프로젝트로 캡처를 찾습니다.</p></button></li>
+        <li data-state="library"><button type="button"><h3>시각 라이브러리</h3><p>파일 이름이 아니라 미리보기로 전체를 훑어봅니다.</p></button></li>
+        <li data-state="inspector"><button type="button"><h3>인스펙터</h3><p>고른 항목의 크기, 형식, 출처, 캡처 시각을 바로 확인합니다.</p></button></li>
+        <li data-state="tags"><button type="button"><h3>태그와 메모</h3><p>직접 맥락을 남겨 두면 나중에 봐도 무슨 캡처인지 압니다.</p></button></li>
+        <li data-state="storage"><button type="button"><h3>로컬 저장</h3><p>클라우드도, 동기화도, 계정도 없습니다. 이미 있는 디스크를 읽을 뿐입니다.</p></button></li>''',
+ 'ja': '''        <li data-state="projects"><button type="button"><h3>プロジェクト</h3><p>Kapture のなかのフォルダーは自動的にプロジェクトになります。プロジェクトは今やっている仕事、ライブラリのなかのコレクションはまとめておきたいものです。</p></button></li>
+        <li data-state="search"><button type="button"><h3>検索</h3><p>Finder を開かずに、名前・サイト・プロジェクトから探せます。</p></button></li>
+        <li data-state="library"><button type="button"><h3>ビジュアルライブラリ</h3><p>ファイル名ではなくプレビューで全体を見渡せます。</p></button></li>
+        <li data-state="inspector"><button type="button"><h3>インスペクタ</h3><p>選んだものの大きさ、形式、取得元、撮影日時をその場で確認できます。</p></button></li>
+        <li data-state="tags"><button type="button"><h3>タグとメモ</h3><p>自分で文脈を書き添えておけば、後から見ても用途がわかります。</p></button></li>
+        <li data-state="storage"><button type="button"><h3>ローカル保存</h3><p>クラウドも同期もアカウントも不要。手元のディスクを読むだけです。</p></button></li>'''},
+
 }
