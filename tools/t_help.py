@@ -19,11 +19,11 @@ HELP = {
  'ko': '<title>도움말 및 업데이트 | Kapture</title>',
  'ja': '<title>ヘルプと更新情報 | Kapture</title>'},
 
-'Kapture help, current extension version and release history. What changed in version 0.4.8, what came before it, and how to use Kapture for Chrome.': {
- 'es': 'Ayuda de Kapture, versión actual de la extensión e historial de versiones. Qué cambió en la versión 0.4.8, qué hubo antes y cómo usar Kapture para Chrome.',
- 'zh': 'Kapture 帮助、扩展程序当前版本和版本历史。0.4.8 版做了哪些改动、之前有哪些版本，以及如何使用 Chrome 版 Kapture。',
- 'ko': 'Kapture 도움말과 현재 확장 프로그램 버전, 릴리스 기록. 0.4.8 버전에서 달라진 점과 이전 버전, 그리고 Chrome용 Kapture 사용 방법을 안내합니다.',
- 'ja': 'Kapture のヘルプ、現在の拡張機能のバージョン、リリース履歴。バージョン 0.4.8 での変更点とそれ以前のバージョン、そして Chrome 版 Kapture の使い方を説明します。'},
+'Kapture help, current extension version and release history. What changed in version 0.4.9, what came before it, and how to use Kapture for Chrome.': {
+ 'es': 'Ayuda de Kapture, versión actual de la extensión e historial de versiones. Qué cambió en la versión 0.4.9, qué hubo antes y cómo usar Kapture para Chrome.',
+ 'zh': 'Kapture 帮助、扩展程序当前版本和版本历史。0.4.9 版做了哪些改动、之前有哪些版本，以及如何使用 Chrome 版 Kapture。',
+ 'ko': 'Kapture 도움말과 현재 확장 프로그램 버전, 릴리스 기록. 0.4.9 버전에서 달라진 점과 이전 버전, 그리고 Chrome용 Kapture 사용 방법을 안내합니다.',
+ 'ja': 'Kapture のヘルプ、現在の拡張機能のバージョン、リリース履歴。バージョン 0.4.9 での変更点とそれ以前のバージョン、そして Chrome 版 Kapture の使い方を説明します。'},
 
 # og:title and twitter:title carry the bare form; the <title> key above wins first
 'Help and Updates | Kapture': {
@@ -60,7 +60,58 @@ HELP = {
  'es': '<h2 class="rel-h">Cómo usar Kapture</h2>', 'zh': '<h2 class="rel-h">使用 Kapture</h2>',
  'ko': '<h2 class="rel-h">Kapture 사용하기</h2>', 'ja': '<h2 class="rel-h">Kapture の使い方</h2>'},
 
+# ---------------------------------------------------------------- 0.4.9
+'<p class="rel-sum">The panel now moves the way Kapture Pro for Mac does. Changing capture mode, opening Settings or turning a page of History explains itself, and everything stays quick.</p>': {
+ 'es': '<p class="rel-sum">El panel se mueve ahora como Kapture Pro para Mac. Cambiar de modo de captura, abrir Ajustes o pasar una página del Historial se explica solo, y todo sigue siendo rápido.</p>',
+ 'zh': '<p class="rel-sum">侧边栏的动效现在和 Mac 版 Kapture Pro 一致。切换捕获模式、打开设置或翻看历史记录都会自己说明变化，而且一切依然轻快。</p>',
+ 'ko': '<p class="rel-sum">패널이 이제 Mac용 Kapture Pro와 같은 방식으로 움직입니다. 캡처 방식을 바꾸거나 설정을 열거나 기록의 페이지를 넘길 때 무엇이 달라졌는지 스스로 보여 주며, 속도는 그대로입니다.</p>',
+ 'ja': '<p class="rel-sum">パネルの動きが Mac 版 Kapture Pro と同じになりました。キャプチャ方式の切り替え、設定を開く操作、履歴のページ送りが、それぞれ何が変わったかを自然に伝えます。速さはそのままです。</p>'},
+
+'<li><strong>The selection moves with you.</strong> Switching between Full page and Select area, or between Kept and Deleted, slides one highlight across instead of snapping it from one control to the other.</li>': {
+ 'es': '<li><strong>La selección te acompaña.</strong> Al cambiar entre Página completa y Seleccionar área, o entre Guardadas y Eliminadas, un mismo resaltado se desliza en lugar de saltar de un control a otro.</li>',
+ 'zh': '<li><strong>选中状态会跟着你移动。</strong>在整页和选择区域之间切换，或者在保留和已删除之间切换时，同一个高亮块会滑动过去，而不是从一个按钮直接跳到另一个。</li>',
+ 'ko': '<li><strong>선택 표시가 따라 움직입니다.</strong> 전체 페이지와 영역 선택 사이, 또는 보관됨과 삭제됨 사이를 오갈 때 하나의 표시가 미끄러지듯 이동합니다. 한 버튼에서 다른 버튼으로 툭 옮겨가지 않습니다.</li>',
+ 'ja': '<li><strong>選択がそのまま移動します。</strong>ページ全体と範囲を選択の切り替え、保存済みと削除済みの切り替えで、ひとつのハイライトがすべるように移動します。別のボタンへ瞬間的に飛び移ることはありません。</li>'},
+
+'<li><strong>Smoother transitions</strong> across capture modes, Settings, History and pagination. Turning a page moves in the direction you are going.</li>': {
+ 'es': '<li><strong>Transiciones más suaves</strong> en los modos de captura, Ajustes, Historial y paginación. Al pasar de página, el movimiento sigue la dirección en la que avanzas.</li>',
+ 'zh': '<li><strong>过渡更顺滑</strong>，涵盖捕获模式、设置、历史记录和翻页。翻页时的动效会跟着你前进的方向。</li>',
+ 'ko': '<li><strong>더 부드러운 전환.</strong> 캡처 방식, 설정, 기록, 페이지 이동에 모두 적용됩니다. 페이지를 넘기면 넘어가는 방향으로 움직입니다.</li>',
+ 'ja': '<li><strong>より滑らかな切り替え。</strong>キャプチャ方式、設定、履歴、ページ送りに適用されます。ページを送ると、進む方向に合わせて動きます。</li>'},
+
+'<li><strong>Refined motion</strong> for status messages, the delete dialog and the Kapture Pro banner.</li>': {
+ 'es': '<li><strong>Movimiento depurado</strong> en los mensajes de estado, el diálogo de eliminación y el aviso de Kapture Pro.</li>',
+ 'zh': '<li><strong>更细致的动效</strong>，用于状态提示、删除对话框和 Kapture Pro 提示卡片。</li>',
+ 'ko': '<li><strong>정돈된 움직임.</strong> 상태 메시지와 삭제 대화상자, Kapture Pro 안내에 적용했습니다.</li>',
+ 'ja': '<li><strong>洗練された動き。</strong>ステータスメッセージ、削除の確認ダイアログ、Kapture Pro のお知らせに適用しました。</li>'},
+
+'<li><strong>Gentler theme switching</strong> and a light press response on buttons.</li>': {
+ 'es': '<li><strong>Cambio de tema más suave</strong> y una ligera respuesta al pulsar los botones.</li>',
+ 'zh': '<li><strong>主题切换更柔和</strong>，按钮也有了轻微的按压反馈。</li>',
+ 'ko': '<li><strong>더 부드러운 테마 전환</strong>과 버튼을 누를 때의 가벼운 반응.</li>',
+ 'ja': '<li><strong>テーマの切り替えがより穏やかに。</strong>ボタンには軽い押し込みの反応を加えました。</li>'},
+
+'<li><strong>Reduced motion is respected.</strong> If your system asks for less movement, transitions become short fades and nothing slides. Every feature still works the same way.</li>': {
+ 'es': '<li><strong>Se respeta la reducción de movimiento.</strong> Si tu sistema pide menos movimiento, las transiciones se convierten en fundidos breves y nada se desliza. Todas las funciones siguen funcionando igual.</li>',
+ 'zh': '<li><strong>尊重“减弱动态效果”设置。</strong>如果你的系统要求减少动效，过渡会变成短暂的淡入淡出，不再有滑动。所有功能照常使用。</li>',
+ 'ko': '<li><strong>동작 줄이기 설정을 따릅니다.</strong> 시스템에서 움직임을 줄이도록 설정하면 전환이 짧은 페이드로 바뀌고 미끄러지는 움직임이 사라집니다. 모든 기능은 그대로 작동합니다.</li>',
+ 'ja': '<li><strong>視差効果を減らす設定に対応。</strong>システムが動きを控えるよう求めている場合、切り替えは短いフェードになり、スライドはなくなります。機能はすべてこれまでどおり使えます。</li>'},
+
+'<li><strong>Fast and restrained.</strong> Nothing bounces, and History never animates its rows one after another.</li>': {
+ 'es': '<li><strong>Rápido y contenido.</strong> Nada rebota, y el Historial nunca anima sus filas una tras otra.</li>',
+ 'zh': '<li><strong>快速而克制。</strong>没有任何弹跳效果，历史记录也不会让每一行依次逐个出现。</li>',
+ 'ko': '<li><strong>빠르고 절제되게.</strong> 튕기는 움직임이 없고, 기록의 행이 하나씩 차례로 나타나지도 않습니다.</li>',
+ 'ja': '<li><strong>速く、控えめに。</strong>跳ねる動きはなく、履歴の行が一つずつ順番に現れることもありません。</li>'},
+
+'<li><strong>Includes the most recent Settings work</strong>, with Language and Help rows and their icons, and the multilingual Help and Privacy pages on this site.</li>': {
+ 'es': '<li><strong>Incluye el trabajo más reciente en Ajustes</strong>, con las filas de Idioma y Ayuda y sus iconos, y las páginas de Ayuda y Privacidad de este sitio en varios idiomas.</li>',
+ 'zh': '<li><strong>包含设置中最新的改动</strong>：语言和帮助两行及其图标，以及本站多语言的帮助和隐私页面。</li>',
+ 'ko': '<li><strong>최근의 설정 작업을 포함합니다.</strong> 언어와 도움말 항목 및 각 아이콘, 그리고 이 사이트의 다국어 도움말과 개인정보 페이지가 함께 담겼습니다.</li>',
+ 'ja': '<li><strong>最近の設定まわりの変更を含みます。</strong>言語とヘルプの行とそれぞれのアイコン、そしてこのサイトの多言語のヘルプとプライバシーのページです。</li>'},
+
 # ---------------------------------------------------------------- 0.4.8
+'>Version 0.4.9<': {'es': '>Versión 0.4.9<', 'zh': '>版本 0.4.9<',
+                    'ko': '>버전 0.4.9<', 'ja': '>バージョン 0.4.9<'},
 '>Version 0.4.8<': {'es': '>Versión 0.4.8<', 'zh': '>版本 0.4.8<',
                     'ko': '>버전 0.4.8<', 'ja': '>バージョン 0.4.8<'},
 '>Version 0.4.7<': {'es': '>Versión 0.4.7<', 'zh': '>版本 0.4.7<',
@@ -72,11 +123,16 @@ HELP = {
  'es': '</span>Versión actual</p>', 'zh': '</span>当前版本</p>',
  'ko': '</span>현재 버전</p>', 'ja': '</span>現在のバージョン</p>'},
 
-'<p class="rel-when">Released 25 September 2026</p>': {
- 'es': '<p class="rel-when">Publicada el 25 de septiembre de 2026</p>',
- 'zh': '<p class="rel-when">发布于 2026 年 9 月 25 日</p>',
- 'ko': '<p class="rel-when">2026년 9월 25일 출시</p>',
- 'ja': '<p class="rel-when">2026 年 9 月 25 日リリース</p>'},
+'<p class="rel-when">Released 29 September 2026</p>': {
+ 'es': '<p class="rel-when">Publicada el 29 de septiembre de 2026</p>',
+ 'zh': '<p class="rel-when">发布于 2026 年 9 月 29 日</p>',
+ 'ko': '<p class="rel-when">2026년 9월 29일 출시</p>',
+ 'ja': '<p class="rel-when">2026 年 9 月 29 日リリース</p>'},
+'<span class="rel-when">25 September 2026</span>': {
+ 'es': '<span class="rel-when">25 de septiembre de 2026</span>',
+ 'zh': '<span class="rel-when">2026 年 9 月 25 日</span>',
+ 'ko': '<span class="rel-when">2026년 9월 25일</span>',
+ 'ja': '<span class="rel-when">2026 年 9 月 25 日</span>'},
 '<span class="rel-when">16 September 2026</span>': {
  'es': '<span class="rel-when">16 de septiembre de 2026</span>',
  'zh': '<span class="rel-when">2026 年 9 月 16 日</span>',
