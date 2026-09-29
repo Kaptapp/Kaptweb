@@ -463,35 +463,44 @@ FIX = {
 
 # The Projects item now draws the Projects / Collections distinction, so the
 # whole control block is re-keyed; every other item keeps its approved wording.
-'''        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Folders inside Kapture become projects automatically. Projects are the work you are doing; Collections, in the Library, are things you want kept together.</p></button></li>
+'''        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Folders inside Kapture become projects, and projects hold the work in hand.</p></button></li>
         <li data-state="search"><button type="button"><h3>Search</h3><p>Find a capture by name, site or project without opening Finder.</p></button></li>
         <li data-state="library"><button type="button"><h3>Visual library</h3><p>Browse everything as previews instead of filenames.</p></button></li>
         <li data-state="inspector"><button type="button"><h3>Inspector</h3><p>Size, format, source and capture time for whatever you select.</p></button></li>
         <li data-state="tags"><button type="button"><h3>Tags and notes</h3><p>Add your own context so a capture still makes sense later.</p></button></li>
         <li data-state="storage"><button type="button"><h3>Local storage</h3><p>No cloud, no sync, no account. It reads the disk you already have.</p></button></li>''': {
- 'es': '''        <li data-state="projects"><button type="button"><h3>Proyectos</h3><p>Las carpetas dentro de Kapture se convierten en proyectos automáticamente. Los proyectos son el trabajo que tienes entre manos; las colecciones, dentro de la biblioteca, son las cosas que quieres mantener juntas.</p></button></li>
+ 'es': '''        <li data-state="projects"><button type="button"><h3>Proyectos</h3><p>Las carpetas dentro de Kapture se convierten en proyectos, y ahí vive el trabajo que tienes en marcha.</p></button></li>
         <li data-state="search"><button type="button"><h3>Búsqueda</h3><p>Encuentra una captura por nombre, sitio o proyecto sin abrir el Finder.</p></button></li>
         <li data-state="library"><button type="button"><h3>Biblioteca visual</h3><p>Navega con vistas previas en lugar de nombres de archivo.</p></button></li>
         <li data-state="inspector"><button type="button"><h3>Inspector</h3><p>Tamaño, formato, origen y hora de captura de lo que selecciones.</p></button></li>
         <li data-state="tags"><button type="button"><h3>Etiquetas y notas</h3><p>Añade tu propio contexto para que una captura siga teniendo sentido.</p></button></li>
         <li data-state="storage"><button type="button"><h3>Todo en local</h3><p>Sin nube, sin sincronización, sin cuenta. Lee el disco que ya tienes.</p></button></li>''',
- 'zh': '''        <li data-state="projects"><button type="button"><h3>项目</h3><p>Kapture 文件夹里的子文件夹会自动变成项目。项目是你正在做的事；收藏集在图库里，是你想放在一起的东西。</p></button></li>
+ 'zh': '''        <li data-state="projects"><button type="button"><h3>项目</h3><p>Kapture 文件夹里的子文件夹会变成项目，手头的工作就放在项目里。</p></button></li>
         <li data-state="search"><button type="button"><h3>搜索</h3><p>不用打开访达，按名称、网站或项目就能找到截图。</p></button></li>
         <li data-state="library"><button type="button"><h3>可视化图库</h3><p>用预览图浏览一切，而不是一串文件名。</p></button></li>
         <li data-state="inspector"><button type="button"><h3>检查器</h3><p>选中任意一张，就能看到尺寸、格式、来源和截图时间。</p></button></li>
         <li data-state="tags"><button type="button"><h3>标签与备注</h3><p>加上自己的说明，过段时间再看也知道这张是什么。</p></button></li>
         <li data-state="storage"><button type="button"><h3>本地存储</h3><p>没有云端，不用同步，不用账号。它读的就是你现有的硬盘。</p></button></li>''',
- 'ko': '''        <li data-state="projects"><button type="button"><h3>프로젝트</h3><p>Kapture 폴더 안의 폴더는 자동으로 프로젝트가 됩니다. 프로젝트는 지금 하고 있는 일이고, 라이브러리 안의 컬렉션은 함께 두고 싶은 것들입니다.</p></button></li>
+ 'ko': '''        <li data-state="projects"><button type="button"><h3>프로젝트</h3><p>Kapture 폴더 안의 폴더는 프로젝트가 되고, 지금 하는 일은 프로젝트에 담깁니다.</p></button></li>
         <li data-state="search"><button type="button"><h3>검색</h3><p>Finder를 열지 않고도 이름, 사이트, 프로젝트로 캡처를 찾습니다.</p></button></li>
         <li data-state="library"><button type="button"><h3>시각 라이브러리</h3><p>파일 이름이 아니라 미리보기로 전체를 훑어봅니다.</p></button></li>
         <li data-state="inspector"><button type="button"><h3>인스펙터</h3><p>고른 항목의 크기, 형식, 출처, 캡처 시각을 바로 확인합니다.</p></button></li>
         <li data-state="tags"><button type="button"><h3>태그와 메모</h3><p>직접 맥락을 남겨 두면 나중에 봐도 무슨 캡처인지 압니다.</p></button></li>
         <li data-state="storage"><button type="button"><h3>로컬 저장</h3><p>클라우드도, 동기화도, 계정도 없습니다. 이미 있는 디스크를 읽을 뿐입니다.</p></button></li>''',
- 'ja': '''        <li data-state="projects"><button type="button"><h3>プロジェクト</h3><p>Kapture のなかのフォルダーは自動的にプロジェクトになります。プロジェクトは今やっている仕事、ライブラリのなかのコレクションはまとめておきたいものです。</p></button></li>
+ 'ja': '''        <li data-state="projects"><button type="button"><h3>プロジェクト</h3><p>Kapture のなかのフォルダーはプロジェクトになり、進行中の仕事はそこに入ります。</p></button></li>
         <li data-state="search"><button type="button"><h3>検索</h3><p>Finder を開かずに、名前・サイト・プロジェクトから探せます。</p></button></li>
         <li data-state="library"><button type="button"><h3>ビジュアルライブラリ</h3><p>ファイル名ではなくプレビューで全体を見渡せます。</p></button></li>
         <li data-state="inspector"><button type="button"><h3>インスペクタ</h3><p>選んだものの大きさ、形式、取得元、撮影日時をその場で確認できます。</p></button></li>
         <li data-state="tags"><button type="button"><h3>タグとメモ</h3><p>自分で文脈を書き添えておけば、後から見ても用途がわかります。</p></button></li>
         <li data-state="storage"><button type="button"><h3>ローカル保存</h3><p>クラウドも同期もアカウントも不要。手元のディスクを読むだけです。</p></button></li>'''},
+
+# ---------------------------------------------------------------- workflow: languages
+# System / Default is not a sixth language, so the row counts five and names the
+# system option separately.
+'<th scope="row">Five languages + System default</th>': {
+ 'es': '<th scope="row">Cinco idiomas + el del sistema</th>',
+ 'zh': '<th scope="row">五种语言 + 跟随系统</th>',
+ 'ko': '<th scope="row">다섯 가지 언어 + 시스템 기본값</th>',
+ 'ja': '<th scope="row">5 つの言語 + システムに従う</th>'},
 
 }

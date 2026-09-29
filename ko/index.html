@@ -161,7 +161,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=34">
+<link rel="stylesheet" href="../styles.css?v=35">
 </head>
 <body>
 
@@ -358,7 +358,7 @@
                  shipped 0.4.9 panel drawn in HTML rather than photographed. -->
             <span class="hero-panel hero-panel-light" role="img" aria-label="The Kapture 0.4.9 side panel in Chrome: capture mode, viewport, file format, the destination project folder and the history list.">
               <span class="cp-fit">
-              <span class="cp cp-lean" data-theme="light">
+              <span class="cp" data-theme="light">
                 <span class="cp-head">
                   <span class="cp-brand">
                     <img class="cp-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
@@ -396,7 +396,7 @@
             </span>
             <span class="hero-panel hero-panel-dark" aria-hidden="true">
               <span class="cp-fit">
-              <span class="cp cp-lean" data-theme="dark">
+              <span class="cp" data-theme="dark">
                 <span class="cp-head">
                   <span class="cp-brand">
                     <img class="cp-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
@@ -573,15 +573,9 @@
                 </div>
 
                 <div class="cp-main">
-                  <div class="cp-pro">
-                    <span class="cp-pro-copy">
-                      <b class="cp-pro-eye">Kapture Pro for Mac</b>
-                      <b class="cp-pro-h">Finally, a home<br>for your screenshots.</b>
-                      <i class="cp-pro-b">Organise, search and manage<br>everything on your Mac.</i>
-                      <span class="cp-pro-cta">Learn more <svg class="i"><use href="#i-arrow-ur"/></svg></span>
-                    </span>
-                  </div>
-
+                  <!-- The extension's Pro banner is deliberately left out of this
+                       render: it is not what the section is demonstrating, and its
+                       height moved the panel while the capture loop ran. -->
                   <div class="cp-card">
                     <!-- One container, one travelling thumb, measured so any translation fits. -->
                     <div class="cp-seg" aria-hidden="true">
@@ -875,7 +869,7 @@
       </div>
 
       <ul class="pro-points" id="kpPoints">
-        <li data-state="projects"><button type="button"><h3>프로젝트</h3><p>Kapture 폴더 안의 폴더는 자동으로 프로젝트가 됩니다. 프로젝트는 지금 하고 있는 일이고, 라이브러리 안의 컬렉션은 함께 두고 싶은 것들입니다.</p></button></li>
+        <li data-state="projects"><button type="button"><h3>프로젝트</h3><p>Kapture 폴더 안의 폴더는 프로젝트가 되고, 지금 하는 일은 프로젝트에 담깁니다.</p></button></li>
         <li data-state="search"><button type="button"><h3>검색</h3><p>Finder를 열지 않고도 이름, 사이트, 프로젝트로 캡처를 찾습니다.</p></button></li>
         <li data-state="library"><button type="button"><h3>시각 라이브러리</h3><p>파일 이름이 아니라 미리보기로 전체를 훑어봅니다.</p></button></li>
         <li data-state="inspector"><button type="button"><h3>인스펙터</h3><p>고른 항목의 크기, 형식, 출처, 캡처 시각을 바로 확인합니다.</p></button></li>
@@ -1043,7 +1037,7 @@
         </div>
       </div>
 
-      <ul class="pro-points sm-points" id="smPoints">
+      <ul class="pro-points" id="smPoints">
         <li data-tool="unorganised"><button type="button"><h3>미정리</h3><p>출처와 관계없이, 아직 프로젝트에 들어가지 않은 모든 것.</p></button></li>
         <li data-tool="duplicates"><button type="button"><h3>중복 항목</h3><p>바이트 단위까지 완전히 같은 파일. 어떤 복사본을 남길지는 사용자가 정합니다.</p></button></li>
         <li data-tool="cleanup"><button type="button"><h3>정리</h3><p>다시 살펴볼 만한 오래되고 큰 캡처. 임의로 삭제되지는 않습니다.</p></button></li>
@@ -1115,6 +1109,10 @@
           <tr>
             <th scope="row">파일 인스펙터</th>
             <td><i class="cmp-n" role="img" aria-label="미지원"></i></td><td><i class="cmp-y" role="img" aria-label="지원"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="지원"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">다섯 가지 언어 + 시스템 기본값</th>
+            <td><i class="cmp-y" role="img" aria-label="지원"></i></td><td><i class="cmp-y" role="img" aria-label="지원"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="지원"></i></td>
           </tr>
           <tr>
             <th scope="row">캡처에서 정리까지의 흐름</th>
@@ -1353,6 +1351,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=34"></script>
+<script src="../script.js?v=35"></script>
 </body>
 </html>

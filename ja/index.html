@@ -161,7 +161,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=34">
+<link rel="stylesheet" href="../styles.css?v=35">
 </head>
 <body>
 
@@ -358,7 +358,7 @@
                  shipped 0.4.9 panel drawn in HTML rather than photographed. -->
             <span class="hero-panel hero-panel-light" role="img" aria-label="The Kapture 0.4.9 side panel in Chrome: capture mode, viewport, file format, the destination project folder and the history list.">
               <span class="cp-fit">
-              <span class="cp cp-lean" data-theme="light">
+              <span class="cp" data-theme="light">
                 <span class="cp-head">
                   <span class="cp-brand">
                     <img class="cp-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
@@ -396,7 +396,7 @@
             </span>
             <span class="hero-panel hero-panel-dark" aria-hidden="true">
               <span class="cp-fit">
-              <span class="cp cp-lean" data-theme="dark">
+              <span class="cp" data-theme="dark">
                 <span class="cp-head">
                   <span class="cp-brand">
                     <img class="cp-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
@@ -573,15 +573,9 @@
                 </div>
 
                 <div class="cp-main">
-                  <div class="cp-pro">
-                    <span class="cp-pro-copy">
-                      <b class="cp-pro-eye">Kapture Pro for Mac</b>
-                      <b class="cp-pro-h">Finally, a home<br>for your screenshots.</b>
-                      <i class="cp-pro-b">Organise, search and manage<br>everything on your Mac.</i>
-                      <span class="cp-pro-cta">Learn more <svg class="i"><use href="#i-arrow-ur"/></svg></span>
-                    </span>
-                  </div>
-
+                  <!-- The extension's Pro banner is deliberately left out of this
+                       render: it is not what the section is demonstrating, and its
+                       height moved the panel while the capture loop ran. -->
                   <div class="cp-card">
                     <!-- One container, one travelling thumb, measured so any translation fits. -->
                     <div class="cp-seg" aria-hidden="true">
@@ -875,7 +869,7 @@
       </div>
 
       <ul class="pro-points" id="kpPoints">
-        <li data-state="projects"><button type="button"><h3>プロジェクト</h3><p>Kapture のなかのフォルダーは自動的にプロジェクトになります。プロジェクトは今やっている仕事、ライブラリのなかのコレクションはまとめておきたいものです。</p></button></li>
+        <li data-state="projects"><button type="button"><h3>プロジェクト</h3><p>Kapture のなかのフォルダーはプロジェクトになり、進行中の仕事はそこに入ります。</p></button></li>
         <li data-state="search"><button type="button"><h3>検索</h3><p>Finder を開かずに、名前・サイト・プロジェクトから探せます。</p></button></li>
         <li data-state="library"><button type="button"><h3>ビジュアルライブラリ</h3><p>ファイル名ではなくプレビューで全体を見渡せます。</p></button></li>
         <li data-state="inspector"><button type="button"><h3>インスペクタ</h3><p>選んだものの大きさ、形式、取得元、撮影日時をその場で確認できます。</p></button></li>
@@ -1043,7 +1037,7 @@
         </div>
       </div>
 
-      <ul class="pro-points sm-points" id="smPoints">
+      <ul class="pro-points" id="smPoints">
         <li data-tool="unorganised"><button type="button"><h3>未整理</h3><p>まだプロジェクトに入っていないもの、すべてのソースから。</p></button></li>
         <li data-tool="duplicates"><button type="button"><h3>重複</h3><p>バイト単位で完全に同じファイル。どちらを残すかはあなたが選びます。</p></button></li>
         <li data-tool="cleanup"><button type="button"><h3>クリーンアップ</h3><p>見直す価値のある古くて大きいキャプチャ。自動で削除されることはありません。</p></button></li>
@@ -1115,6 +1109,10 @@
           <tr>
             <th scope="row">ファイルインスペクタ</th>
             <td><i class="cmp-n" role="img" aria-label="非対応"></i></td><td><i class="cmp-y" role="img" aria-label="対応"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="対応"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">5 つの言語 + システムに従う</th>
+            <td><i class="cmp-y" role="img" aria-label="対応"></i></td><td><i class="cmp-y" role="img" aria-label="対応"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="対応"></i></td>
           </tr>
           <tr>
             <th scope="row">撮影から整理までの流れ</th>
@@ -1353,6 +1351,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=34"></script>
+<script src="../script.js?v=35"></script>
 </body>
 </html>

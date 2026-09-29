@@ -159,7 +159,7 @@
 </script>
 
 <link rel="preload" href="assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=34">
+<link rel="stylesheet" href="styles.css?v=35">
 </head>
 <body>
 
@@ -356,7 +356,7 @@
                  shipped 0.4.9 panel drawn in HTML rather than photographed. -->
             <span class="hero-panel hero-panel-light" role="img" aria-label="The Kapture 0.4.9 side panel in Chrome: capture mode, viewport, file format, the destination project folder and the history list.">
               <span class="cp-fit">
-              <span class="cp cp-lean" data-theme="light">
+              <span class="cp" data-theme="light">
                 <span class="cp-head">
                   <span class="cp-brand">
                     <img class="cp-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
@@ -394,7 +394,7 @@
             </span>
             <span class="hero-panel hero-panel-dark" aria-hidden="true">
               <span class="cp-fit">
-              <span class="cp cp-lean" data-theme="dark">
+              <span class="cp" data-theme="dark">
                 <span class="cp-head">
                   <span class="cp-brand">
                     <img class="cp-icon" src="assets/logo/kapture-icon.svg" alt="" width="128" height="128">
@@ -571,15 +571,9 @@
                 </div>
 
                 <div class="cp-main">
-                  <div class="cp-pro">
-                    <span class="cp-pro-copy">
-                      <b class="cp-pro-eye">Kapture Pro for Mac</b>
-                      <b class="cp-pro-h">Finally, a home<br>for your screenshots.</b>
-                      <i class="cp-pro-b">Organise, search and manage<br>everything on your Mac.</i>
-                      <span class="cp-pro-cta">Learn more <svg class="i"><use href="#i-arrow-ur"/></svg></span>
-                    </span>
-                  </div>
-
+                  <!-- The extension's Pro banner is deliberately left out of this
+                       render: it is not what the section is demonstrating, and its
+                       height moved the panel while the capture loop ran. -->
                   <div class="cp-card">
                     <!-- One container, one travelling thumb, measured so any translation fits. -->
                     <div class="cp-seg" aria-hidden="true">
@@ -873,7 +867,7 @@
       </div>
 
       <ul class="pro-points" id="kpPoints">
-        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Folders inside Kapture become projects automatically. Projects are the work you are doing; Collections, in the Library, are things you want kept together.</p></button></li>
+        <li data-state="projects"><button type="button"><h3>Projects</h3><p>Folders inside Kapture become projects, and projects hold the work in hand.</p></button></li>
         <li data-state="search"><button type="button"><h3>Search</h3><p>Find a capture by name, site or project without opening Finder.</p></button></li>
         <li data-state="library"><button type="button"><h3>Visual library</h3><p>Browse everything as previews instead of filenames.</p></button></li>
         <li data-state="inspector"><button type="button"><h3>Inspector</h3><p>Size, format, source and capture time for whatever you select.</p></button></li>
@@ -1041,7 +1035,7 @@
         </div>
       </div>
 
-      <ul class="pro-points sm-points" id="smPoints">
+      <ul class="pro-points" id="smPoints">
         <li data-tool="unorganised"><button type="button"><h3>Unorganised</h3><p>Everything that is not in a project yet, from every source.</p></button></li>
         <li data-tool="duplicates"><button type="button"><h3>Duplicates</h3><p>Files that are exactly the same, byte for byte. You choose which copy to keep.</p></button></li>
         <li data-tool="cleanup"><button type="button"><h3>Cleanup</h3><p>Older and larger captures worth a second look. Nothing is removed for you.</p></button></li>
@@ -1113,6 +1107,10 @@
           <tr>
             <th scope="row">File inspector</th>
             <td><i class="cmp-n" role="img" aria-label="No"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Five languages + System default</th>
+            <td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td><i class="cmp-y" role="img" aria-label="Yes"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Yes"></i></td>
           </tr>
           <tr>
             <th scope="row">Capture to organise workflow</th>
@@ -1352,6 +1350,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=34"></script>
+<script src="script.js?v=35"></script>
 </body>
 </html>

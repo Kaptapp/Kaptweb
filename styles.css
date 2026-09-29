@@ -1031,9 +1031,7 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
    selected capture rather than waiting to be switched on. */
 .hero-stage-mac .kp-insp-full,
 .hero-stage-mac .kp-tags { display: block; }
-/* The hero panel carries no Pro banner: at this size it would be unreadable,
-   and the page around it is already the Kapture Pro pitch. */
-.cp-lean .cp-pro { display: none; }
+
 
 /* The panel sits in a padded surface so the extension UI is never flush against
    a border. The surface carries the *panel's own* paper colour and swaps with
@@ -1364,7 +1362,8 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 .kp-demo[data-state="storage"] .kp-drive::after { background: #2CC2B0; }
 
 /* the six controls */
-#kpPoints { grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 30px) clamp(16px, 2vw, 28px); margin-top: clamp(56px, 7vw, 92px); }
+#kpPoints,
+#smPoints { grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 30px) clamp(16px, 2vw, 28px); margin-top: clamp(56px, 7vw, 92px); }
 #kpPoints li, #smPoints li { padding-top: 0; }   /* spacing, not a rule line */
 #kpPoints button, #smPoints button {
   display: block; width: 100%; padding: 14px 12px;
@@ -1381,13 +1380,13 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   .kp-body { grid-template-columns: 168px 1fr; height: 610px; }
   .kp-insp { display: none; }
   .kp-grid { grid-template-columns: repeat(3, 1fr); }
-  #kpPoints { grid-template-columns: repeat(2, 1fr); }
+  #kpPoints, #smPoints { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 620px) {
   .kp-body { grid-template-columns: 1fr; height: 570px; }
   .kp-side { display: none; }
   .kp-grid { grid-template-columns: repeat(2, 1fr); }
-  #kpPoints { grid-template-columns: 1fr; }
+  #kpPoints, #smPoints { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   .kp-card, .kp-search, #kpPoints button, #kpPoints h3, #smPoints button, #smPoints h3 { transition: none; }
@@ -1636,30 +1635,6 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 /* ---- main ---- */
 .cp-main { flex: 1; min-height: 0; padding: 16px; display: flex; flex-direction: column; }
 
-/* Pro banner, the expanded form, with the shipped gradient. */
-.cp-pro {
-  flex: none; margin-bottom: 12px; padding: 14px 15px; border-radius: 14px;
-  background: linear-gradient(135deg, #e9f6f3 0%, #dcefea 55%, #cfe8e1 100%);
-  border: 1px solid #bde0d8;
-}
-.cp[data-theme="dark"] .cp-pro {
-  background: linear-gradient(135deg, #0d2b28 0%, #10413a 55%, #0b2320 100%);
-  border-color: #1d5a52;
-}
-.cp-pro-copy { display: block; }
-.cp-pro-eye { display: block; margin-bottom: 6px; font-size: 9.5px; font-weight: 750; letter-spacing: .9px; text-transform: uppercase; color: #0e7a6f; }
-.cp-pro-h { display: block; margin-bottom: 6px; font-size: 16px; line-height: 1.2; letter-spacing: -.3px; font-weight: 700; color: #10312c; }
-.cp-pro-b { display: block; margin-bottom: 11px; font-style: normal; font-size: 10.5px; line-height: 1.35; color: #3f5f59; }
-.cp[data-theme="dark"] .cp-pro-eye { color: #4fd1c0; }
-.cp[data-theme="dark"] .cp-pro-h { color: #f2fbf9; }
-.cp[data-theme="dark"] .cp-pro-b { color: #a9cfc8; }
-.cp-pro-cta {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 14px; border-radius: 999px;
-  background: var(--c-accent); color: #06302b; font-size: 11.5px; font-weight: 700;
-}
-.cp-pro-cta .i { width: 12px; height: 12px; }
-
 /* Capture card */
 .cp-card {
   flex: none; padding: 13px; border-radius: 14px;
@@ -1756,8 +1731,7 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 .cp-set { display: none; flex: 1; min-height: 0; flex-direction: column; gap: 6px; padding: 4px 2px; }
 .cp[data-cp="settings"] .cp-set { display: flex; }
 .cp[data-cp="settings"] .cp-card,
-.cp[data-cp="settings"] .cp-hist,
-.cp[data-cp="settings"] .cp-pro { display: none; }
+.cp[data-cp="settings"] .cp-hist { display: none; }
 .cp-back {
   align-self: flex-start; display: inline-flex; align-items: center; gap: 5px;
   padding: 5px 10px 5px 7px; border: 1px solid var(--c-border); border-radius: 9px;
@@ -1913,10 +1887,9 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
 
 .sm-note { margin-top: 12px; font-size: 10px; color: #6f7874; }
 
-/* The five controls below the render, five across where there is room. */
-#smPoints { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 30px) clamp(14px, 1.6vw, 22px); margin-top: clamp(48px, 6vw, 76px); }
-@media (max-width: 1000px) { #smPoints { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px)  { #smPoints { grid-template-columns: minmax(0, 1fr); } }
+/* The five Smart controls use the Kapture Pro grid above, so there is one
+   feature-card system on the page. Five items in a three-column grid leave the
+   sixth cell empty, which is the honest result: there is no sixth tool. */
 
 /* Narrow: the tab bar scrolls rather than wrapping, as the app's own
    ViewThatFits fallback does. */
@@ -2113,6 +2086,11 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   overflow: hidden;
 }
 .cap-panel .cp-fit { flex: 1; min-height: 0; aspect-ratio: auto; height: auto; }
+/* Select area's guide block is taller than the two Full page dropdowns, so the
+   card would grow by 22px every time the loop changed mode. The options area
+   holds the taller of the two heights instead, and nothing below it moves.
+   Scoped to this demo: the hero panel never switches mode. */
+.cap-panel .cp-opts { min-height: 82px; }
 .cap-panel::after {
   content: "";
   position: absolute;
