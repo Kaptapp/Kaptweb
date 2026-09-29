@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 """Privacy policy. Same clauses, same order, nothing added or removed."""
+from t_chrome import CHROME
 
+# Header, footer, skip link and social labels are shared with the help page.
+# The page's own entries below win over anything with the same key.
 PRIV = {
+**CHROME,
 '<title>Privacy Policy | Kapture</title>': {
  'es': '<title>Política de privacidad | Kapture</title>',
  'zh': '<title>隐私政策 | Kapture</title>',
@@ -14,11 +18,17 @@ PRIV = {
  'ko': 'Kapture가 스크린샷과 로컬 파일, 개인정보를 어떻게 다루는지 설명합니다. 스크린샷은 Chrome 다운로드를 통해 기기에 저장되며 개발자나 제3자에게 전송되지 않습니다.',
  'ja': 'Kapture がスクリーンショットやローカルファイル、プライバシーをどう扱うかについて。スクリーンショットは Chrome のダウンロード機能で端末に保存され、開発者や第三者に送信されることはありません。'},
 
-'<a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>': {
- 'es': '<a class="btn btn-ghost btn-sm store-cta" href="/">Volver al sitio</a>',
- 'zh': '<a class="btn btn-ghost btn-sm store-cta" href="/">返回网站</a>',
- 'ko': '<a class="btn btn-ghost btn-sm store-cta" href="/">사이트로 돌아가기</a>',
- 'ja': '<a class="btn btn-ghost btn-sm store-cta" href="/">サイトに戻る</a>'},
+# JSON-LD breadcrumb leaf. "Home" comes from the shared chrome table.
+'"name": "Privacy Policy"': {
+ 'es': '"name": "Política de privacidad"', 'zh': '"name": "隐私政策"',
+ 'ko': '"name": "개인정보처리방침"', 'ja': '"name": "プライバシーポリシー"'},
+
+'content="Privacy Policy | Kapture"': {
+ 'es': 'content="Política de privacidad | Kapture"',
+ 'zh': 'content="隐私政策 | Kapture"',
+ 'ko': 'content="개인정보처리방침 | Kapture"',
+ 'ja': 'content="プライバシーポリシー | Kapture"'},
+
 
 '<p class="kicker">Legal</p>': {
  'es': '<p class="kicker">Aviso legal</p>', 'zh': '<p class="kicker">法律条款</p>',
@@ -111,11 +121,6 @@ PRIV = {
  'ko': '<p>개인정보 또는 지원 관련 문의는 <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a> 으로 메일을 보내주세요.</p>',
  'ja': '<p>プライバシーやサポートに関するお問い合わせは <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a> までメールでご連絡ください。</p>'},
 
-'<p class="legal-foot">Kapture by Pequelord &middot; Screenshots stay on your device.</p>': {
- 'es': '<p class="legal-foot">Kapture, de Pequelord &middot; Tus capturas se quedan en tu dispositivo.</p>',
- 'zh': '<p class="legal-foot">Kapture by Pequelord &middot; 截图只留在你的设备上。</p>',
- 'ko': '<p class="legal-foot">Kapture by Pequelord &middot; 스크린샷은 기기 안에만 남습니다.</p>',
- 'ja': '<p class="legal-foot">Kapture by Pequelord &middot; スクリーンショットは端末の外に出ません。</p>'},
 
 # footer nav on the privacy page
 '<a href="/#capture">Capture</a>\n      <a href="/#how">How it works</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>': {
@@ -126,9 +131,6 @@ PRIV = {
 '<a href="/#capture">Capture</a>': {
  'es': '<a href="/#capture">Captura</a>', 'zh': '<a href="/#capture">截图</a>',
  'ko': '<a href="/#capture">캡처</a>', 'ja': '<a href="/#capture">キャプチャ</a>'},
-'<a href="/#how">How it works</a>': {
- 'es': '<a href="/#how">Cómo funciona</a>', 'zh': '<a href="/#how">使用方法</a>',
- 'ko': '<a href="/#how">사용 방법</a>', 'ja': '<a href="/#how">使い方</a>'},
 '<a href="/privacy/" aria-current="page">Privacy</a>': {
  'es': '<a href="/privacy/" aria-current="page">Privacidad</a>',
  'zh': '<a href="/privacy/" aria-current="page">隐私</a>',

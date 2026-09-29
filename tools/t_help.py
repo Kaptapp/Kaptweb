@@ -6,8 +6,11 @@ filenames, folder paths and permission identifiers stay in English. Product
 wording matches the extension's own locales, so a reader sees the same terms in
 the side panel and on this page.
 """
+from t_chrome import CHROME
 
+# Header, footer, skip link and social labels are shared with the privacy page.
 HELP = {
+**CHROME,
 
 # ---------------------------------------------------------------- metadata
 '<title>Help and Updates | Kapture</title>': {
@@ -29,68 +32,9 @@ HELP = {
  'ko': '도움말 및 업데이트 | Kapture',
  'ja': 'ヘルプと更新情報 | Kapture'},
 
-'content="Kapture, full page screenshots for Chrome."': {
- 'es': 'content="Kapture, capturas de página completa para Chrome."',
- 'zh': 'content="Kapture，Chrome 的整页截图工具。"',
- 'ko': 'content="Kapture, Chrome용 전체 페이지 스크린샷."',
- 'ja': 'content="Kapture、Chrome 用のページ全体スクリーンショット。"'},
-
-# JSON-LD breadcrumb. localise_ld rewrites ids and urls, not these names.
-'"name": "Home"': {
- 'es': '"name": "Inicio"', 'zh': '"name": "首页"',
- 'ko': '"name": "홈"', 'ja': '"name": "ホーム"'},
 '"name": "Help and Updates"': {
  'es': '"name": "Ayuda y novedades"', 'zh': '"name": "帮助与更新"',
  'ko': '"name": "도움말 및 업데이트"', 'ja': '"name": "ヘルプと更新情報"'},
-
-# ---------------------------------------------------------------- chrome
-'<a class="skip-link" href="#main">Skip to content</a>': {
- 'es': '<a class="skip-link" href="#main">Saltar al contenido</a>',
- 'zh': '<a class="skip-link" href="#main">跳到主要内容</a>',
- 'ko': '<a class="skip-link" href="#main">본문으로 건너뛰기</a>',
- 'ja': '<a class="skip-link" href="#main">本文へスキップ</a>'},
-
-'<nav class="header-nav" aria-label="Primary">': {
- 'es': '<nav class="header-nav" aria-label="Principal">',
- 'zh': '<nav class="header-nav" aria-label="主导航">',
- 'ko': '<nav class="header-nav" aria-label="기본">',
- 'ja': '<nav class="header-nav" aria-label="メイン">'},
-'<nav class="footer-nav" aria-label="Footer">': {
- 'es': '<nav class="footer-nav" aria-label="Pie de página">',
- 'zh': '<nav class="footer-nav" aria-label="页脚">',
- 'ko': '<nav class="footer-nav" aria-label="푸터">',
- 'ja': '<nav class="footer-nav" aria-label="フッター">'},
-
-'<a href="/#how">How it works</a>': {
- 'es': '<a href="/#how">Cómo funciona</a>', 'zh': '<a href="/#how">工作方式</a>',
- 'ko': '<a href="/#how">작동 방식</a>', 'ja': '<a href="/#how">仕組み</a>'},
-'<a href="/privacy/">Privacy</a>': {
- 'es': '<a href="/privacy/">Privacidad</a>', 'zh': '<a href="/privacy/">隐私</a>',
- 'ko': '<a href="/privacy/">개인정보</a>', 'ja': '<a href="/privacy/">プライバシー</a>'},
-'<a href="mailto:pequelord@gmail.com">Contact</a>': {
- 'es': '<a href="mailto:pequelord@gmail.com">Contacto</a>',
- 'zh': '<a href="mailto:pequelord@gmail.com">联系我们</a>',
- 'ko': '<a href="mailto:pequelord@gmail.com">문의</a>',
- 'ja': '<a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
-
-'<a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>': {
- 'es': '<a class="btn btn-ghost btn-sm store-cta" href="/">Volver al sitio</a>',
- 'zh': '<a class="btn btn-ghost btn-sm store-cta" href="/">返回网站</a>',
- 'ko': '<a class="btn btn-ghost btn-sm store-cta" href="/">사이트로 돌아가기</a>',
- 'ja': '<a class="btn btn-ghost btn-sm store-cta" href="/">サイトに戻る</a>'},
-
-'aria-label="Kapture on X"': {
- 'es': 'aria-label="Kapture en X"', 'zh': 'aria-label="Kapture 的 X 主页"',
- 'ko': 'aria-label="X에서 Kapture 보기"', 'ja': 'aria-label="X の Kapture"'},
-'aria-label="Kapture on LinkedIn"': {
- 'es': 'aria-label="Kapture en LinkedIn"', 'zh': 'aria-label="Kapture 的 LinkedIn 主页"',
- 'ko': 'aria-label="LinkedIn에서 Kapture 보기"', 'ja': 'aria-label="LinkedIn の Kapture"'},
-
-'<p class="legal-foot">Kapture by Pequelord &middot; Screenshots stay on your device.</p>': {
- 'es': '<p class="legal-foot">Kapture, de Pequelord &middot; Tus capturas se quedan en tu dispositivo.</p>',
- 'zh': '<p class="legal-foot">Kapture，由 Pequelord 开发 &middot; 截图只保存在你的设备上。</p>',
- 'ko': '<p class="legal-foot">Pequelord가 만든 Kapture &middot; 스크린샷은 기기에만 남습니다.</p>',
- 'ja': '<p class="legal-foot">Pequelord による Kapture &middot; スクリーンショットは端末内にとどまります。</p>'},
 
 # ---------------------------------------------------------------- page head
 '<p class="kicker">Help</p>': {
