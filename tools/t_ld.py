@@ -60,6 +60,16 @@ def home_url(lang):
 def privacy_url(lang):
     return f'{BASE}/privacy/' if lang == 'en' else f'{BASE}/{lang}/privacy/'
 
+def help_url(lang):
+    return f'{BASE}/help/' if lang == 'en' else f'{BASE}/{lang}/help/'
+
+# One place that maps a page to its URL builder, so adding a page does not mean
+# editing a chain of conditionals in the build script.
+PAGE_URL = {'index': home_url, 'privacy': privacy_url, 'help': help_url}
+
+def page_url(lang, page):
+    return PAGE_URL[page](lang)
+
 
 # ---- Kapture Pro: localised JSON-LD prose. Factual fields stay identical. ----
 PRO_DESC = {

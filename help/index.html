@@ -8,6 +8,12 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1b1d1c">
 <link rel="canonical" href="https://kaptapp.com/help/">
+<link rel="alternate" hreflang="en" href="https://kaptapp.com/help/">
+<link rel="alternate" hreflang="es" href="https://kaptapp.com/es/help/">
+<link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/">
+<link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/">
+<link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/">
+<link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/">
 
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="../assets/logo/kapture-icon.svg">
@@ -99,6 +105,19 @@
       <a href="/#how">How it works</a>
       <a href="/privacy/">Privacy</a>
     </nav>
+    <details class="langpick">
+      <summary aria-label="Language">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3.2 9.5h17.6M3.2 14.5h17.6"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+        <span>EN</span>
+      </summary>
+      <ul>
+        <li><a href="https://kaptapp.com/help/" hreflang="en" lang="en" aria-current="true">English</a></li>
+        <li><a href="https://kaptapp.com/es/help/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="https://kaptapp.com/zh/help/" hreflang="zh-CN" lang="zh-CN">中文</a></li>
+        <li><a href="https://kaptapp.com/ko/help/" hreflang="ko" lang="ko">한국어</a></li>
+        <li><a href="https://kaptapp.com/ja/help/" hreflang="ja" lang="ja">日本語</a></li>
+      </ul>
+    </details>
     <a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>
   </div>
 </header>
@@ -124,11 +143,11 @@
         3. Turn the previous latest release into a collapsed row by wrapping it as:
              <details class="rel" name="release">
                <summary><span class="rel-v">Version X.Y.Z</span>
-                 <span class="rel-when">DATE</span>
+                 <span class="rel-when">ITS DATE</span>
                  <span class="rel-mark" aria-hidden="true"></span></summary>
                <div class="rel-body"> ... summary and list ... </div>
              </details>
-           and move it to the top of "Previous updates".
+           and move it to the top of the older releases list.
 
         Only list changes that are actually present in the extension source.
       -->
