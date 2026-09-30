@@ -19,27 +19,51 @@ HOME = {
  'es': 'Kapture, capturas de páginas completas para Chrome.',
  'zh': 'Kapture，Chrome 整页截图扩展。',
  'ko': 'Kapture, Chrome용 전체 페이지 스크린샷.',
- 'ja': 'Kapture、Chrome でページ全体をスクリーンショット。'},
+ 'ja': 'Kapture、Chrome でページ全体をスクリーンショット。',
+ 'de': 'Kapture, Ganzseiten-Screenshots für Chrome.',
+ 'fr': 'Kapture, captures de pages entières pour Chrome.',
+ 'pt-br': 'Kapture, capturas de páginas inteiras para o Chrome.',
+ 'it': 'Kapture, screenshot di pagine intere per Chrome.'},
 
 # ---------------------------------------------------------------- chrome
 '>Skip to content<': {'es': '>Saltar al contenido<', 'zh': '>跳到主要内容<',
- 'ko': '>본문으로 건너뛰기<', 'ja': '>本文へスキップ<'},
+ 'ko': '>본문으로 건너뛰기<', 'ja': '>本文へスキップ<',
+ 'de': '>Zum Inhalt springen<',
+ 'fr': '>Aller au contenu<',
+ 'pt-br': '>Pular para o conteúdo<',
+ 'it': '>Vai al contenuto<'},
 
 'aria-label="Kapture home"': {
  'es': 'aria-label="Kapture, inicio"', 'zh': 'aria-label="Kapture 首页"',
  'ko': 'aria-label="Kapture 홈"', 'ja': 'aria-label="Kapture ホーム"'},
 'aria-label="Primary"': {
  'es': 'aria-label="Navegación principal"', 'zh': 'aria-label="主导航"',
- 'ko': 'aria-label="주요 메뉴"', 'ja': 'aria-label="メインナビゲーション"'},
+ 'ko': 'aria-label="주요 메뉴"', 'ja': 'aria-label="メインナビゲーション"',
+ 'de': 'aria-label="Hauptnavigation"',
+ 'fr': 'aria-label="Navigation principale"',
+ 'pt-br': 'aria-label="Navegação principal"',
+ 'it': 'aria-label="Navigazione principale"'},
 'aria-label="Footer"': {
  'es': 'aria-label="Pie de página"', 'zh': 'aria-label="页脚"',
- 'ko': 'aria-label="푸터"', 'ja': 'aria-label="フッター"'},
+ 'ko': 'aria-label="푸터"', 'ja': 'aria-label="フッター"',
+ 'de': 'aria-label="Fußzeile"',
+ 'fr': 'aria-label="Pied de page"',
+ 'pt-br': 'aria-label="Rodapé"',
+ 'it': 'aria-label="Piè di pagina"'},
 'aria-label="Kapture on X"': {
  'es': 'aria-label="Kapture en X"', 'zh': 'aria-label="Kapture 的 X 主页"',
- 'ko': 'aria-label="X에서 Kapture 보기"', 'ja': 'aria-label="X の Kapture"'},
+ 'ko': 'aria-label="X에서 Kapture 보기"', 'ja': 'aria-label="X の Kapture"',
+ 'de': 'aria-label="Kapture auf X"',
+ 'fr': 'aria-label="Kapture sur X"',
+ 'pt-br': 'aria-label="Kapture no X"',
+ 'it': 'aria-label="Kapture su X"'},
 'aria-label="Kapture on LinkedIn"': {
  'es': 'aria-label="Kapture en LinkedIn"', 'zh': 'aria-label="Kapture 的 LinkedIn 主页"',
- 'ko': 'aria-label="LinkedIn에서 Kapture 보기"', 'ja': 'aria-label="LinkedIn の Kapture"'},
+ 'ko': 'aria-label="LinkedIn에서 Kapture 보기"', 'ja': 'aria-label="LinkedIn の Kapture"',
+ 'de': 'aria-label="Kapture auf LinkedIn"',
+ 'fr': 'aria-label="Kapture sur LinkedIn"',
+ 'pt-br': 'aria-label="Kapture no LinkedIn"',
+ 'it': 'aria-label="Kapture su LinkedIn"'},
 'aria-label="Add Kapture to Chrome. Opens the Chrome Web Store."': {
  'es': 'aria-label="Añadir Kapture a Chrome. Abre Chrome Web Store."',
  'zh': 'aria-label="将 Kapture 添加到 Chrome。打开 Chrome 应用商店。"',
@@ -60,7 +84,11 @@ HOME = {
  'ko': '<a href="#how">사용 방법</a>', 'ja': '<a href="#how">使い方</a>'},
 '<a href="#privacy">Privacy</a>': {
  'es': '<a href="#privacy">Privacidad</a>', 'zh': '<a href="#privacy">隐私</a>',
- 'ko': '<a href="#privacy">개인정보</a>', 'ja': '<a href="#privacy">プライバシー</a>'},
+ 'ko': '<a href="#privacy">개인정보</a>', 'ja': '<a href="#privacy">プライバシー</a>',
+ 'de': '<a href="#privacy">Datenschutz</a>',
+ 'fr': '<a href="#privacy">Confidentialité</a>',
+ 'pt-br': '<a href="#privacy">Privacidade</a>',
+ 'it': '<a href="#privacy">Privacy</a>'},
 
 # ---------------------------------------------------------------- hero
 'Chrome extension &middot; version 0.4.4': {
@@ -85,7 +113,11 @@ HOME = {
  'es': '<span class="store-cta-label">Añadir a Chrome</span>',
  'zh': '<span class="store-cta-label">添加到 Chrome</span>',
  'ko': '<span class="store-cta-label">Chrome에 추가</span>',
- 'ja': '<span class="store-cta-label">Chrome に追加</span>'},
+ 'ja': '<span class="store-cta-label">Chrome に追加</span>',
+ 'de': '<span class="store-cta-label">Zu Chrome hinzufügen</span>',
+ 'fr': '<span class="store-cta-label">Ajouter à Chrome</span>',
+ 'pt-br': '<span class="store-cta-label">Adicionar ao Chrome</span>',
+ 'it': '<span class="store-cta-label">Aggiungi a Chrome</span>'},
 '<span class="store-cta-label">Add to Mac</span>': {
  'es': '<span class="store-cta-label">Añadir a Mac</span>',
  'zh': '<span class="store-cta-label">添加到 Mac</span>',

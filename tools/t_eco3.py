@@ -6,13 +6,21 @@ ECO3 = {
  'es': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>para Mac</em></p>',
  'zh': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac 版</em></p>',
  'ko': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac용</em></p>',
- 'ja': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac 版</em></p>'},
+ 'ja': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>Mac 版</em></p>',
+ 'de': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>für Mac</em></p>',
+ 'fr': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>pour Mac</em></p>',
+ 'pt-br': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>para Mac</em></p>',
+ 'it': '<p class="stage-label"><span class="stage-dot" aria-hidden="true"></span>Kapture&nbsp;Pro <em>per Mac</em></p>'},
 
 '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>for Chrome</em></p>': {
  'es': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>para Chrome</em></p>',
  'zh': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome 版</em></p>',
  'ko': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome용</em></p>',
- 'ja': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome 版</em></p>'},
+ 'ja': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>Chrome 版</em></p>',
+ 'de': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>für Chrome</em></p>',
+ 'fr': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>pour Chrome</em></p>',
+ 'pt-br': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>para Chrome</em></p>',
+ 'it': '<p class="stage-label stage-label-front"><span class="stage-dot" aria-hidden="true"></span>Kapture <em>per Chrome</em></p>'},
 
 '<figcaption>The Chrome extension captures. The Mac app organises what it captures.</figcaption>': {
  'es': '<figcaption>La extensión de Chrome captura. La app de Mac organiza lo capturado.</figcaption>',

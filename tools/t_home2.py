@@ -16,7 +16,11 @@ HOME2 = {
 
 '<h3>Full page</h3>': {
  'es': '<h3>Páginas completas</h3>', 'zh': '<h3>整页截图</h3>',
- 'ko': '<h3>전체 페이지</h3>', 'ja': '<h3>ページ全体</h3>'},
+ 'ko': '<h3>전체 페이지</h3>', 'ja': '<h3>ページ全体</h3>',
+ 'de': '<h3>Ganze Seite</h3>',
+ 'fr': '<h3>Page entière</h3>',
+ 'pt-br': '<h3>Página inteira</h3>',
+ 'it': '<h3>Pagina intera</h3>'},
 '            Kapture scrolls the main document and captures it end to end, splitting very long\n            pages into 8,000&nbsp;pixel sections so the files stay usable.': {
  'es': '            Kapture recorre el documento y lo captura de principio a fin. Las páginas muy\n            largas se dividen en secciones de 8.000 píxeles para que los archivos sigan siendo manejables.',
  'zh': '            Kapture 会滚动整个文档，从头截到尾。超长页面会按 8,000 像素分段，\n            文件不至于大到不好用。',
@@ -25,7 +29,11 @@ HOME2 = {
 
 '<h3>Select area</h3>': {
  'es': '<h3>Seleccionar zona</h3>', 'zh': '<h3>区域截图</h3>',
- 'ko': '<h3>영역 선택</h3>', 'ja': '<h3>範囲を選ぶ</h3>'},
+ 'ko': '<h3>영역 선택</h3>', 'ja': '<h3>範囲を選ぶ</h3>',
+ 'de': '<h3>Bereich wählen</h3>',
+ 'fr': '<h3>Sélectionner une zone</h3>',
+ 'pt-br': '<h3>Selecionar área</h3>',
+ 'it': '<h3>Seleziona area</h3>'},
 '            Drag over the visible page to grab one region. Choose Freeform, 1:1, 16:9 or 9:16,\n            then move or resize the selection before you capture.': {
  'es': '            Arrastra sobre la parte visible para marcar una zona. Elige formato libre, 1:1,\n            16:9 o 9:16, y mueve o ajusta la selección antes de capturar.',
  'zh': '            在可见区域拖动，框出想要的部分。可选自由比例、1:1、16:9 或 9:16，\n            截图前还能移动或调整选区。',
@@ -44,21 +52,37 @@ HOME2 = {
 
 '<h3>PNG, JPEG or PDF</h3>': {
  'es': '<h3>PNG, JPEG o PDF</h3>', 'zh': '<h3>PNG、JPEG 或 PDF</h3>',
- 'ko': '<h3>PNG, JPEG, PDF</h3>', 'ja': '<h3>PNG・JPEG・PDF</h3>'},
+ 'ko': '<h3>PNG, JPEG, PDF</h3>', 'ja': '<h3>PNG・JPEG・PDF</h3>',
+ 'de': '<h3>PNG, JPEG oder PDF</h3>',
+ 'fr': '<h3>PNG, JPEG ou PDF</h3>',
+ 'pt-br': '<h3>PNG, JPEG ou PDF</h3>',
+ 'it': '<h3>PNG, JPEG o PDF</h3>'},
 '<p>Pick the format before you capture. PDF produces one local, multi&#8209;page file.</p>': {
  'es': '<p>Elige el formato antes de capturar. El PDF se genera como un único archivo local de varias páginas.</p>',
  'zh': '<p>截图前先选好格式。PDF 会生成一个本地的多页文件。</p>',
  'ko': '<p>캡처하기 전에 형식을 고르세요. PDF는 여러 페이지가 담긴 파일 하나로 저장됩니다.</p>',
- 'ja': '<p>撮影前に形式を選べます。PDF は複数ページをまとめた 1 つのファイルになります。</p>'},
+ 'ja': '<p>撮影前に形式を選べます。PDF は複数ページをまとめた 1 つのファイルになります。</p>',
+ 'de': '<p>Wähle das Format vor der Aufnahme. PDF ergibt eine einzige lokale, mehrseitige Datei.</p>',
+ 'fr': '<p>Choisissez le format avant la capture. Le PDF produit un seul fichier local de plusieurs pages.</p>',
+ 'pt-br': '<p>Escolha o formato antes de capturar. O PDF gera um único arquivo local com várias páginas.</p>',
+ 'it': '<p>Scegli il formato prima di catturare. Il PDF produce un unico file locale di più pagine.</p>'},
 
 '<h3>Viewport presets</h3>': {
  'es': '<h3>Tamaños de pantalla</h3>', 'zh': '<h3>预设画面宽度</h3>',
- 'ko': '<h3>화면 크기 프리셋</h3>', 'ja': '<h3>画面幅プリセット</h3>'},
+ 'ko': '<h3>화면 크기 프리셋</h3>', 'ja': '<h3>画面幅プリセット</h3>',
+ 'de': '<h3>Fenstergrößen</h3>',
+ 'fr': "<h3>Tailles d'écran</h3>",
+ 'pt-br': '<h3>Tamanhos de tela</h3>',
+ 'it': '<h3>Dimensioni schermo</h3>'},
 '<p>Capture at your current window, or render the page at Phone&nbsp;390, Tablet&nbsp;820, Desktop&nbsp;1440 or Desktop&nbsp;1920 first.</p>': {
  'es': '<p>Captura con el tamaño actual de tu ventana o muestra antes la página a 390&nbsp;(móvil), 820&nbsp;(tablet), 1440 o 1920&nbsp;(escritorio).</p>',
  'zh': '<p>按当前窗口截图，也可以先用手机&nbsp;390、平板&nbsp;820、桌面&nbsp;1440 或桌面&nbsp;1920 的宽度重新渲染页面。</p>',
  'ko': '<p>지금 창 크기 그대로 찍거나, 휴대폰&nbsp;390, 태블릿&nbsp;820, 데스크톱&nbsp;1440·1920 너비로 페이지를 다시 그린 뒤 찍을 수 있습니다.</p>',
- 'ja': '<p>今のウィンドウのまま撮るか、スマホ&nbsp;390・タブレット&nbsp;820・デスクトップ&nbsp;1440 / 1920 の幅で表示し直してから撮れます。</p>'},
+ 'ja': '<p>今のウィンドウのまま撮るか、スマホ&nbsp;390・タブレット&nbsp;820・デスクトップ&nbsp;1440 / 1920 の幅で表示し直してから撮れます。</p>',
+ 'de': '<p>Nimm dein aktuelles Fenster auf, oder stelle die Seite vorher auf Telefon&nbsp;390, Tablet&nbsp;820, Desktop&nbsp;1440 oder Desktop&nbsp;1920.</p>',
+ 'fr': "<p>Capturez à la taille de votre fenêtre, ou affichez d'abord la page en Téléphone&nbsp;390, Tablette&nbsp;820, Bureau&nbsp;1440 ou Bureau&nbsp;1920.</p>",
+ 'pt-br': '<p>Capture no tamanho da sua janela, ou renderize a página antes em Celular&nbsp;390, Tablet&nbsp;820, Desktop&nbsp;1440 ou Desktop&nbsp;1920.</p>',
+ 'it': '<p>Cattura con la finestra attuale, oppure imposta prima la pagina su Telefono&nbsp;390, Tablet&nbsp;820, Desktop&nbsp;1440 o Desktop&nbsp;1920.</p>'},
 
 '<h3>Save where it makes sense</h3>': {
  'es': '<h3>Guarda donde tenga sentido</h3>', 'zh': '<h3>存到该存的地方</h3>',
@@ -80,12 +104,20 @@ HOME2 = {
 
 '<h3>Light and dark</h3>': {
  'es': '<h3>Claro y oscuro</h3>', 'zh': '<h3>浅色和深色</h3>',
- 'ko': '<h3>라이트와 다크</h3>', 'ja': '<h3>ライトとダーク</h3>'},
+ 'ko': '<h3>라이트와 다크</h3>', 'ja': '<h3>ライトとダーク</h3>',
+ 'de': '<h3>Hell und dunkel</h3>',
+ 'fr': '<h3>Clair et sombre</h3>',
+ 'pt-br': '<h3>Claro e escuro</h3>',
+ 'it': '<h3>Chiaro e scuro</h3>'},
 '<p>The side panel has both themes, and remembers the one you chose.</p>': {
  'es': '<p>El panel lateral tiene los dos temas y recuerda el que elijas.</p>',
  'zh': '<p>侧边栏两种主题都有，并会记住你的选择。</p>',
  'ko': '<p>사이드 패널은 두 테마를 모두 지원하고, 고른 테마를 기억합니다.</p>',
- 'ja': '<p>サイドパネルは両方のテーマに対応し、選んだほうを覚えています。</p>'},
+ 'ja': '<p>サイドパネルは両方のテーマに対応し、選んだほうを覚えています。</p>',
+ 'de': '<p>Das Seitenpanel hat beide Designs und merkt sich deine Wahl.</p>',
+ 'fr': '<p>Le panneau latéral propose les deux thèmes et retient celui que vous avez choisi.</p>',
+ 'pt-br': '<p>O painel lateral tem os dois temas e lembra o que você escolheu.</p>',
+ 'it': '<p>Il pannello laterale ha entrambi i temi e ricorda quello che hai scelto.</p>'},
 
 '<h3>Nothing to sign up for</h3>': {
  'es': '<h3>Sin registros</h3>', 'zh': '<h3>不用注册</h3>',
@@ -99,24 +131,44 @@ HOME2 = {
 # ---------------------------------------------------------------- how it works
 '<p class="kicker">How it works</p>': {
  'es': '<p class="kicker">Cómo funciona</p>', 'zh': '<p class="kicker">使用方法</p>',
- 'ko': '<p class="kicker">사용 방법</p>', 'ja': '<p class="kicker">使い方</p>'},
+ 'ko': '<p class="kicker">사용 방법</p>', 'ja': '<p class="kicker">使い方</p>',
+ 'de': '<p class="kicker">So funktioniert es</p>',
+ 'fr': '<p class="kicker">Comment ça marche</p>',
+ 'pt-br': '<p class="kicker">Como funciona</p>',
+ 'it': '<p class="kicker">Come funziona</p>'},
 '<h2>Three steps. No setup.</h2>': {
  'es': '<h2>Tres pasos.<br>Sin configurar nada.</h2>', 'zh': '<h2>三步搞定，无需设置。</h2>',
- 'ko': '<h2>세 단계. 설정은 없습니다.</h2>', 'ja': '<h2>3 ステップ。設定は不要。</h2>'},
+ 'ko': '<h2>세 단계. 설정은 없습니다.</h2>', 'ja': '<h2>3 ステップ。設定は不要。</h2>',
+ 'de': '<h2>Drei Schritte. Kein Setup.</h2>',
+ 'fr': '<h2>Trois étapes. Aucun réglage.</h2>',
+ 'pt-br': '<h2>Três passos. Sem configuração.</h2>',
+ 'it': '<h2>Tre passaggi. Nessuna configurazione.</h2>'},
 
 '<h3>Open the page</h3>\n          <p>Go to whatever you want to keep.</p>': {
  'es': '<h3>Abre la página</h3>\n          <p>Ve a la página que quieras guardar.</p>',
  'zh': '<h3>打开页面</h3>\n          <p>找到你想保存的内容。</p>',
  'ko': '<h3>페이지 열기</h3>\n          <p>남겨두고 싶은 화면으로 이동하세요.</p>',
- 'ja': '<h3>ページを開く</h3>\n          <p>残しておきたいものを表示します。</p>'},
+ 'ja': '<h3>ページを開く</h3>\n          <p>残しておきたいものを表示します。</p>',
+ 'de': '<h3>Seite öffnen</h3>\n          <p>Geh zu dem, was du behalten willst.</p>',
+ 'fr': '<h3>Ouvrez la page</h3>\n          <p>Allez sur ce que vous voulez garder.</p>',
+ 'pt-br': '<h3>Abra a página</h3>\n          <p>Vá até o que você quer guardar.</p>',
+ 'it': '<h3>Apri la pagina</h3>\n          <p>Vai su ciò che vuoi conservare.</p>'},
 '<h3>Click Kapture</h3>\n          <p>The side panel opens beside the page.</p>': {
  'es': '<h3>Haz clic en Kapture</h3>\n          <p>El panel lateral se abre junto a la página.</p>',
  'zh': '<h3>点击 Kapture</h3>\n          <p>侧边栏会在页面旁边打开。</p>',
  'ko': '<h3>Kapture 클릭</h3>\n          <p>페이지 옆에 사이드 패널이 열립니다.</p>',
- 'ja': '<h3>Kapture をクリック</h3>\n          <p>ページの横にサイドパネルが開きます。</p>'},
+ 'ja': '<h3>Kapture をクリック</h3>\n          <p>ページの横にサイドパネルが開きます。</p>',
+ 'de': '<h3>Kapture anklicken</h3>\n          <p>Das Seitenpanel öffnet sich neben der Seite.</p>',
+ 'fr': "<h3>Cliquez sur Kapture</h3>\n          <p>Le panneau latéral s'ouvre à côté de la page.</p>",
+ 'pt-br': '<h3>Clique em Kapture</h3>\n          <p>O painel lateral abre ao lado da página.</p>',
+ 'it': '<h3>Fai clic su Kapture</h3>\n          <p>Il pannello laterale si apre accanto alla pagina.</p>'},
 '<h3>Capture</h3>\n          <p>Choose full page or an area, then save.</p>': {
  'es': '<h3>Captura</h3>\n          <p>Elige toda la página o solo una zona, y guarda.</p>',
  'zh': '<h3>截图</h3>\n          <p>选整页或某个区域，然后保存。</p>',
  'ko': '<h3>캡처</h3>\n          <p>전체 페이지나 영역을 고르고 저장하세요.</p>',
- 'ja': '<h3>キャプチャ</h3>\n          <p>ページ全体か範囲を選んで保存。</p>'},
+ 'ja': '<h3>キャプチャ</h3>\n          <p>ページ全体か範囲を選んで保存。</p>',
+ 'de': '<h3>Aufnehmen</h3>\n          <p>Ganze Seite oder Bereich wählen, dann speichern.</p>',
+ 'fr': '<h3>Capturez</h3>\n          <p>Choisissez la page entière ou une zone, puis enregistrez.</p>',
+ 'pt-br': '<h3>Capture</h3>\n          <p>Escolha página inteira ou uma área e salve.</p>',
+ 'it': "<h3>Cattura</h3>\n          <p>Scegli pagina intera o un'area, poi salva.</p>"},
 }

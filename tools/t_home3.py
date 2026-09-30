@@ -4,7 +4,11 @@
 HOME3 = {
 '<p class="kicker">Privacy</p>': {
  'es': '<p class="kicker">Privacidad</p>', 'zh': '<p class="kicker">隐私</p>',
- 'ko': '<p class="kicker">개인정보</p>', 'ja': '<p class="kicker">プライバシー</p>'},
+ 'ko': '<p class="kicker">개인정보</p>', 'ja': '<p class="kicker">プライバシー</p>',
+ 'de': '<p class="kicker">Datenschutz</p>',
+ 'fr': '<p class="kicker">Confidentialité</p>',
+ 'pt-br': '<p class="kicker">Privacidade</p>',
+ 'it': '<p class="kicker">Privacy</p>'},
 
 '<h2>Your screenshots<br>stay on your device.</h2>': {
  'es': '<h2>Tus capturas<br>se quedan en tu dispositivo.</h2>',
@@ -28,7 +32,11 @@ HOME3 = {
  'es': 'Leer la política de privacidad<span aria-hidden="true">&rarr;</span>',
  'zh': '查看隐私政策<span aria-hidden="true">&rarr;</span>',
  'ko': '개인정보처리방침 보기<span aria-hidden="true">&rarr;</span>',
- 'ja': 'プライバシーポリシーを読む<span aria-hidden="true">&rarr;</span>'},
+ 'ja': 'プライバシーポリシーを読む<span aria-hidden="true">&rarr;</span>',
+ 'de': 'Datenschutzerklärung lesen<span aria-hidden="true">&rarr;</span>',
+ 'fr': 'Lire la politique de confidentialité<span aria-hidden="true">&rarr;</span>',
+ 'pt-br': 'Ler a política de privacidade<span aria-hidden="true">&rarr;</span>',
+ 'it': 'Leggi l\'informativa sulla privacy<span aria-hidden="true">&rarr;</span>'},
 
 '<figcaption>Captured, then saved to your own computer.</figcaption>': {
  'es': '<figcaption>Capturado y guardado en tu ordenador.</figcaption>',

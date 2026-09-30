@@ -237,6 +237,10 @@ html[lang="es"]    { --soon-label: "Pronto"; }
 html[lang="zh-CN"] { --soon-label: "\5373\5C06\63A8\51FA"; }
 html[lang="ko"]    { --soon-label: "\C900\BE44 \C911"; }
 html[lang="ja"]    { --soon-label: "\8FD1\65E5\516C\958B"; }
+html[lang="de"]    { --soon-label: "Demnächst"; }
+html[lang="fr"]    { --soon-label: "Bientôt"; }
+html[lang="pt-BR"] { --soon-label: "Em breve"; }
+html[lang="it"]    { --soon-label: "Presto"; }
 
 .btn[data-mac-pending]::after,
 .btn[data-win-pending]::after {
@@ -255,6 +259,10 @@ html[lang="es"]    { --free-label: "Gratis"; }
 html[lang="zh-CN"] { --free-label: "\514D\8D39"; }
 html[lang="ko"]    { --free-label: "\BB34\B8CC"; }
 html[lang="ja"]    { --free-label: "\7121\6599"; }
+html[lang="de"]    { --free-label: "Gratis"; }
+html[lang="fr"]    { --free-label: "Gratuit"; }
+html[lang="pt-BR"] { --free-label: "Grátis"; }
+html[lang="it"]    { --free-label: "Gratis"; }
 
 .btn[data-free]::after {
   content: var(--free-label, "Free");
@@ -1541,6 +1549,59 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
   --lg-native: "日本語";
   --lg-local: "すべて Mac のなかに残ります。";
 }
+.lg[data-lang="de"] {
+  --lg-library: "Bibliothek";       --lg-all: "Alle Aufnahmen";
+  --lg-recents: "Zuletzt";          --lg-favorites: "Favoriten";
+  --lg-desktop: "Desktop-Screenshots"; --lg-smart: "Smart";
+  --lg-collections: "Sammlungen";   --lg-projects: "Projekte";
+  --lg-allprojects: "Alle Projekte"; --lg-settings: "Einstellungen";
+  --lg-language: "Sprache";         --lg-rules: "Regeln";
+  --lg-sources: "Quellen";          --lg-duplicates: "Duplikate";
+  --lg-unorganised: "Unsortiert";   --lg-cleanup: "Aufräumen";
+  --lg-tags: "Tags";                --lg-notes: "Notizen";
+  --lg-native: "Deutsch";
+  --lg-local: "Alles bleibt auf deinem Mac.";
+}
+.lg[data-lang="fr"] {
+  --lg-library: "Bibliothèque";     --lg-all: "Toutes les captures";
+  --lg-recents: "Récents";          --lg-favorites: "Favoris";
+  --lg-desktop: "Captures du bureau"; --lg-smart: "Smart";
+  --lg-collections: "Collections";  --lg-projects: "Projets";
+  --lg-allprojects: "Tous les projets"; --lg-settings: "Réglages";
+  --lg-language: "Langue";          --lg-rules: "Règles";
+  --lg-sources: "Sources";          --lg-duplicates: "Doublons";
+  --lg-unorganised: "Non classées"; --lg-cleanup: "Nettoyage";
+  --lg-tags: "Étiquettes";          --lg-notes: "Notes";
+  --lg-native: "Français";
+  --lg-local: "Tout reste sur votre Mac.";
+}
+.lg[data-lang="pt-br"] {
+  --lg-library: "Biblioteca";       --lg-all: "Todas as capturas";
+  --lg-recents: "Recentes";         --lg-favorites: "Favoritos";
+  --lg-desktop: "Capturas da área de trabalho"; --lg-smart: "Smart";
+  --lg-collections: "Coleções";     --lg-projects: "Projetos";
+  --lg-allprojects: "Todos os projetos"; --lg-settings: "Ajustes";
+  --lg-language: "Idioma";          --lg-rules: "Regras";
+  --lg-sources: "Origens";          --lg-duplicates: "Duplicadas";
+  --lg-unorganised: "Sem organizar"; --lg-cleanup: "Limpeza";
+  --lg-tags: "Etiquetas";           --lg-notes: "Notas";
+  --lg-native: "Português (Brasil)";
+  --lg-local: "Tudo fica no seu Mac.";
+}
+.lg[data-lang="it"] {
+  --lg-library: "Libreria";         --lg-all: "Tutte le catture";
+  --lg-recents: "Recenti";          --lg-favorites: "Preferiti";
+  --lg-desktop: "Schermate del desktop"; --lg-smart: "Smart";
+  --lg-collections: "Raccolte";     --lg-projects: "Progetti";
+  --lg-allprojects: "Tutti i progetti"; --lg-settings: "Impostazioni";
+  --lg-language: "Lingua";          --lg-rules: "Regole";
+  --lg-sources: "Origini";          --lg-duplicates: "Duplicati";
+  --lg-unorganised: "Non organizzate"; --lg-cleanup: "Pulizia";
+  --lg-tags: "Tag";                 --lg-notes: "Note";
+  --lg-native: "Italiano";
+  --lg-local: "Tutto resta sul tuo Mac.";
+}
+
 /* System keeps the app in English here but names itself in every language. */
 .lg[data-lang="sys"] { --lg-native: "System / Default"; }
 

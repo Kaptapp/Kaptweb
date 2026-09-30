@@ -8,8 +8,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -20,8 +24,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -32,8 +40,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -44,8 +56,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -56,70 +72,78 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kaptapp.com/privacy/</loc>
-      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://kaptapp.com/de/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kaptapp.com/es/privacy/</loc>
-      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://kaptapp.com/fr/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kaptapp.com/zh/privacy/</loc>
-      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://kaptapp.com/pt-br/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kaptapp.com/ko/privacy/</loc>
-      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://kaptapp.com/ja/privacy/</loc>
-      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://kaptapp.com/it/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://kaptapp.com/help/</loc>
@@ -128,8 +152,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -140,8 +168,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -152,8 +184,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -164,8 +200,12 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -176,10 +216,222 @@
       <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
       <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
       <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/de/help/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/help/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/help/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/fr/help/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/help/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/help/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/pt-br/help/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/help/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/help/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/it/help/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/help/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/help/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/help/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/help/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/help/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/help/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/help/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/help/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/help/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/help/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/es/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/zh/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/ko/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/ja/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/de/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/fr/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/pt-br/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kaptapp.com/it/privacy/</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://kaptapp.com/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="es" href="https://kaptapp.com/es/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kaptapp.com/zh/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ko" href="https://kaptapp.com/ko/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="ja" href="https://kaptapp.com/ja/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="de" href="https://kaptapp.com/de/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://kaptapp.com/fr/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kaptapp.com/pt-br/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="it" href="https://kaptapp.com/it/privacy/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://kaptapp.com/privacy/"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://kaptapp.com/screenshot-organizer/</loc>

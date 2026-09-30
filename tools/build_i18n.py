@@ -86,7 +86,9 @@ def localise_ld(raw, lang, page, title, desc, body=''):
             node['@id'] = h + '#website'
             node['url'] = h
             node['description'] = desc
-            node['inLanguage'] = HTMLLANG[lang]
+            # The site is available in every language, whichever page this is.
+            # Per-page language lives on WebPage, below.
+            node['inLanguage'] = [HTMLLANG[l] for l in LANGS]
         elif t == 'SoftwareApplication':
             # Two apps share this type, so key off the existing id suffix rather
             # than overwriting both with the same one.
@@ -289,6 +291,14 @@ HELP_SENTINELS = [
 ]
 
 
+# A sentinel is English copy that should never survive translation. A few of
+# them are also the correct word in one of the languages, so those are exempted
+# by language rather than dropped for everyone.
+SENTINEL_OK = {
+    'it': ('Privacy</a>',),      # "Privacy" is the Italian word for it
+}
+
+
 def audit(lang, page='index'):
     """Fail loudly if recognisable English copy survived translation.
 
@@ -298,7 +308,9 @@ def audit(lang, page='index'):
     body = out[out.index('<body>'):]
     body = re.sub(r'<script.*?</script>', '', body, flags=re.S)
     body = re.sub(r'<!--.*?-->', '', body, flags=re.S)
-    return [s for s in (SENTINELS if page == 'index' else HELP_SENTINELS) if s in body]
+    allowed = SENTINEL_OK.get(lang, ())
+    pool = SENTINELS if page == 'index' else HELP_SENTINELS
+    return [s for s in pool if s in body and s not in allowed]
 
 
 if __name__ == '__main__':
@@ -313,6 +325,14 @@ if __name__ == '__main__':
             bad = audit(lang, page)
             if bad:
                 raise SystemExit(f'  !! {lang}/{page}: untranslated English still present: {bad}')
+    # A retired key is not an error on its own, but it is how English leaks in:
+    # the copy changed, the key stopped matching, and the page fell back. This
+    # compares every built page against the English one and fails if it did.
+    import check_leaks
+    print()
+    if check_leaks.main():
+        raise SystemExit('  !! English copy survived translation, see above')
+
     if retired:
         print(f'\n  {len(retired)} retired key(s) no longer in the English source:')
         for k in retired:

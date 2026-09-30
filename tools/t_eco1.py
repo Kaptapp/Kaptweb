@@ -19,14 +19,22 @@ ECO1 = {
  'es': 'aria-label="Kapture Pro para Mac. Muy pronto."',
  'zh': 'aria-label="Mac 版 Kapture Pro。即将推出。"',
  'ko': 'aria-label="Mac용 Kapture Pro. 곧 출시됩니다."',
- 'ja': 'aria-label="Mac 版 Kapture Pro。近日公開。"'},
+ 'ja': 'aria-label="Mac 版 Kapture Pro。近日公開。"',
+ 'de': 'aria-label="Kapture Pro für Mac. Demnächst."',
+ 'fr': 'aria-label="Kapture Pro pour Mac. Bientôt disponible."',
+ 'pt-br': 'aria-label="Kapture Pro para Mac. Em breve."',
+ 'it': 'aria-label="Kapture Pro per Mac. Presto disponibile."'},
 
 # ---------------------------------------------------------------- nav
 '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Privacy</a>': {
  'es': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Privacidad</a>',
  'zh': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">隐私</a>',
  'ko': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">개인정보</a>',
- 'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">プライバシー</a>'},
+ 'ja': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">プライバシー</a>',
+ 'de': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Datenschutz</a>',
+ 'fr': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Confidentialité</a>',
+ 'pt-br': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Privacidade</a>',
+ 'it': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="#privacy">Privacy</a>'},
 
 # ---------------------------------------------------------------- hero
 'Chrome extension 0.4.7 &middot; Kapture Pro for Mac': {
@@ -86,32 +94,60 @@ ECO1 = {
 
 '<p class="kicker">In the extension</p>': {
  'es': '<p class="kicker">En la extensión</p>', 'zh': '<p class="kicker">扩展程序里有什么</p>',
- 'ko': '<p class="kicker">확장 프로그램 안에는</p>', 'ja': '<p class="kicker">拡張機能の中身</p>'},
+ 'ko': '<p class="kicker">확장 프로그램 안에는</p>', 'ja': '<p class="kicker">拡張機能の中身</p>',
+ 'de': '<p class="kicker">In der Erweiterung</p>',
+ 'fr': '<p class="kicker">Dans l\'extension</p>',
+ 'pt-br': '<p class="kicker">Na extensão</p>',
+ 'it': '<p class="kicker">Nell\'estensione</p>'},
 
 '<h3>Project folders</h3>': {
  'es': '<h3>Carpetas por proyecto</h3>', 'zh': '<h3>项目文件夹</h3>',
- 'ko': '<h3>프로젝트 폴더</h3>', 'ja': '<h3>プロジェクトフォルダ</h3>'},
+ 'ko': '<h3>프로젝트 폴더</h3>', 'ja': '<h3>プロジェクトフォルダ</h3>',
+ 'de': '<h3>Projektordner</h3>',
+ 'fr': '<h3>Dossiers de projet</h3>',
+ 'pt-br': '<h3>Pastas de projeto</h3>',
+ 'it': '<h3>Cartelle di progetto</h3>'},
 '<p>Name a folder per page or project. Captures land there in sequence, ready for Kapture&nbsp;Pro to pick up.</p>': {
  'es': '<p>Ponle nombre a una carpeta por página o proyecto. Las capturas van ahí en orden, listas para que Kapture&nbsp;Pro las recoja.</p>',
  'zh': '<p>按页面或项目给文件夹命名。截图会按顺序存进去，Kapture&nbsp;Pro 随时可以接手。</p>',
  'ko': '<p>페이지나 프로젝트별로 폴더 이름을 정하세요. 캡처가 순서대로 쌓이고, Kapture&nbsp;Pro가 바로 이어받습니다.</p>',
- 'ja': '<p>ページやプロジェクトごとにフォルダ名を決めます。キャプチャは順番に保存され、Kapture&nbsp;Pro がそのまま読み込めます。</p>'},
+ 'ja': '<p>ページやプロジェクトごとにフォルダ名を決めます。キャプチャは順番に保存され、Kapture&nbsp;Pro がそのまま読み込めます。</p>',
+ 'de': '<p>Vergib pro Seite oder Projekt einen Ordner. Aufnahmen landen dort der Reihe nach, bereit für Kapture&nbsp;Pro.</p>',
+ 'fr': "<p>Nommez un dossier par page ou par projet. Les captures s'y rangent dans l'ordre, prêtes pour Kapture&nbsp;Pro.</p>",
+ 'pt-br': '<p>Dê um nome de pasta por página ou projeto. As capturas caem lá em sequência, prontas para o Kapture&nbsp;Pro.</p>',
+ 'it': '<p>Assegna una cartella per pagina o progetto. Le catture finiscono lì in ordine, pronte per Kapture&nbsp;Pro.</p>'},
 
 '<h3>History previews</h3>': {
  'es': '<h3>Historial con vista previa</h3>', 'zh': '<h3>带预览的记录</h3>',
- 'ko': '<h3>미리보기가 있는 기록</h3>', 'ja': '<h3>プレビュー付きの履歴</h3>'},
+ 'ko': '<h3>미리보기가 있는 기록</h3>', 'ja': '<h3>プレビュー付きの履歴</h3>',
+ 'de': '<h3>Verlauf mit Vorschau</h3>',
+ 'fr': "<h3>Aperçus de l'historique</h3>",
+ 'pt-br': '<h3>Prévias no histórico</h3>',
+ 'it': '<h3>Anteprime nella cronologia</h3>'},
 '<p>Newest first, with a preview, the site and the time. Open a capture, or select several and delete them for good.</p>': {
  'es': '<p>Lo más reciente primero, con vista previa, el sitio y la hora. Abre una captura o selecciona varias y bórralas definitivamente.</p>',
  'zh': '<p>最新的排在最前，带预览、网站和时间。可以直接打开某张截图，也可以勾选多张彻底删除。</p>',
  'ko': '<p>최신 항목이 위에, 미리보기와 사이트, 시간까지 함께. 캡처를 바로 열거나 여러 개를 골라 완전히 삭제할 수 있습니다.</p>',
- 'ja': '<p>新しい順に、プレビューとサイト名、時刻つきで。その場で開くことも、選んでまとめて削除することもできます。</p>'},
+ 'ja': '<p>新しい順に、プレビューとサイト名、時刻つきで。その場で開くことも、選んでまとめて削除することもできます。</p>',
+ 'de': '<p>Neueste zuerst, mit Vorschau, Website und Uhrzeit. Öffne eine Aufnahme, oder wähle mehrere aus und lösche sie endgültig.</p>',
+ 'fr': "<p>Les plus récentes d'abord, avec un aperçu, le site et l'heure. Ouvrez une capture, ou sélectionnez-en plusieurs et supprimez-les définitivement.</p>",
+ 'pt-br': '<p>Mais recentes primeiro, com prévia, site e horário. Abra uma captura, ou selecione várias e exclua de vez.</p>',
+ 'it': '<p>Le più recenti per prime, con anteprima, sito e ora. Apri una cattura, oppure selezionane diverse ed eliminale per sempre.</p>'},
 
 '<h3>Local only</h3>': {
  'es': '<h3>Solo en local</h3>', 'zh': '<h3>只在本地</h3>',
- 'ko': '<h3>기기 안에서만</h3>', 'ja': '<h3>ローカル完結</h3>'},
+ 'ko': '<h3>기기 안에서만</h3>', 'ja': '<h3>ローカル完結</h3>',
+ 'de': '<h3>Nur lokal</h3>',
+ 'fr': '<h3>En local uniquement</h3>',
+ 'pt-br': '<h3>Somente local</h3>',
+ 'it': '<h3>Solo in locale</h3>'},
 '<p>No account, no ads, no analytics. Captures are made on your machine and stay there.</p>': {
  'es': '<p>Sin cuenta, sin anuncios, sin analíticas. Las capturas se hacen en tu equipo y ahí se quedan.</p>',
  'zh': '<p>没有账号，没有广告，没有数据统计。截图在你的电脑上生成，也留在那里。</p>',
  'ko': '<p>계정도, 광고도, 분석도 없습니다. 캡처는 내 기기에서 만들어지고 그대로 남습니다.</p>',
- 'ja': '<p>アカウントも広告も解析もありません。キャプチャは自分の端末で作られ、そこに残ります。</p>'},
+ 'ja': '<p>アカウントも広告も解析もありません。キャプチャは自分の端末で作られ、そこに残ります。</p>',
+ 'de': '<p>Kein Konto, keine Werbung, keine Analyse. Aufnahmen entstehen auf deinem Rechner und bleiben dort.</p>',
+ 'fr': "<p>Pas de compte, pas de publicité, pas d'analyse. Les captures sont faites sur votre machine et y restent.</p>",
+ 'pt-br': '<p>Sem conta, sem anúncios, sem analytics. As capturas são feitas na sua máquina e ficam lá.</p>',
+ 'it': '<p>Nessun account, nessuna pubblicità, nessuna analisi. Le catture sono fatte sul tuo computer e restano lì.</p>'},
 }

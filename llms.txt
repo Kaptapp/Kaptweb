@@ -55,10 +55,10 @@ and Collections. Projects sit alongside the Library.
 
 ## Languages
 
-Both products are available in five languages: English, Spanish, Simplified
-Chinese, Korean and Japanese. Both also offer a System / Default option that
-follows the operating system or browser language. System / Default is a setting,
-not a sixth language.
+Both products are available in nine languages: English, Spanish, Simplified
+Chinese, Korean, Japanese, German, French, Brazilian Portuguese and Italian.
+Both also offer a System / Default option that follows the operating system or
+browser language. System / Default is a preference, not a tenth language.
 
 ## Data handling
 

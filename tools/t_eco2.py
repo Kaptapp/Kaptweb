@@ -11,7 +11,11 @@ ECO2 = {
  'es': '<h2>Tus capturas,<br>por fin ordenadas.</h2>',
  'zh': '<h2>你的截图，<br>终于有条理了。</h2>',
  'ko': '<h2>흩어져 있던 스크린샷,<br>드디어 정리됩니다.</h2>',
- 'ja': '<h2>散らばったスクリーンショットが、<br>やっと整理される。</h2>'},
+ 'ja': '<h2>散らばったスクリーンショットが、<br>やっと整理される。</h2>',
+ 'de': '<h2>Deine Screenshots,<br>endlich geordnet.</h2>',
+ 'fr': '<h2>Vos captures,<br>enfin rangées.</h2>',
+ 'pt-br': '<h2>Suas capturas,<br>enfim organizadas.</h2>',
+ 'it': '<h2>I tuoi screenshot,<br>finalmente in ordine.</h2>'},
 
 '          Kapture Pro indexes the screenshots already saved on your Mac and turns them\n          into a searchable visual workspace.': {
  'es': '          Kapture Pro indexa las capturas que ya tienes guardadas en el Mac y las convierte\n          en un espacio visual en el que puedes buscar.',
@@ -124,7 +128,11 @@ ECO2 = {
 # ---------------------------------------------------------------- privacy
 '<h2>Local by default.</h2>': {
  'es': '<h2>En local por defecto.</h2>', 'zh': '<h2>默认就在本地。</h2>',
- 'ko': '<h2>기본이 로컬입니다.</h2>', 'ja': '<h2>はじめからローカル。</h2>'},
+ 'ko': '<h2>기본이 로컬입니다.</h2>', 'ja': '<h2>はじめからローカル。</h2>',
+ 'de': '<h2>Standardmäßig lokal.</h2>',
+ 'fr': '<h2>Local par défaut.</h2>',
+ 'pt-br': '<h2>Local por padrão.</h2>',
+ 'it': '<h2>Locale per impostazione predefinita.</h2>'},
 
 '''            Kapture creates screenshots on your computer and saves them through Chrome's own
             Downloads system. Kapture Pro reads the files already sitting on your Mac. Nothing
@@ -146,7 +154,11 @@ ECO2 = {
 
 '<li>No cloud storage</li>': {
  'es': '<li>Sin almacenamiento en la nube</li>', 'zh': '<li>不使用云存储</li>',
- 'ko': '<li>클라우드 저장 없음</li>', 'ja': '<li>クラウド保存なし</li>'},
+ 'ko': '<li>클라우드 저장 없음</li>', 'ja': '<li>クラウド保存なし</li>',
+ 'de': '<li>Kein Cloud-Speicher</li>',
+ 'fr': '<li>Aucun stockage cloud</li>',
+ 'pt-br': '<li>Sem armazenamento na nuvem</li>',
+ 'it': '<li>Nessuna archiviazione cloud</li>'},
 
 '<figcaption>Captured in Chrome, kept on your Mac.</figcaption>': {
  'es': '<figcaption>Capturado en Chrome, guardado en tu Mac.</figcaption>',
@@ -171,7 +183,11 @@ ECO2 = {
  'es': '<p class="plan-copy">Captura de página completa y de zonas, directa a la carpeta de proyecto que elijas.</p>',
  'zh': '<p class="plan-copy">整页和区域截图，直接存进你选好的项目文件夹。</p>',
  'ko': '<p class="plan-copy">전체 페이지와 영역 캡처를, 직접 고른 프로젝트 폴더로 바로.</p>',
- 'ja': '<p class="plan-copy">ページ全体も範囲も、選んだプロジェクトフォルダへそのまま保存。</p>'},
+ 'ja': '<p class="plan-copy">ページ全体も範囲も、選んだプロジェクトフォルダへそのまま保存。</p>',
+ 'de': '<p class="plan-copy">Ganzseiten- und Bereichsaufnahme, direkt in den Projektordner deiner Wahl.</p>',
+ 'fr': '<p class="plan-copy">Capture de page entière et de zone, directement dans le dossier de projet que vous choisissez.</p>',
+ 'pt-br': '<p class="plan-copy">Captura de página inteira e de área, direto na pasta de projeto que você escolher.</p>',
+ 'it': '<p class="plan-copy">Cattura di pagina intera e di area, direttamente nella cartella di progetto che scegli.</p>'},
 
 '<h3>Kapture Pro for Mac</h3>': {
  'es': '<h3>Kapture Pro para Mac</h3>', 'zh': '<h3>Mac 版 Kapture Pro</h3>',
@@ -183,7 +199,11 @@ ECO2 = {
  'es': '<p class="plan-copy">Busca, ordena y compara todo lo que ya has capturado.</p>',
  'zh': '<p class="plan-copy">搜索、整理并对比你已经截下的所有内容。</p>',
  'ko': '<p class="plan-copy">이미 캡처해 둔 모든 것을 검색하고, 정리하고, 비교하세요.</p>',
- 'ja': '<p class="plan-copy">これまで撮ったものを、検索して、整理して、見比べる。</p>'},
+ 'ja': '<p class="plan-copy">これまで撮ったものを、検索して、整理して、見比べる。</p>',
+ 'de': '<p class="plan-copy">Durchsuche, ordne und vergleiche alles, was du schon aufgenommen hast.</p>',
+ 'fr': '<p class="plan-copy">Cherchez, rangez et comparez tout ce que vous avez déjà capturé.</p>',
+ 'pt-br': '<p class="plan-copy">Busque, organize e compare tudo o que você já capturou.</p>',
+ 'it': '<p class="plan-copy">Cerca, organizza e confronta tutto ciò che hai già catturato.</p>'},
 '<span class="store-cta-label">Kapture Pro</span>': {
  'es': '<span class="store-cta-label">Kapture Pro</span>', 'zh': '<span class="store-cta-label">Kapture Pro</span>',
  'ko': '<span class="store-cta-label">Kapture Pro</span>', 'ja': '<span class="store-cta-label">Kapture Pro</span>'},
