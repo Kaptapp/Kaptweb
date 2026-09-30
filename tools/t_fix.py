@@ -503,4 +503,120 @@ FIX = {
  'ko': '<th scope="row">다섯 가지 언어 + 시스템 기본값</th>',
  'ja': '<th scope="row">5 つの言語 + システムに従う</th>'},
 
+# ---------------------------------------------------------------- common questions
+# Short factual answers. Every one repeats something already stated elsewhere on
+# the page, so nothing here is a new product claim.
+'<p class="kicker">Common questions</p>': {
+ 'es': '<p class="kicker">Preguntas frecuentes</p>',
+ 'zh': '<p class="kicker">常见问题</p>',
+ 'ko': '<p class="kicker">자주 묻는 질문</p>',
+ 'ja': '<p class="kicker">よくある質問</p>'},
+
+'<h2>Short answers.</h2>': {
+ 'es': '<h2>Respuestas breves.</h2>',
+ 'zh': '<h2>简短的回答。</h2>',
+ 'ko': '<h2>짧은 답변.</h2>',
+ 'ja': '<h2>短い答え。</h2>'},
+
+'<h3>What is Kapture?</h3>': {
+ 'es': '<h3>¿Qué es Kapture?</h3>', 'zh': '<h3>Kapture 是什么？</h3>',
+ 'ko': '<h3>Kapture란 무엇인가요?</h3>', 'ja': '<h3>Kapture とは？</h3>'},
+'<p>Kapture is a screenshot capture and visual library product in two parts. Kapture for Chrome captures web pages. Kapture Pro is a desktop screenshot manager that turns the captures already on your computer into a searchable visual library.</p>': {
+ 'es': '<p>Kapture es un producto de captura de pantalla y biblioteca visual en dos partes. Kapture para Chrome captura páginas web. Kapture Pro es un gestor de capturas de escritorio que convierte las capturas que ya tienes en el ordenador en una biblioteca visual con búsqueda.</p>',
+ 'zh': '<p>Kapture 是一款分为两部分的截图与可视化图库产品。Chrome 版 Kapture 负责截取网页。Kapture Pro 是桌面端的截图管理器，把电脑上已有的截图变成一个可搜索的可视化图库。</p>',
+ 'ko': '<p>Kapture는 두 부분으로 이루어진 스크린샷 캡처 및 시각 라이브러리 제품입니다. Chrome용 Kapture는 웹페이지를 캡처합니다. Kapture Pro는 이미 컴퓨터에 있는 캡처를 검색 가능한 시각 라이브러리로 만들어 주는 데스크톱 스크린샷 관리자입니다.</p>',
+ 'ja': '<p>Kapture は 2 つの部分からなるスクリーンショットのキャプチャとビジュアルライブラリの製品です。Chrome 版 Kapture は Web ページを撮ります。Kapture Pro はデスクトップのスクリーンショット管理アプリで、すでにパソコンにあるキャプチャを検索できるビジュアルライブラリに変えます。</p>'},
+
+'<h3>Which platforms is Kapture available on?</h3>': {
+ 'es': '<h3>¿En qué plataformas está disponible Kapture?</h3>', 'zh': '<h3>Kapture 支持哪些平台？</h3>',
+ 'ko': '<h3>Kapture는 어떤 플랫폼에서 쓸 수 있나요?</h3>', 'ja': '<h3>Kapture はどのプラットフォームで使えますか？</h3>'},
+'<p>Kapture for Chrome is available now and free, for Google Chrome 120 or later. Kapture Pro is the desktop app, planned for Mac and for Windows. Neither desktop build has been released yet, so there is nothing to download for Mac or Windows today.</p>': {
+ 'es': '<p>Kapture para Chrome ya está disponible y es gratis, para Google Chrome 120 o posterior. Kapture Pro es la app de escritorio, prevista para Mac y para Windows. Todavía no se ha publicado ninguna de las dos versiones de escritorio, así que hoy no hay nada que descargar para Mac ni para Windows.</p>',
+ 'zh': '<p>Chrome 版 Kapture 现已推出，免费，需要 Google Chrome 120 或更高版本。Kapture Pro 是桌面应用，计划支持 Mac 和 Windows。两个桌面版都尚未发布，所以目前 Mac 和 Windows 都还没有可下载的版本。</p>',
+ 'ko': '<p>Chrome용 Kapture는 지금 사용할 수 있고 무료이며, Google Chrome 120 이상이 필요합니다. Kapture Pro는 데스크톱 앱으로 Mac과 Windows를 목표로 하고 있습니다. 두 데스크톱 빌드 모두 아직 출시되지 않아, 현재 Mac이나 Windows용으로 내려받을 수 있는 것은 없습니다.</p>',
+ 'ja': '<p>Chrome 版 Kapture は現在提供中で無料です。Google Chrome 120 以降が必要です。Kapture Pro はデスクトップアプリで、Mac 版と Windows 版を予定しています。どちらもまだ公開されていないため、現時点で Mac や Windows 向けにダウンロードできるものはありません。</p>'},
+
+'<h3>Can Kapture capture a full web page and save it as a PDF?</h3>': {
+ 'es': '<h3>¿Kapture puede capturar una página web completa y guardarla como PDF?</h3>',
+ 'zh': '<h3>Kapture 能截取整张网页并保存为 PDF 吗？</h3>',
+ 'ko': '<h3>Kapture로 전체 웹페이지를 캡처해 PDF로 저장할 수 있나요?</h3>',
+ 'ja': '<h3>Kapture で Web ページ全体を撮って PDF で保存できますか？</h3>'},
+'<p>Yes. Kapture for Chrome scrolls the whole document rather than capturing only the visible part, and it can also capture just an area you drag over. Either one saves as PNG, JPEG or PDF.</p>': {
+ 'es': '<p>Sí. Kapture para Chrome recorre el documento entero en lugar de capturar solo la parte visible, y también puede capturar únicamente el área que selecciones arrastrando. En ambos casos se guarda como PNG, JPEG o PDF.</p>',
+ 'zh': '<p>可以。Chrome 版 Kapture 会滚动整个文档，而不是只截取可见部分，也可以只截取你拖选的区域。两种方式都能保存为 PNG、JPEG 或 PDF。</p>',
+ 'ko': '<p>네. Chrome용 Kapture는 보이는 부분만이 아니라 문서 전체를 스크롤하며 캡처하고, 드래그한 영역만 캡처할 수도 있습니다. 어느 쪽이든 PNG, JPEG, PDF로 저장됩니다.</p>',
+ 'ja': '<p>できます。Chrome 版 Kapture は見えている部分だけでなく文書全体をスクロールして撮り、ドラッグした範囲だけを撮ることもできます。どちらも PNG、JPEG、PDF で保存できます。</p>'},
+
+'<h3>How does Kapture Pro organise screenshots?</h3>': {
+ 'es': '<h3>¿Cómo organiza Kapture Pro las capturas?</h3>', 'zh': '<h3>Kapture Pro 怎么整理截图？</h3>',
+ 'ko': '<h3>Kapture Pro는 스크린샷을 어떻게 정리하나요?</h3>', 'ja': '<h3>Kapture Pro はスクリーンショットをどう整理しますか？</h3>'},
+'<p>With Projects and Collections. Projects are the primary working structure, one per piece of work in hand, and any folder inside your Kapture folder becomes one automatically. Collections sit inside the Library and group things you simply want kept together. A capture can be in a project and in collections at the same time. There is more on this on the <a href="/screenshot-organizer/">screenshot organizer</a> page.</p>': {
+ 'es': '<p>Con Proyectos y Colecciones. Los proyectos son la estructura de trabajo principal, uno por cada cosa que tengas en marcha, y cualquier carpeta dentro de tu carpeta de Kapture se convierte en uno automáticamente. Las colecciones están dentro de la biblioteca y agrupan cosas que simplemente quieres mantener juntas. Una captura puede estar en un proyecto y en colecciones a la vez.</p>',
+ 'zh': '<p>用项目和收藏集。项目是主要的工作结构，手头每件工作一个，Kapture 文件夹里的任何子文件夹都会自动成为一个项目。收藏集在图库里，用来把你想放在一起的东西归到一处。一张截图可以同时属于一个项目和多个收藏集。</p>',
+ 'ko': '<p>프로젝트와 컬렉션으로 정리합니다. 프로젝트는 주된 작업 구조로 지금 하는 일마다 하나씩 두며, Kapture 폴더 안의 폴더는 자동으로 프로젝트가 됩니다. 컬렉션은 라이브러리 안에 있으며 그냥 함께 두고 싶은 것들을 묶습니다. 하나의 캡처가 프로젝트와 컬렉션에 동시에 속할 수 있습니다.</p>',
+ 'ja': '<p>プロジェクトとコレクションで整理します。プロジェクトは主な作業単位で、進行中の仕事ごとに 1 つ持ち、Kapture フォルダーのなかのフォルダーは自動的にプロジェクトになります。コレクションはライブラリのなかにあり、まとめておきたいものをまとめます。1 つのキャプチャがプロジェクトとコレクションの両方に同時に入ることもできます。</p>'},
+
+'<h3>What is Smart?</h3>': {
+ 'es': '<h3>¿Qué es Inteligente?</h3>', 'zh': '<h3>什么是智能？</h3>',
+ 'ko': '<h3>스마트란 무엇인가요?</h3>', 'ja': '<h3>スマートとは？</h3>'},
+'<p>Smart is one workspace in Kapture Pro holding five tools: Unorganised finds captures that are not in a project yet, Duplicates finds files that are identical byte for byte, Cleanup surfaces older and larger captures worth a second look, Sources groups captures by where they came from, and Rules files new captures the way you asked. Smart never deletes anything for you.</p>': {
+ 'es': '<p>Inteligente es un único espacio dentro de Kapture Pro con cinco herramientas: Sin organizar encuentra las capturas que aún no están en un proyecto, Duplicados encuentra archivos idénticos byte a byte, Limpieza saca a la luz capturas antiguas y pesadas que merecen un segundo vistazo, Fuentes agrupa las capturas por su procedencia y Reglas archiva las capturas nuevas como le hayas pedido. Inteligente nunca borra nada por ti.</p>',
+ 'zh': '<p>智能是 Kapture Pro 里的一个工作区，包含五个工具：未整理会找出还没归入项目的截图，重复项会找出逐字节完全相同的文件，清理会列出值得再看一眼的旧文件和大文件，来源按出处把截图分组，规则则按你的要求归档新截图。智能永远不会替你删除任何东西。</p>',
+ 'ko': '<p>스마트는 Kapture Pro 안의 한 작업 공간으로 다섯 가지 도구가 있습니다. 미정리는 아직 프로젝트에 들어가지 않은 캡처를 찾고, 중복 항목은 바이트 단위까지 같은 파일을 찾고, 정리는 다시 살펴볼 만한 오래되고 큰 캡처를 보여 주고, 출처는 캡처를 출처별로 묶고, 규칙은 새 캡처를 요청한 대로 정리합니다. 스마트가 무언가를 대신 삭제하는 일은 없습니다.</p>',
+ 'ja': '<p>スマートは Kapture Pro のなかのひとつのワークスペースで、5 つのツールがあります。未整理はまだプロジェクトに入っていないキャプチャを探し、重複はバイト単位で同一のファイルを探し、クリーンアップは見直す価値のある古くて大きいキャプチャを示し、ソースは取得元ごとにまとめ、ルールは新しいキャプチャを依頼どおりに振り分けます。スマートが何かを勝手に削除することはありません。</p>'},
+
+'<h3>Where are my screenshots stored?</h3>': {
+ 'es': '<h3>¿Dónde se guardan mis capturas?</h3>', 'zh': '<h3>我的截图保存在哪里？</h3>',
+ 'ko': '<h3>스크린샷은 어디에 저장되나요?</h3>', 'ja': '<h3>スクリーンショットはどこに保存されますか？</h3>'},
+'<p>On your own computer. Kapture for Chrome saves through Chrome\'s own Downloads system, and Kapture Pro reads the files already on your disk without moving them. There is no account, no cloud sync and no upload, and neither product contains analytics, advertising or tracking.</p>': {
+ 'es': '<p>En tu propio ordenador. Kapture para Chrome guarda con el sistema de descargas de Chrome, y Kapture Pro lee los archivos que ya están en tu disco sin moverlos. No hay cuenta, ni sincronización en la nube, ni subidas, y ninguno de los dos productos incluye analíticas, publicidad ni seguimiento.</p>',
+ 'zh': '<p>就在你自己的电脑上。Chrome 版 Kapture 通过 Chrome 自带的下载功能保存，Kapture Pro 读取硬盘上已有的文件而不会移动它们。没有账号，没有云同步，也没有上传，两款产品都不含分析、广告或追踪。</p>',
+ 'ko': '<p>사용자의 컴퓨터에 저장됩니다. Chrome용 Kapture는 Chrome의 다운로드 기능으로 저장하고, Kapture Pro는 이미 디스크에 있는 파일을 옮기지 않고 읽습니다. 계정도, 클라우드 동기화도, 업로드도 없으며 두 제품 모두 분석·광고·추적을 담고 있지 않습니다.</p>',
+ 'ja': '<p>あなたのパソコンのなかです。Chrome 版 Kapture は Chrome のダウンロード機能で保存し、Kapture Pro はすでにディスクにあるファイルを移動せずに読みます。アカウントもクラウド同期もアップロードもなく、どちらの製品にも解析・広告・トラッキングは含まれていません。</p>'},
+
+'<h3>What languages does Kapture support?</h3>': {
+ 'es': '<h3>¿Qué idiomas admite Kapture?</h3>', 'zh': '<h3>Kapture 支持哪些语言？</h3>',
+ 'ko': '<h3>Kapture는 어떤 언어를 지원하나요?</h3>', 'ja': '<h3>Kapture は何語に対応していますか？</h3>'},
+'<p>Both products are available in five languages: English, Spanish, Simplified Chinese, Korean and Japanese. Each also has a System / Default option that follows whatever language your computer is set to.</p>': {
+ 'es': '<p>Ambos productos están disponibles en cinco idiomas: inglés, español, chino simplificado, coreano y japonés. Los dos tienen además una opción Sistema / Por omisión que sigue el idioma que tengas configurado en el ordenador.</p>',
+ 'zh': '<p>两款产品都提供五种语言：英语、西班牙语、简体中文、韩语和日语。两者还都有“系统 / 默认”选项，跟随你电脑已设置的语言。</p>',
+ 'ko': '<p>두 제품 모두 영어, 스페인어, 중국어 간체, 한국어, 일본어의 다섯 가지 언어로 제공됩니다. 둘 다 컴퓨터에 설정된 언어를 따르는 시스템 / 기본값 옵션도 있습니다.</p>',
+ 'ja': '<p>どちらの製品も英語・スペイン語・簡体中国語・韓国語・日本語の 5 言語で利用できます。どちらにも、パソコンの設定言語に従う「システム / デフォルト」も用意されています。</p>'},
+
+'<h3>Does Kapture use AI?</h3>': {
+ 'es': '<h3>¿Kapture usa IA?</h3>', 'zh': '<h3>Kapture 会用 AI 吗？</h3>',
+ 'ko': '<h3>Kapture는 AI를 사용하나요?</h3>', 'ja': '<h3>Kapture は AI を使いますか？</h3>'},
+'<p>No. Kapture does not use AI to name, tag, read or sort your screenshots. Everything it does is ordinary local indexing of files that are already on your disk.</p>': {
+ 'es': '<p>No. Kapture no usa IA para nombrar, etiquetar, leer ni ordenar tus capturas. Todo lo que hace es indexado local corriente de archivos que ya están en tu disco.</p>',
+ 'zh': '<p>不会。Kapture 不使用 AI 来命名、打标签、读取或整理你的截图。它所做的只是对硬盘上已有文件进行普通的本地索引。</p>',
+ 'ko': '<p>아닙니다. Kapture는 스크린샷의 이름을 짓거나 태그를 달거나 읽거나 정렬하는 데 AI를 쓰지 않습니다. 하는 일은 이미 디스크에 있는 파일을 평범하게 로컬에서 색인하는 것뿐입니다.</p>',
+ 'ja': '<p>使いません。Kapture はスクリーンショットの命名・タグ付け・読み取り・並べ替えに AI を使いません。行うのは、すでにディスクにあるファイルを普通にローカルで索引化することだけです。</p>'},
+
+# The homepage footer nav is one block key; Help joins it here.
+'''<a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
+      <a href="/help/">Help</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="mailto:pequelord@gmail.com">Contact</a>''': {
+ 'es': '''<a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
+      <a href="/help/">Ayuda</a>
+      <a href="/privacy/">Privacidad</a>
+      <a href="mailto:pequelord@gmail.com">Contacto</a>''',
+ 'zh': '''<a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
+      <a href="/help/">帮助</a>
+      <a href="/privacy/">隐私</a>
+      <a href="mailto:pequelord@gmail.com">联系</a>''',
+ 'ko': '''<a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
+      <a href="/help/">도움말</a>
+      <a href="/privacy/">개인정보</a>
+      <a href="mailto:pequelord@gmail.com">문의</a>''',
+ 'ja': '''<a href="#capture">Chrome</a>
+      <a href="#pro">Kapture Pro</a>
+      <a href="/help/">ヘルプ</a>
+      <a href="/privacy/">プライバシー</a>
+      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'''},
+
 }

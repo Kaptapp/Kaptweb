@@ -79,7 +79,12 @@
       "sameAs": [
         "https://www.x.com/kaptapp",
         "https://www.linkedin.com/company/kaptapp/"
-      ]
+      ],
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Kumo Studio",
+        "url": "https://kumo.studio"
+      }
     },
     {
       "@type": "SoftwareApplication",
@@ -90,6 +95,10 @@
       "description": "Kapture 是一款 Chrome 扩展程序，可以截取整个网页或其中指定的区域，并以 PNG、JPEG 或 PDF 保存到你自己的设备上。",
       "applicationCategory": "BrowserApplication",
       "applicationSubCategory": "Screenshot utility",
+      "applicationSuite": "Kapture",
+      "softwareHelp": {
+        "@id": "https://kaptapp.com/help/#webpage"
+      },
       "browserRequirements": "Requires Google Chrome 120 or later",
       "softwareVersion": "0.4.9",
       "featureList": [
@@ -105,7 +114,6 @@
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       },
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-chrome-0-4-7.png",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -121,6 +129,8 @@
       "url": "https://kaptapp.com/zh/#pro",
       "description": "Kapture Pro 会索引电脑上已经保存的截图，把它们变成一个可搜索的可视化图库，带有项目、收藏集、智能、标签和检查器。",
       "applicationCategory": "DesignApplication",
+      "applicationSubCategory": "Screenshot manager",
+      "applicationSuite": "Kapture",
       "operatingSystem": "macOS, Windows",
       "featureList": [
         "项目",
@@ -132,11 +142,85 @@
         "标签与备注",
         "本地存储，无需云同步"
       ],
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-pro-curated.png",
-      "releaseNotes": "Not yet released.",
+      "softwareVersion": "Not yet released",
+      "disambiguatingDescription": "Kapture Pro is the desktop half of Kapture. It is planned for macOS and for Windows and is not yet available to download or buy.",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://kaptapp.com/zh/#faq",
+      "isPartOf": {
+        "@id": "https://kaptapp.com/zh/#website"
+      },
+      "inLanguage": "zh-CN",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kapture 是什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kapture 是一款分为两部分的截图与可视化图库产品。Chrome 版 Kapture 负责截取网页。Kapture Pro 是桌面端的截图管理器，把电脑上已有的截图变成一个可搜索的可视化图库。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture 支持哪些平台？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chrome 版 Kapture 现已推出，免费，需要 Google Chrome 120 或更高版本。Kapture Pro 是桌面应用，计划支持 Mac 和 Windows。两个桌面版都尚未发布，所以目前 Mac 和 Windows 都还没有可下载的版本。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture 能截取整张网页并保存为 PDF 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。Chrome 版 Kapture 会滚动整个文档，而不是只截取可见部分，也可以只截取你拖选的区域。两种方式都能保存为 PNG、JPEG 或 PDF。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture Pro 怎么整理截图？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "用项目和收藏集。项目是主要的工作结构，手头每件工作一个，Kapture 文件夹里的任何子文件夹都会自动成为一个项目。收藏集在图库里，用来把你想放在一起的东西归到一处。一张截图可以同时属于一个项目和多个收藏集。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "什么是智能？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "智能是 Kapture Pro 里的一个工作区，包含五个工具：未整理会找出还没归入项目的截图，重复项会找出逐字节完全相同的文件，清理会列出值得再看一眼的旧文件和大文件，来源按出处把截图分组，规则则按你的要求归档新截图。智能永远不会替你删除任何东西。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "我的截图保存在哪里？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "就在你自己的电脑上。Chrome 版 Kapture 通过 Chrome 自带的下载功能保存，Kapture Pro 读取硬盘上已有的文件而不会移动它们。没有账号，没有云同步，也没有上传，两款产品都不含分析、广告或追踪。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture 支持哪些语言？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "两款产品都提供五种语言：英语、西班牙语、简体中文、韩语和日语。两者还都有“系统 / 默认”选项，跟随你电脑已设置的语言。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture 会用 AI 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不会。Kapture 不使用 AI 来命名、打标签、读取或整理你的截图。它所做的只是对硬盘上已有文件进行普通的本地索引。"
+          }
+        }
+      ]
     },
     {
       "@type": "WebPage",
@@ -147,9 +231,14 @@
       "isPartOf": {
         "@id": "https://kaptapp.com/zh/#website"
       },
-      "about": {
-        "@id": "https://kaptapp.com/zh/#kapture"
-      },
+      "about": [
+        {
+          "@id": "https://kaptapp.com/zh/#kapture"
+        },
+        {
+          "@id": "https://kaptapp.com/zh/#kapture-pro"
+        }
+      ],
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://kaptapp.com/assets/social/kapture-og.png"
@@ -161,7 +250,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=35">
+<link rel="stylesheet" href="../styles.css?v=36">
 </head>
 <body>
 
@@ -1273,6 +1362,53 @@
   </section>
 
   <!-- ============ FINAL CTA ============ -->
+  <!-- ============ COMMON QUESTIONS ============ -->
+  <!-- Short, factual answers to the things people actually ask, in plain text
+       so a search or answer engine can quote them without watching an
+       animation. Every answer repeats a fact stated elsewhere on the page. -->
+  <section class="section section-tight" id="faq">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">常见问题</p>
+        <h2>简短的回答。</h2>
+      </header>
+      <div class="faq reveal">
+        <div class="faq-q">
+          <h3>Kapture 是什么？</h3>
+          <p>Kapture 是一款分为两部分的截图与可视化图库产品。Chrome 版 Kapture 负责截取网页。Kapture Pro 是桌面端的截图管理器，把电脑上已有的截图变成一个可搜索的可视化图库。</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture 支持哪些平台？</h3>
+          <p>Chrome 版 Kapture 现已推出，免费，需要 Google Chrome 120 或更高版本。Kapture Pro 是桌面应用，计划支持 Mac 和 Windows。两个桌面版都尚未发布，所以目前 Mac 和 Windows 都还没有可下载的版本。</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture 能截取整张网页并保存为 PDF 吗？</h3>
+          <p>可以。Chrome 版 Kapture 会滚动整个文档，而不是只截取可见部分，也可以只截取你拖选的区域。两种方式都能保存为 PNG、JPEG 或 PDF。</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture Pro 怎么整理截图？</h3>
+          <p>用项目和收藏集。项目是主要的工作结构，手头每件工作一个，Kapture 文件夹里的任何子文件夹都会自动成为一个项目。收藏集在图库里，用来把你想放在一起的东西归到一处。一张截图可以同时属于一个项目和多个收藏集。</p>
+        </div>
+        <div class="faq-q">
+          <h3>什么是智能？</h3>
+          <p>智能是 Kapture Pro 里的一个工作区，包含五个工具：未整理会找出还没归入项目的截图，重复项会找出逐字节完全相同的文件，清理会列出值得再看一眼的旧文件和大文件，来源按出处把截图分组，规则则按你的要求归档新截图。智能永远不会替你删除任何东西。</p>
+        </div>
+        <div class="faq-q">
+          <h3>我的截图保存在哪里？</h3>
+          <p>就在你自己的电脑上。Chrome 版 Kapture 通过 Chrome 自带的下载功能保存，Kapture Pro 读取硬盘上已有的文件而不会移动它们。没有账号，没有云同步，也没有上传，两款产品都不含分析、广告或追踪。</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture 支持哪些语言？</h3>
+          <p>两款产品都提供五种语言：英语、西班牙语、简体中文、韩语和日语。两者还都有“系统 / 默认”选项，跟随你电脑已设置的语言。</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture 会用 AI 吗？</h3>
+          <p>不会。Kapture 不使用 AI 来命名、打标签、读取或整理你的截图。它所做的只是对硬盘上已有文件进行普通的本地索引。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-band" id="cta">
     <div class="shell">
       <header class="section-head cta-head reveal">
@@ -1332,6 +1468,7 @@
     <nav class="footer-nav" aria-label="页脚">
       <a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
+      <a href="/zh/help/">帮助</a>
       <a href="/zh/privacy/">隐私</a>
       <a href="mailto:pequelord@gmail.com">联系</a>
     </nav>
@@ -1351,6 +1488,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=35"></script>
+<script src="../script.js?v=36"></script>
 </body>
 </html>

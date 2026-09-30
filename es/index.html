@@ -79,7 +79,12 @@
       "sameAs": [
         "https://www.x.com/kaptapp",
         "https://www.linkedin.com/company/kaptapp/"
-      ]
+      ],
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Kumo Studio",
+        "url": "https://kumo.studio"
+      }
     },
     {
       "@type": "SoftwareApplication",
@@ -90,6 +95,10 @@
       "description": "Kapture es una extensión de Chrome que captura una página web entera o solo una zona y guarda el resultado en tu propio dispositivo en PNG, JPEG o PDF.",
       "applicationCategory": "BrowserApplication",
       "applicationSubCategory": "Screenshot utility",
+      "applicationSuite": "Kapture",
+      "softwareHelp": {
+        "@id": "https://kaptapp.com/help/#webpage"
+      },
       "browserRequirements": "Requires Google Chrome 120 or later",
       "softwareVersion": "0.4.9",
       "featureList": [
@@ -105,7 +114,6 @@
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       },
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-chrome-0-4-7.png",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -121,6 +129,8 @@
       "url": "https://kaptapp.com/es/#pro",
       "description": "Kapture Pro indexa las capturas que ya tienes en el ordenador y las convierte en una biblioteca visual en la que puedes buscar, con Proyectos, Colecciones, Inteligente, etiquetas e inspector.",
       "applicationCategory": "DesignApplication",
+      "applicationSubCategory": "Screenshot manager",
+      "applicationSuite": "Kapture",
       "operatingSystem": "macOS, Windows",
       "featureList": [
         "Proyectos",
@@ -132,11 +142,85 @@
         "Etiquetas y notas",
         "Almacenamiento local sin sincronización en la nube"
       ],
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-pro-curated.png",
-      "releaseNotes": "Not yet released.",
+      "softwareVersion": "Not yet released",
+      "disambiguatingDescription": "Kapture Pro is the desktop half of Kapture. It is planned for macOS and for Windows and is not yet available to download or buy.",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://kaptapp.com/es/#faq",
+      "isPartOf": {
+        "@id": "https://kaptapp.com/es/#website"
+      },
+      "inLanguage": "es",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es Kapture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kapture es un producto de captura de pantalla y biblioteca visual en dos partes. Kapture para Chrome captura páginas web. Kapture Pro es un gestor de capturas de escritorio que convierte las capturas que ya tienes en el ordenador en una biblioteca visual con búsqueda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué plataformas está disponible Kapture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kapture para Chrome ya está disponible y es gratis, para Google Chrome 120 o posterior. Kapture Pro es la app de escritorio, prevista para Mac y para Windows. Todavía no se ha publicado ninguna de las dos versiones de escritorio, así que hoy no hay nada que descargar para Mac ni para Windows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Kapture puede capturar una página web completa y guardarla como PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Kapture para Chrome recorre el documento entero en lugar de capturar solo la parte visible, y también puede capturar únicamente el área que selecciones arrastrando. En ambos casos se guarda como PNG, JPEG o PDF."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo organiza Kapture Pro las capturas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con Proyectos y Colecciones. Los proyectos son la estructura de trabajo principal, uno por cada cosa que tengas en marcha, y cualquier carpeta dentro de tu carpeta de Kapture se convierte en uno automáticamente. Las colecciones están dentro de la biblioteca y agrupan cosas que simplemente quieres mantener juntas. Una captura puede estar en un proyecto y en colecciones a la vez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es Inteligente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inteligente es un único espacio dentro de Kapture Pro con cinco herramientas: Sin organizar encuentra las capturas que aún no están en un proyecto, Duplicados encuentra archivos idénticos byte a byte, Limpieza saca a la luz capturas antiguas y pesadas que merecen un segundo vistazo, Fuentes agrupa las capturas por su procedencia y Reglas archiva las capturas nuevas como le hayas pedido. Inteligente nunca borra nada por ti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde se guardan mis capturas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En tu propio ordenador. Kapture para Chrome guarda con el sistema de descargas de Chrome, y Kapture Pro lee los archivos que ya están en tu disco sin moverlos. No hay cuenta, ni sincronización en la nube, ni subidas, y ninguno de los dos productos incluye analíticas, publicidad ni seguimiento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué idiomas admite Kapture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ambos productos están disponibles en cinco idiomas: inglés, español, chino simplificado, coreano y japonés. Los dos tienen además una opción Sistema / Por omisión que sigue el idioma que tengas configurado en el ordenador."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Kapture usa IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Kapture no usa IA para nombrar, etiquetar, leer ni ordenar tus capturas. Todo lo que hace es indexado local corriente de archivos que ya están en tu disco."
+          }
+        }
+      ]
     },
     {
       "@type": "WebPage",
@@ -147,9 +231,14 @@
       "isPartOf": {
         "@id": "https://kaptapp.com/es/#website"
       },
-      "about": {
-        "@id": "https://kaptapp.com/es/#kapture"
-      },
+      "about": [
+        {
+          "@id": "https://kaptapp.com/es/#kapture"
+        },
+        {
+          "@id": "https://kaptapp.com/es/#kapture-pro"
+        }
+      ],
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://kaptapp.com/assets/social/kapture-og.png"
@@ -161,7 +250,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=35">
+<link rel="stylesheet" href="../styles.css?v=36">
 </head>
 <body>
 
@@ -1274,6 +1363,53 @@
   </section>
 
   <!-- ============ FINAL CTA ============ -->
+  <!-- ============ COMMON QUESTIONS ============ -->
+  <!-- Short, factual answers to the things people actually ask, in plain text
+       so a search or answer engine can quote them without watching an
+       animation. Every answer repeats a fact stated elsewhere on the page. -->
+  <section class="section section-tight" id="faq">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">Preguntas frecuentes</p>
+        <h2>Respuestas breves.</h2>
+      </header>
+      <div class="faq reveal">
+        <div class="faq-q">
+          <h3>¿Qué es Kapture?</h3>
+          <p>Kapture es un producto de captura de pantalla y biblioteca visual en dos partes. Kapture para Chrome captura páginas web. Kapture Pro es un gestor de capturas de escritorio que convierte las capturas que ya tienes en el ordenador en una biblioteca visual con búsqueda.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿En qué plataformas está disponible Kapture?</h3>
+          <p>Kapture para Chrome ya está disponible y es gratis, para Google Chrome 120 o posterior. Kapture Pro es la app de escritorio, prevista para Mac y para Windows. Todavía no se ha publicado ninguna de las dos versiones de escritorio, así que hoy no hay nada que descargar para Mac ni para Windows.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿Kapture puede capturar una página web completa y guardarla como PDF?</h3>
+          <p>Sí. Kapture para Chrome recorre el documento entero en lugar de capturar solo la parte visible, y también puede capturar únicamente el área que selecciones arrastrando. En ambos casos se guarda como PNG, JPEG o PDF.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿Cómo organiza Kapture Pro las capturas?</h3>
+          <p>Con Proyectos y Colecciones. Los proyectos son la estructura de trabajo principal, uno por cada cosa que tengas en marcha, y cualquier carpeta dentro de tu carpeta de Kapture se convierte en uno automáticamente. Las colecciones están dentro de la biblioteca y agrupan cosas que simplemente quieres mantener juntas. Una captura puede estar en un proyecto y en colecciones a la vez.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿Qué es Inteligente?</h3>
+          <p>Inteligente es un único espacio dentro de Kapture Pro con cinco herramientas: Sin organizar encuentra las capturas que aún no están en un proyecto, Duplicados encuentra archivos idénticos byte a byte, Limpieza saca a la luz capturas antiguas y pesadas que merecen un segundo vistazo, Fuentes agrupa las capturas por su procedencia y Reglas archiva las capturas nuevas como le hayas pedido. Inteligente nunca borra nada por ti.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿Dónde se guardan mis capturas?</h3>
+          <p>En tu propio ordenador. Kapture para Chrome guarda con el sistema de descargas de Chrome, y Kapture Pro lee los archivos que ya están en tu disco sin moverlos. No hay cuenta, ni sincronización en la nube, ni subidas, y ninguno de los dos productos incluye analíticas, publicidad ni seguimiento.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿Qué idiomas admite Kapture?</h3>
+          <p>Ambos productos están disponibles en cinco idiomas: inglés, español, chino simplificado, coreano y japonés. Los dos tienen además una opción Sistema / Por omisión que sigue el idioma que tengas configurado en el ordenador.</p>
+        </div>
+        <div class="faq-q">
+          <h3>¿Kapture usa IA?</h3>
+          <p>No. Kapture no usa IA para nombrar, etiquetar, leer ni ordenar tus capturas. Todo lo que hace es indexado local corriente de archivos que ya están en tu disco.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-band" id="cta">
     <div class="shell">
       <header class="section-head cta-head reveal">
@@ -1333,6 +1469,7 @@
     <nav class="footer-nav" aria-label="Pie de página">
       <a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
+      <a href="/es/help/">Ayuda</a>
       <a href="/es/privacy/">Privacidad</a>
       <a href="mailto:pequelord@gmail.com">Contacto</a>
     </nav>
@@ -1352,6 +1489,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=35"></script>
+<script src="../script.js?v=36"></script>
 </body>
 </html>

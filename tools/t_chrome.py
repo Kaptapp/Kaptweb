@@ -77,4 +77,12 @@ CHROME = {
  'ko': '<p class="legal-foot">Kapture by Pequelord &middot; 스크린샷은 기기 안에만 남습니다.</p>',
  'ja': '<p class="legal-foot">Kapture by Pequelord &middot; スクリーンショットは端末の外に出ません。</p>'},
 
+# Help was reachable only from inside the extension. It is in the footer of
+# every page now, so the link text is shared chrome like the rest of the nav.
+'<a href="/help/">Help</a>': {
+ 'es': '<a href="/help/">Ayuda</a>',
+ 'zh': '<a href="/help/">帮助</a>',
+ 'ko': '<a href="/help/">도움말</a>',
+ 'ja': '<a href="/help/">ヘルプ</a>'},
+
 }

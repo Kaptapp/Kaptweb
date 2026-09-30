@@ -59,7 +59,25 @@ def hreflang(page):
 
 
 # ---------------------------------------------------------------- JSON-LD
-def localise_ld(raw, lang, page, title, desc):
+def faq_pairs(src):
+    """Question and answer text, read back out of the rendered FAQ section."""
+    m = re.search(r'<section[^>]*id="faq">(.*?)</section>', src, re.S)
+    if not m:
+        return []
+    out = []
+    for q, a in re.findall(r'<h3>(.*?)</h3>\s*<p>(.*?)</p>', m.group(1), re.S):
+        out.append((plain(q), plain(a)))
+    return out
+
+
+def plain(t):
+    t = re.sub(r'<[^>]+>', '', t)
+    t = (t.replace('&middot;', '\u00b7').replace('&nbsp;', ' ')
+          .replace('&amp;', '&').replace('&#8209;', '-'))
+    return re.sub(r'\s+', ' ', t).strip()
+
+
+def localise_ld(raw, lang, page, title, desc, body=''):
     data = json.loads(raw)
     h, p = home_url(lang), page_url(lang, page)
     for node in data['@graph']:
@@ -88,11 +106,26 @@ def localise_ld(raw, lang, page, title, desc):
             node['name'] = title
             node['description'] = desc
             node['inLanguage'] = HTMLLANG[lang]
-            for k in ('isPartOf', 'about'):
-                if k in node:
-                    node[k]['@id'] = h + ('#website' if k == 'isPartOf' else '#kapture')
+            if 'isPartOf' in node:
+                node['isPartOf']['@id'] = h + '#website'
+            if 'about' in node:
+                # One node or several: the homepage is about both applications.
+                about = node['about']
+                for ref in (about if isinstance(about, list) else [about]):
+                    ref['@id'] = h + '#' + ref['@id'].rsplit('#', 1)[1]
             if 'breadcrumb' in node:
                 node['breadcrumb']['@id'] = p + '#breadcrumb'
+        elif t == 'FAQPage':
+            node['@id'] = p + '#faq'
+            node['isPartOf']['@id'] = h + '#website'
+            node['inLanguage'] = HTMLLANG[lang]
+            qa = faq_pairs(body)
+            if qa:
+                node['mainEntity'] = [
+                    {'@type': 'Question', 'name': q,
+                     'acceptedAnswer': {'@type': 'Answer', 'text': a}}
+                    for q, a in qa
+                ]
         elif t == 'BreadcrumbList':
             node['@id'] = p + '#breadcrumb'
             node['itemListElement'][0]['item'] = h
@@ -172,7 +205,7 @@ def build(lang, page):
     block = re.search(r'<script type="application/ld\+json">\n(.*?)\n</script>', src, re.S)
     src = src.replace(block.group(0),
                       '<script type="application/ld+json">\n'
-                      + localise_ld(block.group(1), lang, page, title, desc) + '\n</script>')
+                      + localise_ld(block.group(1), lang, page, title, desc, src) + '\n</script>')
 
     out = ROOT / lang / SOURCE[page]
     out.parent.mkdir(parents=True, exist_ok=True)

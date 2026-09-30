@@ -79,7 +79,12 @@
       "sameAs": [
         "https://www.x.com/kaptapp",
         "https://www.linkedin.com/company/kaptapp/"
-      ]
+      ],
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Kumo Studio",
+        "url": "https://kumo.studio"
+      }
     },
     {
       "@type": "SoftwareApplication",
@@ -90,6 +95,10 @@
       "description": "Kapture는 웹페이지 전체 또는 선택한 영역을 캡처해 PNG, JPEG, PDF로 사용자의 기기에 저장하는 Chrome 확장 프로그램입니다.",
       "applicationCategory": "BrowserApplication",
       "applicationSubCategory": "Screenshot utility",
+      "applicationSuite": "Kapture",
+      "softwareHelp": {
+        "@id": "https://kaptapp.com/help/#webpage"
+      },
       "browserRequirements": "Requires Google Chrome 120 or later",
       "softwareVersion": "0.4.9",
       "featureList": [
@@ -105,7 +114,6 @@
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       },
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-chrome-0-4-7.png",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -121,6 +129,8 @@
       "url": "https://kaptapp.com/ko/#pro",
       "description": "Kapture Pro는 이미 컴퓨터에 저장된 스크린샷을 색인해 프로젝트, 컬렉션, 스마트, 태그, 인스펙터를 갖춘 검색 가능한 시각 라이브러리로 만들어 줍니다.",
       "applicationCategory": "DesignApplication",
+      "applicationSubCategory": "Screenshot manager",
+      "applicationSuite": "Kapture",
       "operatingSystem": "macOS, Windows",
       "featureList": [
         "프로젝트",
@@ -132,11 +142,85 @@
         "태그와 메모",
         "클라우드 동기화 없는 로컬 저장"
       ],
-      "screenshot": "https://kaptapp.com/assets/screenshots/kapture-pro-curated.png",
-      "releaseNotes": "Not yet released.",
+      "softwareVersion": "Not yet released",
+      "disambiguatingDescription": "Kapture Pro is the desktop half of Kapture. It is planned for macOS and for Windows and is not yet available to download or buy.",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://kaptapp.com/ko/#faq",
+      "isPartOf": {
+        "@id": "https://kaptapp.com/ko/#website"
+      },
+      "inLanguage": "ko",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kapture란 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kapture는 두 부분으로 이루어진 스크린샷 캡처 및 시각 라이브러리 제품입니다. Chrome용 Kapture는 웹페이지를 캡처합니다. Kapture Pro는 이미 컴퓨터에 있는 캡처를 검색 가능한 시각 라이브러리로 만들어 주는 데스크톱 스크린샷 관리자입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture는 어떤 플랫폼에서 쓸 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chrome용 Kapture는 지금 사용할 수 있고 무료이며, Google Chrome 120 이상이 필요합니다. Kapture Pro는 데스크톱 앱으로 Mac과 Windows를 목표로 하고 있습니다. 두 데스크톱 빌드 모두 아직 출시되지 않아, 현재 Mac이나 Windows용으로 내려받을 수 있는 것은 없습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture로 전체 웹페이지를 캡처해 PDF로 저장할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. Chrome용 Kapture는 보이는 부분만이 아니라 문서 전체를 스크롤하며 캡처하고, 드래그한 영역만 캡처할 수도 있습니다. 어느 쪽이든 PNG, JPEG, PDF로 저장됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture Pro는 스크린샷을 어떻게 정리하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "프로젝트와 컬렉션으로 정리합니다. 프로젝트는 주된 작업 구조로 지금 하는 일마다 하나씩 두며, Kapture 폴더 안의 폴더는 자동으로 프로젝트가 됩니다. 컬렉션은 라이브러리 안에 있으며 그냥 함께 두고 싶은 것들을 묶습니다. 하나의 캡처가 프로젝트와 컬렉션에 동시에 속할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "스마트란 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "스마트는 Kapture Pro 안의 한 작업 공간으로 다섯 가지 도구가 있습니다. 미정리는 아직 프로젝트에 들어가지 않은 캡처를 찾고, 중복 항목은 바이트 단위까지 같은 파일을 찾고, 정리는 다시 살펴볼 만한 오래되고 큰 캡처를 보여 주고, 출처는 캡처를 출처별로 묶고, 규칙은 새 캡처를 요청한 대로 정리합니다. 스마트가 무언가를 대신 삭제하는 일은 없습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "스크린샷은 어디에 저장되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "사용자의 컴퓨터에 저장됩니다. Chrome용 Kapture는 Chrome의 다운로드 기능으로 저장하고, Kapture Pro는 이미 디스크에 있는 파일을 옮기지 않고 읽습니다. 계정도, 클라우드 동기화도, 업로드도 없으며 두 제품 모두 분석·광고·추적을 담고 있지 않습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture는 어떤 언어를 지원하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "두 제품 모두 영어, 스페인어, 중국어 간체, 한국어, 일본어의 다섯 가지 언어로 제공됩니다. 둘 다 컴퓨터에 설정된 언어를 따르는 시스템 / 기본값 옵션도 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kapture는 AI를 사용하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아닙니다. Kapture는 스크린샷의 이름을 짓거나 태그를 달거나 읽거나 정렬하는 데 AI를 쓰지 않습니다. 하는 일은 이미 디스크에 있는 파일을 평범하게 로컬에서 색인하는 것뿐입니다."
+          }
+        }
+      ]
     },
     {
       "@type": "WebPage",
@@ -147,9 +231,14 @@
       "isPartOf": {
         "@id": "https://kaptapp.com/ko/#website"
       },
-      "about": {
-        "@id": "https://kaptapp.com/ko/#kapture"
-      },
+      "about": [
+        {
+          "@id": "https://kaptapp.com/ko/#kapture"
+        },
+        {
+          "@id": "https://kaptapp.com/ko/#kapture-pro"
+        }
+      ],
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": "https://kaptapp.com/assets/social/kapture-og.png"
@@ -161,7 +250,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=35">
+<link rel="stylesheet" href="../styles.css?v=36">
 </head>
 <body>
 
@@ -1273,6 +1362,53 @@
   </section>
 
   <!-- ============ FINAL CTA ============ -->
+  <!-- ============ COMMON QUESTIONS ============ -->
+  <!-- Short, factual answers to the things people actually ask, in plain text
+       so a search or answer engine can quote them without watching an
+       animation. Every answer repeats a fact stated elsewhere on the page. -->
+  <section class="section section-tight" id="faq">
+    <div class="shell">
+      <header class="section-head reveal">
+        <p class="kicker">자주 묻는 질문</p>
+        <h2>짧은 답변.</h2>
+      </header>
+      <div class="faq reveal">
+        <div class="faq-q">
+          <h3>Kapture란 무엇인가요?</h3>
+          <p>Kapture는 두 부분으로 이루어진 스크린샷 캡처 및 시각 라이브러리 제품입니다. Chrome용 Kapture는 웹페이지를 캡처합니다. Kapture Pro는 이미 컴퓨터에 있는 캡처를 검색 가능한 시각 라이브러리로 만들어 주는 데스크톱 스크린샷 관리자입니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture는 어떤 플랫폼에서 쓸 수 있나요?</h3>
+          <p>Chrome용 Kapture는 지금 사용할 수 있고 무료이며, Google Chrome 120 이상이 필요합니다. Kapture Pro는 데스크톱 앱으로 Mac과 Windows를 목표로 하고 있습니다. 두 데스크톱 빌드 모두 아직 출시되지 않아, 현재 Mac이나 Windows용으로 내려받을 수 있는 것은 없습니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture로 전체 웹페이지를 캡처해 PDF로 저장할 수 있나요?</h3>
+          <p>네. Chrome용 Kapture는 보이는 부분만이 아니라 문서 전체를 스크롤하며 캡처하고, 드래그한 영역만 캡처할 수도 있습니다. 어느 쪽이든 PNG, JPEG, PDF로 저장됩니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture Pro는 스크린샷을 어떻게 정리하나요?</h3>
+          <p>프로젝트와 컬렉션으로 정리합니다. 프로젝트는 주된 작업 구조로 지금 하는 일마다 하나씩 두며, Kapture 폴더 안의 폴더는 자동으로 프로젝트가 됩니다. 컬렉션은 라이브러리 안에 있으며 그냥 함께 두고 싶은 것들을 묶습니다. 하나의 캡처가 프로젝트와 컬렉션에 동시에 속할 수 있습니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>스마트란 무엇인가요?</h3>
+          <p>스마트는 Kapture Pro 안의 한 작업 공간으로 다섯 가지 도구가 있습니다. 미정리는 아직 프로젝트에 들어가지 않은 캡처를 찾고, 중복 항목은 바이트 단위까지 같은 파일을 찾고, 정리는 다시 살펴볼 만한 오래되고 큰 캡처를 보여 주고, 출처는 캡처를 출처별로 묶고, 규칙은 새 캡처를 요청한 대로 정리합니다. 스마트가 무언가를 대신 삭제하는 일은 없습니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>스크린샷은 어디에 저장되나요?</h3>
+          <p>사용자의 컴퓨터에 저장됩니다. Chrome용 Kapture는 Chrome의 다운로드 기능으로 저장하고, Kapture Pro는 이미 디스크에 있는 파일을 옮기지 않고 읽습니다. 계정도, 클라우드 동기화도, 업로드도 없으며 두 제품 모두 분석·광고·추적을 담고 있지 않습니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture는 어떤 언어를 지원하나요?</h3>
+          <p>두 제품 모두 영어, 스페인어, 중국어 간체, 한국어, 일본어의 다섯 가지 언어로 제공됩니다. 둘 다 컴퓨터에 설정된 언어를 따르는 시스템 / 기본값 옵션도 있습니다.</p>
+        </div>
+        <div class="faq-q">
+          <h3>Kapture는 AI를 사용하나요?</h3>
+          <p>아닙니다. Kapture는 스크린샷의 이름을 짓거나 태그를 달거나 읽거나 정렬하는 데 AI를 쓰지 않습니다. 하는 일은 이미 디스크에 있는 파일을 평범하게 로컬에서 색인하는 것뿐입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-band" id="cta">
     <div class="shell">
       <header class="section-head cta-head reveal">
@@ -1332,6 +1468,7 @@
     <nav class="footer-nav" aria-label="푸터">
       <a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
+      <a href="/ko/help/">도움말</a>
       <a href="/ko/privacy/">개인정보</a>
       <a href="mailto:pequelord@gmail.com">문의</a>
     </nav>
@@ -1351,6 +1488,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=35"></script>
+<script src="../script.js?v=36"></script>
 </body>
 </html>
