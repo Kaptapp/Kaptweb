@@ -38,7 +38,7 @@ tablet and desktop widths. Settings holds the language choice and a link to Help
 Kapture Pro indexes the screenshots already saved on the user's computer. The
 files never move and are never uploaded.
 
-Its Library holds All Captures, Recents, Favorites, Desktop Screenshots, Smart
+Its Library holds All Captures, Recents, Favorites, Desktop, Smart
 and Collections. Projects sit alongside the Library.
 
 - **Projects** are the primary working structure, one per piece of work in hand.
