@@ -213,6 +213,27 @@ def build(lang, page):
     return out
 
 
+def sync_faq_en(src):
+    """Rewrite the English FAQPage node from the English FAQ markup."""
+    block = re.search(r'<script type="application/ld\+json">\n(.*?)\n</script>', src, re.S)
+    if not block:
+        return src
+    data = json.loads(block.group(1))
+    qa = faq_pairs(src)
+    changed = False
+    for node in data.get('@graph', []):
+        if node.get('@type') == 'FAQPage' and qa:
+            node['mainEntity'] = [
+                {'@type': 'Question', 'name': q,
+                 'acceptedAnswer': {'@type': 'Answer', 'text': a}}
+                for q, a in qa
+            ]
+            changed = True
+    if not changed:
+        return src
+    return src.replace(block.group(1), json.dumps(data, indent=2, ensure_ascii=False), 1)
+
+
 def patch_english():
     """English pages need the same hreflang set and the selector."""
     for page in SOURCE:
@@ -230,6 +251,11 @@ def patch_english():
         if page == 'index':
             anchor = '    <div class="header-ctas">\n'
             src = src.replace(anchor, anchor + selector('en', page), 1)
+            # The FAQ schema is generated from the markup for every other
+            # language. English is the source file, so it was the one copy that
+            # could silently go stale when an answer was edited. It is generated
+            # here too, from the same markup, for the same reason.
+            src = sync_faq_en(src)
         else:
             anchor = '    <a class="btn btn-ghost btn-sm store-cta"'
             src = src.replace(anchor, selector('en', page) + anchor, 1)

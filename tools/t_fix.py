@@ -619,4 +619,32 @@ FIX = {
       <a href="/privacy/">プライバシー</a>
       <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'''},
 
+# ---------------------------------------------------------------- FAQ, refined
+'<p class="section-lead">The things people ask most often about Kapture, answered plainly.</p>': {
+ 'es': '<p class="section-lead">Lo que más se pregunta sobre Kapture, respondido sin rodeos.</p>',
+ 'zh': '<p class="section-lead">关于 Kapture 最常见的问题，直接给出答案。</p>',
+ 'ko': '<p class="section-lead">Kapture에 대해 가장 많이 묻는 것들에 대한 솔직한 답변입니다.</p>',
+ 'ja': '<p class="section-lead">Kapture について最もよく聞かれることに、率直にお答えします。</p>'},
+
+# Replaces "Does Kapture use AI?", whose answer would date as soon as the
+# product changed. This one stays true whatever gets built next.
+'<h3>Do I need Kapture Pro to use Kapture for Chrome?</h3>': {
+ 'es': '<h3>¿Necesito Kapture Pro para usar Kapture para Chrome?</h3>',
+ 'zh': '<h3>要用 Chrome 版 Kapture，必须有 Kapture Pro 吗？</h3>',
+ 'ko': '<h3>Chrome용 Kapture를 쓰려면 Kapture Pro가 필요한가요?</h3>',
+ 'ja': '<h3>Chrome 版 Kapture を使うのに Kapture Pro は必要ですか？</h3>'},
+'<p>No. Kapture for Chrome works on its own: it captures a page and saves the file wherever you tell it to. Kapture Pro is the desktop half, and it adds the library, the search and the organising on top of captures you already have. They are built to work together, and each is useful without the other.</p>': {
+ 'es': '<p>No. Kapture para Chrome funciona por su cuenta: captura una página y guarda el archivo donde tú le digas. Kapture Pro es la mitad de escritorio, y añade la biblioteca, la búsqueda y la organización sobre las capturas que ya tienes. Están pensados para funcionar juntos, y cada uno sirve sin el otro.</p>',
+ 'zh': '<p>不需要。Chrome 版 Kapture 可以单独使用：它截取页面，并把文件保存到你指定的位置。Kapture Pro 是桌面的那一半，在你已有的截图之上加上图库、搜索和整理。两者是为配合使用而设计的，各自单独也都好用。</p>',
+ 'ko': '<p>아닙니다. Chrome용 Kapture는 그 자체로 동작합니다. 페이지를 캡처해 원하는 위치에 파일을 저장합니다. Kapture Pro는 데스크톱 쪽으로, 이미 가지고 있는 캡처 위에 라이브러리와 검색과 정리를 더해 줍니다. 둘은 함께 쓰도록 만들어졌지만, 각각만으로도 쓸모가 있습니다.</p>',
+ 'ja': '<p>必要ありません。Chrome 版 Kapture は単体で動きます。ページを撮り、指定した場所にファイルを保存します。Kapture Pro はデスクトップ側で、すでにあるキャプチャの上にライブラリ・検索・整理を加えます。2 つは一緒に使うために作られていますが、それぞれ単体でも役に立ちます。</p>'},
+
+# Local-first stated as what is true today, not as a promise about what will
+# never be built.
+'<p>On your own computer. Kapture for Chrome saves through Chrome\'s own Downloads system, and Kapture Pro reads the files already on your disk without moving them. Kapture is local-first: capturing, storing and organising your library all happen on your machine and do not depend on a cloud service. Neither product contains analytics, advertising or tracking.</p>': {
+ 'es': '<p>En tu propio ordenador. Kapture para Chrome guarda con el sistema de descargas de Chrome, y Kapture Pro lee los archivos que ya están en tu disco sin moverlos. Kapture es local-first: capturar, guardar y organizar tu biblioteca ocurre todo en tu máquina y no depende de ningún servicio en la nube. Ninguno de los dos productos incluye analíticas, publicidad ni seguimiento.</p>',
+ 'zh': '<p>就在你自己的电脑上。Chrome 版 Kapture 通过 Chrome 自带的下载功能保存，Kapture Pro 读取硬盘上已有的文件而不会移动它们。Kapture 以本地优先：截图、保存和整理图库都在你的机器上完成，不依赖任何云服务。两款产品都不含分析、广告或追踪。</p>',
+ 'ko': '<p>사용자의 컴퓨터에 저장됩니다. Chrome용 Kapture는 Chrome의 다운로드 기능으로 저장하고, Kapture Pro는 이미 디스크에 있는 파일을 옮기지 않고 읽습니다. Kapture는 로컬 우선입니다. 캡처하고 저장하고 라이브러리를 정리하는 일이 모두 사용자의 기기에서 이루어지며 클라우드 서비스에 의존하지 않습니다. 두 제품 모두 분석·광고·추적을 담고 있지 않습니다.</p>',
+ 'ja': '<p>あなたのパソコンのなかです。Chrome 版 Kapture は Chrome のダウンロード機能で保存し、Kapture Pro はすでにディスクにあるファイルを移動せずに読みます。Kapture はローカルファーストです。撮ることも、保存することも、ライブラリを整理することも、すべてあなたの端末のなかで行われ、クラウドサービスに依存しません。どちらの製品にも解析・広告・トラッキングは含まれていません。</p>'},
+
 }

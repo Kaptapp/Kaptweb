@@ -60,12 +60,14 @@ Chinese, Korean and Japanese. Both also offer a System / Default option that
 follows the operating system or browser language. System / Default is a setting,
 not a sixth language.
 
-## What Kapture does not do
+## Data handling
 
-Kapture does not use AI to name, tag, read or sort screenshots. Screenshots,
-webpage content, URLs and history metadata are not sent to the developer or to
-external servers. There is no account, no cloud sync, no analytics, no
-advertising, no tracking and no remote code.
+Kapture is local-first. Capturing, storing and organising the library all happen
+on the user's own machine, and the core capture and organisation features work
+without requiring cloud AI. Screenshots, webpage content, URLs and history
+metadata are not sent to the developer or to external servers. There is no
+account, no cloud sync, no analytics, no advertising, no tracking and no remote
+code.
 
 ## Pages
 

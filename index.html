@@ -58,7 +58,13 @@
       "url": "https://kaptapp.com/",
       "name": "Kapture",
       "description": "Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.",
-      "inLanguage": ["en", "es", "zh-Hans", "ko", "ja"],
+      "inLanguage": [
+        "en",
+        "es",
+        "zh-Hans",
+        "ko",
+        "ja"
+      ],
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
       }
@@ -96,7 +102,9 @@
       "applicationCategory": "BrowserApplication",
       "applicationSubCategory": "Screenshot utility",
       "applicationSuite": "Kapture",
-      "softwareHelp": { "@id": "https://kaptapp.com/help/#webpage" },
+      "softwareHelp": {
+        "@id": "https://kaptapp.com/help/#webpage"
+      },
       "browserRequirements": "Requires Google Chrome 120 or later",
       "softwareVersion": "0.4.9",
       "featureList": [
@@ -140,7 +148,6 @@
         "Tags and notes",
         "Local storage with no cloud sync"
       ],
-      "softwareVersion": "Not yet released",
       "disambiguatingDescription": "Kapture Pro is the desktop half of Kapture. It is planned for macOS and for Windows and is not yet available to download or buy.",
       "publisher": {
         "@id": "https://kaptapp.com/#organization"
@@ -183,7 +190,7 @@
           "name": "How does Kapture Pro organise screenshots?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "With Projects and Collections. Projects are the primary working structure, one per piece of work in hand, and any folder inside your Kapture folder becomes one automatically. Collections sit inside the Library and group things you simply want kept together. A capture can be in a project and in collections at the same time."
+            "text": "With Projects and Collections. Projects are the primary working structure, one per piece of work in hand, and any folder inside your Kapture folder becomes one automatically. Collections sit inside the Library and group things you simply want kept together. A capture can be in a project and in collections at the same time. There is more on this on the screenshot organizer page."
           }
         },
         {
@@ -199,7 +206,7 @@
           "name": "Where are my screenshots stored?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "On your own computer. Kapture for Chrome saves through Chrome's own Downloads system, and Kapture Pro reads the files already on your disk without moving them. There is no account, no cloud sync and no upload, and neither product contains analytics, advertising or tracking."
+            "text": "On your own computer. Kapture for Chrome saves through Chrome's own Downloads system, and Kapture Pro reads the files already on your disk without moving them. Kapture is local-first: capturing, storing and organising your library all happen on your machine and do not depend on a cloud service. Neither product contains analytics, advertising or tracking."
           }
         },
         {
@@ -212,10 +219,10 @@
         },
         {
           "@type": "Question",
-          "name": "Does Kapture use AI?",
+          "name": "Do I need Kapture Pro to use Kapture for Chrome?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Kapture does not use AI to name, tag, read or sort your screenshots. Everything it does is ordinary local indexing of files that are already on your disk."
+            "text": "No. Kapture for Chrome works on its own: it captures a page and saves the file wherever you tell it to. Kapture Pro is the desktop half, and it adds the library, the search and the organising on top of captures you already have. They are built to work together, and each is useful without the other."
           }
         }
       ]
@@ -230,8 +237,12 @@
         "@id": "https://kaptapp.com/#website"
       },
       "about": [
-        { "@id": "https://kaptapp.com/#kapture" },
-        { "@id": "https://kaptapp.com/#kapture-pro" }
+        {
+          "@id": "https://kaptapp.com/#kapture"
+        },
+        {
+          "@id": "https://kaptapp.com/#kapture-pro"
+        }
       ],
       "primaryImageOfPage": {
         "@type": "ImageObject",
@@ -244,7 +255,7 @@
 </script>
 
 <link rel="preload" href="assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=36">
+<link rel="stylesheet" href="styles.css?v=37">
 </head>
 <body>
 
@@ -1366,6 +1377,7 @@
       <header class="section-head reveal">
         <p class="kicker">Common questions</p>
         <h2>Short answers.</h2>
+        <p class="section-lead">The things people ask most often about Kapture, answered plainly.</p>
       </header>
       <div class="faq reveal">
         <div class="faq-q">
@@ -1390,15 +1402,15 @@
         </div>
         <div class="faq-q">
           <h3>Where are my screenshots stored?</h3>
-          <p>On your own computer. Kapture for Chrome saves through Chrome's own Downloads system, and Kapture Pro reads the files already on your disk without moving them. There is no account, no cloud sync and no upload, and neither product contains analytics, advertising or tracking.</p>
+          <p>On your own computer. Kapture for Chrome saves through Chrome's own Downloads system, and Kapture Pro reads the files already on your disk without moving them. Kapture is local-first: capturing, storing and organising your library all happen on your machine and do not depend on a cloud service. Neither product contains analytics, advertising or tracking.</p>
         </div>
         <div class="faq-q">
           <h3>What languages does Kapture support?</h3>
           <p>Both products are available in five languages: English, Spanish, Simplified Chinese, Korean and Japanese. Each also has a System / Default option that follows whatever language your computer is set to.</p>
         </div>
         <div class="faq-q">
-          <h3>Does Kapture use AI?</h3>
-          <p>No. Kapture does not use AI to name, tag, read or sort your screenshots. Everything it does is ordinary local indexing of files that are already on your disk.</p>
+          <h3>Do I need Kapture Pro to use Kapture for Chrome?</h3>
+          <p>No. Kapture for Chrome works on its own: it captures a page and saves the file wherever you tell it to. Kapture Pro is the desktop half, and it adds the library, the search and the organising on top of captures you already have. They are built to work together, and each is useful without the other.</p>
         </div>
       </div>
     </div>
@@ -1483,6 +1495,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=36"></script>
+<script src="script.js?v=37"></script>
 </body>
 </html>
