@@ -229,6 +229,79 @@
     lgCycle();
   }
 
+  /* ---- Common questions: progressive enhancement into an accordion ----
+     The markup ships as eight plain question and answer pairs, so the answers
+     are in the static HTML for anyone reading it without scripting, and for
+     search and answer engines. This upgrades that markup in place: the heading
+     text becomes a real button, the answer becomes a labelled region, and the
+     pair collapses. Nothing is fetched, injected or removed from the DOM. */
+  var faq = document.querySelector('#faq .faq');
+
+  if (faq) {
+    var faqItems = Array.prototype.slice.call(faq.querySelectorAll('.faq-q'));
+    var faqStill = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var faqOpen = null;
+
+    var faqSet = function (item, open) {
+      item.classList.toggle('is-open', open);
+      item.querySelector('.faq-btn').setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    faqItems.forEach(function (item, i) {
+      var h = item.querySelector('h3');
+      var a = item.querySelector('p');
+      if (!h || !a) return;
+
+      var qId = 'faq-q' + (i + 1);
+      var aId = 'faq-a' + (i + 1);
+
+      // The heading keeps its level and its text; the button sits inside it, so
+      // the document outline is unchanged and the control is still a control.
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'faq-btn';
+      btn.id = qId;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', aId);
+      while (h.firstChild) btn.appendChild(h.firstChild);
+
+      var mark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      mark.setAttribute('class', 'i faq-mark');
+      mark.setAttribute('aria-hidden', 'true');
+      var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', '#i-caret');
+      mark.appendChild(use);
+      btn.appendChild(mark);
+      h.appendChild(btn);
+
+      // A wrapper the answer can be measured against, so the reveal animates
+      // without anyone having to know how tall the text is.
+      var panel = document.createElement('div');
+      panel.className = 'faq-a';
+      panel.id = aId;
+      panel.setAttribute('role', 'region');
+      panel.setAttribute('aria-labelledby', qId);
+      var inner = document.createElement('div');
+      inner.className = 'faq-a-in';
+      a.parentNode.insertBefore(panel, a);
+      inner.appendChild(a);
+      panel.appendChild(inner);
+
+      btn.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        // One at a time: opening a question closes whichever was open.
+        if (faqOpen && faqOpen !== item) faqSet(faqOpen, false);
+        faqSet(item, !isOpen);
+        faqOpen = isOpen ? null : item;
+      });
+    });
+
+    // Only now, once every pair has been upgraded, does the CSS start
+    // collapsing them. Without this the answers would vanish for the moment
+    // between first paint and this script running.
+    faq.setAttribute('data-acc', faqStill ? 'still' : 'on');
+  }
+
   /* ---- Reveal sections on scroll ---- */
   var reveals = document.querySelectorAll('.reveal');
 

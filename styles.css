@@ -1397,28 +1397,74 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
    Plain text in a two-column reading grid. No accordion: the answers are short,
    and collapsing them only puts a click between a reader and a fact.
    ========================================================================== */
+/* A single column of questions: an accordion is read down a list, and two
+   columns would leave an expanded answer sitting beside a collapsed one. */
 .faq {
   margin-top: clamp(36px, 4.5vw, 60px);
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 1.8vw, 24px);
+  display: grid; gap: 10px;
+  /* Left edge shared with the section heading above it. */
+  max-width: 860px;
 }
-/* Each answer sits on the same card surface the rest of the page uses, so the
-   section reads as designed rather than as text appended to the bottom. Static
-   question and answer, not an accordion: the answers are short, and collapsing
-   them only puts a click between a reader and a fact. It also means the section
-   needs no JavaScript, no ARIA state and no motion. */
+/* The card surface, border and radius are the page's own, unchanged. */
 .faq-q {
-  padding: clamp(20px, 2.4vw, 28px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--bg-deep);
-  transition: border-color .25s var(--ease), background-color .25s var(--ease);
+  transition: border-color .16s ease-out, background-color .16s ease-out;
 }
 .faq-q:hover { border-color: var(--line-strong); background: var(--surface); }
-.faq-q h3 { margin-bottom: 9px; font-size: 18.5px; }
+.faq-q h3 { font-size: 18.5px; }
 .faq-q p { font-size: 15.5px; color: var(--text-dim); }
-@media (max-width: 760px) { .faq { grid-template-columns: minmax(0, 1fr); } }
-@media (prefers-reduced-motion: reduce) { .faq-q { transition: none; } }
+
+/* Before the script upgrades the markup, and for anyone without it, this is
+   eight plain question and answer pairs and the padding lives on the card. */
+.faq-q { padding: clamp(20px, 2.4vw, 26px); }
+.faq-q h3 { margin-bottom: 9px; }
+
+/* ---- upgraded ---- */
+.faq[data-acc] .faq-q { padding: 0; }
+.faq[data-acc] .faq-q h3 { margin: 0; }
+.faq-btn {
+  display: flex; align-items: center; gap: 16px;
+  width: 100%; padding: clamp(16px, 1.9vw, 20px) clamp(18px, 2.2vw, 24px);
+  border: 0; background: transparent; color: inherit;
+  font: inherit; font-size: inherit; font-weight: inherit;
+  text-align: left; cursor: pointer;
+  transition: color .16s ease-out;
+}
+.faq-mark {
+  width: 15px; height: 15px; flex: none; margin-left: auto;
+  color: var(--text-muted);
+  transition: transform .16s ease-out, color .16s ease-out;
+}
+.faq-q.is-open .faq-mark { transform: rotate(180deg); color: var(--teal); }
+.faq-q.is-open .faq-btn { color: var(--teal); }
+
+/* 0fr to 1fr animates the panel to exactly the height of its own content, so
+   nothing has to be measured and no height is ever hard coded. */
+.faq-a {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows .22s ease-in-out;
+}
+.faq-a-in {
+  overflow: hidden;
+  /* Collapsed content stays in the DOM for crawlers but leaves the
+     accessibility tree, so a screen reader does not read eight open answers. */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .22s ease-in-out, visibility 0s linear .22s;
+}
+.faq-q.is-open .faq-a { grid-template-rows: 1fr; }
+.faq-q.is-open .faq-a-in {
+  visibility: visible; opacity: 1;
+  transition: opacity .22s ease-in-out, visibility 0s;
+}
+.faq[data-acc] .faq-q p { padding: 0 clamp(18px, 2.2vw, 24px) clamp(18px, 2.2vw, 22px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-q, .faq-btn, .faq-mark, .faq-a, .faq-a-in { transition: none; }
+  .faq-q.is-open .faq-mark { transform: none; }
+}
 
 
 /* ==========================================================================
