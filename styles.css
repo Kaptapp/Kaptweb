@@ -1608,7 +1608,14 @@ html[lang="it"]    { --free-label: "Gratis"; }
 .lg-app { width: 100%; max-width: 500px; min-width: 0; }
 .lg-kp { font-size: 12px; }
 .lg-body { display: grid; grid-template-columns: 186px 1fr; min-height: 320px; }
-.lg-kp .kp-side { padding: 12px 10px; }
+/* The rows are the same 186px wide as the Kapture Pro render's, but this
+   window carries the longest label the app has in nine languages. Six pixels
+   of side padding rather than ten hands the row eight more pixels of text,
+   which is the difference between Desktop-Screenshots, Capturas del Escritorio
+   and Schermate del desktop reading in full or being cut one letter short.
+   Japanese and Brazilian Portuguese are longer than any padding would fix, and
+   still ellipsise. */
+.lg-kp .kp-side { padding: 12px 6px; }
 
 /* Each row is a grid item, and a grid item's automatic minimum size is its own
    content, so a long translated label such as the Japanese or Brazilian
