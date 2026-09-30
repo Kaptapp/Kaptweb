@@ -1,0 +1,110 @@
+/* Account page
+   Loaded only by /account/, so styles.css stays exactly as the frozen site
+   shipped it. Everything here is built from the tokens already defined there:
+   no new colours, no second design system. */
+
+.ac-shell { max-width: 720px; }
+
+/* One panel visible at a time, chosen by data-state on <main>. Keeping the
+   rule here rather than toggling inline styles means the page has one source
+   of truth for which state it is in. */
+.ac-panel { display: none; }
+.ac[data-state="loading"]    [data-panel="loading"],
+.ac[data-state="signed-out"] [data-panel="signed-out"],
+.ac[data-state="link-sent"]  [data-panel="link-sent"],
+.ac[data-state="signed-in"]  [data-panel="signed-in"],
+.ac[data-state="error"]      [data-panel="error"] { display: block; }
+
+.ac-h2 { font-size: 20px; letter-spacing: -.01em; margin: 0; }
+.ac-lead { color: var(--text-dim); font-size: 17px; max-width: 54ch; margin: 0 0 22px; }
+.ac-note { color: var(--text-muted); font-size: 14px; margin: 14px 0 0; max-width: 54ch; }
+.ac-muted { color: var(--text-muted); }
+.ac-panel > .ac-lead:first-child { margin-top: 4px; }
+
+/* Sign-in form ----------------------------------------------------------- */
+
+.ac-form { display: grid; gap: 10px; max-width: 26rem; }
+.ac-label { font-size: 14px; font-weight: 620; color: var(--text-dim); }
+.ac-label-sm {
+  font-size: 12px; font-weight: 640; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-muted); margin: 0 0 4px;
+}
+.ac-input {
+  width: 100%; padding: 14px 16px; font: inherit; font-size: 16px; /* 16px stops iOS zooming on focus */
+  color: var(--text); background: var(--bg-deep);
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  transition: border-color .2s var(--ease);
+}
+.ac-input::placeholder { color: var(--text-muted); }
+.ac-input:hover { border-color: var(--text-muted); }
+.ac-input:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-color: transparent; }
+.ac-input[aria-invalid="true"] { border-color: #ff8b7a; }
+.ac-form .btn { justify-self: start; margin-top: 4px; }
+.ac-field-error { color: #ff8b7a; font-size: 14px; margin: 0; }
+
+/* Signed-in ------------------------------------------------------------- */
+
+.ac-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.ac-row-head { padding-bottom: 26px; border-bottom: 1px solid var(--line); margin-bottom: 26px; }
+.ac-email { font-size: 17px; font-weight: 600; margin: 0; word-break: break-all; }
+
+.ac-card {
+  padding: clamp(20px, 3vw, 26px);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.ac-card + .ac-card { margin-top: 18px; }
+.ac-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 18px;
+}
+
+.ac-badge {
+  padding: 5px 13px; border-radius: 999px;
+  font-size: 13px; font-weight: 640; letter-spacing: .02em;
+  border: 1px solid var(--line-strong); color: var(--text-muted);
+}
+.ac-badge[data-active="yes"] {
+  border-color: rgba(25, 215, 192, .38); color: var(--teal);
+  background: rgba(25, 215, 192, .10);
+}
+
+/* Label and value on one line at comfortable widths, stacked when narrow. */
+.ac-facts { margin: 0; display: grid; gap: 11px; }
+.ac-facts > div { display: flex; justify-content: space-between; gap: 18px; font-size: 15px; }
+.ac-facts dt { color: var(--text-muted); }
+.ac-facts dd { margin: 0; color: var(--text-dim); text-align: right; }
+
+.ac-seats { font-size: 14px; color: var(--text-muted); }
+
+.ac-devices { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ac-device {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  padding: 15px 16px;
+  background: var(--bg-deep); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.ac-device-name { font-size: 15px; font-weight: 600; margin: 0; }
+.ac-device-meta { font-size: 13px; color: var(--text-muted); margin: 3px 0 0; }
+.ac-device .btn { flex: none; }
+.ac-device[data-busy="yes"] { opacity: .55; }
+
+.ac-empty { color: var(--text-muted); font-size: 15px; margin: 0; }
+
+/* Visible only to assistive technology. The page still needs to announce that
+   a device was removed, which is not something a repaint communicates. */
+.ac-live {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 520px) {
+  .ac-facts > div { flex-direction: column; gap: 2px; }
+  .ac-facts dd { text-align: left; }
+  .ac-device { align-items: flex-start; }
+  .ac-device .btn { width: 100%; }
+  .ac-row-head .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ac-input { transition: none; }
+}

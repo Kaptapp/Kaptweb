@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your account | Kapture</title>
+<meta name="description" content="Sign in to see your Kapture Pro licence and the devices it is activated on.">
+<!-- A private page. It should never appear in search results, and it is not
+     part of the localised site, so it carries no hreflang cluster. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="same-origin">
+<meta name="theme-color" content="#1b1d1c">
+<link rel="canonical" href="https://kaptapp.com/account/">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/kapture-icon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<link rel="preconnect" href="https://sokcwfqvutnjzzbsuhqm.supabase.co" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=42">
+<link rel="stylesheet" href="account.css?v=1">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+    <a class="brand" href="/">
+      <img class="brand-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="brand-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+    </a>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/#how">How it works</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+    <a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>
+  </div>
+</header>
+
+<main id="main" class="legal ac" data-state="loading">
+  <div class="shell ac-shell">
+
+    <header class="legal-head">
+      <p class="kicker">Account</p>
+      <h1>Your Kapture account</h1>
+    </header>
+
+    <!-- One panel per state. The state lives on <main data-state>, so only one
+         of these is ever visible and the page never shows two truths at once. -->
+
+    <!-- Checking for an existing session. Shown first so a signed-in visitor
+         never sees the sign-in form flash before their account loads. -->
+    <section class="ac-panel" data-panel="loading" aria-hidden="true">
+      <p class="ac-muted">Checking your session…</p>
+    </section>
+
+    <!-- Signed out -->
+    <section class="ac-panel" data-panel="signed-out" aria-hidden="true">
+      <p class="ac-lead">Sign in with your email address. We send a link that signs you in.
+        There is no password to remember.</p>
+      <form class="ac-form" id="acForm" novalidate>
+        <label class="ac-label" for="acEmail">Email address</label>
+        <input class="ac-input" id="acEmail" name="email" type="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="you@example.com">
+        <p class="ac-field-error" id="acEmailError" role="alert" hidden></p>
+        <button class="btn btn-primary" id="acSend" type="submit">Email me a link</button>
+      </form>
+      <p class="ac-note">Use the address you bought Kapture Pro with.</p>
+    </section>
+
+    <!-- Magic link sent -->
+    <section class="ac-panel" data-panel="link-sent" aria-hidden="true">
+      <h2 class="ac-h2">Check your email</h2>
+      <p class="ac-lead">We sent a sign-in link to <strong id="acSentTo"></strong>.
+        Open it on this device and you will land back here, signed in.</p>
+      <p class="ac-note">The link works once and expires after an hour. If it does not
+        arrive within a minute or two, check your spam folder.</p>
+      <button class="btn btn-ghost btn-sm" id="acUseAnother" type="button">Use a different address</button>
+    </section>
+
+    <!-- Signed in. Entitlement and devices are filled in by account.js. -->
+    <section class="ac-panel" data-panel="signed-in" aria-hidden="true">
+
+      <div class="ac-row ac-row-head">
+        <div>
+          <p class="ac-label-sm">Signed in as</p>
+          <p class="ac-email" id="acEmailShown"></p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="acSignOut" type="button">Sign out</button>
+      </div>
+
+      <div class="ac-card" id="acLicence">
+        <div class="ac-card-head">
+          <h2 class="ac-h2">Kapture Pro</h2>
+          <span class="ac-badge" id="acStatus">Inactive</span>
+        </div>
+        <dl class="ac-facts" id="acFacts"></dl>
+        <p class="ac-note" id="acLicenceNote"></p>
+      </div>
+
+      <section class="ac-card" id="acDevices" hidden>
+        <div class="ac-card-head">
+          <h2 class="ac-h2">Activated devices</h2>
+          <span class="ac-seats" id="acSeats"></span>
+        </div>
+        <ul class="ac-devices" id="acDeviceList"></ul>
+        <p class="ac-note" id="acDeviceNote"></p>
+      </section>
+
+    </section>
+
+    <!-- Error -->
+    <section class="ac-panel" data-panel="error" aria-hidden="true">
+      <h2 class="ac-h2">Something went wrong</h2>
+      <p class="ac-lead" id="acErrorText">We could not load your account.</p>
+      <button class="btn btn-ghost btn-sm" id="acRetry" type="button">Try again</button>
+    </section>
+
+    <!-- Announcements for screen readers: state changes here are the result of
+         a button press, so they need to be spoken rather than only drawn. -->
+    <p class="ac-live" id="acLive" role="status" aria-live="polite"></p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-brand">
+      <img class="footer-icon" src="../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="footer-wordmark" src="../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+      <span>kaptapp.com</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/#how">How it works</a>
+      <a href="/help/">Help</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="mailto:pequelord@gmail.com">Contact</a>
+    </nav>
+    <p class="copyright">&copy; <span id="year">2026</span> Kapture</p>
+  </div>
+</footer>
+
+<script src="../script.js?v=42"></script>
+<script src="account.js?v=1"></script>
+</body>
+</html>
