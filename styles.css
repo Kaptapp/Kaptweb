@@ -483,13 +483,10 @@ html[lang="it"]    { --free-label: "Gratis"; }
 }
 .steps li { position: relative; }
 
-.step-visual {
-  margin-bottom: 22px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-deep);
-  overflow: hidden;
-}
+/* No card around the artwork: the mockup already draws its own window, so a
+   second rounded frame around it was a frame around a frame. Only the spacing
+   below it belongs to this element. */
+.step-visual { margin-bottom: 22px; }
 .step-visual.has-icon { position: relative; }
 .step-art { display: block; width: 100%; height: auto; color: var(--text); }
 
