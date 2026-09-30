@@ -1,3 +1,18 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Secrets. Two things make this repo unusually unforgiving about them:
+# the repository is public, and GitHub Pages publishes the branch root
+# verbatim, dotfiles included. A committed .env would therefore be readable
+# both on github.com and at https://kaptapp.com/.env, so keep real values
+# out of the tree entirely and use .env.example as the shape reference.
+.env
+.env.*
+!.env.example
+*.env
+secrets.json
+service-role*
+*.pem
+*.p8
+*.p12

@@ -333,6 +333,14 @@ if __name__ == '__main__':
     if check_leaks.main():
         raise SystemExit('  !! English copy survived translation, see above')
 
+    # The repo is public and Pages serves the branch root verbatim, so a
+    # committed Supabase secret is published twice over. Fail the build here
+    # rather than find out afterwards.
+    import check_secrets
+    print()
+    if check_secrets.main():
+        raise SystemExit('  !! a Supabase secret is in the tree, see above')
+
     if retired:
         print(f'\n  {len(retired)} retired key(s) no longer in the English source:')
         for k in retired:
