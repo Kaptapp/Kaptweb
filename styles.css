@@ -1609,6 +1609,14 @@ html[lang="it"]    { --free-label: "Gratis"; }
 .lg-kp { font-size: 12px; }
 .lg-body { display: grid; grid-template-columns: 186px 1fr; min-height: 320px; }
 .lg-kp .kp-side { padding: 12px 10px; }
+
+/* Each row is a grid item, and a grid item's automatic minimum size is its own
+   content, so a long translated label such as the Japanese or Brazilian
+   Portuguese Desktop Screenshots grew the row wider than the 186px sidebar and
+   the pane clipped it flat. Letting a row shrink to its track hands the label
+   back to the ellipsis its own rule already asks for, in whichever language is
+   long enough to need it. */
+.lg-kp .kp-side li { min-width: 0; }
 .lg-set { padding: 16px 16px 14px; min-width: 0; }
 .lg-set-h { font-size: 15px; font-weight: 650; letter-spacing: -.02em; margin-bottom: 14px; }
 .lg-row {
