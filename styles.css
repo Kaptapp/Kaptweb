@@ -1399,11 +1399,12 @@ html[lang="ja"]    { --free-label: "\7121\6599"; }
    ========================================================================== */
 /* A single column of questions: an accordion is read down a list, and two
    columns would leave an expanded answer sitting beside a collapsed one. */
+/* Full width of the shell, like every other major block on the page: the two
+   app renders, the comparison table, the Languages block and the closing cards
+   are all the same 1040px content column. No max-width of its own. */
 .faq {
   margin-top: clamp(36px, 4.5vw, 60px);
   display: grid; gap: 10px;
-  /* Left edge shared with the section heading above it. */
-  max-width: 860px;
 }
 /* The card surface, border and radius are the page's own, unchanged. */
 .faq-q {
