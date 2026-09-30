@@ -1490,10 +1490,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "Desktop Screenshots"; --lg-smart: "Smart";
   --lg-collections: "Collections";  --lg-projects: "Projects";
   --lg-allprojects: "All Projects"; --lg-settings: "Settings";
-  --lg-language: "Language";        --lg-rules: "Rules";
-  --lg-sources: "Sources";          --lg-duplicates: "Duplicates";
-  --lg-unorganised: "Unorganised";  --lg-cleanup: "Cleanup";
-  --lg-tags: "Tags";                --lg-notes: "Notes";
+  --lg-language: "Language";
   --lg-native: "English";
   --lg-local: "Everything stays local on your Mac.";
 }
@@ -1503,10 +1500,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "Capturas del Escritorio"; --lg-smart: "Inteligente";
   --lg-collections: "Colecciones";  --lg-projects: "Proyectos";
   --lg-allprojects: "Todos los proyectos"; --lg-settings: "Ajustes";
-  --lg-language: "Idioma";          --lg-rules: "Reglas";
-  --lg-sources: "Fuentes";          --lg-duplicates: "Duplicados";
-  --lg-unorganised: "Sin organizar"; --lg-cleanup: "Limpieza";
-  --lg-tags: "Etiquetas";           --lg-notes: "Notas";
+  --lg-language: "Idioma";
   --lg-native: "Español";
   --lg-local: "Todo se queda en tu Mac.";
 }
@@ -1516,10 +1510,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "桌面截图";          --lg-smart: "智能";
   --lg-collections: "收藏集";        --lg-projects: "项目";
   --lg-allprojects: "所有项目";      --lg-settings: "设置";
-  --lg-language: "语言";            --lg-rules: "规则";
-  --lg-sources: "来源";             --lg-duplicates: "重复项";
-  --lg-unorganised: "未整理";        --lg-cleanup: "清理";
-  --lg-tags: "标签";                --lg-notes: "备注";
+  --lg-language: "语言";
   --lg-native: "简体中文";
   --lg-local: "一切都留在你的 Mac 上。";
 }
@@ -1529,10 +1520,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "데스크탑 스크린샷";  --lg-smart: "스마트";
   --lg-collections: "컬렉션";        --lg-projects: "프로젝트";
   --lg-allprojects: "모든 프로젝트";  --lg-settings: "설정";
-  --lg-language: "언어";            --lg-rules: "규칙";
-  --lg-sources: "출처";             --lg-duplicates: "중복 항목";
-  --lg-unorganised: "미정리";        --lg-cleanup: "정리";
-  --lg-tags: "태그";                --lg-notes: "메모";
+  --lg-language: "언어";
   --lg-native: "한국어";
   --lg-local: "모든 것이 Mac 안에 남습니다.";
 }
@@ -1542,10 +1530,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "デスクトップのスクリーンショット"; --lg-smart: "スマート";
   --lg-collections: "コレクション";   --lg-projects: "プロジェクト";
   --lg-allprojects: "すべてのプロジェクト"; --lg-settings: "設定";
-  --lg-language: "言語";            --lg-rules: "ルール";
-  --lg-sources: "ソース";           --lg-duplicates: "重複";
-  --lg-unorganised: "未整理";        --lg-cleanup: "クリーンアップ";
-  --lg-tags: "タグ";                --lg-notes: "メモ";
+  --lg-language: "言語";
   --lg-native: "日本語";
   --lg-local: "すべて Mac のなかに残ります。";
 }
@@ -1555,10 +1540,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "Desktop-Screenshots"; --lg-smart: "Smart";
   --lg-collections: "Sammlungen";   --lg-projects: "Projekte";
   --lg-allprojects: "Alle Projekte"; --lg-settings: "Einstellungen";
-  --lg-language: "Sprache";         --lg-rules: "Regeln";
-  --lg-sources: "Quellen";          --lg-duplicates: "Duplikate";
-  --lg-unorganised: "Unsortiert";   --lg-cleanup: "Aufräumen";
-  --lg-tags: "Tags";                --lg-notes: "Notizen";
+  --lg-language: "Sprache";
   --lg-native: "Deutsch";
   --lg-local: "Alles bleibt auf deinem Mac.";
 }
@@ -1568,10 +1550,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "Captures du bureau"; --lg-smart: "Smart";
   --lg-collections: "Collections";  --lg-projects: "Projets";
   --lg-allprojects: "Tous les projets"; --lg-settings: "Réglages";
-  --lg-language: "Langue";          --lg-rules: "Règles";
-  --lg-sources: "Sources";          --lg-duplicates: "Doublons";
-  --lg-unorganised: "Non classées"; --lg-cleanup: "Nettoyage";
-  --lg-tags: "Étiquettes";          --lg-notes: "Notes";
+  --lg-language: "Langue";
   --lg-native: "Français";
   --lg-local: "Tout reste sur votre Mac.";
 }
@@ -1581,10 +1560,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "Capturas da área de trabalho"; --lg-smart: "Smart";
   --lg-collections: "Coleções";     --lg-projects: "Projetos";
   --lg-allprojects: "Todos os projetos"; --lg-settings: "Ajustes";
-  --lg-language: "Idioma";          --lg-rules: "Regras";
-  --lg-sources: "Origens";          --lg-duplicates: "Duplicadas";
-  --lg-unorganised: "Sem organizar"; --lg-cleanup: "Limpeza";
-  --lg-tags: "Etiquetas";           --lg-notes: "Notas";
+  --lg-language: "Idioma";
   --lg-native: "Português (Brasil)";
   --lg-local: "Tudo fica no seu Mac.";
 }
@@ -1594,10 +1570,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   --lg-desktop: "Schermate del desktop"; --lg-smart: "Smart";
   --lg-collections: "Raccolte";     --lg-projects: "Progetti";
   --lg-allprojects: "Tutti i progetti"; --lg-settings: "Impostazioni";
-  --lg-language: "Lingua";          --lg-rules: "Regole";
-  --lg-sources: "Origini";          --lg-duplicates: "Duplicati";
-  --lg-unorganised: "Non organizzate"; --lg-cleanup: "Pulizia";
-  --lg-tags: "Tag";                 --lg-notes: "Note";
+  --lg-language: "Lingua";
   --lg-native: "Italiano";
   --lg-local: "Tutto resta sul tuo Mac.";
 }
@@ -1617,29 +1590,22 @@ html[lang="it"]    { --free-label: "Gratis"; }
 .lg-t[data-t="allprojects"]  { --lg-t: var(--lg-allprojects); }
 .lg-t[data-t="settings"]     { --lg-t: var(--lg-settings); }
 .lg-t[data-t="language"]     { --lg-t: var(--lg-language); }
-.lg-t[data-t="rules"]        { --lg-t: var(--lg-rules); }
-.lg-t[data-t="sources"]      { --lg-t: var(--lg-sources); }
-.lg-t[data-t="duplicates"]   { --lg-t: var(--lg-duplicates); }
-.lg-t[data-t="unorganised"]  { --lg-t: var(--lg-unorganised); }
-.lg-t[data-t="cleanup"]      { --lg-t: var(--lg-cleanup); }
-.lg-t[data-t="tags"]         { --lg-t: var(--lg-tags); }
-.lg-t[data-t="notes"]        { --lg-t: var(--lg-notes); }
 .lg-native::after { content: var(--lg-native); }
 .lg-t[data-t="local"]        { --lg-t: var(--lg-local); }
 
 /* The whole interface changes at once, as it does in the app: one group, one
    crossfade, no per-item stagger. */
-.lg-app .lg-t, .lg-native, .lg-cloud li { transition: opacity .22s ease-in-out; }
+.lg-app .lg-t, .lg-native { transition: opacity .22s ease-in-out; }
 .lg.is-turning .lg-app .lg-t,
-.lg.is-turning .lg-native,
-.lg.is-turning .lg-cloud li { opacity: 0; }
+.lg.is-turning .lg-native { opacity: 0; }
 
-.lg {
-  margin-top: clamp(40px, 5vw, 64px);
-  display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px); align-items: center;
-}
-.lg-app { min-width: 0; }
+/* One thing to look at. The section already names the languages in its own
+   copy and again in the controls below, so the window is the only illustration
+   it needs. It keeps the narrow proportions it had beside the old term list:
+   the Settings pane holds one row, and a wider window would only add space
+   inside the render instead of around it. */
+.lg { margin-top: clamp(40px, 5vw, 64px); display: grid; justify-items: center; }
+.lg-app { width: 100%; max-width: 500px; min-width: 0; }
 .lg-kp { font-size: 12px; }
 .lg-body { display: grid; grid-template-columns: 186px 1fr; min-height: 320px; }
 .lg-kp .kp-side { padding: 12px 10px; }
@@ -1661,17 +1627,6 @@ html[lang="it"]    { --free-label: "Gratis"; }
 .lg-car { width: 11px; height: 11px; color: #6f7874; margin-left: auto; }
 .lg-note { margin-top: 12px; font-size: 10px; color: #6f7874; }
 
-/* Controlled, not a cloud of confetti: a plain wrap, the terms set at three
-   sizes so the field has rhythm without anything moving on its own. */
-.lg-cloud { display: flex; flex-wrap: wrap; gap: 10px 14px; align-content: center; min-width: 0; }
-.lg-cloud li {
-  padding: 7px 14px; border-radius: 999px;
-  border: 1px solid var(--line); color: var(--text-dim);
-  font-size: 15px; white-space: nowrap;
-}
-.lg-cloud li:nth-child(3n+1) { font-size: 18px; color: var(--text); }
-.lg-cloud li:nth-child(4n+3) { border-color: rgba(25, 215, 192, .34); color: var(--teal); }
-
 .lg-pick {
   display: flex; flex-wrap: wrap; gap: 9px;
   margin-top: clamp(28px, 3.5vw, 44px); justify-content: center;
@@ -1689,18 +1644,12 @@ html[lang="it"]    { --free-label: "Gratis"; }
   color: var(--teal);
 }
 
-@media (max-width: 900px) {
-  .lg { grid-template-columns: minmax(0, 1fr); }
-  .lg-cloud { justify-content: center; }
-}
 @media (max-width: 560px) {
   .lg-body { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .lg-kp .kp-side { display: none; }
-  .lg-cloud li { font-size: 14px; padding: 6px 12px; }
-  .lg-cloud li:nth-child(3n+1) { font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .lg-app .lg-t, .lg-native, .lg-cloud li, .lg-pick button { transition: none; }
+  .lg-app .lg-t, .lg-native, .lg-pick button { transition: none; }
 }
 
 /* ==========================================================================
@@ -1911,6 +1860,11 @@ html[lang="it"]    { --free-label: "Gratis"; }
    app deliberately moved away from.
    ========================================================================== */
 .sm-demo { margin-top: clamp(40px, 5vw, 64px); }
+/* The Kapture Pro render hides these until a state switches them on. Here a
+   capture is simply selected, and stays selected while the tabs change, so the
+   Inspector is steady rather than appearing and disappearing per tool. */
+.sm-demo .kp-insp-full,
+.sm-demo .kp-tags { display: block; }
 
 .sm-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .sm-top .kp-h4 { font-size: 16px; font-weight: 650; letter-spacing: -.02em; margin: 0; }

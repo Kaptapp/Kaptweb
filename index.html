@@ -263,7 +263,7 @@
 </script>
 
 <link rel="preload" href="assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=40">
+<link rel="stylesheet" href="styles.css?v=41">
 </head>
 <body>
 
@@ -1070,7 +1070,7 @@
                   <div class="sm-view" data-view="unorganised">
                     <div class="kp-chips"><span class="is-on">All 8</span><span>Desktop 6</span><span>Mobile 2</span><span>PNG 7</span><span>JPEG 1</span><em class="kp-sort">Sort by Newest</em></div>
                     <div class="sm-grid">
-                      <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">ohmywork_001.png</p><p class="kp-meta">No project</p></article>
+                      <article class="kp-card is-sel"><div class="kp-thumb"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">ohmywork_001.png</p><p class="kp-meta">No project</p></article>
                       <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-3.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">bargly_001.png</p><p class="kp-meta">No project</p></article>
                       <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-6.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">getdotio_002.png</p><p class="kp-meta">No project</p></article>
                       <article class="kp-card"><div class="kp-thumb"><img src="assets/demo/thumb-7.png" alt="" loading="lazy" width="520" height="390"></div><p class="kp-name">sloooths_002.png</p><p class="kp-meta">No project</p></article>
@@ -1139,6 +1139,19 @@
                 </div>
               </div>
             </main>
+
+            <!-- The Inspector is part of the workspace, not part of a tool, so it
+                 shows the selected capture and keeps showing it while the Smart
+                 tabs change. Same markup and the same classes as the Kapture Pro
+                 render above: there is only one Inspector on this site. -->
+            <aside class="kp-insp">
+              <div class="kp-insp-full">
+                <div class="kp-insp-prev"><img src="assets/demo/thumb-2.png" alt="" loading="lazy" width="520" height="390"></div>
+                <p class="kp-insp-name">ohmywork_001.png</p><p class="kp-insp-sub">No project</p>
+                <dl class="kp-rows"><div><dt>Kind</dt><dd>PNG image</dd></div><div><dt>Size</dt><dd>1.8 MB</dd></div><div><dt>Dimensions</dt><dd>1440 &times; 1024</dd></div><div><dt>Source</dt><dd>ohmywork.com</dd></div><div><dt>Captured</dt><dd>Today, 11:20</dd></div></dl>
+                <div class="kp-tags"><p class="kp-lab">Tags</p><span class="kp-tag kp-add">+ Add tag</span><p class="kp-lab">Note</p><p class="kp-note">Not filed yet.</p></div>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
@@ -1282,22 +1295,6 @@
           </div>
         </div>
 
-        <!-- Decoration, and already said by the section above it, so it is not
-             announced twice. -->
-        <ul class="lg-cloud" aria-hidden="true">
-          <li class="lg-t" data-t="library"></li>
-          <li class="lg-t" data-t="smart"></li>
-          <li class="lg-t" data-t="collections"></li>
-          <li class="lg-t" data-t="projects"></li>
-          <li class="lg-t" data-t="rules"></li>
-          <li class="lg-t" data-t="sources"></li>
-          <li class="lg-t" data-t="duplicates"></li>
-          <li class="lg-t" data-t="unorganised"></li>
-          <li class="lg-t" data-t="cleanup"></li>
-          <li class="lg-t" data-t="tags"></li>
-          <li class="lg-t" data-t="notes"></li>
-          <li class="lg-t" data-t="favorites"></li>
-        </ul>
       </div>
 
       <ul class="lg-pick" id="lgPick">
@@ -1511,6 +1508,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=40"></script>
+<script src="script.js?v=41"></script>
 </body>
 </html>
