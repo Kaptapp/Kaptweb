@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | Kapture</title>
+<meta name="description" content="That page does not exist on kaptapp.com. Find Kapture for Chrome, Kapture Pro, help and privacy from here.">
+<!-- An error page should never be indexed, but its links are worth following
+     back into the site that does matter. -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#1b1d1c">
+
+<!-- Every path below is root absolute. GitHub Pages serves this one file for
+     any unknown URL at any depth, so /deep/nested/typo would resolve ../ to a
+     directory that does not exist and the page would arrive unstyled. -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/logo/kapture-icon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/styles.css?v=42">
+
+<!-- Kept inline rather than added to styles.css: this is the only page that
+     needs it, and every other page would otherwise have to re-download a
+     shared stylesheet it does not use. Built from the site's own tokens. -->
+<style>
+  .nf { display: grid; align-content: center; min-height: 62vh; }
+  .nf-shell { max-width: 760px; }
+  .nf-code {
+    font-family: var(--font-title);
+    font-size: clamp(64px, 13vw, 128px);
+    line-height: .9;
+    font-weight: 600;
+    letter-spacing: -.03em;
+    color: var(--teal);
+    margin: 0 0 18px;
+  }
+  .nf h1 { font-size: clamp(30px, 5vw, 48px); margin: 0 0 16px; }
+  .nf-lead { color: var(--text-dim); font-size: clamp(16px, 2vw, 18px); max-width: 48ch; margin: 0; }
+  .nf .hero-actions { margin-top: 32px; }
+
+  .nf-more { margin-top: clamp(44px, 6vw, 68px); padding-top: clamp(26px, 3vw, 34px); border-top: 1px solid var(--line); }
+  .nf-more h2 { font-size: 18px; margin: 0 0 16px; }
+  .nf-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 12px; }
+  .nf-links a {
+    display: inline-block; padding: 9px 16px;
+    border: 1px solid var(--line-strong); border-radius: 999px;
+    color: var(--text-dim); font-size: 15px; text-decoration: none;
+    transition: color .2s var(--ease), border-color .2s var(--ease), background-color .2s var(--ease);
+  }
+  .nf-links a:hover { color: var(--text); border-color: var(--text-muted); background: var(--surface); }
+  @media (prefers-reduced-motion: reduce) { .nf-links a { transition: none; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+    <a class="brand" href="/">
+      <img class="brand-icon" src="/assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="brand-wordmark" src="/assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+    </a>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/#how">How it works</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+    <a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>
+  </div>
+</header>
+
+<main id="main" class="legal nf">
+  <div class="shell nf-shell">
+
+    <p class="nf-code">404</p>
+    <h1>That page got away.</h1>
+    <p class="nf-lead">The page you're looking for doesn't exist, moved somewhere else, or the
+      link is out of date.</p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Back to Kapture</a>
+      <a class="btn btn-white" href="https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap"
+         target="_blank" rel="noopener noreferrer">
+        <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
+        <span class="store-cta-label">Get Kapture for Chrome</span>
+      </a>
+    </div>
+
+    <section class="nf-more">
+      <h2>Still looking for something?</h2>
+      <ul class="nf-links">
+        <li><a href="/#capture">Kapture for Chrome</a></li>
+        <li><a href="/#pro">Kapture Pro</a></li>
+        <li><a href="/help/">Help</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-brand">
+      <img class="footer-icon" src="/assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="footer-wordmark" src="/assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+      <span>kaptapp.com</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/#how">How it works</a>
+      <a href="/help/">Help</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="mailto:pequelord@gmail.com">Contact</a>
+    </nav>
+    <p class="copyright">&copy; <span id="year">2026</span> Kapture</p>
+  </div>
+</footer>
+
+<script src="/script.js?v=42"></script>
+</body>
+</html>
