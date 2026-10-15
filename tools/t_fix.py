@@ -659,25 +659,25 @@ FIX = {
  'it': '<th scope="row">Organizzazione con Smart</th>'},
 
 # ---------------------------------------------------------------- version and metadata
-'Chrome extension 0.4.9 &middot; Kapture Pro': {
- 'es': 'Extensión de Chrome 0.4.9 &middot; Kapture Pro',
- 'zh': 'Chrome 扩展程序 0.4.9 &middot; Kapture Pro',
- 'ko': 'Chrome 확장 프로그램 0.4.9 &middot; Kapture Pro',
- 'ja': 'Chrome 拡張機能 0.4.9 &middot; Kapture Pro',
- 'de': 'Chrome-Erweiterung 0.4.9 &middot; Kapture Pro',
- 'fr': 'Extension Chrome 0.4.9 &middot; Kapture Pro',
- 'pt-br': 'Extensão do Chrome 0.4.9 &middot; Kapture Pro',
- 'it': 'Estensione Chrome 0.4.9 &middot; Kapture Pro'},
+'Chrome extension 0.5.0 &middot; Kapture Pro': {
+ 'es': 'Extensión de Chrome 0.5.0 &middot; Kapture Pro',
+ 'zh': 'Chrome 扩展程序 0.5.0 &middot; Kapture Pro',
+ 'ko': 'Chrome 확장 프로그램 0.5.0 &middot; Kapture Pro',
+ 'ja': 'Chrome 拡張機能 0.5.0 &middot; Kapture Pro',
+ 'de': 'Chrome-Erweiterung 0.5.0 &middot; Kapture Pro',
+ 'fr': 'Extension Chrome 0.5.0 &middot; Kapture Pro',
+ 'pt-br': 'Extensão do Chrome 0.5.0 &middot; Kapture Pro',
+ 'it': 'Estensione Chrome 0.5.0 &middot; Kapture Pro'},
 
-'<p class="kicker">Kapture for Chrome &middot; 0.4.9</p>': {
- 'es': '<p class="kicker">Kapture para Chrome &middot; 0.4.9</p>',
- 'zh': '<p class="kicker">Chrome 版 Kapture &middot; 0.4.9</p>',
- 'ko': '<p class="kicker">Chrome용 Kapture &middot; 0.4.9</p>',
- 'ja': '<p class="kicker">Chrome 版 Kapture &middot; 0.4.9</p>',
- 'de': '<p class="kicker">Kapture für Chrome &middot; 0.4.9</p>',
- 'fr': '<p class="kicker">Kapture pour Chrome &middot; 0.4.9</p>',
- 'pt-br': '<p class="kicker">Kapture para Chrome &middot; 0.4.9</p>',
- 'it': '<p class="kicker">Kapture per Chrome &middot; 0.4.9</p>'},
+'<p class="kicker">Kapture for Chrome &middot; 0.5.0</p>': {
+ 'es': '<p class="kicker">Kapture para Chrome &middot; 0.5.0</p>',
+ 'zh': '<p class="kicker">Chrome 版 Kapture &middot; 0.5.0</p>',
+ 'ko': '<p class="kicker">Chrome용 Kapture &middot; 0.5.0</p>',
+ 'ja': '<p class="kicker">Chrome 版 Kapture &middot; 0.5.0</p>',
+ 'de': '<p class="kicker">Kapture für Chrome &middot; 0.5.0</p>',
+ 'fr': '<p class="kicker">Kapture pour Chrome &middot; 0.5.0</p>',
+ 'pt-br': '<p class="kicker">Kapture para Chrome &middot; 0.5.0</p>',
+ 'it': '<p class="kicker">Kapture per Chrome &middot; 0.5.0</p>'},
 
 'Kapture saves full webpages or selected areas straight from Chrome. Kapture Pro turns them into a searchable visual library on your desktop, with Projects, Collections and Smart to keep it organised. Everything stays local.': {
  'es': 'Kapture guarda páginas web completas o el área que elijas, directamente desde Chrome. Kapture Pro las convierte en una biblioteca visual con búsqueda en tu ordenador, con Proyectos, Colecciones e Inteligente para mantenerla en orden. Todo se queda en local.',

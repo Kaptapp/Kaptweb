@@ -330,7 +330,23 @@ html[lang="it"]    { --free-label: "Gratis"; }
 /* The header carries the brand, the nav and the language selector. The product
    actions live in the hero and the closing section, not up here. */
 @media (max-width: 900px) {
-  .header-nav { display: none; }
+  /* The nav used to be removed here, which left a 14,000px phone page with no
+     way to reach a section except scrolling the whole thing. It stays, on its
+     own row under the brand, scrolling sideways if the translations need the
+     room. Same links, same markup: only the row is new. */
+  .header-inner { flex-wrap: wrap; row-gap: 2px; }
+  .header-nav {
+    order: 3;
+    width: 100%;
+    margin-inline: 0;
+    gap: 20px;
+    padding-bottom: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .header-nav::-webkit-scrollbar { display: none; }
+  .header-nav a { white-space: nowrap; }
   .header-ctas,
   .header-inner > .store-cta { margin-left: auto; }
 }
@@ -473,6 +489,78 @@ html[lang="it"]    { --free-label: "Gratis"; }
 
 .tile h3 { margin-bottom: 9px; font-size: 18.5px; }
 .tile p { font-size: 15.5px; color: var(--text-dim); }
+
+/* ---------- Section rhythm ----------
+   Three sections sit on the deeper ground so a 13,000px scroll reads as
+   chapters rather than one continuous panel. Both values already existed. */
+.section-deep { background: var(--bg-deep); }
+
+/* Three product sections share one relationship: title left, the copy that
+   explains it on the right. They are not identical, because three identical
+   heads in a row is what we were getting away from. Chrome sets its copy
+   against the top of the heading, Kapture Pro hangs it from the bottom, and
+   Smart widens the title column so the longest heading on the page keeps its
+   two-line break. Below 900px all three stack, as they always did. */
+@media (min-width: 900px) {
+  .section-head-split {
+    max-width: none;
+    display: grid;
+    /* One ratio for all three sections, not one measured per heading. A
+       per-section fit-content sized each column to its own longest line, which
+       is defensible in isolation and reads as three unrelated layouts when you
+       scroll past them in a row. A fixed fraction puts the title column, the
+       gutter and the copy column in the same place every time, which is what
+       makes them look like one system. Long translations wrap inside their
+       column instead of moving it. */
+    grid-template-columns: minmax(0, 1.52fr) minmax(0, 1fr);
+    column-gap: clamp(32px, 5vw, 72px);
+    row-gap: 0;
+  }
+  /* The kicker stays directly above its heading in the left column rather than
+     spanning the full width: given its own row it inherited the row height of
+     the taller lead beside it and opened an 86px hole under itself. */
+  .section-head-split .kicker { grid-column: 1; grid-row: 1; }
+  .section-head-split h2 { grid-column: 1; grid-row: 2; }
+  .section-head-split .section-lead {
+    grid-column: 2; grid-row: 1 / span 2;
+    margin: 0; align-self: end;
+  }
+  /* All three now hang the copy from the bottom of the heading block. Chrome
+     used to set its copy against the top, which read as a paragraph floating
+     beside the title rather than aligned to it. The three heads stay distinct
+     through their column proportions instead. */
+}
+
+/* The renders are the reason to be on this page, so they are given more room
+   than the text column in three deliberate steps rather than one. Each widens
+   past the shell by a different amount and each stops bleeding once the
+   viewport can no longer carry it, so nothing ever crosses the gutter. */
+/* One width for all three. Three near-but-not-quite widths read as drift
+   rather than as a family, so the widest of them is now the single reference
+   and the other two meet it. Each render divides that footprint its own way:
+   Pro and Smart hand the extra to the workspace between their fixed sidebar
+   and Inspector, and Chrome hands it to the webpage (see .cap-body below). */
+.hero-stage, .cap-wide, .kp-wide, .sm-bleed { --render-w: 1260px; }
+
+/* Scoped to the shell child, which is two classes, because the component rules
+   further down set margin with the `margin` shorthand: `.cap { margin: X 0 0 }`
+   zeroes the inline margins and, being later in the file at equal specificity,
+   silently won. That is why the Chrome render sat flush left with all 80px of
+   its overhang on the right. Two classes beat one regardless of order, so the
+   centring no longer depends on where in the file these rules live. */
+.shell > .hero-stage,
+.shell > .cap-wide,
+.shell > .kp-wide,
+.shell > .sm-bleed {
+  width: min(var(--render-w), calc(100vw - 2 * var(--gutter)));
+  margin-inline: calc(50% - min(var(--render-w) / 2, 50vw - var(--gutter)));
+}
+@media (max-width: 1180px) {
+  .shell > .hero-stage,
+  .shell > .cap-wide,
+  .shell > .kp-wide,
+  .shell > .sm-bleed { width: 100%; margin-inline: 0; }
+}
 
 /* ---------- Steps ---------- */
 .steps {
@@ -1049,7 +1137,9 @@ html[lang="it"]    { --free-label: "Gratis"; }
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-46%);
+  /* a true half: -46% sat the panel 4% of its own height low, which read as
+     49px of space above it and 7px below */
+  transform: translateY(-50%);
   width: 30%;
   padding: var(--panel-pad);
   border: 1px solid var(--panel-edge);
@@ -1073,23 +1163,14 @@ html[lang="it"]    { --free-label: "Gratis"; }
   text-align: center;
 }
 
-/* Stack rather than shrink: a desktop app window at 25% of a phone is unreadable. */
+/* The composition holds its shape all the way down rather than unstacking into
+   two separate pictures: the overlap of the two products is the idea, and a
+   phone should see the same arrangement, smaller. Both layers keep their
+   desktop percentages, so what shrinks is the picture, not its layout. */
 @media (max-width: 760px) {
-  .hero-stage { display: grid; justify-items: center; gap: clamp(20px, 4vw, 34px); }
-  .hero-stage-mac { width: 100%; }
-  /* relative, never static: the dark panel layer is absolute, so this element
-     has to stay its containing block once the stage stops being absolute. */
-  .hero-stage-chrome {
-    position: relative;   /* never static: it is the dark layer's containing block */
-    top: auto; right: auto; transform: none;
-    width: 60%;
-  }
   /* A centred grid item is fit-content by default, which lets a long caption
      size itself past the column. Stretch it so it can only wrap. */
   .hero-stage figcaption { justify-self: stretch; max-width: 100%; margin-top: 4px; }
-}
-@media (max-width: 420px) {
-  .hero-stage-chrome { width: 72%; }
 }
 
 /* ---------- Hero product labels ----------
@@ -1120,11 +1201,10 @@ html[lang="it"]    { --free-label: "Gratis"; }
   box-shadow: 0 0 0 3px rgba(25, 215, 192, .18);
 }
 /* Only the Mac layer needs positioning added. .hero-stage-chrome is already
-   absolute on desktop, and the stacked rule below handles small screens. */
+   absolute at every width, since the composition no longer unstacks. */
 .hero-stage-mac { position: relative; }
 .hero-stage { margin-top: clamp(76px, 9vw, 116px); }
 @media (max-width: 760px) {
-  .hero-stage-chrome { width: 64%; }
   .stage-label { position: static; margin-bottom: 10px; }
 }
 
@@ -1313,6 +1393,22 @@ html[lang="it"]    { --free-label: "Gratis"; }
 }
 .kp-thumb { position: relative; border-radius: 5px; overflow: hidden; background: var(--kp-well); aspect-ratio: 4 / 3; }
 .kp-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+/* Every assets/demo/thumb-*.png carries 76 rows of white at the bottom, 19.5%
+   of its 390px height: the captures were taken of pages shorter than the
+   frame. The images are exactly 4:3 and the containers are exactly 4:3, so
+   object-fit had nothing to crop and the band rendered as a white strip under
+   every card. Scaling from the top edge pushes those rows past the container,
+   which already clips, and leaves a thumbnail that reads like a screenshot of
+   a page rather than a page on a white sheet. 390 / 314 = 1.242. */
+.kp-thumb img,
+.kp-insp-prev img,
+.sm-dup-t img,
+.cp-prev img {
+  transform: scale(1.242);
+  transform-origin: top center;
+}
+.cp-prev img { object-position: top center; }
 .kp-fmt {
   position: absolute; left: 4px; bottom: 4px;
   padding: 1px 5px; border-radius: 4px; background: rgba(10, 12, 11, .78);
@@ -1635,7 +1731,15 @@ html[lang="it"]    { --free-label: "Gratis"; }
    the Settings pane holds one row, and a wider window would only add space
    inside the render instead of around it. */
 .lg { margin-top: clamp(40px, 5vw, 64px); display: grid; justify-items: center; }
-.lg-app { width: 100%; max-width: 500px; min-width: 0; }
+/* Half again as big, by scale rather than by width. This render is rebuilt in
+   HTML at fixed sizes: a 186px sidebar and 12px type. Widening the box alone
+   would have left both untouched and simply poured the extra 250px into the
+   Settings pane as empty space, so the labels the section exists to show would
+   have stayed exactly as hard to read. Zoom scales the whole window, type
+   included, which is what "too small to read" actually asks for, and it keeps
+   the sidebar at the 186px the nine-language ellipsis rules were tuned
+   against. The Chrome panel below is scaled the same way. */
+.lg-app { width: 100%; max-width: 500px; min-width: 0; zoom: 1.5; }
 .lg-kp { font-size: 12px; }
 .lg-body { display: grid; grid-template-columns: 186px 1fr; min-height: 320px; }
 /* The rows are the same 186px wide as the Kapture Pro render's, but this
@@ -1910,6 +2014,24 @@ html[lang="it"]    { --free-label: "Gratis"; }
    Inspector is steady rather than appearing and disappearing per tool. */
 .sm-demo .kp-insp-full,
 .sm-demo .kp-tags { display: block; }
+
+/* Smart is the densest screen in the app: five tools, a filter row and a grid
+   of captures all live in the same workspace. At the shared 530px window height
+   it read as a letterbox. Both the window and the view area grow by the same
+   80px, so the extra height goes into the content area rather than stretching
+   anything: the sidebar, the Inspector and the tab strip keep their own sizes
+   and simply have more room beneath them, which is how the real window behaves
+   when you drag it taller. */
+@media (min-width: 901px) {
+  /* Smart is the reference frame, so the Kapture Pro window matches its height
+     as well as its width. Both are 186px of sidebar and 200px of Inspector
+     around a flexible workspace, so the extra height lands in the content area
+     of each: nothing is scaled or stretched, the window is simply taller, the
+     way it is when you drag a real one. */
+  .kp-demo .kp-body,
+  .sm-demo .kp-body { height: 610px; }
+  .sm-demo .sm-body { height: 432px; }
+}
 
 .sm-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .sm-top .kp-h4 { font-size: 16px; font-weight: 650; letter-spacing: -.02em; margin: 0; }
@@ -2311,7 +2433,8 @@ html[lang="it"]    { --free-label: "Gratis"; }
    panel. Six phases replay what the extension actually does: full page, then
    select area. Everything drawn on top is annotation over real pixels.
    ========================================================================== */
-.cap { margin: clamp(40px, 5vw, 64px) 0 0; }   /* drop the UA figure margin */
+.cap { margin-block: clamp(40px, 5vw, 64px) 0; }   /* top only: the inline
+   margin is the centring rule's business, and a shorthand here overwrote it */
 /* The figure keeps a name for assistive technology without the sentence being
    drawn. It is static, so nothing is announced as the phases cycle. */
 .cap-caption {
@@ -2345,7 +2468,35 @@ html[lang="it"]    { --free-label: "Gratis"; }
   border: 1px solid rgba(255, 255, 255, .07);
 }
 
-.cap-body { display: grid; grid-template-columns: 1fr 34%; }
+.cap-body { display: grid; grid-template-columns: 1fr 30.24%; }
+
+/* One proportion at every width, and it is the desktop one. Above 1181px the
+   panel is a fixed 381px inside a 1260px render, which is 30.24%, so stating
+   the fluid split as that same percentage makes every narrower viewport a
+   scaled copy of the composition rather than a different one. The old mobile
+   overrides widened the panel to 38% and then 42% and squared the page off to
+   1:1, which pushed the panel taller than the page and left the difference
+   showing as dark empty space under the webpage. */
+.cap-body > .cap-page {
+  aspect-ratio: 4 / 3;
+  /* Stretch to the row. The panel beside it is sized by its own content at a
+     zoom taken from its width, and that content does not shrink in perfect
+     step with the box, so below the desktop breakpoint the panel ends up the
+     taller of the two. Sizing the page by its ratio alone left that difference
+     showing as dark ground under the webpage. The capture inside is
+     object-fit: cover, so the extra height crops it slightly rather than
+     stretching it, and 4:3 remains the shape the browser frame is drawn to. */
+  align-self: stretch;
+}
+
+/* The panel column used to be pinned to a flat 381px above 1181px. That is the
+   right width only once the render actually reaches its full 1260px, which
+   needs more viewport than the breakpoint asks for; between 1181px and about
+   1300px the render is still narrower, so a fixed 381px took 35% of it, the
+   webpage was squeezed to nearly square and the panel went taller than it
+   again. The single percentage above is the same 381-in-1260 relationship
+   expressed proportionally, so it holds at the top of the range and scales
+   correctly all the way down. */
 
 /* ---- the page being captured ---- */
 /* align-self: start keeps the row height driven by this box's own ratio, so the
@@ -2534,12 +2685,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
 @media (max-width: 620px) { .cap-points { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .cap-points li, .cap-points h3 { transition: none; } }
 
-@media (max-width: 900px) {
-  .cap-body { grid-template-columns: 1fr 38%; }
-}
 @media (max-width: 620px) {
-  .cap-page { aspect-ratio: 1 / 1; }
-  .cap-body { grid-template-columns: 1fr 42%; }
   .cap-region i { font-size: 10px; bottom: -22px; }
 }
 
