@@ -23,15 +23,15 @@ HELP = {
  'pt-br': '<title>Ajuda e atualizações | Kapture</title>',
  'it': '<title>Guida e aggiornamenti | Kapture</title>'},
 
-'Kapture help, current extension version and release history. What changed in version 0.4.9, what came before it, and how to use Kapture for Chrome.': {
- 'es': 'Ayuda de Kapture, versión actual de la extensión e historial de versiones. Qué cambió en la versión 0.4.9, qué hubo antes y cómo usar Kapture para Chrome.',
- 'zh': 'Kapture 帮助、扩展程序当前版本和版本历史。0.4.9 版做了哪些改动、之前有哪些版本，以及如何使用 Chrome 版 Kapture。',
- 'ko': 'Kapture 도움말과 현재 확장 프로그램 버전, 릴리스 기록. 0.4.9 버전에서 달라진 점과 이전 버전, 그리고 Chrome용 Kapture 사용 방법을 안내합니다.',
- 'ja': 'Kapture のヘルプ、現在の拡張機能のバージョン、リリース履歴。バージョン 0.4.9 での変更点とそれ以前のバージョン、そして Chrome 版 Kapture の使い方を説明します。',
- 'de': 'Hilfe zu Kapture, aktuelle Version der Erweiterung und Änderungsverlauf. Was sich in Version 0.4.9 geändert hat, was davor kam und wie man Kapture für Chrome benutzt.',
- 'fr': "Aide de Kapture, version actuelle de l'extension et historique des versions. Ce qui a changé en 0.4.9, ce qui l'a précédé, et comment utiliser Kapture pour Chrome.",
- 'pt-br': 'Ajuda do Kapture, versão atual da extensão e histórico de lançamentos. O que mudou na versão 0.4.9, o que veio antes e como usar o Kapture para Chrome.',
- 'it': "Guida di Kapture, versione attuale dell'estensione e cronologia dei rilasci. Cosa è cambiato nella versione 0.4.9, cosa c'era prima e come usare Kapture per Chrome."},
+'Kapture help, current extension version and release history. What changed in version 0.5.0, what came before it, and how to use Kapture for Chrome.': {
+ 'es': 'Ayuda de Kapture, versión actual de la extensión e historial de versiones. Qué cambió en la versión 0.5.0, qué hubo antes y cómo usar Kapture para Chrome.',
+ 'zh': 'Kapture 帮助、扩展程序当前版本和版本历史。0.5.0 版做了哪些改动、之前有哪些版本，以及如何使用 Chrome 版 Kapture。',
+ 'ko': 'Kapture 도움말과 현재 확장 프로그램 버전, 릴리스 기록. 0.5.0 버전에서 달라진 점과 이전 버전, 그리고 Chrome용 Kapture 사용 방법을 안내합니다.',
+ 'ja': 'Kapture のヘルプ、現在の拡張機能のバージョン、リリース履歴。バージョン 0.5.0 での変更点とそれ以前のバージョン、そして Chrome 版 Kapture の使い方を説明します。',
+ 'de': 'Hilfe zu Kapture, aktuelle Version der Erweiterung und Änderungsverlauf. Was sich in Version 0.5.0 geändert hat, was davor kam und wie man Kapture für Chrome benutzt.',
+ 'fr': "Aide de Kapture, version actuelle de l'extension et historique des versions. Ce qui a changé en 0.5.0, ce qui l'a précédé, et comment utiliser Kapture pour Chrome.",
+ 'pt-br': 'Ajuda do Kapture, versão atual da extensão e histórico de lançamentos. O que mudou na versão 0.5.0, o que veio antes e como usar o Kapture para Chrome.',
+ 'it': "Guida di Kapture, versione attuale dell'estensione e cronologia dei rilasci. Cosa è cambiato nella versione 0.5.0, cosa c'era prima e come usare Kapture per Chrome."},
 
 # og:title and twitter:title carry the bare form; the <title> key above wins first
 'Help and Updates | Kapture': {
@@ -99,6 +99,86 @@ HELP = {
  'fr': '<h2 class="rel-h">Utiliser Kapture</h2>',
  'pt-br': '<h2 class="rel-h">Usando o Kapture</h2>',
  'it': '<h2 class="rel-h">Usare Kapture</h2>'},
+
+# ---------------------------------------------------------------- 0.5.0
+'<p class="rel-sum">Kapture speaks nine languages, and the side panel keeps its shape at whatever width you give it.</p>': {
+ 'es': '<p class="rel-sum">Kapture habla nueve idiomas, y el panel lateral mantiene su forma sea cual sea el ancho que le des.</p>',
+ 'zh': '<p class="rel-sum">Kapture 现在支持九种语言，而且侧边栏无论宽窄都能保持原有的版面。</p>',
+ 'ko': '<p class="rel-sum">Kapture가 아홉 개 언어를 지원하고, 사이드 패널은 너비를 어떻게 바꾸어도 제 모양을 지킵니다.</p>',
+ 'ja': '<p class="rel-sum">Kapture が 9 か国語に対応し、サイドパネルはどの幅でもレイアウトを保つようになりました。</p>',
+ 'de': '<p class="rel-sum">Kapture spricht neun Sprachen, und das Seitenpanel behält seine Form, egal wie breit es ist.</p>',
+ 'fr': "<p class=\"rel-sum\">Kapture parle neuf langues, et le panneau latéral garde sa forme quelle que soit la largeur que vous lui donnez.</p>",
+ 'pt-br': '<p class="rel-sum">O Kapture fala nove idiomas, e o painel lateral mantém sua forma em qualquer largura que você dê a ele.</p>',
+ 'it': '<p class="rel-sum">Kapture parla nove lingue e il pannello laterale mantiene la sua forma a qualsiasi larghezza.</p>'},
+
+'<li><strong>Nine languages.</strong> The side panel is available in English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil) and Italiano.</li>': {
+ 'es': '<li><strong>Nueve idiomas.</strong> El panel lateral está disponible en English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil) e Italiano.</li>',
+ 'zh': '<li><strong>九种语言。</strong>侧边栏支持 English、Espa&ntilde;ol、&#31616;&#20307;&#20013;&#25991;、&#54620;&#44397;&#50612;、&#26085;&#26412;&#35486;、Deutsch、Fran&ccedil;ais、Portugu&ecirc;s (Brasil) 和 Italiano。</li>',
+ 'ko': '<li><strong>아홉 개 언어.</strong> 사이드 패널을 English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil), Italiano로 사용할 수 있습니다.</li>',
+ 'ja': '<li><strong>9 か国語に対応。</strong>サイドパネルは English、Espa&ntilde;ol、&#31616;&#20307;&#20013;&#25991;、&#54620;&#44397;&#50612;、&#26085;&#26412;&#35486;、Deutsch、Fran&ccedil;ais、Portugu&ecirc;s (Brasil)、Italiano で利用できます。</li>',
+ 'de': '<li><strong>Neun Sprachen.</strong> Das Seitenpanel gibt es auf English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil) und Italiano.</li>',
+ 'fr': '<li><strong>Neuf langues.</strong> Le panneau latéral est disponible en English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil) et Italiano.</li>',
+ 'pt-br': '<li><strong>Nove idiomas.</strong> O painel lateral está disponível em English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil) e Italiano.</li>',
+ 'it': '<li><strong>Nove lingue.</strong> Il pannello laterale è disponibile in English, Espa&ntilde;ol, &#31616;&#20307;&#20013;&#25991;, &#54620;&#44397;&#50612;, &#26085;&#26412;&#35486;, Deutsch, Fran&ccedil;ais, Portugu&ecirc;s (Brasil) e Italiano.</li>'},
+
+'<li><strong>The panel responds to its own width.</strong> Controls, spacing and type adjust as the side panel is made narrower or wider, so nothing crowds or clips.</li>': {
+ 'es': '<li><strong>El panel responde a su propio ancho.</strong> Los controles, los espacios y la tipografía se ajustan al estrechar o ensanchar el panel lateral, de modo que nada se amontona ni se corta.</li>',
+ 'zh': '<li><strong>侧边栏会根据自身宽度调整。</strong>收窄或拉宽侧边栏时，控件、间距和文字都会随之调整，不会挤在一起，也不会被截断。</li>',
+ 'ko': '<li><strong>패널이 자신의 너비에 맞춰 반응합니다.</strong> 사이드 패널을 좁히거나 넓히면 컨트롤과 여백, 글자가 함께 조정되어 겹치거나 잘리지 않습니다.</li>',
+ 'ja': '<li><strong>パネルが自身の幅に合わせて変化。</strong>サイドパネルを狭くしても広くしても、コントロールや余白、文字の大きさが調整され、詰まったり切れたりしません。</li>',
+ 'de': '<li><strong>Das Panel richtet sich nach seiner eigenen Breite.</strong> Bedienelemente, Abstände und Schrift passen sich an, wenn das Seitenpanel schmaler oder breiter wird, sodass nichts gedrängt oder abgeschnitten wirkt.</li>',
+ 'fr': "<li><strong>Le panneau s'adapte à sa propre largeur.</strong> Les contrôles, les espacements et la typographie s'ajustent quand le panneau latéral est rétréci ou élargi, de sorte que rien ne se tasse ni ne se coupe.</li>",
+ 'pt-br': '<li><strong>O painel responde à própria largura.</strong> Controles, espaçamento e tipografia se ajustam conforme o painel lateral fica mais estreito ou mais largo, então nada se amontoa nem é cortado.</li>',
+ 'it': '<li><strong>Il pannello si adatta alla propria larghezza.</strong> Controlli, spaziature e testo si regolano quando il pannello laterale si restringe o si allarga, così nulla si affolla o viene tagliato.</li>'},
+
+'<li><strong>The Kapture Pro banner keeps its artwork</strong> at narrow panel widths, instead of losing it.</li>': {
+ 'es': '<li><strong>El aviso de Kapture Pro conserva su ilustración</strong> cuando el panel es estrecho, en lugar de perderla.</li>',
+ 'zh': '<li><strong>Kapture Pro 提示卡片会保留插图</strong>，侧边栏变窄时不再丢失。</li>',
+ 'ko': '<li><strong>Kapture Pro 안내가 그림을 유지합니다.</strong> 패널이 좁아져도 사라지지 않습니다.</li>',
+ 'ja': '<li><strong>Kapture Pro のお知らせがイラストを保持。</strong>パネルが狭いときも消えなくなりました。</li>',
+ 'de': '<li><strong>Das Kapture-Pro-Banner behält seine Grafik</strong> auch bei schmalem Panel, statt sie zu verlieren.</li>',
+ 'fr': '<li><strong>La bannière Kapture Pro conserve son illustration</strong> lorsque le panneau est étroit, au lieu de la perdre.</li>',
+ 'pt-br': '<li><strong>O banner do Kapture Pro mantém a arte</strong> quando o painel está estreito, em vez de perdê-la.</li>',
+ 'it': '<li><strong>Il banner di Kapture Pro mantiene la sua grafica</strong> quando il pannello è stretto, invece di perderla.</li>'},
+
+'<li><strong>Improved narrow-width layout and spacing</strong> across the panel.</li>': {
+ 'es': '<li><strong>Mejor disposición y espaciado en anchos reducidos</strong> en todo el panel.</li>',
+ 'zh': '<li><strong>窄宽度下的布局和间距更好</strong>，整个侧边栏都是如此。</li>',
+ 'ko': '<li><strong>좁은 너비에서의 배치와 여백을 개선</strong>했습니다. 패널 전체에 적용됩니다.</li>',
+ 'ja': '<li><strong>幅が狭いときのレイアウトと余白を改善。</strong>パネル全体に適用しました。</li>',
+ 'de': '<li><strong>Bessere Anordnung und Abstände bei geringer Breite</strong> im gesamten Panel.</li>',
+ 'fr': '<li><strong>Meilleure disposition et meilleurs espacements en faible largeur</strong> dans tout le panneau.</li>',
+ 'pt-br': '<li><strong>Melhor disposição e espaçamento em larguras estreitas</strong> em todo o painel.</li>',
+ 'it': '<li><strong>Disposizione e spaziature migliori alle larghezze ridotte</strong> in tutto il pannello.</li>'},
+
+'>Version 0.5.0<': {'es': '>Versión 0.5.0<', 'zh': '>版本 0.5.0<',
+                    'ko': '>버전 0.5.0<', 'ja': '>バージョン 0.5.0<',
+ 'de': '>Version 0.5.0<',
+ 'fr': '>Version 0.5.0<',
+ 'pt-br': '>Versão 0.5.0<',
+ 'it': '>Versione 0.5.0<'},
+
+'<p class="rel-when">Released 5 October 2026</p>': {
+ 'es': '<p class="rel-when">Publicada el 5 de octubre de 2026</p>',
+ 'zh': '<p class="rel-when">发布于 2026 年 10 月 5 日</p>',
+ 'ko': '<p class="rel-when">2026년 10월 5일 출시</p>',
+ 'ja': '<p class="rel-when">2026 年 10 月 5 日リリース</p>',
+ 'de': '<p class="rel-when">Veröffentlicht am 5. Oktober 2026</p>',
+ 'fr': '<p class="rel-when">Publié le 5 octobre 2026</p>',
+ 'pt-br': '<p class="rel-when">Lançado em 5 de outubro de 2026</p>',
+ 'it': '<p class="rel-when">Rilasciato il 5 ottobre 2026</p>'},
+
+# 0.4.9 moved from the latest slot into the history, so its date now appears in
+# a collapsed summary rather than as a paragraph.
+'<span class="rel-when">29 September 2026</span>': {
+ 'es': '<span class="rel-when">29 de septiembre de 2026</span>',
+ 'zh': '<span class="rel-when">2026 年 9 月 29 日</span>',
+ 'ko': '<span class="rel-when">2026년 9월 29일</span>',
+ 'ja': '<span class="rel-when">2026 年 9 月 29 日</span>',
+ 'de': '<span class="rel-when">29. September 2026</span>',
+ 'fr': '<span class="rel-when">29 septembre 2026</span>',
+ 'pt-br': '<span class="rel-when">29 de setembro de 2026</span>',
+ 'it': '<span class="rel-when">29 settembre 2026</span>'},
 
 # ---------------------------------------------------------------- 0.4.9
 '<p class="rel-sum">The panel now moves the way Kapture Pro for Mac does. Changing capture mode, opening Settings or turning a page of History explains itself, and everything stays quick.</p>': {
