@@ -554,15 +554,15 @@ FIX = {
  'pt-br': '<h2>Descubra o que sua biblioteca<br>estava escondendo.</h2>',
  'it': '<h2>Scopri cosa nascondeva<br>la tua libreria.</h2>'},
 
-'<p class="section-lead">Smart is one place in Kapture Pro with five tools. It shows you what still needs organising, which files are exact copies, what is worth a second look, where your captures came from, and the tidying you asked Kapture to do for you.</p>': {
- 'es': '<p class="section-lead">Inteligente es un único lugar dentro de Kapture Pro con cinco herramientas. Te enseña lo que aún está sin organizar, qué archivos son copias exactas, qué merece un segundo vistazo, de dónde vienen tus capturas y el orden que le has pedido a Kapture que ponga por ti.</p>',
- 'zh': '<p class="section-lead">智能是 Kapture Pro 里的一个地方，包含五个工具。它会告诉你哪些还没整理、哪些文件是完全相同的副本、哪些值得再看一眼、你的截图来自哪里，以及你让 Kapture 替你做的整理。</p>',
- 'ko': '<p class="section-lead">스마트는 Kapture Pro 안의 한 곳으로, 다섯 가지 도구가 있습니다. 아직 정리가 필요한 것, 완전히 동일한 파일, 다시 살펴볼 만한 것, 캡처가 어디에서 왔는지, 그리고 Kapture에 맡긴 정리를 보여 줍니다.</p>',
- 'ja': '<p class="section-lead">スマートは Kapture Pro のなかの一か所で、5 つのツールがあります。まだ整理が必要なもの、完全に同じファイル、見直す価値のあるもの、キャプチャの取得元、そして Kapture に依頼した整理を教えてくれます。</p>',
- 'de': '<p class="section-lead">Smart ist ein Ort in Kapture Pro mit fünf Werkzeugen. Es zeigt dir, was noch zu ordnen ist, welche Dateien exakte Kopien sind, was einen zweiten Blick verdient, woher deine Aufnahmen stammen, und das Aufräumen, um das du Kapture gebeten hast.</p>',
- 'fr': '<p class="section-lead">Smart est un seul endroit dans Kapture Pro, avec cinq outils. Il vous montre ce qui reste à ranger, quels fichiers sont des copies exactes, ce qui mérite un second regard, d\'où viennent vos captures, et le rangement que vous avez demandé à Kapture.</p>',
- 'pt-br': '<p class="section-lead">O Smart é um lugar só dentro do Kapture Pro, com cinco ferramentas. Ele mostra o que ainda falta organizar, quais arquivos são cópias exatas, o que merece um segundo olhar, de onde vieram suas capturas e a arrumação que você pediu ao Kapture.</p>',
- 'it': '<p class="section-lead">Smart è un unico posto dentro Kapture Pro, con cinque strumenti. Ti mostra cosa resta da organizzare, quali file sono copie esatte, cosa merita una seconda occhiata, da dove arrivano le tue catture e il riordino che hai chiesto a Kapture.</p>'},
+'<p class="section-lead">Smart brings five tools into one place, helping you organise captures, find duplicates, review files, trace sources and automate cleanup.</p>': {
+ 'es': '<p class="section-lead">Inteligente reúne cinco herramientas en un solo lugar para ayudarte a organizar capturas, encontrar duplicados, revisar archivos, rastrear fuentes y automatizar la limpieza.</p>',
+ 'zh': '<p class="section-lead">智能把五个工具集中在一处，帮你整理截图、找出重复项、复查文件、追溯来源并自动完成清理。</p>',
+ 'ko': '<p class="section-lead">스마트는 다섯 가지 도구를 한곳에 모아 캡처를 정리하고, 중복 항목을 찾고, 파일을 다시 살펴보고, 출처를 추적하고, 정리를 자동화하도록 도와줍니다.</p>',
+ 'ja': '<p class="section-lead">スマートは 5 つのツールを一か所にまとめ、キャプチャの整理、重複の検出、ファイルの見直し、ソースの追跡、クリーンアップの自動化を助けます。</p>',
+ 'de': '<p class="section-lead">Smart bringt fünf Werkzeuge an einen Ort und hilft dir, Aufnahmen zu ordnen, Duplikate zu finden, Dateien durchzusehen, Quellen nachzuvollziehen und das Aufräumen zu automatisieren.</p>',
+ 'fr': '<p class="section-lead">Smart réunit cinq outils en un seul endroit pour vous aider à ranger vos captures, trouver les doublons, passer vos fichiers en revue, remonter aux sources et automatiser le nettoyage.</p>',
+ 'pt-br': '<p class="section-lead">O Smart reúne cinco ferramentas em um só lugar para ajudar você a organizar capturas, encontrar duplicadas, revisar arquivos, rastrear origens e automatizar a limpeza.</p>',
+ 'it': '<p class="section-lead">Smart riunisce cinque strumenti in un unico posto e ti aiuta a organizzare le catture, trovare i duplicati, rivedere i file, risalire alle origini e automatizzare la pulizia.</p>'},
 
 '<li data-tool="unorganised"><button type="button"><h3>Unorganised</h3><p>Everything that is not in a project yet, from every source.</p></button></li>': {
  'es': '<li data-tool="unorganised"><button type="button"><h3>Sin organizar</h3><p>Todo lo que todavía no está en un proyecto, venga de donde venga.</p></button></li>',
