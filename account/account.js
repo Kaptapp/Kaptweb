@@ -139,18 +139,21 @@
       if (!user) return;
       text(document.getElementById('acEmailShown'), user.email || '');
 
-      // Entitlements and activations are read-only for a client: row level
-      // security returns this person's rows and nobody else's.
+      // get_my_access() is the same answer the desktop app gets: whether this
+      // account is Pro, on which plan, in which state, and the trial dates. The
+      // entitlement row is read only for a one-off purchase date. All of it is
+      // read-only for a client: row level security returns this person's rows.
       return Promise.all([
+        apiAuthed('/rest/v1/rpc/get_my_access', { method: 'POST', body: { p_product_id: PRODUCT } }),
         apiAuthed('/rest/v1/entitlements?select=status,valid_from,valid_until,max_devices,' +
           'products(name),purchases(purchased_at)&status=eq.active&product_id=eq.' + PRODUCT + '&limit=1'),
         apiAuthed('/rest/v1/device_activations?select=device_id,device_name,platform,activated_at' +
           '&deactivated_at=is.null&order=activated_at.asc')
       ]).then(function (rs) {
-        if (!rs[0].ok || !rs[1].ok) throw new Error('data');
-        return Promise.all([rs[0].json(), rs[1].json()]);
+        if (!rs[0].ok || !rs[1].ok || !rs[2].ok) throw new Error('data');
+        return Promise.all([rs[0].json(), rs[1].json(), rs[2].json()]);
       }).then(function (out) {
-        render(out[0][0] || null, out[1] || []);
+        render(out[0][0] || null, out[1][0] || null, out[2] || []);
         setState('signed-in');
       });
     }).catch(function () {
@@ -158,10 +161,52 @@
     });
   }
 
-  function render(entitlement, devices) {
-    var active = !!entitlement;
+  /* What the licence card says, from get_my_access() alone. A trial has an end
+     date but no payment method and no renewal, so it is never described as a
+     subscription, and "Renews" is shown only for a paid plan that will renew. */
+  var PLAN_NAMES = { monthly: 'Subscription, monthly', annual: 'Subscription, annual',
+    purchase: 'One-time purchase', manual: 'Licence granted by Kapture' };
+
+  function licenceView(access, entitlement) {
+    var a = access || {};
+    var paid = a.plan === 'monthly' || a.plan === 'annual';
+    var v = { badge: 'Inactive', facts: [], note: '' };
+
+    if (a.pro && a.plan === 'trial') {
+      v.badge = 'Free trial';
+      v.facts = [['Status', 'Free trial'], ['Type', 'Trial'],
+        ['Started', date(a.trial_started_at)], ['Trial ends', date(a.trial_ends_at)]];
+    } else if (a.pro && paid) {
+      var status = a.state === 'past_due' ? 'Payment due'
+        : a.state === 'canceling' ? 'Cancelled, active until the end of the period' : 'Active';
+      v.badge = a.state === 'past_due' ? 'Payment due' : 'Active';
+      v.facts = [['Status', status], ['Type', PLAN_NAMES[a.plan]],
+        [a.state === 'canceling' ? 'Ends' : a.state === 'past_due' ? 'Access until' : 'Renews',
+          date(a.access_until)]];
+    } else if (a.pro) {
+      var purchase = entitlement && entitlement.purchases;
+      v.badge = 'Active';
+      v.facts = [['Status', 'Active'], ['Type', PLAN_NAMES[a.plan] || 'Licence'],
+        ['Purchased', a.plan === 'purchase' ? date(purchase && purchase.purchased_at) : null],
+        ['Valid until', date(a.access_until)]];
+    } else if (a.state === 'expired' && a.plan === 'trial') {
+      v.facts = [['Status', 'Trial ended'], ['Type', 'Trial'], ['Trial ended', date(a.trial_ends_at)]];
+      v.note = 'Your free trial has ended. Your captures and library stay on your computer.';
+    } else if (a.state === 'expired' && paid) {
+      v.facts = [['Status', 'Ended'], ['Type', PLAN_NAMES[a.plan]], ['Ended', date(a.access_until)]];
+      v.note = 'Your subscription has ended. Your captures and library stay on your computer.';
+    } else {
+      v.note = 'No active Kapture Pro licence on this account. ' +
+        'If you have just bought one, it can take a moment to appear.';
+    }
+    return v;
+  }
+
+  function render(access, entitlement, devices) {
+    var active = !!(access && access.pro);
+    var view = licenceView(access, entitlement);
     var badge = document.getElementById('acStatus');
-    badge.textContent = active ? 'Active' : 'Inactive';
+    badge.textContent = view.badge;
     badge.setAttribute('data-active', active ? 'yes' : 'no');
 
     var facts = document.getElementById('acFacts');
@@ -178,25 +223,17 @@
     var note = document.getElementById('acLicenceNote');
     var deviceCard = document.getElementById('acDevices');
 
+    view.facts.forEach(function (f) { fact(f[0], f[1]); });
+    note.textContent = view.note;
+
     if (!active) {
-      note.textContent = 'No active Kapture Pro licence on this account. ' +
-        'If you have just bought one, it can take a moment to appear.';
       deviceCard.hidden = true;
       return;
     }
 
-    var purchase = entitlement.purchases || null;
-    var product = entitlement.products || null;
-
-    fact('Licence', (product && product.name) || 'Kapture Pro');
-    fact('Type', entitlement.valid_until ? 'Subscription' : 'One-time purchase');
-    fact('Purchased', date(purchase && purchase.purchased_at) || date(entitlement.valid_from));
-    if (entitlement.valid_until) fact('Renews', date(entitlement.valid_until));
-    note.textContent = '';
-
     // Devices
     deviceCard.hidden = false;
-    var seats = entitlement.max_devices || 0;
+    var seats = access.seats_max || (entitlement && entitlement.max_devices) || 0;
     document.getElementById('acSeats').textContent =
       devices.length + ' of ' + seats + ' in use';
 
