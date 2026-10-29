@@ -59,15 +59,15 @@ CHROME = {
  'pt-br': '<a href="/privacy/">Privacidade</a>',
  'it': '<a href="/privacy/">Privacy</a>'},
 
-'<a href="mailto:pequelord@gmail.com">Contact</a>': {
- 'es': '<a href="mailto:pequelord@gmail.com">Contacto</a>',
- 'zh': '<a href="mailto:pequelord@gmail.com">联系</a>',
- 'ko': '<a href="mailto:pequelord@gmail.com">문의</a>',
- 'ja': '<a href="mailto:pequelord@gmail.com">お問い合わせ</a>',
- 'de': '<a href="mailto:pequelord@gmail.com">Kontakt</a>',
- 'fr': '<a href="mailto:pequelord@gmail.com">Contact</a>',
- 'pt-br': '<a href="mailto:pequelord@gmail.com">Contato</a>',
- 'it': '<a href="mailto:pequelord@gmail.com">Contatti</a>'},
+'<a href="mailto:hello@kaptapp.com">Contact</a>': {
+ 'es': '<a href="mailto:hello@kaptapp.com">Contacto</a>',
+ 'zh': '<a href="mailto:hello@kaptapp.com">联系</a>',
+ 'ko': '<a href="mailto:hello@kaptapp.com">문의</a>',
+ 'ja': '<a href="mailto:hello@kaptapp.com">お問い合わせ</a>',
+ 'de': '<a href="mailto:hello@kaptapp.com">Kontakt</a>',
+ 'fr': '<a href="mailto:hello@kaptapp.com">Contact</a>',
+ 'pt-br': '<a href="mailto:hello@kaptapp.com">Contato</a>',
+ 'it': '<a href="mailto:hello@kaptapp.com">Contatti</a>'},
 
 '<a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>': {
  'es': '<a class="btn btn-ghost btn-sm store-cta" href="/">Volver al sitio</a>',
@@ -115,15 +115,15 @@ CHROME = {
  'pt-br': '"name": "Início"',
  'it': '"name": "Home"'},
 
-'<p class="legal-foot">Kapture by Pequelord &middot; Screenshots stay on your device.</p>': {
- 'es': '<p class="legal-foot">Kapture, de Pequelord &middot; Tus capturas se quedan en tu dispositivo.</p>',
- 'zh': '<p class="legal-foot">Kapture by Pequelord &middot; 截图只留在你的设备上。</p>',
- 'ko': '<p class="legal-foot">Kapture by Pequelord &middot; 스크린샷은 기기 안에만 남습니다.</p>',
- 'ja': '<p class="legal-foot">Kapture by Pequelord &middot; スクリーンショットは端末の外に出ません。</p>',
- 'de': '<p class="legal-foot">Kapture von Pequelord &middot; Screenshots bleiben auf deinem Gerät.</p>',
- 'fr': '<p class="legal-foot">Kapture, par Pequelord &middot; Vos captures restent sur votre appareil.</p>',
- 'pt-br': '<p class="legal-foot">Kapture, de Pequelord &middot; Suas capturas ficam no seu dispositivo.</p>',
- 'it': '<p class="legal-foot">Kapture di Pequelord &middot; Gli screenshot restano sul tuo dispositivo.</p>'},
+'<p class="legal-foot">Kapture by KUMO STUDIO LIMITED &middot; Screenshots stay on your device.</p>': {
+ 'es': '<p class="legal-foot">Kapture, de KUMO STUDIO LIMITED &middot; Tus capturas se quedan en tu dispositivo.</p>',
+ 'zh': '<p class="legal-foot">Kapture by KUMO STUDIO LIMITED &middot; 截图只留在你的设备上。</p>',
+ 'ko': '<p class="legal-foot">Kapture by KUMO STUDIO LIMITED &middot; 스크린샷은 기기 안에만 남습니다.</p>',
+ 'ja': '<p class="legal-foot">Kapture by KUMO STUDIO LIMITED &middot; スクリーンショットは端末の外に出ません。</p>',
+ 'de': '<p class="legal-foot">Kapture von KUMO STUDIO LIMITED &middot; Screenshots bleiben auf deinem Gerät.</p>',
+ 'fr': '<p class="legal-foot">Kapture, par KUMO STUDIO LIMITED &middot; Vos captures restent sur votre appareil.</p>',
+ 'pt-br': '<p class="legal-foot">Kapture, de KUMO STUDIO LIMITED &middot; Suas capturas ficam no seu dispositivo.</p>',
+ 'it': '<p class="legal-foot">Kapture di KUMO STUDIO LIMITED &middot; Gli screenshot restano sul tuo dispositivo.</p>'},
 
 # Help was reachable only from inside the extension. It is in the footer of
 # every page now, so the link text is shared chrome like the rest of the nav.

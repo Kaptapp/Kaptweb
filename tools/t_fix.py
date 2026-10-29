@@ -885,31 +885,31 @@ FIX = {
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">Help</a>
       <a href="/privacy/">Privacy</a>
-      <a href="mailto:pequelord@gmail.com">Contact</a>''': {
+      <a href="mailto:hello@kaptapp.com">Contact</a>''': {
  'es': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">Ayuda</a>
       <a href="/privacy/">Privacidad</a>
-      <a href="mailto:pequelord@gmail.com">Contacto</a>''',
+      <a href="mailto:hello@kaptapp.com">Contacto</a>''',
  'zh': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">帮助</a>
       <a href="/privacy/">隐私</a>
-      <a href="mailto:pequelord@gmail.com">联系</a>''',
+      <a href="mailto:hello@kaptapp.com">联系</a>''',
  'ko': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">도움말</a>
       <a href="/privacy/">개인정보</a>
-      <a href="mailto:pequelord@gmail.com">문의</a>''',
+      <a href="mailto:hello@kaptapp.com">문의</a>''',
  'ja': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">ヘルプ</a>
       <a href="/privacy/">プライバシー</a>
-      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>''',
- 'de': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Hilfe</a>\n      <a href="/privacy/">Datenschutz</a>\n      <a href="mailto:pequelord@gmail.com">Kontakt</a>',
- 'fr': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Aide</a>\n      <a href="/privacy/">Confidentialité</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>',
- 'pt-br': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Ajuda</a>\n      <a href="/privacy/">Privacidade</a>\n      <a href="mailto:pequelord@gmail.com">Contato</a>',
- 'it': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Guida</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contatti</a>'},
+      <a href="mailto:hello@kaptapp.com">お問い合わせ</a>''',
+ 'de': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Hilfe</a>\n      <a href="/privacy/">Datenschutz</a>\n      <a href="mailto:hello@kaptapp.com">Kontakt</a>',
+ 'fr': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Aide</a>\n      <a href="/privacy/">Confidentialité</a>\n      <a href="mailto:hello@kaptapp.com">Contact</a>',
+ 'pt-br': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Ajuda</a>\n      <a href="/privacy/">Privacidade</a>\n      <a href="mailto:hello@kaptapp.com">Contato</a>',
+ 'it': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Guida</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:hello@kaptapp.com">Contatti</a>'},
 
 # ---------------------------------------------------------------- FAQ, refined
 '<p class="section-lead">The things people ask most often about Kapture, answered plainly.</p>': {

@@ -211,23 +211,23 @@ PRIV = {
  'fr': '<h2>Contact</h2>',
  'pt-br': '<h2>Contato</h2>',
  'it': '<h2>Contatti</h2>'},
-'<p>For privacy or support questions, email <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>.</p>': {
- 'es': '<p>Para consultas sobre privacidad o soporte, escribe a <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>.</p>',
- 'zh': '<p>如有隐私或支持方面的问题，请发送邮件至 <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>。</p>',
- 'ko': '<p>개인정보 또는 지원 관련 문의는 <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a> 으로 메일을 보내주세요.</p>',
- 'ja': '<p>プライバシーやサポートに関するお問い合わせは <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a> までメールでご連絡ください。</p>',
- 'de': '<p>Bei Fragen zu Datenschutz oder Support schreib an <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>.</p>',
- 'fr': '<p>Pour toute question de confidentialité ou de support, écrivez à <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>.</p>',
- 'pt-br': '<p>Para dúvidas de privacidade ou suporte, escreva para <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>.</p>',
- 'it': '<p>Per domande su privacy o assistenza, scrivi a <a href="mailto:pequelord@gmail.com">pequelord@gmail.com</a>.</p>'},
+'<p>For privacy or support questions, email <a href="mailto:hello@kaptapp.com">contact</a>.</p>': {
+ 'es': '<p>Para consultas sobre privacidad o soporte, escribe a <a href="mailto:hello@kaptapp.com">contacto</a>.</p>',
+ 'zh': '<p>如有隐私或支持方面的问题，请发送邮件至 <a href="mailto:hello@kaptapp.com">联系</a>。</p>',
+ 'ko': '<p>개인정보 또는 지원 관련 문의는 <a href="mailto:hello@kaptapp.com">문의</a> 으로 메일을 보내주세요.</p>',
+ 'ja': '<p>プライバシーやサポートに関するお問い合わせは <a href="mailto:hello@kaptapp.com">お問い合わせ</a> までメールでご連絡ください。</p>',
+ 'de': '<p>Bei Fragen zu Datenschutz oder Support schreib an <a href="mailto:hello@kaptapp.com">Kontakt</a>.</p>',
+ 'fr': '<p>Pour toute question de confidentialité ou de support, écrivez à <a href="mailto:hello@kaptapp.com">contact</a>.</p>',
+ 'pt-br': '<p>Para dúvidas de privacidade ou suporte, escreva para <a href="mailto:hello@kaptapp.com">contato</a>.</p>',
+ 'it': '<p>Per domande su privacy o assistenza, scrivi a <a href="mailto:hello@kaptapp.com">contatti</a>.</p>'},
 
 
 # footer nav on the privacy page
-'<a href="/#capture">Capture</a>\n      <a href="/#how">How it works</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:pequelord@gmail.com">Contact</a>': {
- 'es': '<a href="/#capture">Captura</a>\n      <a href="/#how">Cómo funciona</a>\n      <a href="/privacy/">Privacidad</a>\n      <a href="mailto:pequelord@gmail.com">Contacto</a>',
- 'zh': '<a href="/#capture">截图</a>\n      <a href="/#how">使用方法</a>\n      <a href="/privacy/">隐私</a>\n      <a href="mailto:pequelord@gmail.com">联系我们</a>',
- 'ko': '<a href="/#capture">캡처</a>\n      <a href="/#how">사용 방법</a>\n      <a href="/privacy/">개인정보</a>\n      <a href="mailto:pequelord@gmail.com">문의</a>',
- 'ja': '<a href="/#capture">キャプチャ</a>\n      <a href="/#how">使い方</a>\n      <a href="/privacy/">プライバシー</a>\n      <a href="mailto:pequelord@gmail.com">お問い合わせ</a>'},
+'<a href="/#capture">Capture</a>\n      <a href="/#how">How it works</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:hello@kaptapp.com">Contact</a>': {
+ 'es': '<a href="/#capture">Captura</a>\n      <a href="/#how">Cómo funciona</a>\n      <a href="/privacy/">Privacidad</a>\n      <a href="mailto:hello@kaptapp.com">Contacto</a>',
+ 'zh': '<a href="/#capture">截图</a>\n      <a href="/#how">使用方法</a>\n      <a href="/privacy/">隐私</a>\n      <a href="mailto:hello@kaptapp.com">联系我们</a>',
+ 'ko': '<a href="/#capture">캡처</a>\n      <a href="/#how">사용 방법</a>\n      <a href="/privacy/">개인정보</a>\n      <a href="mailto:hello@kaptapp.com">문의</a>',
+ 'ja': '<a href="/#capture">キャプチャ</a>\n      <a href="/#how">使い方</a>\n      <a href="/privacy/">プライバシー</a>\n      <a href="mailto:hello@kaptapp.com">お問い合わせ</a>'},
 '<a href="/#capture">Capture</a>': {
  'es': '<a href="/#capture">Captura</a>', 'zh': '<a href="/#capture">截图</a>',
  'ko': '<a href="/#capture">캡처</a>', 'ja': '<a href="/#capture">キャプチャ</a>'},
