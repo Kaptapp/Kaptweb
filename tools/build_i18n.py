@@ -21,6 +21,7 @@ from t_eco3 import ECO3
 from t_fix import FIX
 from t_privacy import PRIV
 from t_help import HELP
+from t_terms import TERMS
 from t_ld import (APP_DESC, FEATURES, PRO_DESC, PRO_FEATURES, SELECTOR_LABEL, NATIVE_NAME, SHORT_NAME,
                   LANGS, HTMLLANG, BASE, home_url, privacy_url, help_url, page_url)
 
@@ -147,12 +148,13 @@ def strip_i18n(src):
 # Where each page lives. English privacy and help sit at <name>/index.html so
 # they are served at the clean /privacy/ and /help/ URLs, which makes them one
 # level deep already.
-SOURCE = {'index': 'index.html', 'privacy': 'privacy/index.html', 'help': 'help/index.html'}
+SOURCE = {'index': 'index.html', 'privacy': 'privacy/index.html', 'help': 'help/index.html',
+          'terms': 'terms/index.html'}
 
 
 def build(lang, page):
     src = strip_i18n((ROOT / SOURCE[page]).read_text())
-    table = {'index': HOME_ALL, 'privacy': PRIV, 'help': HELP}[page]
+    table = {'index': HOME_ALL, 'privacy': PRIV, 'help': HELP, 'terms': TERMS}[page]
 
     # 1. copy, longest key first so no key is a prefix of another. Keys that no
     #    longer appear are retired copy, not an error, so they are only reported.

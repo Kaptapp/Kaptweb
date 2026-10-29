@@ -65,23 +65,26 @@ browser language. System / Default is a preference, not a tenth language.
 Kapture is local-first. Capturing, storing and organising the library all happen
 on the user's own machine, and the core capture and organisation features work
 without requiring cloud AI. Screenshots, webpage content, URLs and history
-metadata are not sent to the developer or to external servers. There is no
-account, no cloud sync, no analytics, no advertising, no tracking and no remote
-code.
+metadata are not sent to the developer or to external servers. Kapture for
+Chrome needs no account. A Kapture account at kaptapp.com/account holds only the
+email address and, once Kapture Pro is available, its licence and activated
+devices. There is no cloud sync, no analytics, no advertising, no tracking and
+no remote code.
 
 ## Pages
 
 - [Home](https://kaptapp.com/): what Kapture is, the two capture modes, formats, viewport presets, folders, history, themes, Projects, Collections, Smart, languages and common questions.
 - [Screenshot organizer](https://kaptapp.com/screenshot-organizer/): how Kapture Pro organises a screenshot library, and the difference between Projects and Collections.
 - [Help](https://kaptapp.com/help/): how to use Kapture, permissions and release notes for the Chrome extension.
-- [Privacy Policy](https://kaptapp.com/privacy/): what information Kapture handles, how it is stored locally, and what is never transmitted.
+- [Privacy Policy](https://kaptapp.com/privacy/): what information Kapture handles, what a Kapture account keeps, how long, and your rights.
+- [Terms of Service](https://kaptapp.com/terms/): the terms for kaptapp.com, Kapture for Chrome and a Kapture account, from KUMO STUDIO LIMITED.
 
 Spanish, Simplified Chinese, Korean and Japanese versions of the home, help and
 privacy pages live under /es/, /zh/, /ko/ and /ja/.
 
 ## Publisher
 
-Kapture is made by Kumo Studio (https://kumo.studio).
+Kapture is made by KUMO STUDIO LIMITED (Kumo Studio, https://kumo.studio).
 
 ## Contact
 

@@ -394,17 +394,6 @@ FIX = {
  'pt-br': '<h3>Kapture Pro<br>para Windows</h3>',
  'it': '<h3>Kapture Pro<br>per Windows</h3>'},
 
-# ---------------------------------------------------------------- company credit
-'<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; A <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> product</p>': {
- 'es': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; Un producto de <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a></p>',
- 'zh': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> 出品</p>',
- 'ko': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> 제품</p>',
- 'ja': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a> のプロダクト</p>',
- 'de': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; Ein Produkt von <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a></p>',
- 'fr': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; Un produit <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a></p>',
- 'pt-br': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; Um produto <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a></p>',
- 'it': '<p class="copyright">&copy; <span id="year">2026</span> Kapture &middot; Un prodotto <a href="https://kumo.studio" target="_blank" rel="noopener noreferrer">Kumo Studio</a></p>'},
-
 # ---------------------------------------------------------------- platform-neutral positioning
 # Kapture Pro is one product on two desktop platforms, so the general copy no
 # longer names Mac. "Desktop" becomes the everyday word for a personal computer
@@ -884,32 +873,37 @@ FIX = {
 '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">Help</a>
+      <a href="/terms/">Terms</a>
       <a href="/privacy/">Privacy</a>
       <a href="mailto:hello@kaptapp.com">Contact</a>''': {
  'es': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">Ayuda</a>
+      <a href="/terms/">Términos</a>
       <a href="/privacy/">Privacidad</a>
       <a href="mailto:hello@kaptapp.com">Contacto</a>''',
  'zh': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">帮助</a>
+      <a href="/terms/">服务条款</a>
       <a href="/privacy/">隐私</a>
       <a href="mailto:hello@kaptapp.com">联系</a>''',
  'ko': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">도움말</a>
+      <a href="/terms/">이용약관</a>
       <a href="/privacy/">개인정보</a>
       <a href="mailto:hello@kaptapp.com">문의</a>''',
  'ja': '''<a href="#capture">Chrome</a>
       <a href="#pro">Kapture Pro</a>
       <a href="/help/">ヘルプ</a>
+      <a href="/terms/">利用規約</a>
       <a href="/privacy/">プライバシー</a>
       <a href="mailto:hello@kaptapp.com">お問い合わせ</a>''',
- 'de': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Hilfe</a>\n      <a href="/privacy/">Datenschutz</a>\n      <a href="mailto:hello@kaptapp.com">Kontakt</a>',
- 'fr': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Aide</a>\n      <a href="/privacy/">Confidentialité</a>\n      <a href="mailto:hello@kaptapp.com">Contact</a>',
- 'pt-br': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Ajuda</a>\n      <a href="/privacy/">Privacidade</a>\n      <a href="mailto:hello@kaptapp.com">Contato</a>',
- 'it': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Guida</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:hello@kaptapp.com">Contatti</a>'},
+ 'de': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Hilfe</a>\n      <a href="/terms/">AGB</a>\n      <a href="/privacy/">Datenschutz</a>\n      <a href="mailto:hello@kaptapp.com">Kontakt</a>',
+ 'fr': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Aide</a>\n      <a href="/terms/">Conditions</a>\n      <a href="/privacy/">Confidentialité</a>\n      <a href="mailto:hello@kaptapp.com">Contact</a>',
+ 'pt-br': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Ajuda</a>\n      <a href="/terms/">Termos</a>\n      <a href="/privacy/">Privacidade</a>\n      <a href="mailto:hello@kaptapp.com">Contato</a>',
+ 'it': '<a href="#capture">Chrome</a>\n      <a href="#pro">Kapture Pro</a>\n      <a href="/help/">Guida</a>\n      <a href="/terms/">Termini</a>\n      <a href="/privacy/">Privacy</a>\n      <a href="mailto:hello@kaptapp.com">Contatti</a>'},
 
 # ---------------------------------------------------------------- FAQ, refined
 '<p class="section-lead">The things people ask most often about Kapture, answered plainly.</p>': {

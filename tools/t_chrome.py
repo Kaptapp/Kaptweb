@@ -127,6 +127,16 @@ CHROME = {
 
 # Help was reachable only from inside the extension. It is in the footer of
 # every page now, so the link text is shared chrome like the rest of the nav.
+'<a href="/terms/">Terms</a>': {
+ 'es': '<a href="/terms/">Términos</a>',
+ 'zh': '<a href="/terms/">服务条款</a>',
+ 'ko': '<a href="/terms/">이용약관</a>',
+ 'ja': '<a href="/terms/">利用規約</a>',
+ 'de': '<a href="/terms/">AGB</a>',
+ 'fr': '<a href="/terms/">Conditions</a>',
+ 'pt-br': '<a href="/terms/">Termos</a>',
+ 'it': '<a href="/terms/">Termini</a>'},
+
 '<a href="/help/">Help</a>': {
  'es': '<a href="/help/">Ayuda</a>',
  'zh': '<a href="/help/">帮助</a>',

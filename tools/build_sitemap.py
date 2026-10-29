@@ -15,7 +15,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAGES = {
     'index':   ('2026-09-30', 'monthly', '1.0'),
     'help':    ('2026-09-30', 'monthly', '0.6'),
-    'privacy': ('2026-09-30', 'yearly',  '0.5'),
+    'privacy': ('2026-10-29', 'yearly',  '0.5'),
+    'terms':   ('2026-10-29', 'yearly',  '0.5'),
 }
 # English-only pages: no alternates, so no hreflang cluster is claimed.
 SOLO = {

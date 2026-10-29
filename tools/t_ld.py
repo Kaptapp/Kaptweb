@@ -102,9 +102,12 @@ def privacy_url(lang):
 def help_url(lang):
     return f'{BASE}/help/' if lang == 'en' else f'{BASE}/{lang}/help/'
 
+def terms_url(lang):
+    return f'{BASE}/terms/' if lang == 'en' else f'{BASE}/{lang}/terms/'
+
 # One place that maps a page to its URL builder, so adding a page does not mean
 # editing a chain of conditionals in the build script.
-PAGE_URL = {'index': home_url, 'privacy': privacy_url, 'help': help_url}
+PAGE_URL = {'index': home_url, 'privacy': privacy_url, 'help': help_url, 'terms': terms_url}
 
 def page_url(lang, page):
     return PAGE_URL[page](lang)
