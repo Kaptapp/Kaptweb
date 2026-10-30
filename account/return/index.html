@@ -51,10 +51,11 @@
       <h1>Your Kapture account</h1>
     </header>
 
-    <!-- Where Stripe sends people who started from the Kapture Pro app. The app
-         reads its licence from the server, so this page only says what happened
-         and sends them back. It reads nothing, signs nobody in and ignores the
-         session id in the address. -->
+    <!-- Where Stripe sends people who started from the Kapture Pro app. The
+         address is not proof of anything: anyone can type ?checkout=success.
+         Access only ever comes from the server (get_my_access and the licence),
+         so this page only picks a message and sends people back. It reads no
+         account data, signs nobody in and ignores the session id. -->
     <section class="ac-panel" data-return="done">
       <h2 class="ac-h2">Back to Kapture Pro</h2>
       <p class="ac-lead">Any changes you made are saved. You can close this tab and go back to the Kapture Pro app.</p>
@@ -62,8 +63,8 @@
     </section>
 
     <section class="ac-panel" data-return="success" hidden>
-      <h2 class="ac-h2">Payment received</h2>
-      <p class="ac-lead">Thank you. Kapture Pro updates in the app within a minute. You can close this tab and go back to the Kapture Pro app.</p>
+      <h2 class="ac-h2">Checkout complete</h2>
+      <p class="ac-lead">Thank you. The Kapture Pro app checks your subscription with our server and updates within a minute. You can close this tab and go back to the app.</p>
       <a class="btn btn-ghost btn-sm" href="/account/">View your account</a>
     </section>
 
