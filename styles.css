@@ -897,6 +897,9 @@ html[lang="it"]    { --free-label: "Gratis"; }
 
 .legal-head { padding-bottom: clamp(28px, 4vw, 40px); border-bottom: 1px solid var(--line); }
 .legal-head h1 { font-size: clamp(32px, 5.4vw, 52px); }
+/* Long single words (German "Geschäftsbedingungen") must not widen a phone
+   screen: hyphenate where the browser can, otherwise break inside the word. */
+.legal-head h1 { hyphens: auto; overflow-wrap: break-word; }
 .legal-date { margin-top: 14px; font-size: 15px; color: var(--text-muted); }
 
 .legal-body { margin-top: clamp(28px, 4vw, 40px); }

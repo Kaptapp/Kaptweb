@@ -184,7 +184,9 @@ def build(lang, page):
     # 3. language attribute, then every root-relative internal link moves into
     #    this language: href="/" , href="/#how" and href="/privacy/" all shift.
     src = src.replace('<html lang="en">', f'<html lang="{HTMLLANG[lang]}">', 1)
-    src = src.replace('href="/', f'href="/{lang}/')
+    #    /account/ is the exception: one English account page serves every
+    #    language, so links to it stay as they are.
+    src = re.sub(r'href="/(?!account/)', f'href="/{lang}/', src)
     url = page_url(lang, page)
     src = re.sub(r'<link rel="canonical" href="[^"]+">',
                  f'<link rel="canonical" href="{url}">', src, count=1)

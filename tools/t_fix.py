@@ -1015,6 +1015,17 @@ FIX = {
         O Kapture Pro transforma isso em uma biblioteca visual organizada e pesquisável no seu computador.''',
  'it': '''        Kapture salva pagine web intere o aree selezionate direttamente da Chrome.
         Kapture Pro le trasforma in una libreria visiva ordinata e consultabile sul tuo computer.''',
-}
+},
+
+# ---------------------------------------------------------------- account entry in the header
+'<a class="btn btn-ghost btn-sm" href="/account/">Account</a>': {
+ 'es': '<a class="btn btn-ghost btn-sm" href="/account/">Cuenta</a>',
+ 'zh': '<a class="btn btn-ghost btn-sm" href="/account/">账户</a>',
+ 'ko': '<a class="btn btn-ghost btn-sm" href="/account/">계정</a>',
+ 'ja': '<a class="btn btn-ghost btn-sm" href="/account/">アカウント</a>',
+ 'de': '<a class="btn btn-ghost btn-sm" href="/account/">Konto</a>',
+ 'fr': '<a class="btn btn-ghost btn-sm" href="/account/">Compte</a>',
+ 'pt-br': '<a class="btn btn-ghost btn-sm" href="/account/">Conta</a>',
+ 'it': '<a class="btn btn-ghost btn-sm" href="/account/">Account</a>'},
 
 }

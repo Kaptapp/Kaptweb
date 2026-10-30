@@ -69,15 +69,15 @@ CHROME = {
  'pt-br': '<a href="mailto:hello@kaptapp.com">Contato</a>',
  'it': '<a href="mailto:hello@kaptapp.com">Contatti</a>'},
 
-'<a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>': {
- 'es': '<a class="btn btn-ghost btn-sm store-cta" href="/">Volver al sitio</a>',
- 'zh': '<a class="btn btn-ghost btn-sm store-cta" href="/">返回网站</a>',
- 'ko': '<a class="btn btn-ghost btn-sm store-cta" href="/">사이트로 돌아가기</a>',
- 'ja': '<a class="btn btn-ghost btn-sm store-cta" href="/">サイトに戻る</a>',
- 'de': '<a class="btn btn-ghost btn-sm store-cta" href="/">Zurück zur Website</a>',
- 'fr': '<a class="btn btn-ghost btn-sm store-cta" href="/">Retour au site</a>',
- 'pt-br': '<a class="btn btn-ghost btn-sm store-cta" href="/">Voltar ao site</a>',
- 'it': '<a class="btn btn-ghost btn-sm store-cta" href="/">Torna al sito</a>'},
+'<a class="btn btn-ghost btn-sm store-cta" href="/account/">Account</a>': {
+ 'es': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">Cuenta</a>',
+ 'zh': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">账户</a>',
+ 'ko': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">계정</a>',
+ 'ja': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">アカウント</a>',
+ 'de': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">Konto</a>',
+ 'fr': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">Compte</a>',
+ 'pt-br': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">Conta</a>',
+ 'it': '<a class="btn btn-ghost btn-sm store-cta" href="/account/">Account</a>'},
 
 'aria-label="Kapture on X"': {
  'es': 'aria-label="Kapture en X"', 'zh': 'aria-label="Kapture 的 X 主页"',
