@@ -585,6 +585,9 @@
   if (connectAsk && connectAsk.invalid) {
     fail('This request from Kapture Pro is not valid. Start again from the app.');
   } else if (connectAsk) {
+    // A sign-in should never arrive together with a new request; end it
+    // rather than leave it unused.
+    if (fromLink && fromLink.access_token) endSession(fromLink.access_token);
     if (storeConnect(connectAsk)) {
       document.getElementById('acConnectNote').hidden = false;
       setState('signed-out');

@@ -119,6 +119,20 @@ def run(engine_name, bt, opts):
           and store(pg)["s"] is None and pg.text_content("#acConnectTitle") == "Not connected" and not visible(pg, "#acConnectYes"))
     ctx.close()
 
+    # 6b. Consent asks people who did not start it from the app to cancel.
+    ctx, pg, calls, logs = fresh(); pg.goto(ACC + f"?app=connect&port={PORT}&state={STATE}&platform=macos")
+    pg.goto("about:blank"); pg.goto(ACC + HASH); pg.wait_for_function("document.querySelector('main.ac').dataset.state === 'connect'")
+    check(f"{E}: consent tells people to cancel if they did not start it", "otherwise choose Cancel" in pg.text_content("#acConnectHint"))
+    ctx.close()
+
+    # 6c. A request and a sign-in in the same address: the sign-in is ended, not kept or handed over.
+    ctx, pg, calls, logs = fresh(); got.clear()
+    pg.goto(ACC + f"?app=connect&port={PORT}&state={STATE}&platform=macos" + HASH); pg.wait_for_timeout(300)
+    lo = [x for x in calls if x["path"] == "/auth/v1/logout"]
+    check(f"{E}: request plus fragment ends that sign-in", lo and lo[-1]["auth"] == "Bearer " + TOK["access_token"] and store(pg)["s"] is None
+          and not got and "#" not in pg.url and "?" not in pg.url and st(pg) == "signed-out")
+    ctx.close()
+
     # 7. An expired request is ignored: the link signs in to the website as usual.
     ctx, pg, calls, logs = fresh(); pg.goto(ACC)
     pg.evaluate("r => localStorage.setItem('kapture.app_connect', JSON.stringify(r))", {"port": PORT, "state": STATE, "platform": "macos", "expires": int(time.time() * 1000) - 1})
