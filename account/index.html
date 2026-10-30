@@ -21,7 +21,7 @@
 
 <link rel="preconnect" href="https://sokcwfqvutnjzzbsuhqm.supabase.co" crossorigin>
 <link rel="stylesheet" href="../styles.css?v=44">
-<link rel="stylesheet" href="account.css?v=3">
+<link rel="stylesheet" href="account.css?v=4">
 </head>
 <body class="ac-page">
 
@@ -74,6 +74,7 @@
         <button class="btn btn-primary" id="acSend" type="submit">Email me a link</button>
       </form>
       <p class="ac-note">Use the address you bought Kapture Pro with.</p>
+      <p class="ac-note" id="acConnectNote" hidden>Kapture Pro on this computer asked to connect to your account. Open the link we email you in this browser.</p>
     </section>
 
     <!-- Magic link sent -->
@@ -117,6 +118,19 @@
 
     </section>
 
+    <!-- Connect Kapture Pro. Shown only when the app started a connection and
+         the emailed link has just come back. The new session goes to the app,
+         never into this page's storage, and only after an explicit click. -->
+    <section class="ac-panel" data-panel="connect" aria-hidden="true">
+      <h2 class="ac-h2" id="acConnectTitle">Connect Kapture Pro</h2>
+      <p class="ac-lead" id="acConnectLead">Connect Kapture Pro on this computer to <strong id="acConnectEmail"></strong>?</p>
+      <p class="ac-note" id="acConnectHint">Kapture Pro must still be waiting on this computer. If your browser then shows an error page, start again from the app.</p>
+      <div class="ac-actions" id="acConnectActions">
+        <button class="btn btn-primary" id="acConnectYes" type="button">Connect</button>
+        <button class="btn btn-ghost" id="acConnectNo" type="button">Cancel</button>
+      </div>
+    </section>
+
     <!-- Error -->
     <section class="ac-panel" data-panel="error" aria-hidden="true">
       <h2 class="ac-h2">Something went wrong</h2>
@@ -153,6 +167,6 @@
 </footer>
 
 <script src="../script.js?v=42"></script>
-<script src="account.js?v=2"></script>
+<script src="account.js?v=3"></script>
 </body>
 </html>

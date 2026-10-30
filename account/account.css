@@ -28,7 +28,8 @@
 .ac[data-state="signed-out"] [data-panel="signed-out"],
 .ac[data-state="link-sent"]  [data-panel="link-sent"],
 .ac[data-state="signed-in"]  [data-panel="signed-in"],
-.ac[data-state="error"]      [data-panel="error"] { display: block; }
+.ac[data-state="error"]      [data-panel="error"],
+.ac[data-state="connect"]    [data-panel="connect"] { display: block; }
 .ac[data-state="return"] .ac-panel:not([hidden]) { display: block; }
 .ac[data-state="return"] .ac-lead + .btn { margin-top: 4px; }
 
@@ -38,6 +39,8 @@
 .ac-muted { color: var(--text-muted); margin: 0; }
 .ac-panel > .ac-h2 { margin-bottom: 12px; }
 .ac-panel > .ac-note + .btn { margin-top: 24px; }
+.ac-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.ac-actions[hidden] { display: none; }
 
 /* Sign-in form ----------------------------------------------------------- */
 

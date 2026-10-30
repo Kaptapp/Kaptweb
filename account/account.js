@@ -416,6 +416,153 @@
     });
   }
 
+  /* ---- connect Kapture Pro --------------------------------------------
+     Kapture Pro signs in through this page (docs/desktop-auth-contract.md in
+     the backend repository). The app listens on 127.0.0.1 and opens
+     /account/?app=connect&port=…&state=…&platform=…. The request is kept here
+     for 15 minutes and the normal emailed link is sent. When that link comes
+     back in this browser, the new session is offered to the app instead of
+     being kept by this page, and it reaches the app only after a click on
+     Connect, as a form POST to the loopback address: a navigation, because
+     browsers block fetch() from a public page to 127.0.0.1, and a POST body,
+     so the tokens are never in a URL. A session this page already had is left
+     alone, and nothing here is logged. */
+
+  var CONNECT_KEY = 'kapture.app_connect';
+  var CONNECT_TTL = 15 * 60 * 1000;
+
+  var handoff = null;   // { tokens, req } while the Connect question is on screen
+
+  function validConnect(r) {
+    return !!r && typeof r.port === 'number' && r.port % 1 === 0 &&
+      r.port >= 1024 && r.port <= 65535 &&
+      typeof r.state === 'string' && /^[A-Za-z0-9_-]{43}$/.test(r.state) &&
+      (r.platform === 'macos' || r.platform === 'windows');
+  }
+
+  // The request the app opened this page with, if any. It is taken out of the
+  // address bar at once, valid or not.
+  function connectFromQuery() {
+    var q = new URLSearchParams(location.search);
+    if (q.get('app') !== 'connect') return null;
+    history.replaceState(null, '', location.pathname + location.hash);
+    var port = q.get('port') || '';
+    var req = {
+      port: /^[1-9][0-9]{3,4}$/.test(port) ? Number(port) : 0,
+      state: q.get('state') || '',
+      platform: q.get('platform') || '',
+      expires: Date.now() + CONNECT_TTL
+    };
+    return validConnect(req) ? req : { invalid: true };
+  }
+
+  function storeConnect(req) {
+    try { localStorage.setItem(CONNECT_KEY, JSON.stringify(req)); return true; }
+    catch (e) { return false; }
+  }
+
+  function dropConnect() {
+    try { localStorage.removeItem(CONNECT_KEY); } catch (e) { /* nothing stored */ }
+  }
+
+  // The stored request, only while it is valid and unexpired.
+  function loadConnect() {
+    var req = null;
+    try { req = JSON.parse(localStorage.getItem(CONNECT_KEY) || 'null'); } catch (e) { return null; }
+    if (!req) return null;
+    if (!validConnect(req) || !(req.expires > Date.now())) { dropConnect(); return null; }
+    return req;
+  }
+
+  function asBearer(token, opts) {
+    opts.auth = false;
+    opts.headers = { Authorization: 'Bearer ' + token };
+    return opts;
+  }
+
+  // Ends a session that was never handed over, so it cannot be used later.
+  function endSession(token) {
+    api('/auth/v1/logout?scope=local', asBearer(token, { method: 'POST', body: {} }))
+      .catch(function () { /* it also expires on its own */ });
+  }
+
+  function closeConnect(title, message) {
+    document.getElementById('acConnectTitle').textContent = title;
+    document.getElementById('acConnectLead').hidden = true;
+    document.getElementById('acConnectActions').hidden = true;
+    document.getElementById('acConnectHint').textContent = message;
+    setState('connect');
+    say(title);
+  }
+
+  function offerConnect(tokens, req) {
+    handoff = { tokens: tokens, req: req };
+    setState('loading');
+    api('/auth/v1/user', asBearer(tokens.access_token, {})).then(function (res) {
+      if (!res.ok) throw new Error('user');
+      return res.json();
+    }).then(function (user) {
+      if (!user || !user.id) throw new Error('user');
+      text(document.getElementById('acConnectEmail'), user.email || 'your account');
+      setState('connect');
+      document.getElementById('acConnectYes').focus();
+    }).catch(function () {
+      endSession(tokens.access_token);
+      handoff = null;
+      fail('We could not check that sign-in, so Kapture Pro was not connected. ' +
+        'Request a new link, or start again from the app.');
+    });
+  }
+
+  var connectYes = document.getElementById('acConnectYes');
+  if (connectYes) {
+    connectYes.addEventListener('click', function () {
+      if (!handoff) return;
+      var h = handoff;
+      handoff = null;
+      // Single use: the request is gone before anything is sent, and it must
+      // still be the same, unexpired request the question was asked for.
+      var req = loadConnect();
+      dropConnect();
+      if (!req || req.state !== h.req.state) {
+        endSession(h.tokens.access_token);
+        closeConnect('Not connected', 'The request from Kapture Pro has expired. Start again from the app.');
+        return;
+      }
+      var post = document.createElement('form');
+      post.method = 'POST';
+      post.action = 'http://127.0.0.1:' + req.port + '/kapture-auth/callback';
+      [['state', req.state], ['access_token', h.tokens.access_token],
+        ['refresh_token', h.tokens.refresh_token], ['expires_at', h.tokens.expires_at || '']
+      ].forEach(function (f) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = f[0];
+        input.value = f[1];
+        post.appendChild(input);
+      });
+      closeConnect('Connecting Kapture Pro',
+        'Your browser is handing the sign-in to Kapture Pro. If it shows an error page instead, ' +
+        'Kapture Pro was no longer waiting or this browser blocked the connection: start again from the app.');
+      document.body.appendChild(post);
+      post.submit();
+      // The browser has already copied the fields; they do not stay in the page.
+      post.remove();
+    });
+  }
+
+  var connectNo = document.getElementById('acConnectNo');
+  if (connectNo) {
+    connectNo.addEventListener('click', function () {
+      if (!handoff) return;
+      var h = handoff;
+      handoff = null;
+      dropConnect();
+      endSession(h.tokens.access_token);
+      closeConnect('Not connected', 'Kapture Pro was not connected, and that sign-in has been ended. You can close this tab.');
+    });
+  }
+
   /* ---- boot ------------------------------------------------------------ */
 
   function readHash() {
@@ -428,19 +575,36 @@
     // in history, or be read by anything that can see the URL.
     history.replaceState(null, '', location.pathname);
     if (error) return { error: error };
-    return { access_token: token, refresh_token: p.get('refresh_token') };
+    return { access_token: token, refresh_token: p.get('refresh_token'), expires_at: p.get('expires_at') };
   }
 
+  var connectAsk = connectFromQuery();
   var fromLink = readHash();
+  var pending = fromLink && fromLink.access_token ? loadConnect() : null;
 
-  if (fromLink && fromLink.error) {
+  if (connectAsk && connectAsk.invalid) {
+    fail('This request from Kapture Pro is not valid. Start again from the app.');
+  } else if (connectAsk) {
+    if (storeConnect(connectAsk)) {
+      document.getElementById('acConnectNote').hidden = false;
+      setState('signed-out');
+    } else {
+      fail('This browser is not letting kaptapp.com remember the request from Kapture Pro, so it cannot connect. ' +
+        'Allow site data for kaptapp.com or use another browser, then start again from the app.');
+    }
+  } else if (fromLink && fromLink.error) {
     fail(fromLink.error === 'access_denied' || /expired/i.test(fromLink.error)
       ? 'That sign-in link has expired or was already used. Please request a new one.'
       : 'We could not complete that sign-in. Please request a new link.');
     var back = document.getElementById('acRetry');
     if (back) back.textContent = 'Back to sign in';
+  } else if (pending) {
+    // Kapture Pro asked for this sign-in: it is offered to the app and never
+    // saved here. The website keeps whatever session it already had.
+    session = loadSession();
+    offerConnect(fromLink, pending);
   } else if (fromLink && fromLink.access_token) {
-    saveSession(fromLink);
+    saveSession({ access_token: fromLink.access_token, refresh_token: fromLink.refresh_token });
     loadAccount();
   } else {
     session = loadSession();
