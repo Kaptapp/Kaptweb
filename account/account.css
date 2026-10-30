@@ -29,6 +29,8 @@
 .ac[data-state="link-sent"]  [data-panel="link-sent"],
 .ac[data-state="signed-in"]  [data-panel="signed-in"],
 .ac[data-state="error"]      [data-panel="error"] { display: block; }
+.ac[data-state="return"] .ac-panel:not([hidden]) { display: block; }
+.ac[data-state="return"] .ac-lead + .btn { margin-top: 4px; }
 
 .ac-h2 { font-size: 20px; letter-spacing: -.01em; margin: 0; }
 .ac-lead { color: var(--text-dim); font-size: 17px; max-width: 54ch; margin: 0 0 22px; }

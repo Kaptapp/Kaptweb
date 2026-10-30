@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back to Kapture Pro | Kapture</title>
+<meta name="description" content="Return to the Kapture Pro app after checkout or managing your subscription.">
+<!-- A private page. It should never appear in search results, and it is not
+     part of the localised site, so it carries no hreflang cluster. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="same-origin">
+<meta name="theme-color" content="#1b1d1c">
+<link rel="canonical" href="https://kaptapp.com/account/return/">
+
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="../../assets/logo/kapture-icon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
+
+<link rel="stylesheet" href="../../styles.css?v=43">
+<link rel="stylesheet" href="../account.css?v=3">
+</head>
+<body class="ac-page">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+    <a class="brand" href="/">
+      <img class="brand-icon" src="../../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="brand-wordmark" src="../../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+    </a>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/#how">How it works</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+    <a class="btn btn-ghost btn-sm store-cta" href="/">Back to site</a>
+  </div>
+</header>
+
+<main id="main" class="legal ac" data-state="return">
+  <div class="shell ac-shell">
+
+    <header class="legal-head">
+      <p class="kicker">Account</p>
+      <h1>Your Kapture account</h1>
+    </header>
+
+    <!-- Where Stripe sends people who started from the Kapture Pro app. The app
+         reads its licence from the server, so this page only says what happened
+         and sends them back. It reads nothing, signs nobody in and ignores the
+         session id in the address. -->
+    <section class="ac-panel" data-return="done">
+      <h2 class="ac-h2">Back to Kapture Pro</h2>
+      <p class="ac-lead">Any changes you made are saved. You can close this tab and go back to the Kapture Pro app.</p>
+      <a class="btn btn-ghost btn-sm" href="/account/">View your account</a>
+    </section>
+
+    <section class="ac-panel" data-return="success" hidden>
+      <h2 class="ac-h2">Payment received</h2>
+      <p class="ac-lead">Thank you. Kapture Pro updates in the app within a minute. You can close this tab and go back to the Kapture Pro app.</p>
+      <a class="btn btn-ghost btn-sm" href="/account/">View your account</a>
+    </section>
+
+    <section class="ac-panel" data-return="cancel" hidden>
+      <h2 class="ac-h2">Checkout cancelled</h2>
+      <p class="ac-lead">No payment was taken. You can close this tab and go back to the Kapture Pro app.</p>
+      <a class="btn btn-ghost btn-sm" href="/account/">View your account</a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-brand">
+      <img class="footer-icon" src="../../assets/logo/kapture-icon.svg" alt="" width="128" height="128">
+      <img class="footer-wordmark" src="../../assets/logo/kapture_wordmark.svg" alt="Kapture"
+           width="843" height="233">
+      <span>kaptapp.com</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/#capture">Chrome</a>
+      <a href="/#pro">Kapture Pro</a>
+      <a href="/#how">How it works</a>
+      <a href="/help/">Help</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="mailto:hello@kaptapp.com">Contact</a>
+    </nav>
+    <p class="copyright">&copy; <span id="year">2026</span> KUMO STUDIO LIMITED</p>
+  </div>
+</footer>
+
+<script src="../../script.js?v=42"></script>
+<script>
+  // Show the message for how Stripe sent the visitor here; the "done" message
+  // is the default and the no-JavaScript fallback.
+  (function () {
+    var kind = new URLSearchParams(location.search).get('checkout');
+    var show = kind === 'success' || kind === 'cancel' ? kind : 'done';
+    document.querySelectorAll('[data-return]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-return') !== show;
+    });
+  })();
+</script>
+</body>
+</html>
