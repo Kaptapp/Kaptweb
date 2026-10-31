@@ -346,3 +346,10 @@ TERMS = {
  'pt-br': 'Os termos do Kapture Pro abaixo fazem parte destes termos em todas as versões de idioma desta página. Por enquanto, estão disponíveis apenas em inglês.',
  'it': 'I termini di Kapture Pro qui sotto fanno parte di questi termini in ogni versione linguistica di questa pagina. Per ora sono disponibili solo in inglese.'},
 }
+
+# The Kapture Pro section is generated from the backend's pro_terms.json by
+# tools/sync_pro_terms.py; its translations live in t_pro_terms.py.
+from t_pro_terms import PRO, NOTICE_TRANSLATED
+TERMS.update(PRO)
+TERMS['These Kapture Pro terms are part of these terms in every language version of this page.'] = {
+    **TERMS['These Kapture Pro terms are part of these terms in every language version of this page.'], **NOTICE_TRANSLATED}
