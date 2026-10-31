@@ -443,15 +443,15 @@ PRIV = {
  'pt-br': '<h2>Crianças e adolescentes</h2>',
  'it': '<h2>Minori</h2>'},
 
-'<p class="legal-date">Effective 29 October 2026</p>': {
- 'es': '<p class="legal-date">En vigor desde el 29 de octubre de 2026</p>',
- 'zh': '<p class="legal-date">自 2026 年 10 月 29 日起生效</p>',
- 'ko': '<p class="legal-date">2026년 10월 29일 시행</p>',
- 'ja': '<p class="legal-date">2026 年 10 月 29 日発効</p>',
- 'de': '<p class="legal-date">Gültig ab 29. Oktober 2026</p>',
- 'fr': '<p class="legal-date">En vigueur depuis le 29 octobre 2026</p>',
- 'pt-br': '<p class="legal-date">Em vigor desde 29 de outubro de 2026</p>',
- 'it': '<p class="legal-date">In vigore dal 29 ottobre 2026</p>'},
+'<p class="legal-date">Effective 1 November 2026</p>': {
+ 'es': '<p class="legal-date">En vigor desde el 1 de noviembre de 2026</p>',
+ 'zh': '<p class="legal-date">自 2026 年 11 月 1 日起生效</p>',
+ 'ko': '<p class="legal-date">2026년 11월 1일 시행</p>',
+ 'ja': '<p class="legal-date">2026 年 11 月 1 日発効</p>',
+ 'de': '<p class="legal-date">Gültig ab 1. November 2026</p>',
+ 'fr': '<p class="legal-date">En vigueur depuis le 1er novembre 2026</p>',
+ 'pt-br': '<p class="legal-date">Em vigor desde 1º de novembro de 2026</p>',
+ 'it': '<p class="legal-date">In vigore dal 1° novembre 2026</p>'},
 
 '<p>Kapture is made by KUMO STUDIO LIMITED, a private limited company registered in England and Wales under company number 08453597, whose registered office is at Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England. We are the controller of the personal data described in this policy.</p>': {
  'es': '<p>Kapture está desarrollado por KUMO STUDIO LIMITED, una sociedad de responsabilidad limitada (private limited company) registrada en Inglaterra y Gales con el número de registro 08453597 y con domicilio social en Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England. Somos el responsable del tratamiento de los datos personales descritos en esta política.</p>',
@@ -483,15 +483,15 @@ PRIV = {
  'pt-br': '<p>O Kapture para Chrome não precisa de conta e não nos envia nada.</p>',
  'it': '<p>Kapture per Chrome non richiede alcun account e non ci invia nulla.</p>'},
 
-'<p>A Kapture account holds your email address and, once Kapture Pro is available, your licence and the devices you activate.</p>': {
- 'es': '<p>Una cuenta de Kapture contiene tu dirección de correo electrónico y, cuando Kapture Pro esté disponible, tu licencia y los dispositivos que actives.</p>',
- 'zh': '<p>Kapture 账户保存你的电子邮件地址；Kapture Pro 推出后，还会保存你的许可证以及你激活的设备。</p>',
- 'ko': '<p>Kapture 계정에는 이메일 주소가 저장되며, Kapture Pro가 출시되면 라이선스와 사용자가 활성화한 기기도 저장됩니다.</p>',
- 'ja': '<p>Kapture アカウントには、お客様のメールアドレスと、Kapture Pro の提供開始後はライセンスおよびお客様が有効化した端末の情報が保存されます。</p>',
- 'de': '<p>Ein Kapture-Konto enthält deine E-Mail-Adresse und, sobald Kapture Pro verfügbar ist, deine Lizenz und die Geräte, die du aktivierst.</p>',
- 'fr': '<p>Un compte Kapture contient votre adresse e-mail et, une fois Kapture Pro disponible, votre licence et les appareils que vous activez.</p>',
- 'pt-br': '<p>Uma conta Kapture guarda seu endereço de e-mail e, quando o Kapture Pro estiver disponível, sua licença e os dispositivos que você ativar.</p>',
- 'it': '<p>Un account Kapture contiene il tuo indirizzo email e, quando Kapture Pro sarà disponibile, la tua licenza e i dispositivi che attivi.</p>'},
+'<p>A Kapture account holds your email address and, if you use Kapture Pro, your licence and the devices you activate.</p>': {
+ 'es': '<p>Una cuenta de Kapture contiene tu dirección de correo electrónico y, si usas Kapture Pro, tu licencia y los dispositivos que actives.</p>',
+ 'zh': '<p>Kapture 账户保存你的电子邮件地址；如果你使用 Kapture Pro，还会保存你的许可证以及你激活的设备。</p>',
+ 'ko': '<p>Kapture 계정에는 이메일 주소가 저장되며, Kapture Pro를 사용하는 경우 라이선스와 사용자가 활성화한 기기도 저장됩니다.</p>',
+ 'ja': '<p>Kapture アカウントには、お客様のメールアドレスと、Kapture Pro をご利用の場合はライセンスおよびお客様が有効化した端末の情報が保存されます。</p>',
+ 'de': '<p>Ein Kapture-Konto enthält deine E-Mail-Adresse und, wenn du Kapture Pro nutzt, deine Lizenz und die Geräte, die du aktivierst.</p>',
+ 'fr': '<p>Un compte Kapture contient votre adresse e-mail et, si vous utilisez Kapture Pro, votre licence et les appareils que vous activez.</p>',
+ 'pt-br': '<p>Uma conta Kapture guarda seu endereço de e-mail e, se você usar o Kapture Pro, sua licença e os dispositivos que você ativar.</p>',
+ 'it': '<p>Un account Kapture contiene il tuo indirizzo email e, se usi Kapture Pro, la tua licenza e i dispositivi che attivi.</p>'},
 
 '<p>We do not use advertising, analytics or tracking, and we never sell your data.</p>': {
  'es': '<p>No usamos publicidad, analíticas ni seguimiento, y nunca vendemos tus datos.</p>',

@@ -156,15 +156,15 @@ TERMS = {
  'pt-br': '<p class="kicker">Jurídico</p>',
  'it': '<p class="kicker">Note legali</p>'},
 
-'<p class="legal-date">Effective 29 October 2026</p>': {
- 'es': '<p class="legal-date">En vigor desde el 29 de octubre de 2026</p>',
- 'zh': '<p class="legal-date">自 2026 年 10 月 29 日起生效</p>',
- 'ko': '<p class="legal-date">2026년 10월 29일 시행</p>',
- 'ja': '<p class="legal-date">2026 年 10 月 29 日発効</p>',
- 'de': '<p class="legal-date">Gültig ab 29. Oktober 2026</p>',
- 'fr': '<p class="legal-date">En vigueur depuis le 29 octobre 2026</p>',
- 'pt-br': '<p class="legal-date">Em vigor desde 29 de outubro de 2026</p>',
- 'it': '<p class="legal-date">In vigore dal 29 ottobre 2026</p>'},
+'<p class="legal-date">Effective 1 November 2026</p>': {
+ 'es': '<p class="legal-date">En vigor desde el 1 de noviembre de 2026</p>',
+ 'zh': '<p class="legal-date">自 2026 年 11 月 1 日起生效</p>',
+ 'ko': '<p class="legal-date">2026년 11월 1일 시행</p>',
+ 'ja': '<p class="legal-date">2026 年 11 月 1 日発効</p>',
+ 'de': '<p class="legal-date">Gültig ab 1. November 2026</p>',
+ 'fr': '<p class="legal-date">En vigueur depuis le 1er novembre 2026</p>',
+ 'pt-br': '<p class="legal-date">Em vigor desde 1º de novembro de 2026</p>',
+ 'it': '<p class="legal-date">In vigore dal 1° novembre 2026</p>'},
 
 '<p>These terms apply when you use kaptapp.com, Kapture for Chrome or a Kapture account. They are an agreement between you and KUMO STUDIO LIMITED, a private limited company registered in England and Wales under company number 08453597, whose registered office is at Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England (&ldquo;Kapture&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;).</p>': {
  'es': '<p>Estos términos se aplican cuando usas kaptapp.com, Kapture para Chrome o una cuenta de Kapture. Constituyen un acuerdo entre tú y KUMO STUDIO LIMITED, una sociedad de responsabilidad limitada (private limited company) registrada en Inglaterra y Gales con el número de registro 08453597 y con domicilio social en Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England («Kapture», «nosotros», «nos»).</p>',
