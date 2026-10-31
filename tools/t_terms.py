@@ -335,4 +335,14 @@ TERMS = {
  'fr': '<p class="legal-foot">KUMO STUDIO LIMITED &middot; Numéro d\'immatriculation 08453597 &middot; Siège social&nbsp;: Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England</p>',
  'pt-br': '<p class="legal-foot">KUMO STUDIO LIMITED &middot; Número de registro 08453597 &middot; Sede social: Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England</p>',
  'it': '<p class="legal-foot">KUMO STUDIO LIMITED &middot; Numero di registrazione 08453597 &middot; Sede legale: Office 2, Tweed House, Park Lane, Swanley, Kent, BR8 8DT, England</p>'},
+
+'These Kapture Pro terms are part of these terms in every language version of this page.': {
+ 'es': 'Estos términos de Kapture Pro forman parte de estos términos en todas las versiones de esta página. Por ahora solo están disponibles en inglés.',
+ 'zh': '以下 Kapture Pro 条款是本条款在各语言版本中的组成部分，目前仅提供英文版。',
+ 'ko': '아래 Kapture Pro 약관은 모든 언어 버전의 이 약관에 포함되며, 현재 영어로만 제공됩니다.',
+ 'ja': '以下の Kapture Pro の条件は、すべての言語版の本規約の一部です。現在は英語でのみ提供しています。',
+ 'de': 'Die folgenden Bedingungen für Kapture Pro sind in jeder Sprachfassung dieser Seite Teil dieser Bedingungen. Sie sind derzeit nur auf Englisch verfügbar.',
+ 'fr': "Les conditions de Kapture Pro ci-dessous font partie de ces conditions dans toutes les versions linguistiques de cette page. Elles ne sont pour l'instant disponibles qu'en anglais.",
+ 'pt-br': 'Os termos do Kapture Pro abaixo fazem parte destes termos em todas as versões de idioma desta página. Por enquanto, estão disponíveis apenas em inglês.',
+ 'it': 'I termini di Kapture Pro qui sotto fanno parte di questi termini in ogni versione linguistica di questa pagina. Per ora sono disponibili solo in inglese.'},
 }
