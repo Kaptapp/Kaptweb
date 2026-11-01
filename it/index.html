@@ -263,7 +263,7 @@
 </script>
 
 <link rel="preload" href="../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles.css?v=44">
+<link rel="stylesheet" href="../styles.css?v=45">
 </head>
 <body>
 
@@ -373,7 +373,7 @@
         </a>
       </div>
 
-      <p class="hero-note">Richiede Chrome 120 o successivo. Kapture per Chrome è gratis. Kapture Pro per Mac e Windows inizia con una prova gratuita di 14 giorni.</p>
+      <p class="hero-note">Richiede Chrome 120 o successivo. Kapture per Chrome è gratis. Kapture Pro costa <strong>4,99 £ al mese</strong> o <strong>39,99 £ all'anno</strong>, con una prova gratuita di 14 giorni. <a href="#pricing">Vedi i prezzi</a></p>
     </div>
 
     <!-- ============ HERO PRODUCT COMPOSITION ============ -->
@@ -1426,48 +1426,65 @@
     </div>
   </section>
 
-  <section class="cta-band" id="cta">
+  <section class="cta-band" id="pricing">
     <div class="shell">
       <header class="section-head cta-head reveal">
+        <p class="kicker">Prezzi di Kapture Pro</p>
         <h2>Un solo flusso.<br><span class="accent">Ovunque tu catturi.</span></h2>
       </header>
 
-      <div class="plans">
-        <article class="plan reveal">
-          <p class="kicker plan-price">Gratis</p>
-          <h3>Kapture<br>per Chrome</h3>
-          <p class="plan-copy">Cattura di pagina intera e di area, direttamente nella cartella di progetto che scegli.</p>
-          <a class="btn btn-white" href="https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap" target="_blank" rel="noopener noreferrer">
-            <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
-            <span class="store-cta-label">Aggiungi a Chrome</span>
-          </a>
-        </article>
+      <!-- Kapture Pro: one subscription, two billing periods, prices as in the Terms.
+           The trial starts inside the app, so nothing here leads to Checkout. -->
+      <div class="pricing">
+        <div class="prices">
+          <article class="price-card reveal">
+            <div class="price-head"><p class="kicker">Mensile</p></div>
+            <p class="price"><span class="price-amount">4,99 £</span><span class="price-unit">/mese</span></p>
+            <p class="price-copy">Addebito ogni mese.</p>
+          </article>
+          <article class="price-card is-best reveal">
+            <div class="price-head"><p class="kicker">Annuale</p><span class="price-save">Risparmi il 33%</span></div>
+            <p class="price"><span class="price-amount">39,99 £</span><span class="price-unit">/anno</span></p>
+            <p class="price-copy">Addebito una volta all'anno, circa 3,33 £ al mese.</p>
+          </article>
+        </div>
 
-        <!-- Kapture Pro: subscription prices as in the Terms; the trial needs no payment details. -->
-        <article class="plan reveal">
-          <p class="kicker plan-price">4,99 £ al mese o 39,99 £ all'anno</p>
-          <h3>Kapture Pro<br>per Mac</h3>
-          <p class="plan-copy">Cerca, organizza e confronta tutto ciò che hai già catturato.</p>
+        <p class="price-terms reveal">Entrambi i piani includono lo stesso Kapture Pro per Mac e Windows, su un massimo di 2 computer. Inizia con una prova gratuita completa di 14 giorni nell'app, senza carta di credito. Kapture Pro è un abbonamento ricorrente, non un acquisto una tantum: si rinnova automaticamente finché non lo disdici, e puoi disdirlo in qualsiasi momento dal tuo account.</p>
+
+        <div class="price-actions reveal">
           <a class="btn btn-primary" href="/downloads/mac/Kapture%20Pro%201.0.0.dmg"
              aria-label="Scarica Kapture Pro per Mac.">
             <svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.675.805-3.532 1.818-.766.896-1.44 2.338-1.259 3.714 1.353.104 2.702-.688 3.546-1.701"/></svg>
             <span class="store-cta-label">Pro per Mac</span>
           </a>
-          <p class="plan-note">Prova gratuita di 14 giorni, senza dati di pagamento.</p>
-        </article>
-
-        <!-- Same product, second platform. -->
-        <article class="plan reveal">
-          <p class="kicker plan-price">4,99 £ al mese o 39,99 £ all'anno</p>
-          <h3>Kapture Pro<br>per Windows</h3>
-          <p class="plan-copy">Cerca, organizza e confronta tutto ciò che hai già catturato.</p>
           <a class="btn btn-primary" href="/downloads/windows/Kapture%20Pro_1.0.0_x64-setup.exe"
              aria-label="Scarica Kapture Pro per Windows.">
             <svg class="windows-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 5.6l7.2-1v7.1H3V5.6Zm0 12.8l7.2 1v-7H3v6Zm8.1 1.2L21 21V12.7h-9.9v6.9Zm0-15.2v7.2H21V3l-9.9 1.4Z"/></svg>
             <span class="store-cta-label">Pro per Windows</span>
           </a>
-          <p class="plan-note">Prova gratuita di 14 giorni, senza dati di pagamento.</p>
-        </article>
+          <a class="btn btn-white" href="https://chromewebstore.google.com/detail/kapture/bpkhaglkdlkbjnlkbefmobiajidgoeap" target="_blank" rel="noopener noreferrer">
+            <svg class="chrome-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M12 12 2.474 6.5a11 11 0 0 1 19.052 0Z"/><path fill="#FBBC04" d="M12 12l9.526-5.5A11 11 0 0 1 12 23Z"/><path fill="#34A853" d="M12 12v11A11 11 0 0 1 2.474 6.5Z"/><circle cx="12" cy="12" r="5.85" fill="#fff"/><circle cx="12" cy="12" r="4.6" fill="#4285F4"/></svg>
+            <span class="store-cta-label">Aggiungi a Chrome</span>
+          </a>
+        </div>
+
+        <div class="cmp cmp-plans reveal">
+          <h3>Le stesse funzioni in entrambi i piani</h3>
+          <table class="cmp-table">
+            <thead>
+              <tr><th scope="col">Funzione</th><th scope="col">Mensile</th><th scope="col" class="is-both">Annuale</th></tr>
+            </thead>
+            <tbody>
+            <tr><th scope="row">Libreria visiva</th><td><i class="cmp-y" role="img" aria-label="Sì"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Sì"></i></td></tr>
+            <tr><th scope="row">Progetti, Raccolte e Smart</th><td><i class="cmp-y" role="img" aria-label="Sì"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Sì"></i></td></tr>
+            <tr><th scope="row">Ricerca, tag e note</th><td><i class="cmp-y" role="img" aria-label="Sì"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Sì"></i></td></tr>
+            <tr><th scope="row">Mac e Windows</th><td><i class="cmp-y" role="img" aria-label="Sì"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Sì"></i></td></tr>
+            <tr><th scope="row">Fino a 2 computer</th><td><i class="cmp-y" role="img" aria-label="Sì"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Sì"></i></td></tr>
+            <tr><th scope="row">Aggiornamenti di Kapture Pro</th><td><i class="cmp-y" role="img" aria-label="Sì"></i></td><td class="is-both"><i class="cmp-y" role="img" aria-label="Sì"></i></td></tr>
+            <tr><th scope="row">Fatturazione</th><td><span class="cmp-bill">4,99 £ ogni mese</span></td><td class="is-both"><span class="cmp-bill">39,99 £ ogni anno</span></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
