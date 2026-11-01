@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "notes": "The first release of Kapture Pro for Windows.",
+  "pub_date": "2026-10-31T22:37:21Z",
+  "platforms": {
+    "windows-x86_64-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSaE1Ddkw4QUJKRWlRcDhoS2VrRGdhclE1am1hSDUrYmtKZHR1NVhRcmdFTlRjekp0K1NnT3JnMU1pbDV6MnhsMjE4c1VQWS9ydG9qYjJvdU5vSlVZQWVRNm5PanJ1WXdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNDg2MjE0CWZpbGU6S2FwdHVyZSBQcm9fMS4wLjBfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjEuMC4wCmxKbUpmNGlrRHI3bVlvOC9EcklDS2ovT1gzVmVMZnh6NTdCMk1LWmsxc0VjNk85WTBTamdETVVhY0VlMkRQa2p0QVYyODlZNWRsYjFUVnh6N3NhVUFRPT0K",
+      "url": "https://kaptapp.com/downloads/windows/Kapture%20Pro_1.0.0_x64-setup.exe"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSaE1Ddkw4QUJKRWlRcDhoS2VrRGdhclE1am1hSDUrYmtKZHR1NVhRcmdFTlRjekp0K1NnT3JnMU1pbDV6MnhsMjE4c1VQWS9ydG9qYjJvdU5vSlVZQWVRNm5PanJ1WXdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNDg2MjE0CWZpbGU6S2FwdHVyZSBQcm9fMS4wLjBfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjEuMC4wCmxKbUpmNGlrRHI3bVlvOC9EcklDS2ovT1gzVmVMZnh6NTdCMk1LWmsxc0VjNk85WTBTamdETVVhY0VlMkRQa2p0QVYyODlZNWRsYjFUVnh6N3NhVUFRPT0K",
+      "url": "https://kaptapp.com/downloads/windows/Kapture%20Pro_1.0.0_x64-setup.exe"
+    }
+  }
+}
