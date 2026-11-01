@@ -30,9 +30,13 @@ def setup(ctx, calls, world):
         if u.path == "/auth/v1/otp": return route.fulfill(status=200, headers=cors, json={})
         if u.path.endswith("get_my_access"): return route.fulfill(status=200, headers=cors, json=[world["access"]])
         if u.path.endswith("redeem_access_code"):
-            if world["answer"] == "error": return route.fulfill(status=500, headers=cors, json={"message": "boom"})
-            if world["answer"] == "granted": world["access"] = MANUAL
-            return route.fulfill(status=200, headers=cors, json=world["answer"])
+            answer = world["answer"].pop(0) if isinstance(world["answer"], list) else world["answer"]
+            if answer == "error": return route.fulfill(status=500, headers=cors, json={"message": "boom"})
+            if answer == "granted": world["access"] = MANUAL
+            return route.fulfill(status=200, headers=cors, json=answer)
+        if u.path == "/functions/v1/checkout-cancel":
+            status, body = world["cancel"]
+            return route.fulfill(status=status, headers=cors, json=body)
         return route.fulfill(status=200, headers=cors, json=[])
     ctx.route("https://kaptapp.com/**", site)
     ctx.route(SB + "/**", supa)
@@ -50,8 +54,8 @@ def check(name, cond, detail=""):
 
 def run(E, bt, opts):
     br = bt.launch(headless=True, **opts)
-    def fresh(access=NONE, answer="granted", **kw):
-        ctx = br.new_context(**kw); calls = []; world = {"access": access, "answer": answer}; setup(ctx, calls, world); pg = ctx.new_page()
+    def fresh(access=NONE, answer="granted", cancel=(200, {"expired": 1, "paid": False}), **kw):
+        ctx = br.new_context(**kw); calls = []; world = {"access": access, "answer": answer, "cancel": cancel}; setup(ctx, calls, world); pg = ctx.new_page()
         logs = []; pg.on("console", lambda m: logs.append(m.text))
         return ctx, pg, calls, logs
     def sign_in(pg):
@@ -85,6 +89,24 @@ def run(E, bt, opts):
         pg.fill("#acCode", "rayfam"); pg.click("#acRedeemBtn"); pg.wait_for_selector("#acCodeError:not([hidden])")
         check(f"{E}: {answer} is explained and the form stays", words in pg.text_content("#acCodeError") and pg.is_visible("#acRedeem")
               and pg.is_enabled("#acRedeemBtn"), pg.text_content("#acCodeError"))
+        ctx.close()
+
+    # 3b. A Checkout left open is closed at Stripe and the code redeemed straight away.
+    def cancels(calls): return [x for x in calls if x["path"] == "/functions/v1/checkout-cancel" and x["m"] == "POST"]
+    ctx, pg, calls, logs = fresh(answer=["checkout_open", "granted"]); sign_in(pg)
+    pg.fill("#acCode", "rayfam"); pg.click("#acRedeemBtn"); pg.wait_for_function("document.getElementById('acRedeem').hidden === true")
+    cc = cancels(calls)
+    check(f"{E}: open checkout: one cancel for this account (session in a header), then redeemed",
+          len(cc) == 1 and cc[0]["auth"] == "Bearer " + TOK["access_token"] and len(redeem_calls(calls)) == 2 and "Code redeemed" in pg.text_content("#acLicenceNote"))
+    ctx.close()
+    for answers, cancel, words, name in [
+        (["checkout_open"], (200, {"expired": 0, "paid": True}), "Cancel the renewal", "a checkout already paid is treated as a subscription"),
+        (["checkout_open", "checkout_open"], (200, {"expired": 0, "paid": False}), "being prepared", "a checkout still being created asks to retry"),
+        (["checkout_open"], (503, {"error": {"code": "billing_unavailable"}}), "could not redeem", "a failed cancel is a plain error"),
+    ]:
+        ctx, pg, calls, logs = fresh(answer=answers, cancel=cancel)
+        sign_in(pg); pg.fill("#acCode", "rayfam"); pg.click("#acRedeemBtn"); pg.wait_for_selector("#acCodeError:not([hidden])")
+        check(f"{E}: {name}", words in pg.text_content("#acCodeError") and len(cancels(calls)) == 1 and pg.is_visible("#acRedeem"), pg.text_content("#acCodeError"))
         ctx.close()
 
     # 4. Typed codes are checked before anything is sent.

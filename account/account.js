@@ -675,8 +675,33 @@
     already_has_access: 'This account already has a Kapture Pro licence, so there is nothing to redeem.',
     has_subscription: 'This account has a subscription that renews. Cancel the renewal first, then enter the code again: nothing more will be charged.',
     invalid: 'That code is not valid or is no longer available.',
-    rate_limited: 'Too many attempts. Please try again in an hour.'
+    rate_limited: 'Too many attempts. Please try again in an hour.',
+    checkout_open: 'A checkout for this account is still being prepared. Please try again in a minute.'
   };
+
+  function redeemOnce(code) {
+    return apiAuthed('/rest/v1/rpc/redeem_access_code', { method: 'POST', body: { p_code: code } }).then(function (res) {
+      if (res.status === 401) { signOutLocal(); return null; }
+      if (!res.ok) throw new Error('rpc');
+      return res.json();
+    });
+  }
+
+  /* A Stripe Checkout left open on this account would still be payable, so
+     the database refuses the code until it is closed. Redeeming is the choice
+     not to buy: close it at Stripe (checkout-cancel, this account only) and
+     redeem again, rather than make anyone wait for it to run out. */
+  function redeemCode(code, mayCancel) {
+    return redeemOnce(code).then(function (answer) {
+      if (answer !== 'checkout_open' || !mayCancel) return answer;
+      return apiAuthed('/functions/v1/checkout-cancel', { method: 'POST', body: {} }).then(function (res) {
+        if (!res.ok) throw new Error('cancel');
+        return res.json();
+      }).then(function (r) {
+        return r && r.paid ? 'has_subscription' : redeemCode(code, false);
+      });
+    });
+  }
 
   if (redeemForm) {
     redeemForm.addEventListener('submit', function (e) {
@@ -691,11 +716,7 @@
       redeemBtn.disabled = true;
       redeemBtn.textContent = 'Redeeming…';
 
-      apiAuthed('/rest/v1/rpc/redeem_access_code', { method: 'POST', body: { p_code: code } }).then(function (res) {
-        if (res.status === 401) { signOutLocal(); return null; }
-        if (!res.ok) throw new Error('rpc');
-        return res.json();
-      }).then(function (answer) {
+      redeemCode(code, true).then(function (answer) {
         redeemBtn.disabled = false;
         redeemBtn.textContent = 'Redeem';
         if (answer === null) return;
@@ -707,7 +728,7 @@
           say('Code redeemed. Kapture Pro is active.');
           return loadAccount();
         }
-        if (answer !== 'rate_limited' && answer !== 'invalid') dropCode();
+        if (answer !== 'rate_limited' && answer !== 'invalid' && answer !== 'checkout_open') dropCode();
         showCodeError(REDEEM_ANSWERS[answer] || 'We could not redeem that code. Please try again.');
       }).catch(function () {
         redeemBtn.disabled = false;
