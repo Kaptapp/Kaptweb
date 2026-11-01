@@ -2,13 +2,21 @@
 Usage: python3 tools/test_account_connect.py [site root] [screenshot dir]   (needs Playwright)
 The local Kaptweb files are served at the real https://kaptapp.com origin through request
 interception, Supabase is mocked, and a stand-in Kapture Pro listens on 127.0.0.1. Fake tokens only."""
-import http.server, json, mimetypes, pathlib, socketserver, sys, threading, time, urllib.parse
+import base64, http.server, json, mimetypes, pathlib, socketserver, sys, threading, time, urllib.parse
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
 SB = "https://sokcwfqvutnjzzbsuhqm.supabase.co"
 STATE = "A" * 20 + "b-_" + "Z" * 20  # 43 chars
-TOK = {"access_token": "fake-access-NEW", "refresh_token": "fake-refresh-NEW", "expires_at": "1900000000"}
+def jwt(claims, sig):
+    b = lambda o: base64.urlsafe_b64encode(json.dumps(o).encode()).decode().rstrip("=")
+    return f"{b({'alg': 'HS256'})}.{b(claims)}.{sig}"
+# The link's session (handed to the app), for account u1; JWT-shaped so the page can tell accounts apart.
+TOK = {"access_token": jwt({"sub": "u1", "session_id": "s-link"}, "fakeAccessNEW"), "refresh_token": "fake-refresh-NEW", "expires_at": "1900000000"}
+# The separate session the browser-session function mints for the browser.
+BROWSER = {"access_token": jwt({"sub": "u1", "session_id": "s-browser"}, "fakeBrowserSig"), "refresh_token": "fake-refresh-BROWSER", "expires_at": 1900000000}
+SAME = {"access_token": jwt({"sub": "u1"}, "webSameSig"), "refresh_token": "web-refresh-SAME"}
+OTHER = {"access_token": jwt({"sub": "u2"}, "webOtherSig"), "refresh_token": "web-refresh-OTHER"}
 HASH = "#" + urllib.parse.urlencode({**TOK, "expires_in": "3600", "token_type": "bearer", "type": "magiclink"})
 WEB = {"access_token": "web-access-OLD", "refresh_token": "web-refresh-OLD"}
 
@@ -26,7 +34,7 @@ threading.Thread(target=srv.serve_forever, daemon=True).start()
 # A port with nothing listening, for the "app no longer waiting" case.
 s2 = socketserver.TCPServer(("127.0.0.1", 0), App); DEAD = s2.server_address[1]; s2.server_close()
 
-def setup(ctx, calls, user_status=200):
+def setup(ctx, calls, user_status=200, fork="ok"):
     def site(route):
         path = urllib.parse.urlparse(route.request.url).path
         f = ROOT / path.lstrip("/")
@@ -41,6 +49,12 @@ def setup(ctx, calls, user_status=200):
         if u.path == "/auth/v1/user":
             return route.fulfill(status=user_status, headers=cors, json={"id": "u1", "email": "me@example.test"} if user_status == 200 else {"msg": "bad"})
         if u.path.startswith("/auth/v1/logout"): return route.fulfill(status=204, headers=cors)
+        if u.path == "/functions/v1/browser-session":
+            if fork == "ok": return route.fulfill(status=200, headers={**cors, "cache-control": "no-store"}, json=BROWSER)
+            if fork == "wrong-account": return route.fulfill(status=200, headers=cors, json={**BROWSER, "access_token": jwt({"sub": "u9"}, "fakeWrongSig")})
+            if fork == "hang": time.sleep(8); return route.fulfill(status=200, headers=cors, json=BROWSER)
+            if fork == "refused": return route.fulfill(status=409, headers=cors, json={"error": {"code": "session_already_used"}})
+            return route.fulfill(status=500, headers=cors, json={"error": {"code": "internal"}})
         if u.path == "/auth/v1/otp": return route.fulfill(status=200, headers=cors, json={})
         if u.path.endswith("get_my_access"): return route.fulfill(status=200, headers=cors, json=[{"pro": False, "state": "none"}])
         return route.fulfill(status=200, headers=cors, json=[])
@@ -109,6 +123,48 @@ def run(engine_name, bt, opts):
     check(f"{E}: no tokens in console", not any("fake" in l or "web-" in l for l in logs))
     ctx.close()
 
+    # 5b. The browser keeps its own, separate session after connecting; "Manage Account" finds it signed in.
+    ctx, pg, calls, logs = fresh()
+    pg.goto(ACC + f"?app=connect&port={PORT}&state={STATE}&platform=macos")
+    pg.goto("about:blank"); pg.goto(ACC + HASH); pg.wait_for_function("document.querySelector('main.ac').dataset.state === 'connect'")
+    check(f"{E}: no browser session and no request for one before Connect",
+          store(pg)["s"] is None and not any(x["path"] == "/functions/v1/browser-session" for x in calls))
+    got.clear(); pg.click("#acConnectYes"); pg.wait_for_url(f"http://127.0.0.1:{PORT}/**", timeout=15000); pg.wait_for_selector("#ok")
+    fk = [x for x in calls if x["path"] == "/functions/v1/browser-session"]
+    check(f"{E}: one browser-session request, authorised by the link's session in a header, nothing in the URL",
+          len(fk) == 1 and fk[0]["auth"] == "Bearer " + TOK["access_token"] and fk[0]["q"] == "" and fk[0]["body"] == "{}")
+    check(f"{E}: the app still receives exactly the link's session", len(got) == 1 and got[0]["fields"] == {"state": STATE, **TOK})
+    pg.goto(ACC); pg.wait_for_function("document.querySelector('main.ac').dataset.state !== 'loading'")
+    s = json.loads(store(pg)["s"] or "{}")
+    check(f"{E}: Manage Account opens signed in, with the browser's own session (not the app's)",
+          st(pg) == "signed-in" and s == {"access_token": BROWSER["access_token"], "refresh_token": BROWSER["refresh_token"]}
+          and s["refresh_token"] != TOK["refresh_token"])
+    check(f"{E}: no session token in any URL or console line",
+          not any("fake" in (x["q"] or "") for x in calls) and "fake" not in pg.url and not any("fake" in l for l in logs))
+    ctx.close()
+
+    # 5c. Another account already signed in here is kept; the same account is kept as it is.
+    for existing, label in [(OTHER, "a different account"), (SAME, "the same account")]:
+        ctx, pg, calls, logs = fresh()
+        pg.goto(ACC); pg.evaluate("s => localStorage.setItem('kapture.session', JSON.stringify(s))", existing)
+        pg.goto(ACC + f"?app=connect&port={PORT}&state={STATE}&platform=windows")
+        pg.goto("about:blank"); pg.goto(ACC + HASH); pg.wait_for_function("document.querySelector('main.ac').dataset.state === 'connect'")
+        got.clear(); pg.click("#acConnectYes"); pg.wait_for_url(f"http://127.0.0.1:{PORT}/**", timeout=15000); pg.wait_for_selector("#ok")
+        pg.goto(ACC); pg.wait_for_function("document.querySelector('main.ac').dataset.state !== 'loading'")
+        check(f"{E}: {label} already signed in is kept, and no new session is minted",
+              json.loads(store(pg)["s"]) == existing and not any(x["path"] == "/functions/v1/browser-session" for x in calls) and len(got) == 1)
+        ctx.close()
+
+    # 5d. Any failure of the browser session leaves the app connected and the browser as it was.
+    for mode in ("error", "refused", "wrong-account", "hang"):
+        ctx, pg, calls, logs = fresh(fork=mode)
+        pg.goto(ACC + f"?app=connect&port={PORT}&state={STATE}&platform=macos")
+        pg.goto("about:blank"); pg.goto(ACC + HASH); pg.wait_for_function("document.querySelector('main.ac').dataset.state === 'connect'")
+        got.clear(); pg.click("#acConnectYes"); pg.wait_for_url(f"http://127.0.0.1:{PORT}/**", timeout=20000); pg.wait_for_selector("#ok")
+        check(f"{E}: browser session {mode}: Kapture Pro is still connected, nothing saved here",
+              len(got) == 1 and got[0]["fields"] == {"state": STATE, **TOK} and pg.evaluate("() => localStorage.getItem('kapture.session')") is None)
+        ctx.close()
+
     # 6. Cancel ends that session and sends nothing.
     ctx, pg, calls, logs = fresh(); pg.goto(ACC + f"?app=connect&port={PORT}&state={STATE}&platform=windows")
     pg.goto("about:blank"); pg.goto(ACC + HASH); pg.wait_for_function("document.querySelector('main.ac').dataset.state === 'connect'")
@@ -116,6 +172,7 @@ def run(engine_name, bt, opts):
     lo = [x for x in calls if x["path"] == "/auth/v1/logout"]
     check(f"{E}: Cancel logs that session out, sends nothing, drops the request",
           lo and lo[-1]["auth"] == "Bearer " + TOK["access_token"] and "scope=local" in lo[-1]["q"] and not got and store(pg)["c"] is None
+          and not any(x["path"] == "/functions/v1/browser-session" for x in calls)
           and store(pg)["s"] is None and pg.text_content("#acConnectTitle") == "Not connected" and not visible(pg, "#acConnectYes"))
     ctx.close()
 

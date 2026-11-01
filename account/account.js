@@ -503,6 +503,7 @@
       return res.json();
     }).then(function (user) {
       if (!user || !user.id) throw new Error('user');
+      handoff.userId = user.id;
       text(document.getElementById('acConnectEmail'), user.email || 'your account');
       setState('connect');
       document.getElementById('acConnectYes').focus();
@@ -511,6 +512,48 @@
       handoff = null;
       fail('We could not check that sign-in, so Kapture Pro was not connected. ' +
         'Request a new link, or start again from the app.');
+    });
+  }
+
+  // The account a stored session belongs to, read from its own token; null
+  // when it cannot be read, which is treated as someone else's session.
+  function sessionUserId(s) {
+    try {
+      var part = s.access_token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      return JSON.parse(atob(part + '===='.slice(part.length % 4 || 4))).sub || null;
+    } catch (e) { return null; }
+  }
+
+  // So that "Manage Account" in the app finds this browser signed in, keep a
+  // second, independent session here when Kapture Pro is connected (the link's
+  // own session goes to the app). It never replaces a session for another
+  // account, and nothing about connecting the app depends on it: any failure
+  // or a slow answer simply leaves this browser as it was.
+  function keepBrowserSession(h) {
+    var existing = loadSession();
+    if (existing && existing.access_token) {
+      return Promise.resolve(sessionUserId(existing) === h.userId ? 'already' : 'other-account');
+    }
+    var controller = typeof AbortController === 'function' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 6000) : null;
+    return fetch(SUPABASE_URL + '/functions/v1/browser-session', {
+      method: 'POST',
+      headers: { apikey: SUPABASE_PUBLISHABLE_KEY, Authorization: 'Bearer ' + h.tokens.access_token,
+        'Content-Type': 'application/json' },
+      body: '{}',
+      cache: 'no-store',
+      signal: controller ? controller.signal : undefined
+    }).then(function (res) {
+      if (!res.ok) return 'none';
+      return res.json().then(function (s) {
+        if (!s || typeof s.access_token !== 'string' || typeof s.refresh_token !== 'string') return 'none';
+        if (sessionUserId(s) !== h.userId) return 'none';
+        saveSession({ access_token: s.access_token, refresh_token: s.refresh_token });
+        return 'signed-in';
+      });
+    }).catch(function () { return 'none'; }).then(function (result) {
+      if (timer) clearTimeout(timer);
+      return result;
     });
   }
 
@@ -529,25 +572,27 @@
         closeConnect('Not connected', 'The request from Kapture Pro has expired. Start again from the app.');
         return;
       }
-      var post = document.createElement('form');
-      post.method = 'POST';
-      post.action = 'http://127.0.0.1:' + req.port + '/kapture-auth/callback';
-      [['state', req.state], ['access_token', h.tokens.access_token],
-        ['refresh_token', h.tokens.refresh_token], ['expires_at', h.tokens.expires_at || '']
-      ].forEach(function (f) {
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = f[0];
-        input.value = f[1];
-        post.appendChild(input);
-      });
       closeConnect('Connecting Kapture Pro',
         'Your browser is handing the sign-in to Kapture Pro. If it shows an error page instead, ' +
         'Kapture Pro was no longer waiting or this browser blocked the connection: start again from the app.');
-      document.body.appendChild(post);
-      post.submit();
-      // The browser has already copied the fields; they do not stay in the page.
-      post.remove();
+      keepBrowserSession(h).then(function () {
+        var post = document.createElement('form');
+        post.method = 'POST';
+        post.action = 'http://127.0.0.1:' + req.port + '/kapture-auth/callback';
+        [['state', req.state], ['access_token', h.tokens.access_token],
+          ['refresh_token', h.tokens.refresh_token], ['expires_at', h.tokens.expires_at || '']
+        ].forEach(function (f) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = f[0];
+          input.value = f[1];
+          post.appendChild(input);
+        });
+        document.body.appendChild(post);
+        post.submit();
+        // The browser has already copied the fields; they do not stay in the page.
+        post.remove();
+      });
     });
   }
 
