@@ -440,6 +440,7 @@ html[lang="it"]    { --free-label: "Gratis"; }
   color: var(--text-muted);
 }
 .hero-note strong { font-weight: 600; color: var(--text); }
+.hero-note + .hero-note { margin-top: 6px; }
 
 /* ---------- Feature grid ---------- */
 .grid {
