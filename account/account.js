@@ -188,7 +188,7 @@
       v.badge = 'Active';
       v.facts = [['Status', 'Active'], ['Type', PLAN_NAMES[a.plan] || 'Licence'],
         ['Purchased', a.plan === 'purchase' ? date(purchase && purchase.purchased_at) : null],
-        ['Valid until', date(a.access_until)]];
+        ['Valid until', a.access_until ? date(a.access_until) : 'No end date']];
     } else if (a.state === 'expired' && a.plan === 'trial') {
       v.facts = [['Status', 'Trial ended'], ['Type', 'Trial'], ['Trial ended', date(a.trial_ends_at)]];
       v.note = 'Your free trial has ended. Your captures and library stay on your computer.';
@@ -224,7 +224,9 @@
     var deviceCard = document.getElementById('acDevices');
 
     view.facts.forEach(function (f) { fact(f[0], f[1]); });
-    note.textContent = view.note;
+    note.textContent = redeemedNote || view.note;
+    redeemedNote = '';
+    showRedeem(access);
 
     if (!active) {
       deviceCard.hidden = true;
@@ -608,6 +610,113 @@
     });
   }
 
+  /* ---- access code ----------------------------------------------------
+     A friends-and-family code gives this account Kapture Pro with no end date
+     and nothing to pay; the database decides everything (redeem_access_code).
+     A link like /account/?code=RAYFAM fills the code in: it is taken out of
+     the address bar at once and kept for an hour, so it survives the emailed
+     sign-in link. Redeeming always takes a click. */
+
+  var CODE_KEY = 'kapture.access_code';
+  var CODE_TTL = 60 * 60 * 1000;
+  var redeemedNote = '';
+
+  function cleanCode(v) { return String(v || '').replace(/\s+/g, '').toUpperCase(); }
+  function validCode(v) { return /^[A-Z0-9]{4,32}$/.test(v); }
+
+  function codeFromQuery() {
+    var q = new URLSearchParams(location.search);
+    if (!q.has('code')) return;
+    var code = cleanCode(q.get('code'));
+    q.delete('code');
+    var rest = q.toString();
+    history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash);
+    if (!validCode(code)) return;
+    try { localStorage.setItem(CODE_KEY, JSON.stringify({ code: code, expires: Date.now() + CODE_TTL })); }
+    catch (e) { /* the code can still be typed in */ }
+  }
+
+  function storedCode() {
+    try {
+      var c = JSON.parse(localStorage.getItem(CODE_KEY) || 'null');
+      if (c && validCode(c.code) && c.expires > Date.now()) return c.code;
+      localStorage.removeItem(CODE_KEY);
+    } catch (e) { /* nothing stored */ }
+    return '';
+  }
+
+  function dropCode() {
+    try { localStorage.removeItem(CODE_KEY); } catch (e) { /* nothing stored */ }
+  }
+
+  var redeemCard = document.getElementById('acRedeem');
+  var redeemForm = document.getElementById('acRedeemForm');
+  var codeInput = document.getElementById('acCode');
+  var codeError = document.getElementById('acCodeError');
+  var redeemBtn = document.getElementById('acRedeemBtn');
+
+  function showCodeError(msg) {
+    codeError.textContent = msg;
+    codeError.hidden = !msg;
+    codeInput.setAttribute('aria-invalid', msg ? 'true' : 'false');
+  }
+
+  // Worth offering only while a code could help: no licence, a trial, or a
+  // subscription that has been cancelled and will not renew.
+  function showRedeem(access) {
+    if (!redeemCard) return;
+    var a = access || {};
+    redeemCard.hidden = !(!a.pro || a.plan === 'trial' || a.state === 'canceling');
+    if (!redeemCard.hidden && !codeInput.value) codeInput.value = storedCode();
+  }
+
+  var REDEEM_ANSWERS = {
+    already_redeemed: 'This account has already redeemed that code.',
+    already_has_access: 'This account already has a Kapture Pro licence, so there is nothing to redeem.',
+    has_subscription: 'This account has a subscription that renews. Cancel the renewal first, then enter the code again: nothing more will be charged.',
+    invalid: 'That code is not valid or is no longer available.',
+    rate_limited: 'Too many attempts. Please try again in an hour.'
+  };
+
+  if (redeemForm) {
+    redeemForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var code = cleanCode(codeInput.value);
+      if (!validCode(code)) {
+        showCodeError('Enter the code exactly as you received it.');
+        codeInput.focus();
+        return;
+      }
+      showCodeError('');
+      redeemBtn.disabled = true;
+      redeemBtn.textContent = 'Redeeming…';
+
+      apiAuthed('/rest/v1/rpc/redeem_access_code', { method: 'POST', body: { p_code: code } }).then(function (res) {
+        if (res.status === 401) { signOutLocal(); return null; }
+        if (!res.ok) throw new Error('rpc');
+        return res.json();
+      }).then(function (answer) {
+        redeemBtn.disabled = false;
+        redeemBtn.textContent = 'Redeem';
+        if (answer === null) return;
+        if (answer === 'granted') {
+          dropCode();
+          codeInput.value = '';
+          redeemedNote = 'Code redeemed. Kapture Pro is now active on this account with no end date and nothing to pay. ' +
+            'Sign in to Kapture Pro on your computer with this email address to use it.';
+          say('Code redeemed. Kapture Pro is active.');
+          return loadAccount();
+        }
+        if (answer !== 'rate_limited' && answer !== 'invalid') dropCode();
+        showCodeError(REDEEM_ANSWERS[answer] || 'We could not redeem that code. Please try again.');
+      }).catch(function () {
+        redeemBtn.disabled = false;
+        redeemBtn.textContent = 'Redeem';
+        showCodeError('We could not redeem that code. Please try again.');
+      });
+    });
+  }
+
   /* ---- boot ------------------------------------------------------------ */
 
   function readHash() {
@@ -623,6 +732,8 @@
     return { access_token: token, refresh_token: p.get('refresh_token'), expires_at: p.get('expires_at') };
   }
 
+  codeFromQuery();
+  if (storedCode()) document.getElementById('acCodeNote').hidden = false;
   var connectAsk = connectFromQuery();
   var fromLink = readHash();
   var pending = fromLink && fromLink.access_token ? loadConnect() : null;

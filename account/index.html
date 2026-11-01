@@ -74,6 +74,7 @@
         <button class="btn btn-primary" id="acSend" type="submit">Email me a link</button>
       </form>
       <p class="ac-note">Use the address you bought Kapture Pro with.</p>
+      <p class="ac-note" id="acCodeNote" hidden>Sign in to redeem your access code. You will not be asked for payment details.</p>
       <p class="ac-note" id="acConnectNote" hidden>Kapture Pro on this computer asked to connect to your account. Open the link we email you in this browser.</p>
     </section>
 
@@ -106,6 +107,22 @@
         <dl class="ac-facts" id="acFacts"></dl>
         <p class="ac-note" id="acLicenceNote"></p>
       </div>
+
+      <!-- Access code (friends and family). Shown only while redeeming one
+           could help: no licence yet, a trial, or a subscription ending. -->
+      <section class="ac-card" id="acRedeem" hidden>
+        <div class="ac-card-head">
+          <h2 class="ac-h2">Have an access code?</h2>
+        </div>
+        <form class="ac-form" id="acRedeemForm" novalidate>
+          <label class="ac-label" for="acCode">Access code</label>
+          <input class="ac-input" id="acCode" name="code" type="text" required
+                 autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40">
+          <p class="ac-field-error" id="acCodeError" role="alert" hidden></p>
+          <button class="btn btn-primary" id="acRedeemBtn" type="submit">Redeem</button>
+        </form>
+        <p class="ac-note">A code from Kapture gives this account Kapture Pro at no cost and with no end date. No payment details are needed.</p>
+      </section>
 
       <section class="ac-card" id="acDevices" hidden>
         <div class="ac-card-head">
@@ -167,6 +184,6 @@
 </footer>
 
 <script src="../script.js?v=42"></script>
-<script src="account.js?v=5"></script>
+<script src="account.js?v=6"></script>
 </body>
 </html>
