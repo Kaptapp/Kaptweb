@@ -1,0 +1,5 @@
+# Release files are published byte for byte: their signatures cover every byte.
+*.dmg binary
+*.exe binary
+mac/appcast.xml -text
+updates/windows/latest.json -text
