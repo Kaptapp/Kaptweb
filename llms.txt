@@ -66,9 +66,11 @@ Kapture is local-first. Capturing, storing and organising the library all happen
 on the user's own machine, and the core capture and organisation features work
 without requiring cloud AI. Screenshots, webpage content, URLs and history
 metadata are not sent to the developer or to external servers. Kapture for
-Chrome needs no account. A Kapture account at kaptapp.com/account holds only the
-email address and, once Kapture Pro is available, its licence and activated
-devices. There is no cloud sync, no analytics, no advertising, no tracking and
+Chrome needs no account. A Kapture account at kaptapp.com/account holds the
+email address and, for Kapture Pro, its trial, subscription, licence and
+activated devices. Kapture counts anonymous daily usage totals, which users can
+turn off, and shares usage statistics only if the user opts in. There is no
+cloud sync, no advertising, no cross-site tracking, no third-party analytics and
 no remote code.
 
 ## Pages

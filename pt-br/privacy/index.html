@@ -90,7 +90,7 @@
 </script>
 
 <link rel="preload" href="../../assets/fonts/chillax/Chillax-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../styles.css?v=44">
+<link rel="stylesheet" href="../../styles.css?v=47">
 </head>
 <body>
 
@@ -145,13 +145,13 @@
 
       <h2>Em resumo</h2>
       <p>Suas capturas ficam no seu dispositivo. Nunca recebemos suas capturas de tela, o conteúdo delas nem sua biblioteca, projetos, etiquetas ou notas.</p>
-      <p>O Kapture para Chrome não precisa de conta e não nos envia nada.</p>
+      <p>O Kapture para Chrome não precisa de conta. O Kapture para Chrome e o Kapture Pro contam totais diários de uso anônimos, que você pode desativar, e só compartilham estatísticas de uso mais detalhadas se você escolher.</p>
       <p>Uma conta Kapture guarda seu endereço de e-mail e, se você usar o Kapture Pro, sua licença e os dispositivos que você ativar.</p>
-      <p>Não usamos publicidade, analytics nem rastreamento, e nunca vendemos seus dados.</p>
+      <p>Não usamos publicidade, rastreamento entre sites nem analytics de terceiros, e nunca vendemos seus dados. Veja <a href="#statistics">Estatísticas</a>.</p>
 
       <h2>Kapture para Chrome</h2>
       <h3>Informações que o Kapture trata</h3>
-      <p>Quando uma captura é iniciada, o Kapture processa o conteúdo visual da página ativa e o endereço dela para criar o arquivo PNG, JPEG ou PDF solicitado. O Kapture guarda localmente, no Chrome, metadados limitados do histórico: nome do arquivo, nome do host do site de origem, ID de download do Chrome, hora da captura e status de disponibilidade do arquivo. O tema escolhido e a subpasta de downloads também ficam guardados localmente.</p>
+      <p>Quando uma captura é iniciada, o Kapture processa o conteúdo visual da página ativa e o endereço dela para criar o arquivo PNG, JPEG ou PDF solicitado. O Kapture guarda localmente, no Chrome, metadados limitados do histórico: nome do arquivo, nome do host do site de origem, ID de download do Chrome, hora da captura e status de disponibilidade do arquivo. O tema escolhido e a subpasta de downloads também ficam guardados localmente. Também guarda localmente as escolhas do usuário sobre estatísticas e uma pequena fila de contagens de uso, conforme descrito em <a href="#statistics">Estatísticas</a>.</p>
 
       <h3>Como as informações são usadas</h3>
       <p>As informações são usadas apenas para criar e salvar capturas, aplicar o tamanho de tela escolhido, nomear os arquivos baixados, exibir o histórico local de capturas e permitir abrir ou remover capturas salvas.</p>
@@ -160,7 +160,7 @@
       <p>Os arquivos de captura são salvos diretamente no computador pelo sistema de downloads do Chrome. Os metadados do histórico e as preferências ficam guardados localmente no armazenamento do Chrome. O histórico pode ser limpo pelo Kapture, e os arquivos de captura podem ser apagados pelo Kapture ou pelo sistema operacional. Os dados locais da extensão são removidos ao desinstalá-la, conforme o comportamento do Chrome. Os arquivos já baixados permanecem até o usuário apagá-los.</p>
 
       <h3>Compartilhamento e transmissão</h3>
-      <p>O Kapture não envia conteúdo de páginas, capturas, informações de navegação nem metadados de histórico ao desenvolvedor ou a servidores externos. O Kapture não inclui analytics, publicidade, rastreamento nem serviços de dados de terceiros. Os dados dos usuários não são vendidos nem transferidos a terceiros.</p>
+      <p>O Kapture não envia conteúdo de páginas, capturas, informações de navegação nem metadados de histórico ao desenvolvedor ou a servidores externos. Ao desenvolvedor, ele envia apenas as contagens de uso descritas em <a href="#statistics">Estatísticas</a>. O Kapture não usa publicidade, rastreamento entre sites, analytics de terceiros nem serviços de dados de terceiros. Os dados dos usuários não são vendidos nem transferidos a terceiros.</p>
 
       <h3>Código remoto</h3>
       <p>O Kapture não baixa nem executa código remoto. Todo o código executável está incluído no pacote da extensão distribuído pela Chrome Web Store.</p>
@@ -174,14 +174,17 @@
       <h3>O que coletamos e por quê</h3>
       <p><strong>Dados da conta.</strong> Seu endereço de e-mail, o ID da sua conta e quando você se cadastrou e entrou pela última vez. Usamos esses dados para criar sua conta, permitir que você entre com um link enviado por e-mail e entrar em contato com você sobre sua conta. Base legal: execução do nosso contrato com você.</p>
       <p><strong>Sessões de login.</strong> Para cada sessão iniciada, o endereço IP e as informações do navegador registrados pelo nosso provedor de login. Usamos esses dados para manter as contas seguras e impedir o uso indevido. Base legal: nosso legítimo interesse em segurança.</p>
-      <p><strong>Dispositivos.</strong> Quando você usa o Kapture Pro: um identificador criado pelo aplicativo, o nome do dispositivo, a plataforma (macOS ou Windows), a versão do aplicativo e quando o dispositivo foi ativado, verificou a licença pela última vez e foi desativado. Usamos esses dados para aplicar o limite de dois dispositivos, emitir licenças e mostrar seus dispositivos na página da sua conta. Base legal: execução do nosso contrato com você.</p>
+      <p><strong>Dispositivos.</strong> Quando você usa o Kapture Pro: um identificador criado pelo aplicativo, o nome do dispositivo, a plataforma (macOS ou Windows), a versão do aplicativo e quando o dispositivo foi ativado, verificou a licença pela última vez e foi desativado. Usamos esses dados para aplicar o limite de dois dispositivos, emitir licenças e mostrar seus dispositivos na página da sua conta. Base legal: execução do nosso contrato com você. O nome do dispositivo é o nome definido no computador, que muitas vezes inclui o primeiro nome do proprietário.</p>
       <p><strong>Licença e teste.</strong> Se você tem o Kapture Pro, em qual plano e até quando, quando um teste gratuito começou e quando termina, e um hash criptográfico unidirecional do seu endereço de e-mail. Usamos esses dados para emitir licenças e oferecer um único teste gratuito por pessoa. Base legal: execução do nosso contrato com você e nosso legítimo interesse em evitar testes gratuitos repetidos.</p>
       <p><strong>Pagamentos.</strong> Quando você paga pelo Kapture Pro: seus IDs de cliente e de assinatura na Stripe, plano, preço, status, datas de renovação e cancelamento, e o valor, a moeda, a data e o status de reembolso de cada pagamento. Usamos esses dados para dar a você o acesso pelo qual pagou e para manter registros financeiros. Base legal: execução do nosso contrato com você e nossa obrigação legal de manter registros contábeis.</p>
+      <p><strong>Códigos de acesso.</strong> Se você resgatar um código de acesso: o código, quando você o resgatou e o acesso que ele deu. Usamos esses dados para dar esse acesso a você e para que cada conta use um código uma única vez. Eles são mantidos enquanto sua conta existir. Base legal: execução do nosso contrato com você.</p>
+      <p><strong>Registros de segurança.</strong> O horário das tentativas malsucedidas de resgatar um código de acesso, para limitar tentativas repetidas. Eles são mantidos enquanto sua conta existir. Base legal: nosso legítimo interesse em segurança.</p>
+      <p><strong>Contagens de verificações de licença.</strong> Totais diários dos resultados das verificações de licença por plataforma, como quantas deram certo ou atingiram o limite de dispositivos. Elas não contêm nenhum identificador de conta ou de dispositivo. Usamos essas contagens para manter o licenciamento funcionando e as mantemos por até 25 meses. Base legal: nosso legítimo interesse em operar o serviço.</p>
       <p><strong>Mensagens que você nos envia.</strong> Usamos essas mensagens para responder a você. Base legal: nosso legítimo interesse em responder a você ou, quando sua mensagem for sobre sua conta, nosso contrato com você.</p>
       <p>Uma licença do Kapture Pro salva no seu computador contém o ID da sua conta, um hash unidirecional do identificador do dispositivo, seu plano e as datas em que ela é válida. Nós a assinamos para que o aplicativo possa verificá-la offline.</p>
 
       <h3>O que não coletamos</h3>
-      <p>Não recebemos suas capturas de tela nem seus PDFs, os nomes ou o conteúdo desses arquivos, as páginas que você captura, nem sua biblioteca, projetos, coleções, etiquetas, notas ou buscas. O kaptapp.com, o Kapture para Chrome e o Kapture Pro não têm publicidade, analytics nem rastreamento.</p>
+      <p>Não recebemos suas capturas de tela nem seus PDFs, os nomes ou o conteúdo desses arquivos, as páginas que você captura, nem sua biblioteca, projetos, coleções, etiquetas, notas ou buscas. Não usamos publicidade, rastreamento entre sites nem analytics de terceiros, e nunca vendemos seus dados. Veja <a href="#statistics">Estatísticas</a>.</p>
 
       <h3>Pagamentos pela Stripe</h3>
       <p>Os pagamentos serão processados pela Stripe (Stripe Payments Europe, Limited, com a Stripe Payments UK Ltd para serviços de pagamento regulados). A Stripe coleta seus dados de pagamento e seu endereço de cobrança e, se você informar, seu número de identificação fiscal. Nunca recebemos nem armazenamos o número completo do seu cartão nem o código de segurança. A Stripe também usa as informações de pagamento para fins próprios, como prevenir fraudes e cumprir suas obrigações legais, conforme descrito na política de privacidade dela em stripe.com/privacy.</p>
@@ -203,6 +206,19 @@
 
       <h3>Exclusão da conta</h3>
       <p>Envie um e-mail a partir do endereço da sua conta e excluiremos sua conta, suas sessões de login e seus registros de dispositivos. Mantemos o registro do teste e os registros de pagamento descritos acima. Excluir sua conta não apaga nada do seu computador.</p>
+
+      <h2 id="statistics">Estatísticas</h2>
+      <p>O Kapture para Chrome 0.6.0 ou mais recente e o Kapture Pro 1.0.1 ou mais recente enviam ao nosso próprio servidor as estatísticas descritas aqui. Versões anteriores não enviam nenhuma. O Kapture mostra um breve aviso antes de começar a contar.</p>
+      <h3>Totais de uso anônimos (ativados, a menos que você os desative)</h3>
+      <p>O Kapture para Chrome e o Kapture Pro contam como os recursos são usados, por exemplo quantas capturas foram feitas em cada formato, quais telas foram abertas, quanto tempo levou a leitura da biblioteca e em quantos dias o aplicativo foi usado, em totais diários sem identificador. Eles incluem a versão do aplicativo e do sistema operacional e o idioma da interface. São usados apenas por nós, para entender e melhorar o Kapture, nunca são combinados com sua conta e são mantidos por até 25 meses. Desative-os em Configurações → Privacidade → Totais de uso anônimos.</p>
+      <h3>Estatísticas de uso (desativadas, a menos que você as ative)</h3>
+      <p>Se você escolher “Compartilhar estatísticas”, as mesmas contagens são enviadas com um identificador aleatório criado só para estatísticas, junto com a situação do seu plano do Kapture Pro (teste ou assinatura) e um resumo das suas configurações e do tamanho da sua biblioteca em faixas. Isso nos permite entender como o Kapture é usado ao longo do tempo. O identificador não é sua conta nem sua licença e nunca é combinado com elas. As contagens com o identificador são mantidas por 40 dias, os registros de quais dias o Kapture foi usado por 13 meses e os totais sem identificador por até 25 meses. Desative em Configurações → Privacidade → Compartilhar estatísticas de uso; o Kapture então exclui o identificador e pede ao nosso servidor que exclua o que foi guardado com ele. Desativar os totais de uso anônimos também desativa isso. Base legal: seu consentimento.</p>
+      <h3>Nunca enviado</h3>
+      <p>As estatísticas nunca incluem suas capturas de tela nem o conteúdo delas, nomes ou caminhos de arquivos e pastas, os endereços web que você captura, títulos de páginas, nomes de projetos, coleções ou regras, etiquetas, notas, termos de busca, seu endereço de e-mail ou dados da sua conta.</p>
+      <h3>Downloads e Chrome Web Store</h3>
+      <p>O GitHub, que hospeda o kaptapp.com, distribui nossos instaladores. O Google nos fornece os totais de instalações e desinstalações do Kapture para Chrome.</p>
+      <h3>Onde as estatísticas ficam guardadas</h3>
+      <p>Nosso provedor de banco de dados, a Supabase, as guarda na Irlanda (UE) em nosso nome. Nosso servidor não guarda o endereço IP nem os dados do navegador das solicitações de estatísticas.</p>
 
       <h2>Seus direitos</h2>
       <p>Você pode nos pedir uma cópia dos seus dados pessoais e pedir que os corrijamos ou excluamos, que restrinjamos a forma como os usamos ou que entreguemos a você, em formato portável, os dados que você forneceu. Você pode se opor a usos baseados em nossos legítimos interesses. Respondemos em até um mês.</p>

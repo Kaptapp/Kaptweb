@@ -70,7 +70,7 @@ the side panel and the bundled help page for version 0.4.7:
 - Saves to a subfolder of Chrome's Downloads directory, named per capture
 - Local capture history with open and delete
 - Light and dark side panel themes
-- No account, ads, analytics or data transmission
+- No account or ads. From 0.6.0: anonymous usage totals that can be turned off, and usage statistics only with opt-in (see the privacy page, #statistics)
 - Requires Chrome 120+
 
 Kapture is presented as one product on two platforms. Alongside each "Add to

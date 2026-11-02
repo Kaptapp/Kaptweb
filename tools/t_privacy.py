@@ -92,15 +92,6 @@ PRIV = {
  'fr': '<h2>Informations traitées par Kapture</h2>',
  'pt-br': '<h2>Informações que o Kapture trata</h2>',
  'it': '<h2>Informazioni trattate da Kapture</h2>'},
-'<p>When the user starts a capture, Kapture processes the visual content of the active webpage and its address to create the requested PNG, JPEG or PDF file. Kapture stores limited screenshot-history metadata locally in Chrome, including the filename, source website hostname, Chrome download ID, capture time and file-availability status. It also stores the user\'s selected theme and Downloads subfolder setting locally.</p>': {
- 'es': '<p>Cuando el usuario inicia una captura, Kapture procesa el contenido visual de la página web activa y su dirección para crear el archivo PNG, JPEG o PDF solicitado. Kapture almacena localmente en Chrome una cantidad limitada de metadatos del historial de capturas, incluidos el nombre del archivo, el nombre de host del sitio de origen, el identificador de descarga de Chrome, la hora de la captura y el estado de disponibilidad del archivo. También almacena localmente el tema elegido por el usuario y la configuración de la subcarpeta de descargas.</p>',
- 'zh': '<p>当用户发起截图时，Kapture 会处理当前网页的可见内容及其网址，以生成所请求的 PNG、JPEG 或 PDF 文件。Kapture 会在 Chrome 本地存储有限的截图历史元数据，包括文件名、来源网站主机名、Chrome 下载 ID、截图时间和文件可用状态。它还会在本地存储用户选择的主题和下载子文件夹设置。</p>',
- 'ko': '<p>사용자가 캡처를 시작하면 Kapture는 요청된 PNG, JPEG 또는 PDF 파일을 생성하기 위해 활성 웹페이지의 시각적 콘텐츠와 해당 주소를 처리합니다. Kapture는 파일 이름, 출처 웹사이트 호스트명, Chrome 다운로드 ID, 캡처 시각, 파일 사용 가능 여부를 포함한 제한된 스크린샷 기록 메타데이터를 Chrome 내에 로컬로 저장합니다. 또한 사용자가 선택한 테마와 다운로드 하위 폴더 설정도 로컬에 저장합니다.</p>',
- 'ja': '<p>ユーザーがキャプチャを開始すると、Kapture は要求された PNG、JPEG または PDF ファイルを作成するために、アクティブなウェブページの表示内容とそのアドレスを処理します。Kapture は、ファイル名、取得元サイトのホスト名、Chrome のダウンロード ID、キャプチャ日時、ファイルの利用可否といった限られたスクリーンショット履歴のメタデータを Chrome 内にローカル保存します。また、ユーザーが選択したテーマとダウンロード先サブフォルダの設定もローカルに保存します。</p>',
- 'de': '<p>Wenn eine Aufnahme gestartet wird, verarbeitet Kapture den sichtbaren Inhalt der aktiven Webseite und ihre Adresse, um die gewünschte PNG-, JPEG- oder PDF-Datei zu erstellen. Kapture speichert begrenzte Verlaufs-Metadaten lokal in Chrome, darunter Dateiname, Hostname der Quell-Website, Chrome-Download-ID, Aufnahmezeit und Verfügbarkeitsstatus der Datei. Ebenfalls lokal gespeichert werden das gewählte Design und die Einstellung für den Downloads-Unterordner.</p>',
- 'fr': "<p>Lorsqu'une capture est lancée, Kapture traite le contenu visuel de la page web active et son adresse afin de créer le fichier PNG, JPEG ou PDF demandé. Kapture conserve localement, dans Chrome, des métadonnées d'historique limitées&nbsp;: nom du fichier, nom d'hôte du site source, identifiant de téléchargement Chrome, heure de la capture et état de disponibilité du fichier. Le thème choisi et le sous-dossier de téléchargement sont eux aussi stockés localement.</p>",
- 'pt-br': '<p>Quando uma captura é iniciada, o Kapture processa o conteúdo visual da página ativa e o endereço dela para criar o arquivo PNG, JPEG ou PDF solicitado. O Kapture guarda localmente, no Chrome, metadados limitados do histórico: nome do arquivo, nome do host do site de origem, ID de download do Chrome, hora da captura e status de disponibilidade do arquivo. O tema escolhido e a subpasta de downloads também ficam guardados localmente.</p>',
- 'it': "<p>Quando l'utente avvia una cattura, Kapture elabora il contenuto visivo della pagina web attiva e il suo indirizzo per creare il file PNG, JPEG o PDF richiesto. Kapture conserva localmente in Chrome metadati di cronologia limitati: nome del file, nome host del sito di origine, ID di download di Chrome, ora della cattura e stato di disponibilità del file. Anche il tema scelto e la sottocartella dei download restano in locale.</p>"},
 
 '<h2>How the information is used</h2>': {
  'es': '<h2>Cómo se utiliza la información</h2>', 'zh': '<h2>信息的使用方式</h2>',
@@ -143,15 +134,6 @@ PRIV = {
  'fr': '<h2>Partage et transmission</h2>',
  'pt-br': '<h2>Compartilhamento e transmissão</h2>',
  'it': '<h2>Condivisione e trasmissione</h2>'},
-'<p>Kapture does not send webpage content, screenshots, browsing information or history metadata to the developer or to external servers. Kapture does not include analytics, advertising, tracking or third-party data services. User data is not sold or transferred to third parties.</p>': {
- 'es': '<p>Kapture no envía el contenido de las páginas web, las capturas, la información de navegación ni los metadatos del historial al desarrollador ni a servidores externos. Kapture no incluye analíticas, publicidad, seguimiento ni servicios de datos de terceros. Los datos del usuario no se venden ni se transfieren a terceros.</p>',
- 'zh': '<p>Kapture 不会将网页内容、截图、浏览信息或历史元数据发送给开发者或外部服务器。Kapture 不含分析、广告、追踪或第三方数据服务。用户数据不会被出售或转让给第三方。</p>',
- 'ko': '<p>Kapture는 웹페이지 내용, 스크린샷, 브라우징 정보 또는 기록 메타데이터를 개발자나 외부 서버로 전송하지 않습니다. Kapture에는 분석, 광고, 추적 또는 제3자 데이터 서비스가 포함되어 있지 않습니다. 사용자 데이터는 제3자에게 판매되거나 이전되지 않습니다.</p>',
- 'ja': '<p>Kapture は、ウェブページの内容、スクリーンショット、閲覧情報、履歴のメタデータを開発者や外部サーバーに送信しません。Kapture には解析、広告、トラッキング、第三者のデータサービスは含まれていません。ユーザーデータが第三者に販売または譲渡されることはありません。</p>',
- 'de': '<p>Kapture sendet keine Webseiteninhalte, Screenshots, Browserdaten oder Verlaufs-Metadaten an den Entwickler oder an externe Server. Kapture enthält keine Analyse, Werbung, Tracking oder Datendienste Dritter. Nutzerdaten werden nicht verkauft und nicht an Dritte weitergegeben.</p>',
- 'fr': "<p>Kapture n'envoie ni contenu de page, ni captures, ni informations de navigation, ni métadonnées d'historique au développeur ou à des serveurs externes. Kapture ne contient ni analyse, ni publicité, ni suivi, ni service de données tiers. Les données des utilisateurs ne sont ni vendues ni transmises à des tiers.</p>",
- 'pt-br': '<p>O Kapture não envia conteúdo de páginas, capturas, informações de navegação nem metadados de histórico ao desenvolvedor ou a servidores externos. O Kapture não inclui analytics, publicidade, rastreamento nem serviços de dados de terceiros. Os dados dos usuários não são vendidos nem transferidos a terceiros.</p>',
- 'it': '<p>Kapture non invia contenuti delle pagine, screenshot, informazioni di navigazione o metadati della cronologia allo sviluppatore né a server esterni. Kapture non include analisi, pubblicità, tracciamento o servizi dati di terze parti. I dati degli utenti non vengono venduti né ceduti a terzi.</p>'},
 
 '<h2>Remote code</h2>': {
  'es': '<h2>Código remoto</h2>', 'zh': '<h2>远程代码</h2>',
@@ -473,15 +455,6 @@ PRIV = {
  'pt-br': '<p>Suas capturas ficam no seu dispositivo. Nunca recebemos suas capturas de tela, o conteúdo delas nem sua biblioteca, projetos, etiquetas ou notas.</p>',
  'it': '<p>Le tue catture restano sul tuo dispositivo. Non riceviamo mai i tuoi screenshot, il loro contenuto, né la tua libreria, i tuoi progetti, tag o note.</p>'},
 
-'<p>Kapture for Chrome needs no account and sends nothing to us.</p>': {
- 'es': '<p>Kapture para Chrome no necesita cuenta y no nos envía nada.</p>',
- 'zh': '<p>Chrome 版 Kapture 无需账户，也不会向我们发送任何信息。</p>',
- 'ko': '<p>Chrome용 Kapture는 계정이 필요 없으며 당사에 아무것도 보내지 않습니다.</p>',
- 'ja': '<p>Chrome 版 Kapture はアカウント不要で、当社に何も送信しません。</p>',
- 'de': '<p>Kapture für Chrome braucht kein Konto und sendet nichts an uns.</p>',
- 'fr': '<p>Kapture pour Chrome ne nécessite aucun compte et ne nous envoie rien.</p>',
- 'pt-br': '<p>O Kapture para Chrome não precisa de conta e não nos envia nada.</p>',
- 'it': '<p>Kapture per Chrome non richiede alcun account e non ci invia nulla.</p>'},
 
 '<p>A Kapture account holds your email address and, if you use Kapture Pro, your licence and the devices you activate.</p>': {
  'es': '<p>Una cuenta de Kapture contiene tu dirección de correo electrónico y, si usas Kapture Pro, tu licencia y los dispositivos que actives.</p>',
@@ -493,15 +466,6 @@ PRIV = {
  'pt-br': '<p>Uma conta Kapture guarda seu endereço de e-mail e, se você usar o Kapture Pro, sua licença e os dispositivos que você ativar.</p>',
  'it': '<p>Un account Kapture contiene il tuo indirizzo email e, se usi Kapture Pro, la tua licenza e i dispositivi che attivi.</p>'},
 
-'<p>We do not use advertising, analytics or tracking, and we never sell your data.</p>': {
- 'es': '<p>No usamos publicidad, analíticas ni seguimiento, y nunca vendemos tus datos.</p>',
- 'zh': '<p>我们不使用广告、分析或追踪，也绝不出售你的数据。</p>',
- 'ko': '<p>당사는 광고, 분석, 추적을 사용하지 않으며 사용자의 데이터를 절대 판매하지 않습니다.</p>',
- 'ja': '<p>当社は広告、解析、トラッキングを使用せず、お客様のデータを販売することは一切ありません。</p>',
- 'de': '<p>Wir verwenden keine Werbung, keine Analyse und kein Tracking, und wir verkaufen deine Daten niemals.</p>',
- 'fr': "<p>Nous n'utilisons ni publicité, ni outils d'analyse, ni suivi, et nous ne vendons jamais vos données.</p>",
- 'pt-br': '<p>Não usamos publicidade, analytics nem rastreamento, e nunca vendemos seus dados.</p>',
- 'it': '<p>Non usiamo pubblicità, strumenti di analisi o tracciamento, e non vendiamo mai i tuoi dati.</p>'},
 
 '<p>You can create a Kapture account and sign in at kaptapp.com/account. This section explains how we handle your account information and, if you use Kapture Pro, your licence, devices and payments.</p>': {
  'es': '<p>Puedes crear una cuenta de Kapture e iniciar sesión en kaptapp.com/account. Esta sección explica cómo tratamos la información de tu cuenta y, si usas Kapture Pro, tu licencia, tus dispositivos y tus pagos.</p>',
@@ -533,15 +497,6 @@ PRIV = {
  'pt-br': '<p><strong>Sessões de login.</strong> Para cada sessão iniciada, o endereço IP e as informações do navegador registrados pelo nosso provedor de login. Usamos esses dados para manter as contas seguras e impedir o uso indevido. Base legal: nosso legítimo interesse em segurança.</p>',
  'it': "<p><strong>Sessioni di accesso.</strong> Per ogni sessione di accesso, l'indirizzo IP e le informazioni sul browser registrati dal nostro fornitore del servizio di accesso. Li usiamo per mantenere sicuri gli account e impedire abusi. Base giuridica: il nostro legittimo interesse alla sicurezza.</p>"},
 
-'<p><strong>Devices.</strong> When you use Kapture Pro: an identifier created by the app, the device name, the platform (macOS or Windows), the app version, and when the device was activated, last checked its licence and was deactivated. We use them to apply the two-device limit, issue licences and show your devices on your account page. Legal basis: performing our contract with you.</p>': {
- 'es': '<p><strong>Dispositivos.</strong> Cuando usas Kapture Pro: un identificador creado por la app, el nombre del dispositivo, la plataforma (macOS o Windows), la versión de la app y cuándo se activó el dispositivo, cuándo comprobó su licencia por última vez y cuándo se desactivó. Los usamos para aplicar el límite de dos dispositivos, emitir licencias y mostrar tus dispositivos en la página de tu cuenta. Base jurídica: la ejecución de nuestro contrato contigo.</p>',
- 'zh': '<p><strong>设备。</strong>当你使用 Kapture Pro 时：应用生成的标识符、设备名称、平台（macOS 或 Windows）、应用版本，以及设备的激活时间、最近一次检查许可证的时间和停用时间。我们使用这些信息来执行两台设备的限制、签发许可证，并在你的账户页面上显示你的设备。法律依据：履行我们与你之间的合同。</p>',
- 'ko': '<p><strong>기기.</strong> Kapture Pro를 사용하는 경우: 앱이 생성한 식별자, 기기 이름, 플랫폼(macOS 또는 Windows), 앱 버전, 그리고 기기가 활성화된 시각, 마지막으로 라이선스를 확인한 시각, 비활성화된 시각입니다. 당사는 이 정보를 기기 2대 제한 적용, 라이선스 발급, 계정 페이지의 기기 표시에 사용합니다. 법적 근거: 사용자와의 계약 이행.</p>',
- 'ja': '<p><strong>端末。</strong>Kapture Pro をご利用の場合：アプリが作成する識別子、端末名、プラットフォーム（macOS または Windows）、アプリのバージョン、および端末を有効化した日時、最後にライセンスを確認した日時、無効化した日時。2 台までの端末制限の適用、ライセンスの発行、アカウントページでの端末の表示のために使用します。法的根拠：お客様との契約の履行。</p>',
- 'de': '<p><strong>Geräte.</strong> Wenn du Kapture Pro nutzt: eine von der App erzeugte Kennung, der Gerätename, die Plattform (macOS oder Windows), die App-Version sowie die Zeitpunkte, zu denen das Gerät aktiviert wurde, zuletzt seine Lizenz geprüft hat und deaktiviert wurde. Wir verwenden sie, um die Begrenzung auf zwei Geräte umzusetzen, Lizenzen auszustellen und deine Geräte auf deiner Kontoseite anzuzeigen. Rechtsgrundlage: Erfüllung unseres Vertrags mit dir.</p>',
- 'fr': "<p><strong>Appareils.</strong> Lorsque vous utilisez Kapture Pro&nbsp;: un identifiant créé par l'application, le nom de l'appareil, la plateforme (macOS ou Windows), la version de l'application, ainsi que les dates auxquelles l'appareil a été activé, a vérifié sa licence pour la dernière fois et a été désactivé. Nous les utilisons pour appliquer la limite de deux appareils, délivrer les licences et afficher vos appareils sur la page de votre compte. Base juridique&nbsp;: l'exécution de notre contrat avec vous.</p>",
- 'pt-br': '<p><strong>Dispositivos.</strong> Quando você usa o Kapture Pro: um identificador criado pelo aplicativo, o nome do dispositivo, a plataforma (macOS ou Windows), a versão do aplicativo e quando o dispositivo foi ativado, verificou a licença pela última vez e foi desativado. Usamos esses dados para aplicar o limite de dois dispositivos, emitir licenças e mostrar seus dispositivos na página da sua conta. Base legal: execução do nosso contrato com você.</p>',
- 'it': "<p><strong>Dispositivi.</strong> Quando usi Kapture Pro: un identificativo creato dall'app, il nome del dispositivo, la piattaforma (macOS o Windows), la versione dell'app e le date in cui il dispositivo è stato attivato, ha verificato per l'ultima volta la licenza ed è stato disattivato. Li usiamo per applicare il limite di due dispositivi, emettere le licenze e mostrare i tuoi dispositivi nella pagina del tuo account. Base giuridica: esecuzione del contratto con te.</p>"},
 
 '<p><strong>Licence and trial.</strong> Whether you have Kapture Pro, on which plan and until when, when a free trial started and ends, and a one-way cryptographic hash of your email address. We use them to issue licences and to offer one free trial per person. Legal basis: performing our contract with you, and our legitimate interest in preventing repeated free trials.</p>': {
  'es': '<p><strong>Licencia y prueba.</strong> Si tienes Kapture Pro, con qué plan y hasta cuándo, cuándo empezó y cuándo termina una prueba gratuita, y un hash criptográfico unidireccional de tu dirección de correo electrónico. Los usamos para emitir licencias y ofrecer una sola prueba gratuita por persona. Base jurídica: la ejecución de nuestro contrato contigo y nuestro interés legítimo en evitar que se repitan las pruebas gratuitas.</p>',
@@ -583,15 +538,6 @@ PRIV = {
  'pt-br': '<p>Uma licença do Kapture Pro salva no seu computador contém o ID da sua conta, um hash unidirecional do identificador do dispositivo, seu plano e as datas em que ela é válida. Nós a assinamos para que o aplicativo possa verificá-la offline.</p>',
  'it': "<p>Una licenza Kapture Pro salvata sul tuo computer contiene l'ID del tuo account, un hash unidirezionale dell'identificativo del dispositivo, il tuo piano e le date di validità. La firmiamo perché l'app possa verificarla offline.</p>"},
 
-'<p>We do not receive your screenshots or PDFs, their file names or contents, the pages you capture, or your library, projects, collections, tags, notes or searches. kaptapp.com, Kapture for Chrome and Kapture Pro contain no advertising, analytics or tracking.</p>': {
- 'es': '<p>No recibimos tus capturas de pantalla ni tus PDF, sus nombres de archivo ni su contenido, las páginas que capturas, ni tu biblioteca, proyectos, colecciones, etiquetas, notas o búsquedas. kaptapp.com, Kapture para Chrome y Kapture Pro no incluyen publicidad, analíticas ni seguimiento.</p>',
- 'zh': '<p>我们不会接收你的截图或 PDF、它们的文件名或内容、你截取的页面，也不会接收你的资料库、项目、合集、标签、备注或搜索内容。kaptapp.com、Chrome 版 Kapture 和 Kapture Pro 均不含广告、分析或追踪。</p>',
- 'ko': '<p>당사는 사용자의 스크린샷이나 PDF, 그 파일 이름이나 내용, 캡처한 페이지, 라이브러리, 프로젝트, 컬렉션, 태그, 메모, 검색 내용을 받지 않습니다. kaptapp.com, Chrome용 Kapture, Kapture Pro에는 광고, 분석, 추적이 포함되어 있지 않습니다.</p>',
- 'ja': '<p>当社は、スクリーンショットや PDF、そのファイル名や内容、キャプチャしたページ、ライブラリ、プロジェクト、コレクション、タグ、メモ、検索内容を受け取りません。kaptapp.com、Chrome 版 Kapture、Kapture Pro には、広告、解析、トラッキングは含まれていません。</p>',
- 'de': '<p>Wir erhalten weder deine Screenshots oder PDFs noch deren Dateinamen oder Inhalte, die Seiten, die du aufnimmst, oder deine Bibliothek, Projekte, Sammlungen, Tags, Notizen oder Suchen. kaptapp.com, Kapture für Chrome und Kapture Pro enthalten keine Werbung, keine Analyse und kein Tracking.</p>',
- 'fr': "<p>Nous ne recevons pas vos captures d'écran ni vos PDF, leurs noms de fichier ni leur contenu, les pages que vous capturez, ni votre bibliothèque, vos projets, collections, tags, notes ou recherches. kaptapp.com, Kapture pour Chrome et Kapture Pro ne contiennent ni publicité, ni outils d'analyse, ni suivi.</p>",
- 'pt-br': '<p>Não recebemos suas capturas de tela nem seus PDFs, os nomes ou o conteúdo desses arquivos, as páginas que você captura, nem sua biblioteca, projetos, coleções, etiquetas, notas ou buscas. O kaptapp.com, o Kapture para Chrome e o Kapture Pro não têm publicidade, analytics nem rastreamento.</p>',
- 'it': '<p>Non riceviamo i tuoi screenshot o PDF, i nomi dei file o il loro contenuto, le pagine che catturi, né la tua libreria, i progetti, le raccolte, i tag, le note o le ricerche. kaptapp.com, Kapture per Chrome e Kapture Pro non contengono pubblicità, strumenti di analisi o tracciamento.</p>'},
 
 '<p>Payments will be handled by Stripe (Stripe Payments Europe, Limited, with Stripe Payments UK Ltd for regulated payment services). Stripe collects your payment details and billing address and, if you give one, your tax ID. We never receive or store your full card number or security code. Stripe also uses payment information for its own purposes, such as preventing fraud and meeting its legal obligations, as described in its privacy policy at stripe.com/privacy.</p>': {
  'es': '<p>Los pagos los gestionará Stripe (Stripe Payments Europe, Limited, junto con Stripe Payments UK Ltd para los servicios de pago regulados). Stripe recopila tus datos de pago y tu dirección de facturación y, si lo facilitas, tu número de identificación fiscal. Nunca recibimos ni almacenamos el número completo de tu tarjeta ni su código de seguridad. Stripe también usa la información de pago para sus propios fines, como prevenir el fraude y cumplir sus obligaciones legales, según se describe en su política de privacidad en stripe.com/privacy.</p>',

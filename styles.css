@@ -910,6 +910,9 @@ html[lang="it"]    { --free-label: "Gratis"; }
   font-size: clamp(20px, 2.6vw, 24px);
 }
 .legal-body h2:first-child { margin-top: 0; }
+/* Linked sections, such as /privacy/#statistics from the apps, land below the
+   sticky header (two rows on narrow screens) instead of under it. */
+.legal-body h2[id] { scroll-margin-top: 112px; }
 .legal-body p { margin-bottom: 16px; color: var(--text-dim); font-size: 16.5px; }
 .legal-body a { text-decoration: underline; text-underline-offset: 3px; }
 
