@@ -3,6 +3,17 @@
     <channel>
         <title>Kapture Pro</title>
         <item>
+            <title>1.0.1</title>
+            <pubDate>Mon, 02 Nov 2026 15:25:32 +0100</pubDate>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://kaptapp.com/downloads/mac/Kapture%20Pro%201.0.1.dmg" length="13281749" type="application/octet-stream" sparkle:edSignature="eZbB/bsQFVPfiB5v/zUuhlZORHvx2iHh0jSlPzB5WGj//EM6TJ1BOllFKqTs6KO86jGXODI9IInNWoturKGHDQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://kaptapp.com/downloads/mac/Kapture%20Pro2-1.delta" sparkle:deltaFrom="1" length="918830" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976464" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="wSAGKqTBwfjSt4Bz5yB1IzAJutssxYRz4jdlR1hXbmCJKwf/MeAWXZRkOcK8z7n0rEv/SRqjpNjEcIVtHR58AA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.0.0</title>
             <pubDate>Sun, 01 Nov 2026 21:56:56 +0100</pubDate>
             <sparkle:version>1</sparkle:version>
