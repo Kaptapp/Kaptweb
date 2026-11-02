@@ -12,9 +12,9 @@
 <link rel="icon" type="image/svg+xml" href="../assets/logo/kapture-icon.svg">
 <link rel="preconnect" href="https://sokcwfqvutnjzzbsuhqm.supabase.co" crossorigin>
 <link rel="stylesheet" href="../styles.css?v=47">
-<link rel="stylesheet" href="admin.css?v=1">
+<link rel="stylesheet" href="admin.css?v=2">
 </head>
-<body class="ad-page">
+<body class="kd-page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -28,32 +28,32 @@
   </div>
 </header>
 
-<main id="main" class="ad" data-state="loading">
+<main id="main" class="kd" data-state="loading">
   <div class="shell">
-    <header class="ad-head">
+    <header class="kd-head">
       <div>
         <p class="kicker">Private</p>
         <h1>Kapture analytics</h1>
-        <p class="ad-meta" id="adMeta"></p>
+        <p class="kd-meta" id="kdMeta"></p>
       </div>
-      <div class="ad-window" role="group" aria-label="Period">
+      <div class="kd-window" role="group" aria-label="Period">
         <button type="button" data-days="7" aria-pressed="false">7 days</button>
         <button type="button" data-days="30" aria-pressed="true">30 days</button>
       </div>
     </header>
 
-    <p class="ad-status" data-panel="loading">Loading…</p>
-    <div class="ad-status" data-panel="signed-out">
+    <p class="kd-status" data-panel="loading">Loading…</p>
+    <div class="kd-status" data-panel="signed-out">
       <p>Sign in on your account page first, then come back here.</p>
       <a class="btn btn-primary btn-sm" href="/account/">Sign in</a>
     </div>
-    <p class="ad-status" data-panel="denied">Access denied. This page is only available to the Kapture owner account.</p>
-    <p class="ad-status" data-panel="error" id="adError">The figures could not be loaded. Try again in a moment.</p>
+    <p class="kd-status" data-panel="denied">Access denied. This page is only available to the Kapture owner account.</p>
+    <p class="kd-status" data-panel="error" id="kdError">The figures could not be loaded. Try again in a moment.</p>
 
-    <div data-panel="ready" id="adBody"></div>
+    <div data-panel="ready" id="kdBody"></div>
   </div>
 </main>
 
-<script src="admin.js?v=1"></script>
+<script src="admin.js?v=2"></script>
 </body>
 </html>

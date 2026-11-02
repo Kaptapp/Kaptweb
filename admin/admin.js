@@ -10,9 +10,9 @@
   var SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_GqY0_BwdTP4gcnsPBJ-73g_de3r-toA';
   var STORE_KEY = 'kapture.session';
 
-  var main = document.querySelector('.ad');
-  var body = document.getElementById('adBody');
-  var meta = document.getElementById('adMeta');
+  var main = document.querySelector('.kd');
+  var body = document.getElementById('kdBody');
+  var meta = document.getElementById('kdMeta');
   var days = 30;
 
   /* ---- session (shared with /account/) -------------------------------- */
@@ -96,28 +96,28 @@
   function label(k) { return { macos: 'macOS', windows: 'Windows', chrome: 'Chrome' }[k] || k; }
 
   function section(title, note) {
-    var s = el('section', 'ad-section');
+    var s = el('section', 'kd-section');
     s.appendChild(el('h2', null, title));
-    if (note) s.appendChild(el('p', 'ad-note', note));
+    if (note) s.appendChild(el('p', 'kd-note', note));
     body.appendChild(s);
     return s;
   }
   function cards(parent, items) {
-    var dl = el('dl', 'ad-cards');
+    var dl = el('dl', 'kd-cards');
     items.forEach(function (it) {
-      var c = el('div', 'ad-card');
+      var c = el('div', 'kd-card');
       c.appendChild(el('dt', null, it[0]));
-      var dd = el('dd', /^[£$€]?[\d.,<]+$/.test(String(it[1])) ? null : 'ad-text', it[1]);
-      if (it[2]) dd.appendChild(el('span', 'ad-sub', it[2]));
+      var dd = el('dd', /^[£$€]?[\d.,<]+$/.test(String(it[1])) ? null : 'kd-text', it[1]);
+      if (it[2]) dd.appendChild(el('span', 'kd-sub', it[2]));
       c.appendChild(dd);
       dl.appendChild(c);
     });
     parent.appendChild(dl);
   }
   function table(parent, heads, rows, empty) {
-    if (!rows.length) { parent.appendChild(el('p', 'ad-empty', empty)); return; }
-    var wrap = el('div', 'ad-scroll');
-    var t = el('table', 'ad-table');
+    if (!rows.length) { parent.appendChild(el('p', 'kd-empty', empty)); return; }
+    var wrap = el('div', 'kd-scroll');
+    var t = el('table', 'kd-table');
     var tr = el('tr');
     heads.forEach(function (h) { tr.appendChild(el('th', h.n ? 'n' : null, h.t)); });
     var thead = el('thead'); thead.appendChild(tr); t.appendChild(thead);
@@ -168,7 +168,7 @@
     if (s.set_to_cancel) extra.push(s.set_to_cancel + ' set to cancel');
     if (s.past_due) extra.push(s.past_due + ' past due');
     if (s.test_mode_active) extra.push(s.test_mode_active + ' test-mode subscription(s) excluded');
-    if (extra.length) o.appendChild(el('p', 'ad-note', 'Subscriptions: ' + extra.join(' · ') + '.'));
+    if (extra.length) o.appendChild(el('p', 'kd-note', 'Subscriptions: ' + extra.join(' · ') + '.'));
 
     /* Platforms */
     var p = section('Platforms', 'Devices are licensed computers; licence checks are events.');
@@ -177,7 +177,7 @@
       ['Seen in period', pairs(dv.active_in_window_by_platform) || '0', 'devices with a licence check'],
       ['Trials by platform', pairs(t.by_platform) || '0', 'all time']
     ]);
-    var g = el('div', 'ad-grid2'); p.appendChild(g);
+    var g = el('div', 'kd-grid2'); p.appendChild(g);
     table(sub(g, 'App versions (devices seen in period)'), [{ t: 'Platform' }, { t: 'Version' }, { t: 'Devices', n: 1 }],
       dv.versions.map(function (r) { return [label(r.platform), r.version, r.devices]; }), 'No devices seen in this period.');
     table(sub(g, 'Licence checks (events)'), [{ t: 'Platform' }, { t: 'Outcome' }, { t: 'Checks', n: 1 }],
@@ -189,7 +189,7 @@
     var u = section('Product usage',
       'Anonymous totals have no identifier and count active days and actions, not people. Opted-in figures count installs ' +
       'that chose "Share statistics". Figures from 1 to 4 show as <5.');
-    var g2 = el('div', 'ad-grid2'); u.appendChild(g2);
+    var g2 = el('div', 'kd-grid2'); u.appendChild(g2);
     table(sub(g2, 'Active (anonymous): DAU yesterday · WAU last full week · MAU last full month'),
       [{ t: 'App' }, { t: 'Platform' }, { t: 'DAU', n: 1 }, { t: 'WAU', n: 1 }, { t: 'MAU', n: 1 }, { t: 'First launches', n: 1 }],
       d.anonymous.activity.map(function (r) { return [r.app === 'kapture_pro' ? 'Kapture Pro' : 'Chrome', label(r.platform), r.dau, r.wau, r.mau, r.first_launches]; }),
@@ -201,7 +201,7 @@
     table(sub(u, 'Feature use in period (anonymous totals, actions)'), [{ t: 'Platform' }, { t: 'Event' }, { t: 'Total', n: 1 }],
       d.anonymous.features.map(function (r) { return [label(r.platform), r.event.replace(/_/g, ' '), r.total]; }),
       'No feature totals in this period yet.');
-    var g3 = el('div', 'ad-grid2'); u.appendChild(g3);
+    var g3 = el('div', 'kd-grid2'); u.appendChild(g3);
     table(sub(g3, 'Feature adoption (opted-in, last full week)'), [{ t: 'Platform' }, { t: 'Event' }, { t: 'Installs using', n: 1 }],
       d.opt_in.adoption.map(function (r) { return [label(r.platform), r.event.replace(/_/g, ' '), r.percent + '% of ' + r.of]; }),
       'Shown once at least 5 opted-in installs are active in a week.');
@@ -214,16 +214,16 @@
       'No anonymous activity in this period yet.');
 
     var i = d.ingest;
-    body.appendChild(el('p', 'ad-note ad-section', 'Collection in period: ' + i.requests + ' requests, ' + i.batches_aggregate +
+    body.appendChild(el('p', 'kd-note kd-section', 'Collection in period: ' + i.requests + ' requests, ' + i.batches_aggregate +
       ' anonymous and ' + i.batches_usage + ' opt-in batches, ' + i.entries + ' entries, ' + i.limited + ' rate-limited.'));
   }
 
   /* ---- controls -------------------------------------------------------- */
 
-  main.querySelectorAll('.ad-window button').forEach(function (b) {
+  main.querySelectorAll('.kd-window button').forEach(function (b) {
     b.addEventListener('click', function () {
       days = Number(b.getAttribute('data-days'));
-      main.querySelectorAll('.ad-window button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      main.querySelectorAll('.kd-window button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       load();
     });
   });
