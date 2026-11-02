@@ -4,7 +4,7 @@ the localised privacy pages. Terms keep their own date.
     python3 tools/set_privacy_date.py . YYYY-MM-DD   # on publication day
 """
 import datetime, os, re, sys
-R, iso = sys.argv[1], sys.argv[2]
+R, iso = os.path.abspath(sys.argv[1]), sys.argv[2]
 d = datetime.date.fromisoformat(iso)
 EN_M = "January February March April May June July August September October November December".split()
 ES_M = "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre".split()

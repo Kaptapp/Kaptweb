@@ -7,6 +7,15 @@ extension's own locales. These entries win over the page tables they extend.
 """
 
 STATS_PRIV = {
+'<p class="legal-date">Effective 2 November 2026</p>': {
+ 'es': '<p class="legal-date">En vigor desde el 2 de noviembre de 2026</p>',
+ 'zh': '<p class="legal-date">自 2026 年 11 月 2 日起生效</p>',
+ 'ko': '<p class="legal-date">2026년 11월 2일 시행</p>',
+ 'ja': '<p class="legal-date">2026 年 11 月 2 日発効</p>',
+ 'de': '<p class="legal-date">Gültig ab 2. November 2026</p>',
+ 'fr': '<p class="legal-date">En vigueur depuis le 2 novembre 2026</p>',
+ 'pt-br': '<p class="legal-date">Em vigor desde 2 de novembro de 2026</p>',
+ 'it': '<p class="legal-date">In vigore dal 2 novembre 2026</p>'},
 '<p>Kapture for Chrome needs no account. Kapture for Chrome and Kapture Pro count anonymous daily usage totals, which you can turn off, and share more detailed usage statistics only if you choose to.</p>': {
  'es': '<p>Kapture para Chrome no necesita cuenta. Kapture para Chrome y Kapture Pro cuentan totales diarios de uso anónimos, que puedes desactivar, y solo comparten estadísticas de uso más detalladas si tú lo decides.</p>',
  'zh': '<p>Chrome 版 Kapture 无需账户。Chrome 版 Kapture 和 Kapture Pro 会统计匿名的每日使用总数（你可以关闭），只有在你选择时才会分享更详细的使用统计。</p>',
