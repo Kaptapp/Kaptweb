@@ -1,4 +1,4 @@
-/* Private analytics dashboard (V2).
+/* Private analytics dashboard.
    Uses the session the account page keeps in this browser and calls
    public.admin_dashboard_v2, which decides on the server who may see the
    figures: any other account gets 403. Filters are sent to the server and
@@ -13,6 +13,7 @@
   var PREFS_KEY = 'kapture.dashboard';
   var SVGNS = 'http://www.w3.org/2000/svg';
   var VIEWS = ['overview', 'customers', 'devices', 'usage', 'health'];
+  var ICONS = window.kdIcons || {};
 
   var main = document.querySelector('.kd');
   var body = document.getElementById('kdBody');
@@ -65,6 +66,7 @@
 
   function iso(d) { return d.toISOString().slice(0, 10); }
   function utcToday() { var n = new Date(); return new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate())); }
+  function addDays(s, k) { var d = new Date(s + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + k); return iso(d); }
   function range() {
     var today = utcToday();
     if (prefs.period === 'custom' && prefs.from && prefs.to) return { from: prefs.from, to: prefs.to };
@@ -72,7 +74,11 @@
     var from = new Date(today); from.setUTCDate(from.getUTCDate() - (days - 1));
     return { from: iso(from), to: iso(today) };
   }
-  function fmtDay(s, opts) { return new Date(s + 'T00:00:00Z').toLocaleDateString('en-GB', Object.assign({ day: 'numeric', month: 'short', timeZone: 'UTC' }, opts || {})); }
+  function fmtDay(s, opts) { return new Date(String(s).slice(0, 10) + 'T00:00:00Z').toLocaleDateString('en-GB', Object.assign({ day: 'numeric', month: 'short', timeZone: 'UTC' }, opts || {})); }
+  function fmtLong(s) { return fmtDay(s, { weekday: 'short', year: 'numeric' }); }
+  function fmtTime(s) { return new Date(s).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' }) + ' UTC'; }
+  function daysAgo(s) { return Math.round((utcToday() - new Date(String(s).slice(0, 10) + 'T00:00:00Z')) / 864e5); }
+  function relDay(s) { var k = daysAgo(s); return k === 0 ? 'today' : k === 1 ? 'yesterday' : k + ' days ago (' + fmtDay(s) + ')'; }
 
   /* ---- load --------------------------------------------------------------- */
 
@@ -110,23 +116,50 @@
     Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
     return e;
   }
+  function icon(name, cls) {
+    var s = svg('svg', { viewBox: '0 0 256 256', 'class': 'kd-i' + (cls ? ' ' + cls : ''), 'aria-hidden': 'true', focusable: 'false' });
+    if (ICONS[name]) s.appendChild(svg('path', { d: ICONS[name] }));
+    return s;
+  }
+  function add(parent) { for (var i = 1; i < arguments.length; i++) if (arguments[i]) parent.appendChild(typeof arguments[i] === 'string' ? document.createTextNode(arguments[i]) : arguments[i]); return parent; }
   function tip(text) {
     var w = el('span', 'kd-tip');
-    var b = el('button', null, 'i'); b.type = 'button'; b.setAttribute('aria-label', 'About this metric: ' + text);
+    var b = el('button'); b.type = 'button'; b.setAttribute('aria-label', 'What this means: ' + text);
+    b.appendChild(icon('info'));
     w.appendChild(b); w.appendChild(el('span', 'kd-tip-body', text));
     return w;
   }
   function n(v) { var x = Number(v); return isFinite(x) ? x : 0; }
-  function int(v) { return n(v).toLocaleString('en-GB'); }
+  function int(v) { return isSupp(v) ? 'fewer than 5' : n(v).toLocaleString('en-GB'); }
+  function short(v) { return isSupp(v) ? '<5' : n(v).toLocaleString('en-GB'); }
   function isSupp(v) { return v === '<5'; }
   function money(cents, cur) {
     try { return new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur || 'GBP' }).format(n(cents) / 100); }
     catch (e) { return (n(cents) / 100).toFixed(2) + ' ' + cur; }
   }
+  function plural(k, one, many) { return n(k) === 1 ? one : (many || one + 's'); }
   var PLATFORM = { macos: 'macOS', windows: 'Windows', chrome: 'Chrome', other: 'Unknown', unknown: 'Unknown' };
+  var PLATFORM_ICON = { macos: 'apple-logo', windows: 'windows-logo', chrome: 'google-chrome-logo' };
   function plat(k) { return PLATFORM[k] || k; }
-  function words(s) { return String(s).replace(/_/g, ' '); }
   function cap(s) { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function words(s) { return cap(String(s).replace(/[_-]+/g, ' ')); }
+
+  /* Sum values that may include "<5". A hidden small count is at least 1, so
+     the result is a floor, shown as "7+" rather than a made-up exact number. */
+  function sumVals(vals) {
+    var total = 0, hidden = 0;
+    vals.forEach(function (v) { if (isSupp(v)) hidden++; else total += n(v); });
+    if (!hidden) return { value: total, text: total.toLocaleString('en-GB'), exact: true };
+    if (!total && hidden === 1) return { value: 2, text: '<5', exact: false };
+    return { value: total + hidden, text: (total + hidden).toLocaleString('en-GB') + '+', exact: false };
+  }
+
+  /* Account types, in plain words. Classes come from existing records only. */
+  var CLASS = {
+    internal: { name: 'Internal', icon: 'buildings', about: "Kapture's own accounts: the owner account and accounts given internal access." },
+    test: { name: 'Test', icon: 'flask', about: 'Accounts explicitly marked for billing tests.' },
+    unmarked: { name: 'Unmarked', icon: 'question', about: 'Neither internal nor test. Not proof of a real customer.' }
+  };
 
   /* A filter that does not apply to a group of metrics is named, so an
      unfiltered figure is never presented as filtered. */
@@ -134,148 +167,334 @@
     var notes = [];
     var f = data.filters, ap = data.applies;
     if (f.platform !== 'all' && groups.some(function (g) { return ap.platform.indexOf(g) < 0; })) notes.push('platform');
-    if (f['class'] !== 'all' && groups.some(function (g) { return ap['class'].indexOf(g) < 0; })) notes.push('account class');
+    if (f['class'] !== 'all' && groups.some(function (g) { return ap['class'].indexOf(g) < 0; })) notes.push('account type');
     if (f.plan !== 'all' && groups.some(function (g) { return ap.plan.indexOf(g) < 0; })) notes.push('plan');
-    return notes.length ? 'Not filtered by ' + notes.join(' or ') : '';
+    return notes.length ? 'not filtered by ' + notes.join(' or ') : '';
   }
 
   /* ---- components ------------------------------------------------------- */
 
-  var periodLabel = function () { return data.period.days + ' days'; };
+  function periodLabel() { return data.period.days + ' days'; }
+
+  function notice(parent, iconName, parts, cls) {
+    var d = el('div', 'kd-notice' + (cls ? ' ' + cls : ''));
+    d.appendChild(icon(iconName));
+    var t = el('div'); parts.forEach(function (p) { if (p) t.appendChild(typeof p === 'string' ? document.createTextNode(p) : p); });
+    d.appendChild(t); parent.appendChild(d); return d;
+  }
 
   /* Comparison with the previous equal period. A percentage needs a base of
-     at least 5; below that only the absolute difference is meaningful. */
-  function delta(cur, prev) {
-    cur = n(cur); prev = n(prev);
-    var d = cur - prev;
-    var s = el('span');
-    if (prev >= 5) {
-      var pct = Math.round(100 * d / prev);
-      s.textContent = (pct > 0 ? '▲ ' : pct < 0 ? '▼ ' : '') + Math.abs(pct) + '% vs previous ' + periodLabel();
-    } else {
-      s.textContent = (d > 0 ? '+' : d < 0 ? '−' : '±') + Math.abs(d) + ' vs ' + prev + ' in previous ' + periodLabel();
-    }
-    if (d > 0) s.className = 'kd-up'; else if (d < 0) s.className = 'kd-down';
+     at least 5; below that the previous figure is stated as it is. */
+  function delta(cur, prev, fmt) {
+    cur = n(cur); prev = n(prev); fmt = fmt || function (x) { return x.toLocaleString('en-GB'); };
+    var d = cur - prev, s = el('span', 'kd-delta'), text;
+    if (!cur && !prev) { text = 'None in the previous ' + periodLabel() + ' either'; }
+    else if (!prev) { text = 'None in the previous ' + periodLabel(); }
+    else if (prev >= 5) { var pct = Math.round(100 * d / prev); text = (pct ? Math.abs(pct) + '% ' + (pct > 0 ? 'more' : 'less') : 'Same') + ' than the previous ' + periodLabel(); if (!pct) text = 'Same as the previous ' + periodLabel(); }
+    else { text = fmt(prev) + ' in the previous ' + periodLabel(); }
+    if (cur && d > 0) { s.className += ' is-up'; s.appendChild(icon('arrow-up')); }
+    else if (d < 0) { s.className += ' is-down'; s.appendChild(icon('arrow-down')); }
+    else s.appendChild(icon('minus'));
+    s.appendChild(document.createTextNode(text));
     return s;
   }
 
-  function kpi(parent, label, value, foot, help) {
-    var c = el('div', 'kd-kpi');
-    var l = el('div', 'kd-kpi-label', label);
-    if (help) l.appendChild(tip(help));
-    c.appendChild(l);
-    var v = el('div', 'kd-kpi-value', value);
-    if (!/^[£$€−+]?[\d.,%<]+$/.test(String(value))) v.className += ' is-text';
+  function kpi(parent, o) {
+    var c = el('div', 'kd-kpi kd-tone-' + (o.tone || 'quiet'));
+    var top = el('div', 'kd-kpi-top');
+    var b = el('span', 'kd-badge'); b.appendChild(icon(o.icon)); top.appendChild(b);
+    var l = el('div', 'kd-kpi-label', o.label);
+    if (o.help) l.appendChild(tip(o.help));
+    top.appendChild(l); c.appendChild(top);
+    var v = el('div', 'kd-kpi-value', o.value);
+    if (o.text || !/^[£$€−+<]?[\d.,%<+]+$/.test(String(o.value))) v.className += ' is-text';
     c.appendChild(v);
-    if (foot) { var f = el('div', 'kd-kpi-foot'); if (typeof foot === 'string') f.textContent = foot; else f.appendChild(foot); c.appendChild(f); }
+    if (o.sub) { var s = el('div', 'kd-kpi-sub'); if (typeof o.sub === 'string') s.textContent = o.sub; else s.appendChild(o.sub); c.appendChild(s); }
+    if (o.delta) { var f = el('div', 'kd-kpi-foot'); f.appendChild(o.delta); c.appendChild(f); }
     parent.appendChild(c);
     return c;
   }
-  function kpis(parent) { var g = el('div', 'kd-kpis'); parent.appendChild(g); return g; }
+  function kpis(parent, hero) { var g = el('div', 'kd-kpis' + (hero === true ? ' is-hero' : hero ? ' ' + hero : '')); parent.appendChild(g); return g; }
 
-  function panel(grid, span, title, sub, help) {
-    var p = el('section', 'kd-panel kd-span-' + span);
-    var h = el('h2', null, title);
-    if (help) h.appendChild(tip(help));
-    p.appendChild(h);
-    if (sub) p.appendChild(el('p', 'kd-panel-sub', sub));
+  function block(parent, title, iconName, help) {
+    var b = el('section', 'kd-block');
+    if (title) {
+      var h = el('h2', 'kd-section-head');
+      if (iconName) h.appendChild(icon(iconName));
+      h.appendChild(document.createTextNode(title));
+      if (help) h.appendChild(tip(help));
+      b.appendChild(h);
+    }
+    parent.appendChild(b);
+    return b;
+  }
+
+  function panel(grid, span, title, o) {
+    o = o || {};
+    var p = el('section', 'kd-panel kd-span-' + span + (o.cls ? ' ' + o.cls : ''));
+    var head = el('div', 'kd-panel-head');
+    var h = el('h3');
+    if (o.icon) h.appendChild(icon(o.icon));
+    h.appendChild(document.createTextNode(title));
+    if (o.help) h.appendChild(tip(o.help));
+    head.appendChild(h);
+    p.appendChild(head);
+    p.head = head;
+    if (o.sub) p.appendChild(el('p', 'kd-panel-sub', o.sub));
     grid.appendChild(p);
     return p;
   }
   function grid(parent) { var g = el('div', 'kd-grid'); parent.appendChild(g); return g; }
-  function empty(parent, text) { parent.appendChild(el('div', 'kd-empty', text)); }
 
-  /* Daily bars. Values may be numbers or "<5" (suppressed): those draw as a
-     short grey bar so the day is visibly non-zero without a false height. */
-  function bars(parent, series, keys, opts) {
-    opts = opts || {};
-    var vals = series.map(function (p) { return keys.map(function (k) { return p[k]; }); });
-    var total = function (row) { return row.reduce(function (s, v) { return s + (isSupp(v) ? 0 : n(v)); }, 0); };
-    var anySupp = vals.some(function (r) { return r.some(isSupp); });
-    var max = Math.max.apply(null, vals.map(total).concat([anySupp ? 4 : 0]));
-    if (!max) { empty(parent, opts.empty || 'Nothing recorded in this period.'); return; }
-    var W = Math.max(260, Math.round(parent.clientWidth - 36) || 640), H = 150, pad = { l: 30, b: 20, t: 6 }, iw = W - pad.l, ih = H - pad.b - pad.t;
-    var bw = iw / series.length, gap = Math.min(4, bw * 0.25);
-    var s = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': opts.label || 'Daily chart' });
-    var top = niceMax(max);
+  /* Compact empty state: an icon, what is missing and why, in one or two lines. */
+  function empty(parent, iconName, title, why) {
+    var d = el('div', 'kd-empty');
+    d.appendChild(icon(iconName || 'circle-dashed'));
+    var t = el('div'); t.appendChild(el('strong', null, title)); if (why) t.appendChild(document.createTextNode(why));
+    d.appendChild(t); parent.appendChild(d);
+  }
+
+  /* Segmented control that redraws one panel's chart. */
+  function switcher(p, options, draw) {
+    var holder = el('div');
+    var seg = el('div', 'kd-seg'); seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'Choose what the chart shows');
+    var btns = options.map(function (o, i) {
+      var b = el('button', null, o.label); b.type = 'button'; b.setAttribute('aria-pressed', i ? 'false' : 'true');
+      b.addEventListener('click', function () {
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        while (holder.firstChild) holder.removeChild(holder.firstChild);
+        draw(holder, o);
+      });
+      seg.appendChild(b); return b;
+    });
+    p.head.appendChild(seg);
+    p.appendChild(holder);
+    draw(holder, options[0]);
+  }
+
+  /* ---- charts ------------------------------------------------------------- */
+
+  var hover = el('div', 'kd-hover'); hover.setAttribute('aria-hidden', 'true'); document.body.appendChild(hover);
+  function showHover(x, y, day, rows) {
+    while (hover.firstChild) hover.removeChild(hover.firstChild);
+    hover.appendChild(el('div', 'kd-hover-day', fmtLong(day) + (day === iso(utcToday()) ? ' · today, so far' : '')));
+    rows.forEach(function (r) {
+      var row = el('div', 'kd-hover-row'); var a = el('span', r.sw, r.name); row.appendChild(a); row.appendChild(el('span', null, r.value)); hover.appendChild(row);
+    });
+    hover.classList.add('is-on');
+    var w = hover.offsetWidth, h = hover.offsetHeight;
+    var left = Math.min(innerWidth - w - 12, Math.max(12, x + 14)), top = y - h - 14;
+    if (top < 8) top = y + 18;
+    hover.style.left = left + 'px'; hover.style.top = top + 'px';
+  }
+  function hideHover() { hover.classList.remove('is-on'); }
+
+  /* Daily bars, stacked. defs: [{ key, name, c }] where c is the colour slot
+     1–5. Values may be "<5": those draw as a dashed outline so the day is
+     visibly non-zero without a made-up height. */
+  function bars(parent, series, defs, o) {
+    o = o || {};
+    var anySupp = false;
+    var totals = series.map(function (p) { return defs.reduce(function (s, d) { if (isSupp(p[d.key])) { anySupp = true; return s + 2; } return s + n(p[d.key]); }, 0); });
+    var max = Math.max.apply(null, totals.concat([0]));
+    if (!max) { empty(parent, o.emptyIcon, o.empty || 'Nothing recorded in this period.', o.emptyWhy); return false; }
+    var c = el('div', 'kd-chart'); parent.appendChild(c);   // measured before drawing
+    var W = Math.max(280, Math.round(c.clientWidth) || 640), H = o.height || 170;
+    var pad = { l: o.money ? 40 : 30, r: 2, b: 22, t: 8 }, iw = W - pad.l - pad.r, ih = H - pad.b - pad.t;
+    var bw = iw / series.length, gap = Math.min(5, bw * 0.28), top = niceMax(max, o.money);
+    var s = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': o.label || 'Daily chart' });
     [0, 0.5, 1].forEach(function (f) {
       var y = pad.t + ih - f * ih;
-      s.appendChild(svg('line', { x1: pad.l, x2: W, y1: y, y2: y, 'class': 'kd-grid-line' }));
-      if (f === 0.5 && (opts.money ? (top / 2) % 100 : (top / 2) % 1)) return;  // no rounded half labels
-      var t = svg('text', { x: pad.l - 6, y: y + 4, 'text-anchor': 'end', 'class': 'kd-axis' }); t.textContent = fmtAxis(top * f, opts.money); s.appendChild(t);
+      s.appendChild(svg('line', { x1: pad.l, x2: W - pad.r, y1: y, y2: y, 'class': 'kd-grid-line' }));
+      var v = top * f; if (f === 0.5 && (o.money ? v % 100 : v % 1)) return;
+      var t = svg('text', { x: pad.l - 7, y: y + 4, 'text-anchor': 'end', 'class': 'kd-axis' }); t.textContent = fmtAxis(v, o.money); s.appendChild(t);
     });
+    var today = iso(utcToday());
     series.forEach(function (p, i) {
-      var x = pad.l + i * bw + gap / 2, y0 = pad.t + ih;
-      keys.forEach(function (k, j) {
-        var v = p[k], h;
-        if (isSupp(v)) h = Math.max(2, ih * (2 / top));
-        else h = ih * (n(v) / top);
+      var x = pad.l + i * bw, y0 = pad.t + ih;
+      var hit = svg('rect', { x: x, y: pad.t, width: bw, height: ih, 'class': 'kd-hit' });
+      s.appendChild(hit);
+      defs.forEach(function (d) {
+        var v = p[d.key], h = isSupp(v) ? Math.max(3, ih * (2 / top)) : ih * (n(v) / top);
         if (!h) return;
-        var r = svg('rect', { x: x, y: y0 - h, width: Math.max(1, bw - gap), height: h, rx: Math.min(2, bw / 4),
-                              'class': 'kd-bar' + (isSupp(v) ? ' is-supp' : j ? ' is-b' : '') });
-        var t = svg('title'); t.textContent = fmtDay(p.day, { weekday: 'short' }) + ' · ' + (opts.names ? opts.names[j] + ': ' : '') +
-          (isSupp(v) ? '<5 (suppressed)' : opts.money ? money(v) : int(v));
-        r.appendChild(t); s.appendChild(r);
+        s.appendChild(svg('rect', { x: x + gap / 2, y: y0 - h, width: Math.max(1.5, bw - gap), height: h, rx: Math.min(3, bw / 4),
+                                    'class': 'kd-bar ' + (isSupp(v) ? 'is-supp' : 'kd-c' + d.c), 'pointer-events': 'none' }));
         y0 -= h;
       });
+      var rows = defs.map(function (d) { return { name: d.name, sw: 'kd-sw-' + d.c, value: isSupp(p[d.key]) ? 'fewer than 5' : o.money ? money(p[d.key]) : int(p[d.key]) }; });
+      var t = svg('title'); t.textContent = fmtLong(p.day) + ': ' + rows.map(function (r) { return r.name + ' ' + r.value; }).join(', '); hit.appendChild(t);
+      hit.addEventListener('pointerenter', function () { hit.classList.add('is-on'); });
+      hit.addEventListener('pointerleave', function () { hit.classList.remove('is-on'); hideHover(); });
+      hit.addEventListener('pointermove', function (e) { showHover(e.clientX, e.clientY, p.day, rows); });
+      if (p.day === today && series.length > 1) {
+        s.appendChild(svg('line', { x1: x, x2: x, y1: pad.t, y2: pad.t + ih, 'class': 'kd-today-line', 'pointer-events': 'none' }));
+      }
     });
-    var idx = series.length > 2 ? [0, Math.floor((series.length - 1) / 2), series.length - 1] : series.map(function (_, i) { return i; });
-    idx.forEach(function (i, k) {
-      var t = svg('text', { x: pad.l + i * bw + bw / 2, y: H - 4, 'text-anchor': k === 0 && idx.length > 1 ? 'start' : k === idx.length - 1 && idx.length > 1 ? 'end' : 'middle', 'class': 'kd-axis' });
-      t.textContent = fmtDay(series[i].day); s.appendChild(t);
+    // Date labels: at most six (fewer on narrow charts), counted back from the last day so it is always labelled.
+    var step = Math.max(1, Math.ceil(series.length / Math.max(2, Math.min(6, Math.floor(iw / 72)))));
+    series.forEach(function (p, i) {
+      if ((series.length - 1 - i) % step) return;
+      var cx = pad.l + i * bw + bw / 2, anchor = cx < pad.l + 24 ? 'start' : cx > W - 24 ? 'end' : 'middle';
+      var t = svg('text', { x: anchor === 'start' ? pad.l : anchor === 'end' ? W - pad.r : cx, y: H - 5, 'text-anchor': anchor, 'class': 'kd-axis' });
+      t.textContent = p.day === today ? 'Today' : fmtDay(p.day); s.appendChild(t);
     });
-    var c = el('div', 'kd-chart'); c.appendChild(s); parent.appendChild(c);
-    if (opts.names && opts.names.length > 1 || anySupp) {
+    c.appendChild(s);
+    if (defs.length > 1 || anySupp) {
       var lg = el('div', 'kd-legend');
-      (opts.names || []).forEach(function (nm, j) { if (opts.names.length > 1) lg.appendChild(el('span', j ? 'is-b' : '', nm)); });
-      if (anySupp) lg.appendChild(el('span', 'is-supp', 'fewer than 5 (exact figure withheld)'));
+      if (defs.length > 1) defs.forEach(function (d) { lg.appendChild(el('span', 'kd-sw-' + d.c, d.name)); });
+      if (anySupp) lg.appendChild(el('span', 'is-supp', 'Fewer than 5 (exact figure hidden for privacy)'));
       parent.appendChild(lg);
     }
+    return true;
   }
-  function niceMax(v) { if (v <= 4) return 4; var p = Math.pow(10, Math.floor(Math.log10(v))); var m = v / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; }
+  function niceMax(v, isMoney) {
+    if (isMoney) { var pounds = niceMax(v / 100); return pounds * 100; }
+    if (v <= 4) return 4;
+    var p = Math.pow(10, Math.floor(Math.log10(v))), m = v / p;
+    return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p;
+  }
   function fmtAxis(v, isMoney) { return isMoney ? '£' + Math.round(v / 100).toLocaleString('en-GB') : Math.round(v).toLocaleString('en-GB'); }
 
-  /* Ranked horizontal bars for categories. */
-  function hbars(parent, rows, emptyText) {
-    if (!rows.length) { empty(parent, emptyText); return; }
+  /* Money per day. With only a few payment days a bar chart is mostly
+     empty and suggests a trend that is not there, so those days are listed. */
+  function moneyDays(parent, series, key, label) {
+    var paid = series.filter(function (p) { return n(p[key]) > 0; });
+    if (!paid.length) { empty(parent, 'receipt', 'No payments in this period.', ' Payments appear here on the day they are received.'); return; }
+    if (paid.length <= 4 || paid.length < series.length / 5) {
+      var ul = el('ul', 'kd-days');
+      paid.slice().reverse().forEach(function (p) { var li = el('li'); li.appendChild(el('b', null, money(p[key]))); li.appendChild(el('small', null, fmtDay(p.day, { weekday: 'short' }))); ul.appendChild(li); });
+      parent.appendChild(ul);
+      parent.appendChild(el('p', 'kd-panel-sub', 'Payments on ' + paid.length + ' of ' + series.length + ' days. Most days had no transactions, so there is no daily trend to read yet.'));
+      return;
+    }
+    bars(parent, series, [{ key: key, name: label || 'Received', c: 3 }], { money: true, label: (label || 'Revenue') + ' per day' });
+  }
+
+  /* Ranked horizontal bars for categories. rows: { label, value, display, icon, fill, tags } */
+  function hbars(parent, rows, emptyArgs, o) {
+    o = o || {};
+    if (!rows.length) { empty.apply(null, [parent].concat(emptyArgs)); return; }
     var max = Math.max.apply(null, rows.map(function (r) { return isSupp(r.value) ? 4 : n(r.value); })) || 1;
     var ul = el('ul', 'kd-hbars');
     rows.forEach(function (r) {
       var li = el('li');
-      li.appendChild(el('span', 'kd-hb-label', r.label));
-      li.appendChild(el('span', 'kd-hb-value', r.display !== undefined ? r.display : r.value));
-      var tr = el('span', 'kd-hb-track'), f = el('span', 'kd-hb-fill');
-      f.style.width = Math.max(2, Math.round(100 * (isSupp(r.value) ? 2 : n(r.value)) / max)) + '%';
-      tr.appendChild(f); li.appendChild(tr); ul.appendChild(li);
+      var lab = el('span', 'kd-hb-label'); if (r.icon) lab.appendChild(icon(r.icon)); lab.appendChild(el('span', null, r.label));
+      if (r.tags) r.tags.forEach(function (t) { lab.appendChild(t); });
+      li.appendChild(lab);
+      li.appendChild(el('span', 'kd-hb-value', r.display !== undefined ? r.display : short(r.value)));
+      if (!o.noBars) {
+        var tr = el('span', 'kd-hb-track'), f = el('span', 'kd-hb-fill ' + (isSupp(r.value) ? 'is-supp' : r.fill || ''));
+        f.style.width = Math.max(2, Math.round(100 * (isSupp(r.value) ? 2 : n(r.value)) / max)) + '%';
+        tr.appendChild(f); li.appendChild(tr);
+      }
+      ul.appendChild(li);
     });
     parent.appendChild(ul);
   }
+  function tag(text, cls, iconName) { var t = el('span', 'kd-tag' + (cls ? ' ' + cls : '')); if (iconName) t.appendChild(icon(iconName)); t.appendChild(document.createTextNode(text)); return t; }
 
   function stats(parent, items) {
     var dl = el('dl', 'kd-stats');
-    items.forEach(function (it) { var d = el('div'); d.appendChild(el('dt', null, it[0])); d.appendChild(el('dd', null, it[1])); dl.appendChild(d); });
+    items.forEach(function (it) {
+      var d = el('div'), dt = el('dt', null, it[0]);
+      if (it[2]) dt.appendChild(tip(it[2]));
+      var dd = el('dd', null, it[1]); if (it[3]) dd.appendChild(el('small', null, it[3]));
+      d.appendChild(dt); d.appendChild(dd); dl.appendChild(d);
+    });
     parent.appendChild(dl);
+    return dl;
   }
 
-  function table(parent, heads, rows, summary) {
-    if (!rows.length) return;
-    var det = el('details', 'kd-details');
-    det.appendChild(el('summary', null, summary || 'Show table'));
+  function details(parent, summary, cls) { var d = el('details', 'kd-details' + (cls ? ' ' + cls : '')); d.appendChild(el('summary', null, summary)); parent.appendChild(d); return d; }
+  function table(parent, heads, rows) {
     var wrap = el('div', 'kd-scroll'), t = el('table', 'kd-table'), tr = el('tr');
     heads.forEach(function (h) { tr.appendChild(el('th', h.n ? 'n' : null, h.t)); });
     var th = el('thead'); th.appendChild(tr); t.appendChild(th);
     var tb = el('tbody');
-    rows.forEach(function (r) { var row = el('tr'); r.forEach(function (v, i) { row.appendChild(el('td', heads[i].n ? 'n' : null, v)); }); tb.appendChild(row); });
-    t.appendChild(tb); wrap.appendChild(t); det.appendChild(wrap); parent.appendChild(det);
+    rows.forEach(function (r) { var row = el('tr'); r.forEach(function (v, i) { var td = el('td', heads[i].n ? 'n' : null); if (v && v.nodeType) td.appendChild(v); else td.textContent = v; row.appendChild(td); }); tb.appendChild(row); });
+    t.appendChild(tb); wrap.appendChild(t); parent.appendChild(wrap);
   }
-  function dailyTable(parent, keys, names, isMoney) {
-    table(parent, [{ t: 'Day' }].concat(names.map(function (x) { return { t: x, n: 1 }; })),
-      data.series.filter(function (p) { return keys.some(function (k) { return isSupp(p[k]) || n(p[k]); }); }).reverse()
-        .map(function (p) { return [fmtDay(p.day, { year: 'numeric' })].concat(keys.map(function (k) { return isSupp(p[k]) ? '<5' : isMoney ? money(p[k]) : int(p[k]); })); }),
-      'Show daily figures');
+  function dailyTable(parent, keys, names, isMoney, summary) {
+    var rows = data.series.filter(function (p) { return keys.some(function (k) { return isSupp(p[k]) || n(p[k]); }); }).reverse();
+    if (!rows.length) return;
+    table(details(parent, summary || 'Daily figures'), [{ t: 'Day' }].concat(names.map(function (x) { return { t: x, n: 1 }; })),
+      rows.map(function (p) { return [fmtLong(p.day)].concat(keys.map(function (k) { return isSupp(p[k]) ? '<5' : isMoney && isMoney[k] ? money(p[k]) : int(p[k]); })); }));
   }
 
-  /* ---- views ------------------------------------------------------------- */
+  /* Today / yesterday / last 7 days from the daily series. Only shown when the
+     selected period ends today, since that is the only time those days are in it. */
+  function recentWindow() {
+    var s = data.series, today = iso(utcToday());
+    if (!s.length || s[s.length - 1].day !== today) return null;
+    return { today: s[s.length - 1], yesterday: s.length > 1 ? s[s.length - 2] : null, week: s.length >= 7 ? s.slice(-7) : null };
+  }
+  function recentTable(parent, rows) {
+    var w = recentWindow();
+    if (!w) {
+      empty(parent, 'calendar-blank', 'Today and yesterday are outside this period.', ' Choose a period that ends today to compare them.');
+      return;
+    }
+    var t = el('table', 'kd-recent'), hr = el('tr');
+    var head = function (title, sub, cls) { var th = el('th', cls, title); th.scope = 'col'; th.appendChild(el('small', null, sub)); return th; };
+    var blank = el('th'); blank.scope = 'col'; blank.appendChild(el('span', 'kd-sr', 'Measure'));
+    hr.appendChild(blank);
+    hr.appendChild(head('Today', fmtDay(w.today.day) + ', so far', 'is-today'));
+    if (w.yesterday) hr.appendChild(head('Yesterday', fmtDay(w.yesterday.day)));
+    if (w.week) hr.appendChild(head('Last 7 days', fmtDay(w.week[0].day) + ' – ' + fmtDay(w.today.day)));
+    var th = el('thead'); th.appendChild(hr); t.appendChild(th);
+    var tb = el('tbody');
+    rows.forEach(function (r) {
+      var tr = el('tr'), name = el('th'); name.scope = 'row';
+      name.appendChild(icon(r.icon)); name.appendChild(document.createTextNode(r.name)); if (r.help) name.appendChild(tip(r.help));
+      tr.appendChild(name);
+      var cell = function (points, cls) {
+        var v = r.sum(points), td = el('td', cls, v.text);
+        // Apps report a day late, so an empty today is "not reported yet", not zero.
+        if (r.late && cls === 'is-today' && !v.value) { td.textContent = '—'; td.title = 'Not reported yet'; }
+        if (!v.value) td.classList.add('is-zero');
+        tr.appendChild(td);
+      };
+      cell([w.today], 'is-today');
+      if (w.yesterday) cell([w.yesterday]);
+      if (w.week) cell(w.week);
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    var sc = el('div', 'kd-scroll'); sc.appendChild(t); parent.appendChild(sc);
+    parent.appendChild(el('p', 'kd-panel-sub', 'Days run midnight to midnight UTC. Today is still in progress' + (rows.some(function (r) { return r.late; }) ? '; — means not reported yet.' : '.')));
+  }
+  function sumKey(key, isMoney) {
+    return function (points) {
+      if (isMoney) { var c = points.reduce(function (s, p) { return s + n(p[key]); }, 0); return { value: c, text: money(c) }; }
+      return sumVals(points.map(function (p) { return p[key]; }));
+    };
+  }
+
+  /* Which account types the figures on this screen include. */
+  function classNotice(parent) {
+    var k = data.filters['class'];
+    if (k === 'all') {
+      var segs = (data.customers && data.customers.segments) || [];
+      var mix = el('span', 'kd-mix');
+      ['unmarked', 'internal', 'test'].forEach(function (c) {
+        var s = segs.filter(function (x) { return x['class'] === c; })[0];
+        var sp = el('span'); sp.appendChild(icon(CLASS[c].icon)); sp.appendChild(document.createTextNode(CLASS[c].name + ': ' + int(s ? s.accounts : 0) + ' ' + plural(s ? s.accounts : 0, 'account')));
+        mix.appendChild(sp);
+      });
+      notice(parent, 'flask', [el('strong', null, 'Includes internal and test accounts. '),
+        'Choose Account type → Unmarked only to leave them out. Unmarked accounts are not proven customers.', mix], 'is-warn');
+    } else if (k === 'unmarked') {
+      notice(parent, 'question', [el('strong', null, 'Unmarked accounts only. '), 'Internal and test accounts are left out. Unmarked accounts are not proven customers.']);
+    } else {
+      notice(parent, CLASS[k].icon, [el('strong', null, CLASS[k].name + ' accounts only. '), CLASS[k].about + ' These figures are not customer activity.']);
+    }
+  }
+  function scopeNote(parent, groups, what) {
+    var sc = scope(groups);
+    if (sc) notice(parent, 'info', [what + ' ' + sc + '.']);
+  }
+
+  /* ---- shared figures ------------------------------------------------------ */
 
   function revenueTotals() {
     var cur = 0, prev = 0, ccy = 'GBP';
@@ -283,181 +502,553 @@
     return { cur: cur, prev: prev, ccy: ccy, other: data.kpi.revenue.filter(function (r) { return r.currency !== ccy; }) };
   }
 
+  /* Friendly names for the events in the analytics registry (events.v1.json). */
+  var EVENTS = {
+    app_active: ['App used', 'pulse'], app_opened: ['App opened', 'rocket-launch'], app_updated: ['App updated', 'arrows-clockwise'],
+    milestone_reached: ['Milestone reached', 'seal-check'], error_shown: ['Error message shown', 'warning-circle'],
+    setting_changed: ['Setting changed', 'gear-six'], analytics_enabled: ['Statistics sharing turned on', 'chart-bar'],
+    state_snapshot: ['Library snapshot', 'stack'], onboarding_progressed: ['Onboarding step completed', 'check-circle'],
+    screen_viewed: ['Screen viewed', 'squares-four'], library_scan: ['Library scanned', 'magnifying-glass'],
+    captures_indexed: ['Captures indexed', 'stack'], screenshots_source_changed: ['Screenshot folder changed', 'folder-plus'],
+    project_created: ['Project created', 'folder-plus'], project_renamed: ['Project renamed', 'note-pencil'],
+    project_appearance_changed: ['Project appearance changed', 'note-pencil'], project_deleted: ['Project deleted', 'trash'],
+    collection_created: ['Collection created', 'stack'], collection_updated: ['Collection updated', 'stack'],
+    collection_deleted: ['Collection deleted', 'trash'], collection_membership_changed: ['Added to or removed from a collection', 'stack'],
+    capture_organised: ['Capture organised', 'folder-plus'], capture_opened: ['Capture opened', 'image-square'],
+    tag_changed: ['Tags edited', 'tag'], note_changed: ['Note edited', 'note-pencil'], metadata_changed: ['Details edited', 'note-pencil'],
+    search_performed: ['Search', 'magnifying-glass'], view_changed: ['View changed', 'squares-four'],
+    duplicates_checked: ['Duplicates checked', 'copy'], duplicates_resolved: ['Duplicates resolved', 'copy'],
+    rule_saved: ['Rule saved', 'list'], rule_changed: ['Rule changed', 'list'], rules_applied: ['Rules applied', 'lightning'],
+    sign_in: ['Signed in', 'user-check'], trial_started: ['Trial started', 'hourglass-medium'], access_changed: ['Access changed', 'shield-check'],
+    checkout_opened: ['Checkout opened', 'credit-card'], portal_opened: ['Billing page opened', 'credit-card'],
+    device_deactivated: ['Device deactivated', 'monitor'], capture_completed: ['Screenshot captured', 'camera'],
+    capture_failed: ['Capture failed', 'warning-circle'], capture_cancelled: ['Capture cancelled', 'x-circle'],
+    history_used: ['Capture history used', 'clock-counter-clockwise'], pro_banner: ['Pro banner', 'sparkle'], link_opened: ['Link opened', 'link-simple']
+  };
+  function eventName(e) { return (EVENTS[e] || [words(e)])[0]; }
+  function eventIcon(e) { var i = (EVENTS[e] || [])[1]; return ICONS[i] ? i : 'lightning'; }
+
+  /* Feature totals grouped by event across platforms, in rank order. */
+  function featureRows() {
+    var by = {}, order = [];
+    data.usage.features.forEach(function (r) {
+      if (!by[r.event]) { by[r.event] = []; order.push(r.event); }
+      by[r.event].push(r);
+    });
+    return order.map(function (e) {
+      var parts = by[e], tot = sumVals(parts.map(function (p) { return p.total; }));
+      return { event: e, total: tot, parts: parts };
+    });
+  }
+
+  /* ---- views ------------------------------------------------------------- */
+
   function viewOverview(v) {
     var k = data.kpi, rv = revenueTotals();
-    var g = kpis(v);
-    kpi(g, 'Live revenue', money(rv.cur, rv.ccy), delta(rv.cur / 100, rv.prev / 100),
-      'Completed live Stripe payments in the period, all account classes unless filtered. Test-mode payments are excluded.');
-    kpi(g, 'Active subscriptions', int(k.active_subscriptions), 'live, now',
-      'Live subscriptions currently active or trialing. Test-mode subscriptions are excluded.');
-    kpi(g, 'New accounts', int(k.new_accounts.cur), delta(k.new_accounts.cur, k.new_accounts.prev),
-      'Kapture accounts created in the period. An account is not necessarily a paying customer.');
-    kpi(g, 'Trials started', int(k.trials_started.cur), delta(k.trials_started.cur, k.trials_started.prev),
-      'Kapture Pro trials started in the period. Each account can start one trial.');
-    kpi(g, 'Active licensed devices', int(k.active_devices), 'seen in the last ' + periodLabel(),
-      'Computers with an active seat that checked their licence during the period. A device is not a user.');
-    kpi(g, 'Device activations', int(k.activations.cur), delta(k.activations.cur, k.activations.prev),
-      'Activation events. One computer can be activated more than once, so this is not a count of devices or people.');
-    var sc = scope(['payments', 'accounts', 'subscriptions']);
-    if (sc) v.appendChild(el('p', 'kd-scope', 'Revenue, subscriptions and new accounts: ' + sc.toLowerCase() + '.'));
+    var top = block(v);
+    classNotice(top);
 
-    var gr = grid(v);
-    var p1 = panel(gr, 8, 'Accounts, trials and activations', 'Per day, ' + fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to));
-    bars(p1, data.series, ['registrations', 'trials'], { names: ['New accounts', 'Trials'], label: 'New accounts and trials per day', empty: 'No new accounts or trials in this period.' });
-    dailyTable(p1, ['registrations', 'trials', 'activations'], ['New accounts', 'Trials', 'Activations']);
-    var p2 = panel(gr, 4, 'Live revenue per day', rv.other.length ? 'GBP shown; other currencies in Customers' : null);
-    bars(p2, data.series, ['revenue_cents'], { money: true, label: 'Live revenue per day', empty: 'No live payments in this period.' });
-    var p3 = panel(gr, 6, 'Anonymous active days', 'Days on which an install was used, from anonymous totals',
-      'Each install counts once per day it is used. With no identifier, this cannot show how many different people used Kapture.');
-    bars(p3, data.series, ['anonymous_active'], { label: 'Anonymous active days per day',
-      empty: data.switches.aggregate ? 'Waiting for anonymous totals. Apps send them within about a day of being opened.' : 'Anonymous statistics are switched off.' });
-    var p4 = panel(gr, 6, 'Licences issued', 'Per day', 'Successful licence checks from the apps. These are events, not devices.');
-    bars(p4, data.series, ['licence_issued'], { label: 'Licences issued per day', empty: 'No licences issued in this period.' });
+    var hero = kpis(top, true);
+    kpi(hero, { icon: 'currency-gbp', tone: 'money', label: 'Revenue received', value: money(rv.cur, rv.ccy),
+      sub: 'Real (live) payments in the last ' + periodLabel() + (rv.other.length ? '. Other currencies are on Customers.' : ''),
+      delta: delta(rv.cur, rv.prev, function (x) { return money(x, rv.ccy); }),
+      help: 'Money actually paid through Stripe in live mode during the period. Stripe test-mode payments are never included.' });
+    kpi(hero, { icon: 'credit-card', tone: 'money', label: 'Active subscriptions', value: int(k.active_subscriptions),
+      sub: 'Live subscriptions right now',
+      help: 'Live Stripe subscriptions that are active or in a Stripe trial at this moment, whatever period is selected. Test-mode subscriptions are excluded.' });
+
+    var g = kpis(top, 'is-4');
+    kpi(g, { icon: 'users', tone: 'grow', label: 'New sign-ups', value: int(k.new_accounts.cur), sub: 'Kapture accounts created',
+      delta: delta(k.new_accounts.cur, k.new_accounts.prev), help: 'Accounts created in the period. A sign-up is not necessarily a paying customer.' });
+    kpi(g, { icon: 'hourglass-medium', tone: 'grow', label: 'Trials started', value: int(k.trials_started.cur), sub: 'Free Kapture Pro trials',
+      delta: delta(k.trials_started.cur, k.trials_started.prev), help: 'Kapture Pro free trials started in the period. Each account can start one trial.' });
+    kpi(g, { icon: 'monitor', tone: 'device', label: 'Devices using Kapture', value: int(k.active_devices), sub: 'Licensed computers that checked in',
+      help: 'Computers with an active licence that checked in during the period. A device is a computer, not a person: one person can use several.' });
+    kpi(g, { icon: 'plugs-connected', tone: 'device', label: 'Device activations', value: int(k.activations.cur), sub: 'Computers signed in to Kapture Pro',
+      delta: delta(k.activations.cur, k.activations.prev),
+      help: 'How many times a computer was activated. One computer can activate more than once (for example after reinstalling), so this is not a count of devices, people or new customers.' });
+    scopeNote(top, ['payments', 'accounts', 'subscriptions'], 'Revenue, subscriptions and sign-ups are');
+
+    // What changed recently.
+    var gr = grid(block(v, 'Recent activity', 'calendar-check'));
+    var pr = panel(gr, 12, 'Today, yesterday and the last 7 days');
+    recentTable(pr, [
+      { name: 'New sign-ups', icon: 'users', sum: sumKey('registrations') },
+      { name: 'Trials started', icon: 'hourglass-medium', sum: sumKey('trials') },
+      { name: 'Payments received', icon: 'currency-gbp', sum: sumKey('revenue_cents', true), help: 'Live payments only, in GBP.' },
+      { name: 'Device activations', icon: 'plugs-connected', sum: sumKey('activations') },
+      { name: 'Daily app activity', icon: 'pulse', sum: sumKey('anonymous_active'), late: true,
+        help: 'Anonymous: each install counts once for each day it is used. Apps send these totals about once a day, so today and yesterday fill in later.' }
+    ]);
+
+    // Trends.
+    var tb = block(v, 'Over the period', 'chart-line-up');
+    var g2 = grid(tb);
+    var p1 = panel(g2, 8, 'Growth per day', { sub: fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to) + ' · hover a day for details' });
+    switcher(p1, [
+      { label: 'Sign-ups and trials', defs: [{ key: 'registrations', name: 'New sign-ups', c: 1 }, { key: 'trials', name: 'Trials started', c: 2 }], empty: 'No sign-ups or trials in this period.' },
+      { label: 'Device activations', defs: [{ key: 'activations_macos', name: 'macOS', c: 4 }, { key: 'activations_windows', name: 'Windows', c: 2 }], empty: 'No device activations in this period.' }
+    ], function (h, o) {
+      bars(h, data.series, o.defs, { label: o.label + ' per day', empty: o.empty, emptyIcon: 'chart-bar' });
+    });
+    var p2 = panel(g2, 4, 'Revenue received per day', { icon: 'currency-gbp', help: 'Live payments on the day they were received. GBP only.' });
+    moneyDays(p2, data.series, 'revenue_cents', 'Received');
+
+    var p3 = panel(g2, 6, 'Daily app activity', { icon: 'pulse', help: 'Anonymous totals: each install counts once for each day it is used. Without an identifier this cannot say how many different people used Kapture.' });
+    bars(p3, data.series, [{ key: 'anonymous_active', name: 'Active installs', c: 2 }], { height: 130, label: 'Daily app activity',
+      emptyIcon: 'pulse', empty: data.switches.aggregate ? 'No app activity has arrived yet.' : 'Anonymous statistics are switched off.',
+      emptyWhy: data.switches.aggregate ? ' Apps send anonymous totals about once a day after they are opened.' : '' });
+    var p4 = panel(g2, 6, 'Most used features', { icon: 'cursor-click', sub: 'Top actions in the period. Counts actions, not people.' });
+    var fr = featureRows().filter(function (r) { return r.event !== 'app_opened'; }).slice(0, 5);
+    hbars(p4, fr.map(function (r) { return { label: eventName(r.event), icon: eventIcon(r.event), value: r.total.exact ? r.total.value : (r.total.text === '<5' ? '<5' : r.total.value), display: r.total.text, fill: 'kd-f2' }; }),
+      ['cursor-click', data.switches.aggregate ? 'No feature activity yet.' : 'Anonymous statistics are switched off.', data.switches.aggregate ? ' It appears once apps send their daily totals.' : '']);
+    if (fr.length) { var a = el('a', 'kd-panel-sub', 'See all features on Product usage →'); a.href = '#usage'; p4.appendChild(a); }
   }
 
   function viewCustomers(v) {
-    var c = data.customers;
-    var sc = scope(['accounts', 'trials', 'subscriptions', 'payments']);
-    if (sc) v.appendChild(el('p', 'kd-scope', sc + '.'));
-    var g = kpis(v);
-    kpi(g, 'Accounts', int(c.accounts_total), int(c.confirmed_total) + ' confirmed', 'All Kapture accounts in the selected class. Unmarked accounts have no test or internal marker; that does not prove they are customers.');
-    kpi(g, 'New accounts', int(data.kpi.new_accounts.cur), delta(data.kpi.new_accounts.cur, data.kpi.new_accounts.prev));
-    kpi(g, 'Trials active', int(c.trials_active), int(c.trials_started) + ' started · ' + int(c.trials_ended) + ' ended in period');
+    var c = data.customers, k = data.kpi, rv = revenueTotals();
+    var top = block(v);
+    classNotice(top);
+    scopeNote(top, ['accounts', 'trials', 'subscriptions', 'payments'], 'These figures are');
+
+    // A. People and accounts
+    var a = block(v, 'People and accounts', 'users-three');
+    var ga = kpis(a);
+    kpi(ga, { icon: 'users', tone: 'grow', label: 'Total accounts', value: int(c.accounts_total), sub: 'All time, for the selected account type',
+      help: 'Every Kapture account of the selected type, whenever it was created.' });
+    kpi(ga, { icon: 'user-plus', tone: 'grow', label: 'New sign-ups', value: int(k.new_accounts.cur), sub: 'Created in the last ' + periodLabel(),
+      delta: delta(k.new_accounts.cur, k.new_accounts.prev) });
+    kpi(ga, { icon: 'user-check', tone: 'grow', label: 'Confirmed accounts', value: int(c.confirmed_total),
+      sub: int(c.confirmed_in_period) + ' confirmed in the last ' + periodLabel(), help: 'Accounts whose email address has been confirmed.' });
+
+    // B. Trials and subscriptions
+    var b = block(v, 'Trials and subscriptions', 'credit-card');
+    var gb = kpis(b);
+    kpi(gb, { icon: 'hourglass-medium', tone: 'grow', label: 'Active free trials', value: int(c.trials_active),
+      sub: int(c.trials_started) + ' started · ' + int(c.trials_ended) + ' ended in the period', help: 'Kapture Pro free trials running right now.' });
+    kpi(gb, { icon: 'credit-card', tone: 'money', label: 'New paid subscriptions', value: int(c.subscriptions_new), sub: 'Started in the last ' + periodLabel(),
+      help: 'Live Stripe subscriptions created in the period.' });
+    kpi(gb, { icon: 'arrows-clockwise', tone: 'money', label: 'Active subscriptions', value: int(k.active_subscriptions), sub: 'Live, right now',
+      help: 'Live Stripe subscriptions that are active or in a Stripe trial at this moment. Test-mode subscriptions are excluded.' });
+    kpi(gb, { icon: 'calendar-blank', tone: c.subscriptions_set_to_cancel ? 'warn' : 'quiet', label: 'Ending soon', value: int(c.subscriptions_set_to_cancel),
+      sub: int(c.subscriptions_cancelled) + ' ' + plural(c.subscriptions_cancelled, 'subscription') + ' ended in the period',
+      help: 'Active live subscriptions that are set to cancel at the end of their current billing period.' });
     var conv = c.conversion;
-    kpi(g, 'Trial conversion', conv.eligible >= 5 ? Math.round(100 * conv.converted / conv.eligible) + '%' : int(conv.converted) + ' of ' + int(conv.eligible),
-      conv.eligible ? 'trials started 21+ days ago' : 'no trial is 21 days old yet',
-      'Trials that became a live subscription within 21 days of starting, for trials started at least 21 days ago. A percentage is shown from 5 eligible trials.');
-    kpi(g, 'New subscriptions', int(c.subscriptions_new), int(c.subscriptions_cancelled) + ' cancelled in period');
-    kpi(g, 'Set to cancel', int(c.subscriptions_set_to_cancel), c.subscriptions_test_mode ? int(c.subscriptions_test_mode) + ' test-mode active (excluded)' : 'live subscriptions');
-
-    var gr = grid(v);
-    var p1 = panel(gr, 6, 'Live subscriptions', 'By plan and status', 'Live Stripe subscriptions only. Use the Plan filter to narrow it.');
-    hbars(p1, c.subscriptions.map(function (r) { return { label: cap(r.plan) + ' · ' + words(r.status), value: r.n, display: int(r.n) }; }), 'No live subscriptions for these filters.');
-    var p2 = panel(gr, 6, 'Payments', 'Completed Stripe payments by mode and account class',
-      'Live payments are real money; test-mode payments come from Stripe test mode. Internal payments come from the owner or internal accounts.');
-    var pays = c.payments;
-    if (!pays.length) empty(p2, 'No completed payments for these filters.');
-    else {
-      hbars(p2, pays.map(function (r) { return { label: cap(r.mode) + ' · ' + r['class'], value: n(r.cents_all), display: money(r.cents_all, r.currency) + ' all time' }; }), '');
-      table(p2, [{ t: 'Mode' }, { t: 'Class' }, { t: 'In period', n: 1 }, { t: 'Payments', n: 1 }, { t: 'All time', n: 1 }, { t: 'Payments', n: 1 }],
-        pays.map(function (r) { return [r.mode, r['class'], money(r.cents_period, r.currency), int(r.count_period), money(r.cents_all, r.currency), int(r.count_all)]; }));
+    if (!n(conv.eligible)) {
+      kpi(gb, { icon: 'chart-line-up', tone: 'quiet', label: 'Trial conversion', value: 'Not enough history yet', text: true,
+        sub: 'No trials have reached the conversion measurement window.',
+        help: 'Share of trials that became a paid live subscription within 21 days. Only trials started at least 21 days ago count, and a percentage is shown from 5 such trials.' });
+    } else {
+      kpi(gb, { icon: 'chart-line-up', tone: 'grow', label: 'Trial conversion',
+        value: conv.eligible >= 5 ? Math.round(100 * conv.converted / conv.eligible) + '%' : int(conv.converted) + ' of ' + int(conv.eligible), text: conv.eligible < 5,
+        sub: conv.eligible >= 5 ? int(conv.converted) + ' of ' + int(conv.eligible) + ' trials became paid within 21 days' : 'trials became paid within 21 days. A percentage is shown from 5 trials.',
+        help: 'Share of trials that became a paid live subscription within 21 days. Only trials started at least 21 days ago count.' });
     }
-    if (c.failed_payments) p2.appendChild(el('p', 'kd-panel-sub', int(c.failed_payments) + ' failed live payment(s) in the period'));
+    if (c.subscriptions_test_mode) notice(b, 'flask', [int(c.subscriptions_test_mode) + ' active test-mode ' + plural(c.subscriptions_test_mode, 'subscription') + ' left out of every figure here.']);
 
-    var p3 = panel(gr, 8, 'New accounts per day', null);
-    bars(p3, data.series, ['registrations'], { label: 'New accounts per day', empty: 'No new accounts in this period.' });
-    var p4 = panel(gr, 4, 'Trials started by platform', 'In the period');
-    hbars(p4, Object.keys(c.trials_by_platform).map(function (k) { return { label: plat(k), value: c.trials_by_platform[k], display: int(c.trials_by_platform[k]) }; }), 'No trials started in this period.');
+    var gb2 = grid(b);
+    var p1 = panel(gb2, 8, 'Sign-ups and trials per day', { sub: 'Hover a day for details' });
+    switcher(p1, [
+      { label: 'Both', defs: [{ key: 'registrations', name: 'New sign-ups', c: 1 }, { key: 'trials', name: 'Trials started', c: 2 }] },
+      { label: 'Sign-ups', defs: [{ key: 'registrations', name: 'New sign-ups', c: 1 }] },
+      { label: 'Trials', defs: [{ key: 'trials', name: 'Trials started', c: 2 }] }
+    ], function (h, o) { bars(h, data.series, o.defs, { label: o.label + ' per day', empty: 'Nothing in this period.', emptyIcon: 'users' }); });
+    var col = el('div', 'kd-span-4 kd-col'); gb2.appendChild(col);
+    var p2 = panel(col, 12, 'Subscriptions by plan', { icon: 'credit-card', help: 'Live Stripe subscriptions in any status. The Plan filter narrows this.' });
+    var STATUS = { active: 'active', trialing: 'in Stripe trial', past_due: 'payment overdue', canceled: 'cancelled', unpaid: 'unpaid', incomplete: 'incomplete', incomplete_expired: 'expired', paused: 'paused' };
+    hbars(p2, c.subscriptions.map(function (r) {
+      return { label: cap(r.plan) + ' · ' + (STATUS[r.status] || words(r.status)), value: r.n, display: int(r.n), fill: r.plan === 'annual' ? 'kd-f3' : 'kd-f2',
+               icon: r.status === 'active' || r.status === 'trialing' ? 'check-circle' : 'minus' };
+    }), ['credit-card', 'No live subscriptions for these filters.', '']);
+    var p3 = panel(col, 12, 'Trials started by platform', { icon: 'devices', sub: 'In the period' });
+    hbars(p3, Object.keys(c.trials_by_platform).map(function (key) { return { label: plat(key), icon: PLATFORM_ICON[key], value: c.trials_by_platform[key], display: int(c.trials_by_platform[key]), fill: key === 'windows' ? 'kd-f2' : 'kd-f4' }; }),
+      ['hourglass-medium', 'No trials started in this period.', '']);
 
-    var p5 = panel(gr, 12, 'Account classes', 'Always shows all three classes, whatever the filter',
-      'Classes come from existing records only: test = billing test allowlist, internal = owner or internal access grant, unmarked = neither (not verified as a customer).');
-    table(p5, [{ t: 'Class' }, { t: 'Accounts', n: 1 }, { t: 'Active trials', n: 1 }, { t: 'Live subscriptions', n: 1 }, { t: 'Live revenue', n: 1 }, { t: 'Active seats', n: 1 }],
-      c.segments.map(function (s) { return [cap(s['class']), int(s.accounts), int(s.trials_active), int(s.subscriptions_live), money(s.revenue_live_cents), int(s.devices_active)]; }), 'Show by class');
-    hbars(p5, c.segments.map(function (s) { return { label: cap(s['class']), value: s.accounts, display: int(s.accounts) + ' accounts · ' + money(s.revenue_live_cents) + ' live' }; }), '');
+    // C. Revenue
+    var r = block(v, 'Revenue', 'currency-gbp', 'Revenue is money actually paid in the period. It is not recurring subscription value: an annual plan pays once a year, a monthly plan once a month.');
+    var gr = grid(r);
+    var live = c.payments.filter(function (x) { return x.mode === 'live'; }), test = c.payments.filter(function (x) { return x.mode !== 'live'; });
+    var pl = panel(gr, 7, 'Real payments received', { icon: 'wallet', sub: 'Live Stripe payments by account type' });
+    var rows = el('div', 'kd-pay-rows');
+    if (!live.length) empty(pl, 'receipt', 'No live payments for these filters.', '');
+    live.forEach(function (x) {
+      var row = el('div', 'kd-pay-row'), lab = el('span', 'kd-hb-label');
+      lab.appendChild(icon(CLASS[x['class']] ? CLASS[x['class']].icon : 'question')); lab.appendChild(el('span', null, (CLASS[x['class']] || { name: cap(x['class']) }).name));
+      row.appendChild(lab); row.appendChild(el('b', null, money(x.cents_period, x.currency)));
+      row.appendChild(el('small', null, int(x.count_period) + ' ' + plural(x.count_period, 'payment') + ' in the period · ' + money(x.cents_all, x.currency) + ' from ' + int(x.count_all) + ' all time'));
+      rows.appendChild(row);
+    });
+    if (live.length) pl.appendChild(rows);
+    if (live.some(function (x) { return x['class'] === 'internal' || x['class'] === 'test'; }))
+      pl.appendChild(el('p', 'kd-panel-sub', 'Internal and test accounts paid real money in live mode. That money is real, but it is not customer revenue.'));
+    if (c.failed_payments) notice(pl, 'warning-circle', [int(c.failed_payments) + ' live ' + plural(c.failed_payments, 'payment') + ' failed in the period.'], 'is-warn');
+
+    var pt = panel(gr, 5, 'Test payments', { icon: 'flask', cls: 'is-test', sub: 'Stripe test mode. Not real money, never counted as revenue.' });
+    if (!test.length) empty(pt, 'flask', 'No test payments for these filters.', '');
+    else hbars(pt, test.map(function (x) { return { label: (CLASS[x['class']] || { name: cap(x['class']) }).name, icon: 'flask', value: n(x.count_all), fill: 'kd-f5',
+      display: int(x.count_all) + ' · ' + money(x.cents_all, x.currency) + ' all time' }; }), [], { noBars: true });
+
+    var ph = panel(gr, 12, 'Revenue received over time', { icon: 'chart-line-up', sub: 'Live payments per day, GBP' });
+    moneyDays(ph, data.series, 'revenue_cents', 'Received');
+    dailyTable(ph, ['revenue_cents'], ['Received'], { revenue_cents: true }, 'Payment history by day');
+    if (rv.other.length) ph.appendChild(el('p', 'kd-panel-sub', 'Also received in other currencies: ' + rv.other.map(function (o) { return money(o.cur, o.currency); }).join(', ') + '.'));
+
+    // Account types: always all three, whatever the filter.
+    var ct = block(v, 'Account types', 'identification-card', 'Account types come from existing records only. They are never guessed from behaviour.');
+    ct.appendChild(el('p', 'kd-panel-sub', 'Always shows all three types, whatever the Account type filter.'));
+    var cl = el('div', 'kd-classes'); ct.appendChild(cl);
+    ['unmarked', 'internal', 'test'].forEach(function (key) {
+      var s = c.segments.filter(function (x) { return x['class'] === key; })[0] || {};
+      var card = el('div', 'kd-class kd-tone-' + (key === 'unmarked' ? 'grow' : 'quiet'));
+      var h = el('div', 'kd-class-head'), bd = el('span', 'kd-badge'); bd.appendChild(icon(CLASS[key].icon)); h.appendChild(bd); h.appendChild(el('b', null, CLASS[key].name));
+      card.appendChild(h); card.appendChild(el('p', null, CLASS[key].about));
+      stats(card, [['Accounts', int(s.accounts)], ['Active trials', int(s.trials_active)], ['Live subscriptions', int(s.subscriptions_live)], ['Live payments, all time', money(s.revenue_live_cents)]]);
+      cl.appendChild(card);
+    });
   }
 
-  function viewDevices(v) {
-    var d = data.devices;
-    var sc = scope(['devices', 'licence_checks']);
-    if (sc) v.appendChild(el('p', 'kd-scope', sc + '.'));
-    if (data.filters.platform === 'chrome') v.appendChild(el('p', 'kd-scope', 'Kapture for Chrome has no licence or licensed devices; these figures are for Kapture Pro on macOS and Windows.'));
-    var sum = function (o) { return Object.keys(o).reduce(function (s, k) { return s + n(o[k]); }, 0); };
-    var by = function (o) { return Object.keys(o).sort().map(function (k) { return plat(k) + ' ' + int(o[k]); }).join(' · ') || 'none'; };
-    var g = kpis(v);
-    kpi(g, 'Active seats', int(sum(d.active_seats)), by(d.active_seats), 'Activated and not deactivated. Seats are licensed computers, not people.');
-    kpi(g, 'Seen in period', int(sum(d.seen_in_period)), by(d.seen_in_period), 'Active seats that checked their licence in the period.');
-    kpi(g, 'Activations', int(data.kpi.activations.cur), delta(data.kpi.activations.cur, data.kpi.activations.prev), 'Activation events; one computer can activate more than once.');
-    kpi(g, 'Deactivations', int(d.deactivations_in_period), 'in the period');
-    kpi(g, 'Licence checks', int(data.kpi.licence_checks.cur), delta(data.kpi.licence_checks.cur, data.kpi.licence_checks.prev), 'Licence requests from the apps (events).');
+  function cmpVersion(a, b) {
+    var pa = String(a).split('.').map(Number), pb = String(b).split('.').map(Number);
+    for (var i = 0; i < Math.max(pa.length, pb.length); i++) { var x = pa[i] || 0, y = pb[i] || 0; if (isNaN(x) || isNaN(y)) return String(a).localeCompare(String(b)); if (x !== y) return x - y; }
+    return 0;
+  }
+  var OUTCOME = {
+    issued: ['Licence issued', 'good'], device_limit: ['Device limit reached', 'quiet'], not_signed_in: ['Not signed in', 'quiet'],
+    invalid_request: ['Request not valid', 'warn'], invalid_platform: ['Unsupported platform', 'warn'],
+    unavailable: ['Licence service unavailable', 'bad'], error: ['Check failed', 'bad']
+  };
 
-    var gr = grid(v);
-    var p1 = panel(gr, 8, 'Activations per day', 'macOS and Windows');
-    bars(p1, data.series, ['activations_macos', 'activations_windows'], { names: ['macOS', 'Windows'], label: 'Activations per day by platform', empty: 'No activations in this period.' });
-    dailyTable(p1, ['activations_macos', 'activations_windows'], ['macOS', 'Windows']);
-    var p2 = panel(gr, 4, 'Platforms', 'Active seats');
-    hbars(p2, Object.keys(d.active_seats).map(function (k) { return { label: plat(k), value: d.active_seats[k], display: int(d.active_seats[k]) }; }), 'No active seats.');
-    var p3 = panel(gr, 6, 'App versions', 'Devices seen in the period, by the version they last reported');
-    hbars(p3, d.versions.map(function (r) { return { label: plat(r.platform) + ' ' + r.version, value: r.devices, display: int(r.devices) }; }), 'No devices seen in this period.');
-    var p4 = panel(gr, 6, 'Licence check outcomes', 'In the period', '"Unknown" means the request did not say which platform it came from.');
-    hbars(p4, d.licence_outcomes.map(function (r) { return { label: plat(r.platform) + ' · ' + words(r.outcome), value: r.checks, display: int(r.checks) }; }), 'No licence checks in this period.');
-    var p5 = panel(gr, 12, 'Licence checks per day', 'Licences issued per day');
-    bars(p5, data.series, ['licence_issued'], { label: 'Licences issued per day', empty: 'No licences issued in this period.' });
-    dailyTable(p5, ['licence_issued', 'licence_checks'], ['Issued', 'All checks']);
+  function viewDevices(v) {
+    var d = data.devices, k = data.kpi;
+    var top = block(v);
+    scopeNote(top, ['devices', 'licence_checks'], 'These figures are');
+    if (data.filters.platform === 'chrome') notice(top, 'google-chrome-logo', ['Kapture for Chrome has no licence or licensed devices. These figures are for Kapture Pro on macOS and Windows.']);
+    var sum = function (o) { return Object.keys(o).reduce(function (s, x) { return s + n(o[x]); }, 0); };
+    var by = function (o) { return Object.keys(o).sort().map(function (x) { return plat(x) + ' ' + int(o[x]); }).join(' · ') || 'None yet'; };
+    var checks = d.licence_outcomes.reduce(function (s, r) { return s + n(r.checks); }, 0);
+    var issued = d.licence_outcomes.filter(function (r) { return r.outcome === 'issued'; }).reduce(function (s, r) { return s + n(r.checks); }, 0);
+    var failed = d.licence_outcomes.filter(function (r) { return OUTCOME[r.outcome] && OUTCOME[r.outcome][1] === 'bad'; }).reduce(function (s, r) { return s + n(r.checks); }, 0);
+
+    var g = kpis(top, true);
+    kpi(g, { icon: 'monitor', tone: 'device', label: 'Devices with a licence', value: int(sum(d.active_seats)), sub: by(d.active_seats),
+      help: 'Computers activated for Kapture Pro and not deactivated, right now. One licence can cover more than one device, and a device is not a person.' });
+    kpi(g, { icon: 'clock-counter-clockwise', tone: 'device', label: 'Recently connected devices', value: int(sum(d.seen_in_period)), sub: 'Checked in during the last ' + periodLabel() + ' · ' + by(d.seen_in_period),
+      help: 'Licensed devices that checked their licence at least once in the period.' });
+    var g2 = kpis(top);
+    kpi(g2, { icon: 'plugs-connected', tone: 'device', label: 'Device activations', value: int(k.activations.cur), sub: 'In the last ' + periodLabel(),
+      delta: delta(k.activations.cur, k.activations.prev),
+      help: 'How many times a computer was activated. One device can activate more than once, and an activation is not a new customer.' });
+    kpi(g2, { icon: 'x-circle', tone: 'quiet', label: 'Devices deactivated', value: int(d.deactivations_in_period), sub: 'In the last ' + periodLabel(),
+      help: 'Devices removed from a licence in the period, by the user or automatically.' });
+    kpi(g2, { icon: 'shield-check', tone: failed ? 'warn' : 'good', label: 'Licence checks', value: int(k.licence_checks.cur),
+      sub: !checks ? 'None in this period' : checks >= 20 ? Math.round(100 * issued / checks) + '% issued a licence' : int(issued) + ' of ' + int(checks) + ' issued a licence',
+      delta: delta(k.licence_checks.cur, k.licence_checks.prev),
+      help: 'Background checks the apps make to confirm a licence. They are not user sessions, and one device checks many times.' });
+
+    // Platform comparison.
+    var pb = block(v, 'macOS and Windows', 'devices');
+    var pg = grid(pb);
+    var pp = panel(pg, 12, 'Platforms side by side', { sub: 'Kapture Pro devices. A split is only drawn from 10 devices, so a tiny sample does not look like a trend.' });
+    var wrap = el('div', 'kd-platforms');
+    [['macos', 'is-mac'], ['windows', 'is-win']].forEach(function (pl) {
+      var key = pl[0], card = el('div', 'kd-platform ' + pl[1]), h = el('div', 'kd-platform-head');
+      h.appendChild(icon(PLATFORM_ICON[key])); h.appendChild(document.createTextNode(plat(key))); card.appendChild(h);
+      stats(card, [['With a licence', int(d.active_seats[key] || 0)], ['Recently connected', int(d.seen_in_period[key] || 0)], ['Activations', int((d.activations_in_period || {})[key] || 0)]]);
+      var vs = d.versions.filter(function (r) { return r.platform === key; }).map(function (r) { return r.version; }).sort(cmpVersion).reverse();
+      var tags = el('div', 'kd-tags');
+      if (!vs.length) tags.appendChild(tag('No versions reported in this period'));
+      vs.forEach(function (x) { tags.appendChild(tag(x === 'unknown' ? 'Version unknown' : 'v' + x)); });
+      card.appendChild(tags);
+      wrap.appendChild(card);
+    });
+    pp.appendChild(wrap);
+    var mac = n(d.active_seats.macos), win = n(d.active_seats.windows);
+    if (mac + win >= 10) {
+      var split = el('div', 'kd-split'); split.setAttribute('role', 'img');
+      split.setAttribute('aria-label', 'Devices with a licence: macOS ' + Math.round(100 * mac / (mac + win)) + '%, Windows ' + Math.round(100 * win / (mac + win)) + '%');
+      var sm = el('span', 'is-mac'), sw = el('span', 'is-win'); sm.style.width = (100 * mac / (mac + win)) + '%'; sw.style.width = (100 * win / (mac + win)) + '%';
+      split.appendChild(sm); split.appendChild(sw); pp.appendChild(split);
+      var lg = el('div', 'kd-legend'); lg.appendChild(el('span', 'kd-sw-4', 'macOS ' + Math.round(100 * mac / (mac + win)) + '%')); lg.appendChild(el('span', 'kd-sw-2', 'Windows ' + Math.round(100 * win / (mac + win)) + '%')); pp.appendChild(lg);
+    }
+
+    // Versions.
+    var pv = panel(pg, 6, 'App versions in use', { icon: 'stack',
+      help: '“Newest reported” is the highest version these devices reported. It may not be the latest release, so older versions are not necessarily out of date.',
+      sub: 'Recently connected devices, by the version they last reported' });
+    var newest = {};
+    d.versions.forEach(function (r) { if (r.version !== 'unknown' && (!newest[r.platform] || cmpVersion(r.version, newest[r.platform]) > 0)) newest[r.platform] = r.version; });
+    var vrows = d.versions.slice().sort(function (a, b) { return a.platform === b.platform ? cmpVersion(b.version, a.version) : a.platform < b.platform ? -1 : 1; });
+    hbars(pv, vrows.map(function (r) {
+      var isNew = newest[r.platform] === r.version;
+      return { label: plat(r.platform) + ' ' + (r.version === 'unknown' ? '(version unknown)' : r.version), icon: PLATFORM_ICON[r.platform], value: r.devices,
+               display: int(r.devices) + ' ' + plural(r.devices, 'device'), fill: r.platform === 'windows' ? 'kd-f2' : 'kd-f4',
+               tags: [isNew ? tag('Newest reported', 'is-good') : r.version === 'unknown' ? null : tag('Older version still in use')].filter(Boolean) };
+    }), ['stack', 'No devices connected in this period.', ' Versions appear when licensed devices check in.']);
+
+    // Licence outcomes.
+    var po = panel(pg, 6, 'Are licence checks succeeding?', { icon: 'shield-check', sub: 'Background licence checks in the period' });
+    var grouped = {};
+    d.licence_outcomes.forEach(function (r) { grouped[r.outcome] = (grouped[r.outcome] || 0) + n(r.checks); });
+    hbars(po, Object.keys(grouped).sort(function (a, b) { return grouped[b] - grouped[a]; }).map(function (o) {
+      var m = OUTCOME[o] || [words(o), 'quiet'];
+      return { label: m[0], value: grouped[o], display: int(grouped[o]), icon: m[1] === 'good' ? 'check-circle' : m[1] === 'bad' ? 'x-circle' : m[1] === 'warn' ? 'warning-circle' : 'minus',
+               fill: m[1] === 'good' ? 'kd-f-good' : m[1] === 'bad' ? 'kd-f-bad' : 'kd-f5' };
+    }), ['shield-check', 'No licence checks in this period.', '']);
+    if (d.licence_outcomes.length) {
+      po.appendChild(el('p', 'kd-panel-sub', '“Not signed in” and “Device limit reached” are normal answers, not faults.'));
+      table(details(po, 'Diagnostics: raw outcomes by platform'), [{ t: 'Platform' }, { t: 'Shown as' }, { t: 'Raw status' }, { t: 'Checks', n: 1 }],
+        d.licence_outcomes.map(function (r) { var c = el('code', null, r.outcome); return [plat(r.platform), (OUTCOME[r.outcome] || [words(r.outcome)])[0], c, int(r.checks)]; }));
+    }
+
+    // Activity over time.
+    var ab = block(v, 'Activations over time', 'plugs-connected');
+    var ag = grid(ab);
+    var pr = panel(ag, 5, 'Recent activations');
+    recentTable(pr, [
+      { name: 'macOS', icon: 'apple-logo', sum: sumKey('activations_macos') },
+      { name: 'Windows', icon: 'windows-logo', sum: sumKey('activations_windows') }
+    ]);
+    var pa = panel(ag, 7, 'Activations per day', { sub: 'Hover a day for details' });
+    switcher(pa, [
+      { label: 'Activations', defs: [{ key: 'activations_macos', name: 'macOS', c: 4 }, { key: 'activations_windows', name: 'Windows', c: 2 }], empty: 'No activations in this period.' },
+      { label: 'Licence checks', defs: [{ key: 'licence_issued', name: 'Licence issued', c: 1 }, { key: 'other_checks', name: 'Other answers', c: 5 }], empty: 'No licence checks in this period.' }
+    ], function (h, o) {
+      var ser = data.series.map(function (p) { return Object.assign({}, p, { other_checks: Math.max(0, n(p.licence_checks) - n(p.licence_issued)) }); });
+      bars(h, ser, o.defs, { label: o.label + ' per day', empty: o.empty, emptyIcon: 'plugs-connected' });
+    });
+    dailyTable(pa, ['activations_macos', 'activations_windows', 'licence_issued', 'licence_checks'], ['macOS activations', 'Windows activations', 'Licences issued', 'All licence checks']);
   }
 
   function viewUsage(v) {
-    var u = data.usage;
-    var sc = scope(['anonymous', 'opt_in']);
-    if (sc) v.appendChild(el('p', 'kd-scope', sc + ': anonymous and opted-in statistics are not linked to accounts.'));
-    var g = kpis(v);
-    var act = u.activity;
-    var pick = function (key) { return act.length ? act.map(function (r) { return plat(r.platform) + ' ' + r[key]; }).join(' · ') : '—'; };
-    kpi(g, 'DAU', act.length === 1 ? act[0].dau : pick('dau'), 'yesterday (UTC)', 'Anonymous: installs active yesterday. Without an identifier this counts installs, not people.');
-    kpi(g, 'WAU', act.length === 1 ? act[0].wau : pick('wau'), 'last full week', 'Anonymous: installs active in the last full ISO week (Monday–Sunday), each counted once.');
-    kpi(g, 'MAU', act.length === 1 ? act[0].mau : pick('mau'), 'last full month', 'Anonymous: installs active in the last full calendar month, each counted once.');
-    kpi(g, 'First launches', u.first_launches, 'in the period', 'Anonymous: installs opened for the first time.');
-    var oi = u.optin_installs;
-    kpi(g, 'Opted-in installs', oi.length ? oi.map(function (r) { return plat(r.platform) + ' ' + r.mau; }).join(' · ') : '0', 'active in 30 days',
-      'Installs that chose “Share statistics”. These carry a random ID, so they can be counted over time.');
+    var u = data.usage, act = u.activity, oi = u.optin_installs;
+    var top = block(v);
+    scopeNote(top, ['anonymous', 'opt_in'], 'Usage statistics are not linked to accounts, so they are');
 
-    var gr = grid(v);
-    var p1 = panel(gr, 6, 'Anonymous active days', 'Per day', 'Each install counts once per day it is used.');
-    bars(p1, data.series, ['anonymous_active'], { label: 'Anonymous active days per day',
-      empty: data.switches.aggregate ? 'Waiting for anonymous totals. Apps send them within about a day of being opened.' : 'Anonymous statistics are switched off.' });
-    var p2 = panel(gr, 6, 'Opted-in active installs', 'Per day', 'Distinct opted-in installs active each day.');
-    bars(p2, data.series, ['optin_active'], { label: 'Opted-in active installs per day',
-      empty: data.switches.usage ? 'No opted-in installs yet. They appear once users choose “Share statistics”.' : 'Opt-in statistics are switched off.' });
-    var p3 = panel(gr, 8, 'Most used features', 'Anonymous totals in the period, top 20', 'Counts of actions (events), not people. Figures from 1 to 4 show as <5.');
-    hbars(p3, u.features.map(function (r) { return { label: words(r.event) + ' · ' + plat(r.platform), value: r.total, display: r.total }; }),
-      data.switches.aggregate ? 'No feature totals in this period yet.' : 'Anonymous statistics are switched off.');
-    var p4 = panel(gr, 4, 'Feature adoption', 'Opted-in installs, last full week', 'Share of active opted-in installs that used each feature. Shown from 5 active installs.');
-    hbars(p4, u.adoption.map(function (r) { return { label: words(r.event) + ' · ' + plat(r.platform), value: r.percent, display: r.percent + '% of ' + r.of }; }),
-      'Shown once at least 5 opted-in installs are active in a week.');
-    var p5 = panel(gr, 6, 'Retention', 'Opted-in weekly cohorts', 'Share of each weekly cohort of new opted-in installs active N weeks later. Shown for cohorts of 5 or more.');
-    if (!u.retention.length) empty(p5, 'Shown once a weekly cohort has at least 5 opted-in installs.');
-    else {
-      hbars(p5, u.retention.map(function (r) { return { label: 'Week of ' + fmtDay(r.cohort_week) + ' · week ' + r.week, value: n(r.percent), display: r.percent + '% of ' + r.size }; }), '');
+    var today = utcToday();
+    var lastMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1)).toLocaleDateString('en-GB', { month: 'long', timeZone: 'UTC' });
+    var wkEnd = new Date(today); wkEnd.setUTCDate(wkEnd.getUTCDate() - ((wkEnd.getUTCDay() + 6) % 7) - 1);
+    var wkStart = new Date(wkEnd); wkStart.setUTCDate(wkStart.getUTCDate() - 6);
+    var combined = function (key) {
+      var s = sumVals(act.map(function (r) { return r[key]; }));
+      var split = act.length > 1 ? act.map(function (r) { return plat(r.platform) + (r.app && r.app !== 'pro' ? ' (' + r.app + ')' : '') + ' ' + short(r[key]); }).join(' · ') : '';
+      return { value: act.length ? s.text : '—', split: split };
+    };
+    var noAgg = !data.switches.aggregate;
+
+    var a = block(v, 'Everyone using the apps', 'users-three', 'Anonymous totals from every install, with no identifier. Counts are installs, not people, and figures from 1 to 4 show as <5.');
+    var ga = kpis(a);
+    var d1 = combined('dau'), w1 = combined('wau'), m1 = combined('mau');
+    kpi(ga, { icon: 'sun', tone: 'use', label: 'Active yesterday', value: d1.value, sub: (d1.split ? d1.split + ' · ' : '') + fmtDay(iso(new Date(today - 864e5))) + ' (UTC)',
+      help: 'Installs used yesterday. Each install counts once. Yesterday is used because today is not finished and apps report with a delay.' });
+    kpi(ga, { icon: 'calendar-blank', tone: 'use', label: 'Active last week', value: w1.value, sub: (w1.split ? w1.split + ' · ' : '') + fmtDay(iso(wkStart)) + ' – ' + fmtDay(iso(wkEnd)),
+      help: 'Installs used at least once in the last full week (Monday to Sunday). Each install counts once.' });
+    kpi(ga, { icon: 'calendar-check', tone: 'use', label: 'Active in ' + lastMonth, value: m1.value, sub: m1.split || 'Last full calendar month',
+      help: 'Installs used at least once in the last full calendar month. Each install counts once.' });
+    kpi(ga, { icon: 'rocket-launch', tone: 'grow', label: 'First launches', value: isSupp(u.first_launches) ? '<5' : !act.length && !n(u.first_launches) ? '—' : int(u.first_launches), sub: 'New installs opened in the last ' + periodLabel(),
+      help: 'Installs opened for the first time in the period.' });
+    if (noAgg) notice(a, 'toggle-left', ['Anonymous statistics are switched off, so these figures are not being collected.']);
+    else if (!act.length) notice(a, 'clock', [el('strong', null, 'No activity has arrived yet. '), 'Apps send anonymous totals about once a day after they are opened, so a dash means “no data yet”, not zero use.']);
+
+    var b = block(v, 'Devices sharing detailed statistics', 'chart-bar', 'Installs whose user chose “Share statistics”. They carry a random ID, so they can be counted over time. This is a small, self-selected group.');
+    var gb = kpis(b);
+    var oiSum = function (key) { return oi.length ? sumVals(oi.map(function (r) { return r[key]; })).text : '0'; };
+    var oiSplit = function (key) { return oi.length > 1 ? oi.map(function (r) { return plat(r.platform) + ' ' + short(r[key]); }).join(' · ') : ''; };
+    kpi(gb, { icon: 'devices', tone: 'device', label: 'Sharing devices, last 30 days', value: oiSum('mau'), sub: oiSplit('mau') || 'Active at least once',
+      help: 'Distinct opted-in installs active in the last 30 days.' });
+    kpi(gb, { icon: 'calendar-blank', tone: 'device', label: 'Sharing devices, last 7 days', value: oiSum('wau'), sub: oiSplit('wau') || 'Active at least once' });
+    kpi(gb, { icon: 'sun', tone: 'device', label: 'Sharing devices, yesterday', value: oiSum('dau'), sub: oiSplit('dau') || 'Active yesterday (UTC)' });
+    if (!data.switches.usage) notice(b, 'toggle-left', ['Detailed statistics are switched off.']);
+
+    // Today and yesterday.
+    var db = block(v, 'Day by day', 'calendar-check');
+    var dg = grid(db);
+    var pr = panel(dg, 6, 'Today and yesterday');
+    recentTable(pr, [
+      { name: 'Daily app activity', icon: 'pulse', sum: sumKey('anonymous_active'), late: true, help: 'Anonymous: installs used that day, each counted once. Not unique people.' },
+      { name: 'Sharing devices active', icon: 'devices', sum: sumKey('optin_active'), late: true, help: 'Distinct opted-in installs used that day. The 7-day figure adds the days, so one device can count more than once.' }
+    ]);
+    pr.appendChild(el('p', 'kd-panel-sub', 'Apps send totals about once a day, so today and yesterday usually fill in a day later.'));
+    var pd = panel(dg, 6, 'Daily app activity', { sub: 'Hover a day for details' });
+    switcher(pd, [
+      { label: 'Everyone', defs: [{ key: 'anonymous_active', name: 'Installs active', c: 2 }],
+        empty: noAgg ? 'Anonymous statistics are switched off.' : 'No daily activity yet.', why: noAgg ? '' : ' Apps send totals about once a day after they are opened.' },
+      { label: 'Sharing devices', defs: [{ key: 'optin_active', name: 'Sharing devices active', c: 4 }],
+        empty: data.switches.usage ? 'No sharing devices yet.' : 'Detailed statistics are switched off.', why: data.switches.usage ? ' They appear once someone chooses “Share statistics”.' : '' }
+    ], function (h, o) { bars(h, data.series, o.defs, { label: o.label + ' per day', empty: o.empty, emptyWhy: o.why, emptyIcon: 'pulse' }); });
+    dailyTable(pd, ['anonymous_active', 'optin_active'], ['Installs active', 'Sharing devices active']);
+
+    // Most used features.
+    var fb = block(v, 'Most used features', 'cursor-click', 'Anonymous totals of actions in the period, from every install. They count actions, not people. Figures from 1 to 4 show as <5.');
+    var fg = grid(fb);
+    var pf = panel(fg, 12, 'What people do in Kapture', { sub: 'Actions recorded in the last ' + periodLabel() + ', top 20. Comparison with the previous period is not available yet.' });
+    var fr = featureRows();
+    hbars(pf, fr.map(function (r, i) {
+      var tags = r.parts.length > 1 || data.filters.platform === 'all' ? r.parts.map(function (p) { return tag(plat(p.platform) + ' ' + short(p.total), null, PLATFORM_ICON[p.platform]); }) : [];
+      return { label: eventName(r.event), icon: eventIcon(r.event), value: r.total.text === '<5' ? '<5' : r.total.value, display: r.total.text + ' ' + (r.total.text === '<5' ? '' : plural(r.total.value, 'time')),
+               fill: i < 3 ? 'kd-f2' : 'kd-f5', tags: tags };
+    }), ['cursor-click', noAgg ? 'Anonymous statistics are switched off.' : 'No feature activity in this period yet.', noAgg ? '' : ' Actions appear once apps send their daily totals.']);
+    if (fr.length) table(details(pf, 'Raw event names'), [{ t: 'Shown as' }, { t: 'Event' }, { t: 'Platform' }, { t: 'Total', n: 1 }],
+      u.features.map(function (r) { return [eventName(r.event), el('code', null, r.event), plat(r.platform), short(r.total)]; }));
+
+    var pa = panel(fg, 6, 'How many sharing devices tried each feature?', { icon: 'cursor-click',
+      sub: 'Last full week. Shown once at least 5 sharing devices were active that week.',
+      help: 'Of the opted-in devices active last week, the share that used each feature at least once.' });
+    hbars(pa, u.adoption.map(function (r) { return { label: eventName(r.event) + ' · ' + plat(r.platform), icon: eventIcon(r.event), value: n(r.percent), display: r.percent + '% of ' + short(r.of), fill: 'kd-f4' }; }),
+      ['users', 'Not enough sharing devices yet.', ' At least 5 must be active in a week before shares are shown, so no one can be singled out.']);
+
+    var pc = panel(fg, 6, 'Are people coming back?', { icon: 'arrow-counter-clockwise',
+      help: 'Devices that started sharing statistics in the same week form a group. For each later week, this shows the share of that group used again. Only groups of 5 or more are shown.',
+      sub: 'Of the sharing devices that started in a week, the share used again in each following week.' });
+    if (!u.retention.length) {
+      empty(pc, 'arrow-counter-clockwise', 'Not enough history yet.', ' This needs a week in which at least 5 devices started sharing statistics, followed by a complete week.');
+    } else {
+      var cohorts = {}, weeks = 0;
+      u.retention.forEach(function (r) { (cohorts[r.cohort_week] = cohorts[r.cohort_week] || { size: r.size, w: {} }).w[r.week] = r.percent; weeks = Math.max(weeks, r.week); });
+      var heads = [{ t: 'Started week of' }, { t: 'Devices', n: 1 }];
+      for (var i = 1; i <= weeks; i++) heads.push({ t: 'Week ' + i, n: 1 });
+      table(pc, heads, Object.keys(cohorts).sort().map(function (ck) {
+        var row = [fmtDay(ck), short(cohorts[ck].size)];
+        for (var j = 1; j <= weeks; j++) row.push(cohorts[ck].w[j] === undefined ? '' : cohorts[ck].w[j] + '%');
+        return row;
+      }));
+      pc.appendChild(el('p', 'kd-panel-sub', 'Week 1 is the week after a device started. Blank cells are weeks that have not finished yet.'));
     }
-    var p6 = panel(gr, 6, 'Versions, systems and languages', 'Anonymous active days in the period');
-    hbars(p6, u.environments.slice(0, 12).map(function (r) { return { label: plat(r.platform) + ' ' + r.version + ' · ' + words(r.os) + ' · ' + r.locale, value: r.active_days, display: r.active_days }; }),
-      'No anonymous activity in this period yet.');
+
+    var pe = panel(fg, 12, 'Versions, systems and languages', { icon: 'stack', sub: 'Daily app activity in the period, by environment' });
+    if (!u.environments.length) empty(pe, 'stack', 'No app activity in this period yet.', '');
+    else {
+      hbars(pe, u.environments.slice(0, 6).map(function (r) { return { label: plat(r.platform) + ' ' + r.version + ' · ' + words(r.os) + ' · ' + r.locale, icon: PLATFORM_ICON[r.platform], value: r.active_days, display: short(r.active_days), fill: 'kd-f2' }; }), []);
+      if (u.environments.length > 6) table(details(pe, 'All ' + u.environments.length + ' environments'), [{ t: 'Platform' }, { t: 'Version' }, { t: 'System' }, { t: 'Language' }, { t: 'Active days', n: 1 }],
+        u.environments.map(function (r) { return [plat(r.platform), r.version, words(r.os), r.locale, short(r.active_days)]; }));
+    }
   }
 
+  /* Scheduled jobs, by the names they have in the database. */
+  var JOBS = { 'analytics-adoption': 'Daily analytics summary', 'analytics-purge': 'Old data cleanup', 'kapture-stripe-reconcile': 'Payment reconciliation' };
+  function jobName(j) { return JOBS[j] || (/reconcil/.test(j) ? 'Payment reconciliation' : words(j)); }
+  /* Next run, only for the simple "minute hour * * *" and "minute * * * *" forms. */
+  function nextRun(expr) {
+    var m = /^(\d{1,2}) (\d{1,2}|\*) \* \* \*$/.exec(String(expr).trim());
+    if (!m) return null;
+    var now = new Date(), t = new Date(now);
+    t.setUTCSeconds(0, 0); t.setUTCMinutes(Number(m[1]));
+    if (m[2] === '*') { if (t <= now) t.setUTCHours(t.getUTCHours() + 1); }
+    else { t.setUTCHours(Number(m[2])); if (t <= now) t.setUTCDate(t.getUTCDate() + 1); }
+    return t;
+  }
+  function every(expr) { var m = /^(\d{1,2}) (\d{1,2}|\*) \* \* \*$/.exec(String(expr).trim()); if (!m) return ''; return m[2] === '*' ? 'Every hour' : 'Every day at ' + ('0' + m[2]).slice(-2) + ':' + ('0' + m[1]).slice(-2) + ' UTC'; }
+
   function viewHealth(v) {
-    var h = data.health, i = h.ingest;
-    v.appendChild(el('p', 'kd-scope', 'System figures are not affected by the platform, class or plan filters.'));
-    var g = kpis(v);
-    kpi(g, 'Anonymous collection', data.switches.aggregate ? 'On' : 'Off', 'switch aggregate');
-    kpi(g, 'Opt-in collection', data.switches.usage ? 'On' : 'Off', 'switch usage');
-    kpi(g, 'Requests', int(i.requests), int(h.ingest_today.requests) + ' today', 'Statistics requests that reached the database in the period.');
-    kpi(g, 'Batches accepted', int(n(i.batches_aggregate) + n(i.batches_usage)), int(i.batches_aggregate) + ' anonymous · ' + int(i.batches_usage) + ' opt-in');
-    kpi(g, 'Rate-limited', int(i.limited), int(h.ingest_today.limited) + ' today', 'Requests refused because a daily limit was reached.');
-    kpi(g, 'Licence errors', int(h.licence_errors), 'unavailable or error outcomes');
+    var h = data.health, i = h.ingest, fr = h.freshness;
+    var top = block(v);
+    var jobs = h.jobs, active = (jobs || []).filter(function (j) { return j.active; });
+    var failedJobs = active.filter(function (j) { return j.last_status === 'failed'; });
+    var anyOn = data.switches.aggregate || data.switches.usage;
 
-    var gr = grid(v);
-    var p1 = panel(gr, 8, 'Collection per day', 'Accepted batches per day');
-    var ser = h.ingest_series.map(function (p) { return { day: p.day, accepted: n(p.batches_aggregate) + n(p.batches_usage) }; });
-    bars(p1, ser, ['accepted'], { label: 'Accepted batches per day', empty: 'No statistics batches in this period.' });
-    table(p1, [{ t: 'Day' }, { t: 'Requests', n: 1 }, { t: 'Anonymous', n: 1 }, { t: 'Opt-in', n: 1 }, { t: 'Duplicates', n: 1 }, { t: 'Limited', n: 1 }],
-      h.ingest_series.filter(function (p) { return n(p.requests); }).reverse().map(function (p) { return [fmtDay(p.day, { year: 'numeric' }), int(p.requests), int(p.batches_aggregate), int(p.batches_usage), int(p.duplicates), int(p.limited)]; }),
-      'Show daily figures');
-    var p2 = panel(gr, 4, 'Rejections', null, 'Invalid requests (unknown events, free text, oversized bodies, credentials) are refused by the endpoint before the database and are only logged.');
-    stats(p2, [['Rejected requests', 'Not recorded'], ['Duplicates', int(i.duplicates)], ['New installs', int(i.new_installs)], ['Forget requests', int(i.forgets)], ['Entries stored', int(i.entries)]]);
+    // Status first.
+    var st = el('div', 'kd-status'); top.appendChild(st);
+    var card = function (state, iconName, name, word, why) {
+      var c = el('div', 'kd-stat-card is-' + state); c.appendChild(icon(iconName));
+      var t = el('div'); t.appendChild(el('div', 'kd-stat-name', name)); t.appendChild(el('div', 'kd-stat-word', word)); if (why) t.appendChild(el('div', 'kd-stat-why', why));
+      c.appendChild(t); st.appendChild(c);
+    };
+    card(data.switches.aggregate ? 'good' : 'quiet', data.switches.aggregate ? 'toggle-right' : 'toggle-left', 'Anonymous analytics', data.switches.aggregate ? 'On' : 'Off', 'Daily totals from every install');
+    card(data.switches.usage ? 'good' : 'quiet', data.switches.usage ? 'toggle-right' : 'toggle-left', 'Detailed statistics', data.switches.usage ? 'On' : 'Off', 'Only from people who chose to share');
+    var last = fr.last_ingest_day;
+    if (!anyOn) card('quiet', 'circle-dashed', 'Receiving data', 'Not collecting', 'Both collection switches are off.');
+    else if (!last) card('quiet', 'clock', 'Receiving data', 'Waiting', 'No report has arrived yet.');
+    else if (daysAgo(last) <= 1) card('good', 'check-circle', 'Receiving data', 'Yes', 'Last report ' + relDay(last) + '.');
+    else card('quiet', 'clock', 'Receiving data', 'Quiet', 'Last report ' + relDay(last) + '. This can simply mean no one opened the apps.');
+    if (jobs === null) card('quiet', 'question', 'Scheduled jobs', 'Status unavailable', 'The job log could not be read.');
+    else if (failedJobs.length) card('bad', 'warning-circle', 'Scheduled jobs', 'Needs attention', failedJobs.length + ' ' + plural(failedJobs.length, 'job') + ' failed on the last run.');
+    else if (!active.some(function (j) { return j.last_status; })) card('quiet', 'clock', 'Scheduled jobs', 'Not yet run', 'No job has run yet.');
+    else if (active.some(function (j) { return !j.last_status; })) card('good', 'check-circle', 'Scheduled jobs', 'Healthy', 'Every job that has run succeeded. Some have not run yet.');
+    else card('good', 'check-circle', 'Scheduled jobs', 'Healthy', 'Every job succeeded on its last run.');
 
-    var p3 = panel(gr, 6, 'Scheduled jobs', 'Most recent run');
-    if (!h.jobs) empty(p3, 'Job status is unavailable.');
-    else if (!h.jobs.length) empty(p3, 'No scheduled jobs.');
-    else stats(p3, h.jobs.map(function (j) {
-      return [j.name + ' · ' + j.schedule + (j.active ? '' : ' (paused)'),
-              j.last_status ? cap(j.last_status) + ', ' + new Date(j.last_start).toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' }) : 'Not run yet'];
-    }));
-    var p4 = panel(gr, 6, 'Limits and freshness');
-    var fr = h.freshness, lim = h.limits;
-    var day = function (s) { return s ? fmtDay(String(s).slice(0, 10), { year: 'numeric' }) : 'none yet'; };
-    stats(p4, [['Last statistics request', day(fr.last_ingest_day)], ['Last anonymous data', day(fr.last_anonymous_day)], ['Last opt-in data', day(fr.last_optin_day)],
-      ['Last licence check', day(fr.last_licence_check_day)], ['Last device contact', day(fr.last_device_contact)],
-      ['Requests per day', int(lim.requests_per_day)], ['Entries per day', int(lim.entries_per_day)], ['New installs per day', int(lim.new_installs_per_day)],
-      ['Batches per install per day', int(lim.batches_per_install_day)]]);
+    // Needs attention: real problems only, never zero activity on its own.
+    var issues = [];
+    failedJobs.forEach(function (j) { issues.push(['bad', 'x-circle', jobName(j.name) + ' failed', 'Last run ' + (j.last_start ? fmtTime(j.last_start) : '') + '. See Technical details.']); });
+    if (n(h.licence_errors)) issues.push(['bad', 'shield-check', 'Licence checks failed ' + int(h.licence_errors) + ' ' + plural(h.licence_errors, 'time'), 'The licence service was unavailable or returned an error in the period.']);
+    if (n(i.limited)) issues.push(['warn', 'prohibit', int(i.limited) + ' analytics ' + plural(i.limited, 'request was', 'requests were') + ' limited', 'A daily limit was reached, so some reports were refused. Repeated limits may mean the limits are too low or something is sending too often.']);
+    if (jobs) active.filter(function (j) { return j.last_status === 'succeeded' && j.last_start && /^\d{1,2} \d{1,2} \* \* \*$/.test(j.schedule) && Date.now() - new Date(j.last_start) > 2 * 864e5; })
+      .forEach(function (j) { issues.push(['warn', 'clock', jobName(j.name) + ' has not run for over two days', 'It is scheduled daily. Last run ' + fmtTime(j.last_start) + '.']); });
+    var ab = block(v, 'Needs attention', 'warning-circle');
+    var ul = el('ul', 'kd-attn');
+    if (!issues.length) issues.push(['good', 'check-circle', 'Nothing needs attention', 'No failed jobs, limited requests or licence errors in the period.']);
+    issues.forEach(function (x) { var li = el('li', 'is-' + x[0]); li.appendChild(icon(x[1])); var t = el('div', null, x[2]); t.appendChild(el('small', null, x[3])); li.appendChild(t); ul.appendChild(li); });
+    ab.appendChild(ul);
+
+    // Collection activity.
+    var cb = block(v, 'Collection activity', 'tray-arrow-down');
+    if (data.filters.platform !== 'all' || data.filters['class'] !== 'all') notice(cb, 'info', ['System figures are not affected by the platform or account type filters.']);
+    var cg = grid(cb);
+    var ser = h.ingest_series;
+    var t0 = ser.length && ser[ser.length - 1].day === iso(utcToday()) ? ser[ser.length - 1] : null, t1 = t0 && ser.length > 1 ? ser[ser.length - 2] : null;
+    var rep = function (p) { return p ? n(p.batches_aggregate) + n(p.batches_usage) : 0; };
+    var ps = panel(cg, 4, 'Reports received', { icon: 'tray-arrow-down', help: 'A report is one delivery of statistics from an app. Apps send about one a day.' });
+    stats(ps, [
+      ['Today, so far', t0 ? int(rep(t0)) : '—'],
+      ['Yesterday', t1 ? int(rep(t1)) : '—'],
+      ['In the last ' + periodLabel(), int(n(i.batches_aggregate) + n(i.batches_usage)), null, int(i.batches_aggregate) + ' anonymous · ' + int(i.batches_usage) + ' detailed'],
+      ['Last report', last ? cap(relDay(last)) : 'None yet']
+    ]);
+    if (!t0) ps.appendChild(el('p', 'kd-panel-sub', 'Choose a period that ends today to see today and yesterday.'));
+    var pc = panel(cg, 8, 'Reports received per day', { sub: 'An empty day means no app sent a report, not that collection failed.' });
+    bars(pc, ser, [{ key: 'batches_aggregate', name: 'Anonymous', c: 2 }, { key: 'batches_usage', name: 'Detailed', c: 4 }],
+      { label: 'Reports received per day', emptyIcon: 'tray-arrow-down', empty: anyOn ? 'No reports in this period.' : 'Collection is switched off.', emptyWhy: anyOn ? ' Reports arrive when people open the apps.' : '' });
+
+    var pm = panel(cg, 12, 'In the period', { icon: 'gauge' });
+    stats(pm, [
+      ['Analytics requests', int(i.requests), 'Every call the apps made to the analytics service that reached the database.', int(h.ingest_today.requests) + ' today'],
+      ['Reports received', int(n(i.batches_aggregate) + n(i.batches_usage)), 'Reports accepted and stored.'],
+      ['Statistics recorded', int(i.entries), 'Individual counts stored from those reports.'],
+      ['Duplicate reports ignored', int(i.duplicates), 'Reports sent twice, for example after a retry. They are recognised and not counted again.'],
+      ['Requests limited', int(i.limited), 'Requests refused because a daily limit was reached.', int(h.ingest_today.limited) + ' today'],
+      ['New installs', int(i.new_installs), 'Installs that shared detailed statistics for the first time.'],
+      ['Data deletion requests', int(i.forgets), 'Requests from apps to delete their detailed statistics.']
+    ]);
+
+    // Scheduled jobs.
+    var jb = block(v, 'Scheduled jobs', 'clock');
+    var jg = grid(jb);
+    var pj = panel(jg, 12, 'Automatic tasks', { sub: 'Times are UTC.' });
+    if (jobs === null) empty(pj, 'question', 'Job status is unavailable.', ' The job log could not be read.');
+    else if (!jobs.length) empty(pj, 'clock', 'No scheduled jobs.', '');
+    else {
+      var jl = el('ul', 'kd-jobs');
+      jobs.forEach(function (j) {
+        var ok = j.last_status === 'succeeded', bad = j.last_status === 'failed', li = el('li');
+        li.appendChild(icon(bad ? 'x-circle' : ok ? 'check-circle' : 'clock', bad ? 'is-bad' : ok ? 'is-good' : 'is-quiet'));
+        li.appendChild(el('b', null, jobName(j.name)));
+        li.appendChild(tag(!j.active ? 'Paused' : bad ? 'Failed' : ok ? 'Succeeded' : j.last_status ? cap(j.last_status) : 'Not run yet', bad ? 'is-bad' : ok ? 'is-good' : ''));
+        var nx = j.active ? nextRun(j.schedule) : null;
+        li.appendChild(el('small', null, [every(j.schedule), j.last_start ? 'Last run ' + fmtTime(j.last_start) : 'Not run yet', nx ? 'Next ' + fmtTime(nx) : ''].filter(Boolean).join(' · ')));
+        jl.appendChild(li);
+      });
+      pj.appendChild(jl);
+    }
+
+    // Technical details, collapsed.
+    var td = details(v, 'Technical details', 'is-section');
+    var lim = h.limits, day = function (s) { return s ? fmtLong(String(s).slice(0, 10)) : 'None yet'; };
+    td.appendChild(el('p', 'kd-panel-sub', 'Data freshness'));
+    stats(td, [['Last statistics request', day(fr.last_ingest_day)], ['Last anonymous data', day(fr.last_anonymous_day)], ['Last detailed data', day(fr.last_optin_day)],
+      ['Last licence check', day(fr.last_licence_check_day)], ['Last device contact', fr.last_device_contact ? fmtTime(fr.last_device_contact) : 'None yet']]);
+    td.appendChild(el('p', 'kd-panel-sub', 'Daily limits'));
+    stats(td, [['Requests per day', int(lim.requests_per_day)], ['Statistics per day', int(lim.entries_per_day)], ['New installs per day', int(lim.new_installs_per_day)],
+      ['Reports per install per day', int(lim.batches_per_install_day)], ['Statistics per install per day', int(lim.entries_per_install_day)]]);
+    if (jobs && jobs.length) {
+      td.appendChild(el('p', 'kd-panel-sub', 'Jobs'));
+      table(td, [{ t: 'Shown as' }, { t: 'Job name' }, { t: 'Schedule (cron, UTC)' }, { t: 'Active' }, { t: 'Last status' }, { t: 'Last start' }, { t: 'Last end' }],
+        jobs.map(function (j) { return [jobName(j.name), el('code', null, j.name), el('code', null, j.schedule), j.active ? 'yes' : 'no', j.last_status || '—', j.last_start ? fmtTime(j.last_start) : '—', j.last_end ? fmtTime(j.last_end) : '—']; }));
+    }
+    var rows = ser.filter(function (p) { return n(p.requests); }).reverse();
+    if (rows.length) {
+      td.appendChild(el('p', 'kd-panel-sub', 'Daily counters'));
+      table(td, [{ t: 'Day' }, { t: 'Requests', n: 1 }, { t: 'Anonymous reports', n: 1 }, { t: 'Detailed reports', n: 1 }, { t: 'Duplicates', n: 1 }, { t: 'Limited', n: 1 }],
+        rows.map(function (p) { return [fmtLong(p.day), int(p.requests), int(p.batches_aggregate), int(p.batches_usage), int(p.duplicates), int(p.limited)]; }));
+    }
+    td.appendChild(el('p', 'kd-panel-sub', 'Requests that are not valid (unknown events, free text, oversized bodies) are refused by the endpoint before they reach the database. They are only in the function logs, so they are not counted here.'));
   }
 
   var RENDER = { overview: viewOverview, customers: viewCustomers, devices: viewDevices, usage: viewUsage, health: viewHealth };
@@ -466,6 +1057,7 @@
 
   function render() {
     if (!data) return;
+    hideHover();
     var view = currentView();
     main.setAttribute('data-view', view);
     document.querySelectorAll('#kdTabs a').forEach(function (a) {
@@ -476,16 +1068,21 @@
     body.appendChild(v);   // attached first, so charts can measure their width
     RENDER[view](v);
 
-    meta.textContent = fmtDay(data.period.from, { year: 'numeric' }) + ' – ' + fmtDay(data.period.to, { year: 'numeric' }) +
-      ' · compared with the previous ' + data.period.days + ' days · updated ' +
-      new Date(data.generated_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    while (meta.firstChild) meta.removeChild(meta.firstChild);
+    var range1 = el('span'); range1.appendChild(icon('calendar-blank')); range1.appendChild(document.createTextNode(' ' + fmtDay(data.period.from, { year: 'numeric' }) + ' – ' + fmtDay(data.period.to, { year: 'numeric' }) + ' (UTC)'));
+    add(meta, range1, el('span', null, 'compared with the previous ' + data.period.days + ' days'),
+      el('span', null, 'updated ' + new Date(data.generated_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })));
     while (chips.firstChild) chips.removeChild(chips.firstChild);
-    [['Anonymous', data.switches.aggregate], ['Opt-in', data.switches.usage]].forEach(function (c) {
-      chips.appendChild(el('span', 'kd-chip' + (c[1] ? ' is-on' : ''), c[0] + ' ' + (c[1] ? 'on' : 'off')));
+    [['Anonymous analytics', data.switches.aggregate], ['Detailed statistics', data.switches.usage]].forEach(function (c) {
+      var ch = el('span', 'kd-chip' + (c[1] ? ' is-on' : '')); ch.appendChild(icon(c[1] ? 'toggle-right' : 'toggle-left'));
+      ch.appendChild(document.createTextNode(c[0] + ' ' + (c[1] ? 'on' : 'off'))); chips.appendChild(ch);
     });
   }
 
   /* ---- controls ---------------------------------------------------------- */
+
+  document.querySelectorAll('#kdTabs a[data-icon]').forEach(function (a) { a.insertBefore(icon(a.getAttribute('data-icon')), a.firstChild); });
+  document.querySelectorAll('[data-tip]').forEach(function (s) { s.parentNode.replaceChild(tip(s.getAttribute('data-tip')), s); });
 
   function syncForm() {
     form.period.value = prefs.period; form.platform.value = prefs.platform; form['class'].value = prefs.klass; form.plan.value = prefs.plan;
@@ -507,6 +1104,7 @@
   });
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   window.addEventListener('hashchange', render);
+  window.addEventListener('scroll', hideHover, { passive: true });
   var lastWidth = innerWidth, resizeTimer = 0;
   window.addEventListener('resize', function () {
     if (Math.abs(innerWidth - lastWidth) < 40) return;
@@ -526,8 +1124,8 @@
       tb.style.marginLeft = shift + 'px';
     });
   }
-  body.addEventListener('mouseover', placeTip);
-  body.addEventListener('focusin', placeTip);
+  main.addEventListener('mouseover', placeTip);
+  main.addEventListener('focusin', placeTip);
   document.getElementById('kdRetry').addEventListener('click', load);
 
   syncForm();

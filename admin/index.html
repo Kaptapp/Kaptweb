@@ -12,7 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="../assets/logo/kapture-icon.svg">
 <link rel="preconnect" href="https://sokcwfqvutnjzzbsuhqm.supabase.co" crossorigin>
 <link rel="stylesheet" href="../styles.css?v=47">
-<link rel="stylesheet" href="admin.css?v=3">
+<link rel="stylesheet" href="admin.css?v=4">
 </head>
 <body class="kd-page">
 
@@ -40,47 +40,51 @@
     </header>
 
     <nav class="kd-tabs" aria-label="Dashboard views" id="kdTabs">
-      <a href="#overview" data-view="overview">Overview</a>
-      <a href="#customers" data-view="customers">Customers</a>
-      <a href="#devices" data-view="devices">Devices</a>
-      <a href="#usage" data-view="usage">Product usage</a>
-      <a href="#health" data-view="health">System health</a>
+      <a href="#overview" data-view="overview" data-icon="squares-four">Overview</a>
+      <a href="#customers" data-view="customers" data-icon="users-three">Customers</a>
+      <a href="#devices" data-view="devices" data-icon="devices">Devices</a>
+      <a href="#usage" data-view="usage" data-icon="chart-bar">Product usage</a>
+      <a href="#health" data-view="health" data-icon="heartbeat">System health</a>
     </nav>
 
     <form class="kd-filters" id="kdFilters" aria-label="Filters">
-      <label>Period
-        <select name="period">
+      <div class="kd-field">
+        <label class="kd-field-label" for="kdPeriod">Period</label>
+        <select name="period" id="kdPeriod">
           <option value="7">Last 7 days</option>
           <option value="30" selected>Last 30 days</option>
           <option value="90">Last 90 days</option>
           <option value="custom">Custom…</option>
         </select>
-      </label>
-      <label class="kd-custom">From <input type="date" name="from"></label>
-      <label class="kd-custom">To <input type="date" name="to"></label>
-      <label>Platform
-        <select name="platform">
-          <option value="all">All</option>
+      </div>
+      <div class="kd-field kd-custom"><label class="kd-field-label" for="kdFrom">From</label><input type="date" name="from" id="kdFrom"></div>
+      <div class="kd-field kd-custom"><label class="kd-field-label" for="kdTo">To</label><input type="date" name="to" id="kdTo"></div>
+      <div class="kd-field">
+        <label class="kd-field-label" for="kdPlatform">Platform</label>
+        <select name="platform" id="kdPlatform">
+          <option value="all">All platforms</option>
           <option value="macos">macOS</option>
           <option value="windows">Windows</option>
           <option value="chrome">Chrome</option>
         </select>
-      </label>
-      <label>Accounts
-        <select name="class">
-          <option value="all">All</option>
-          <option value="unmarked">Unmarked</option>
-          <option value="internal">Internal</option>
-          <option value="test">Test</option>
+      </div>
+      <div class="kd-field">
+        <span class="kd-field-label"><label for="kdClass">Account type</label><span data-tip="Internal: Kapture's own accounts. Test: accounts explicitly marked for testing. Unmarked: accounts that are neither. Unmarked is not proof of a real customer."></span></span>
+        <select name="class" id="kdClass">
+          <option value="all">All accounts</option>
+          <option value="unmarked">Unmarked only</option>
+          <option value="internal">Internal only</option>
+          <option value="test">Test only</option>
         </select>
-      </label>
-      <label class="kd-plan">Plan
-        <select name="plan">
-          <option value="all">All</option>
+      </div>
+      <div class="kd-field kd-plan">
+        <label class="kd-field-label" for="kdPlan">Plan</label>
+        <select name="plan" id="kdPlan">
+          <option value="all">All plans</option>
           <option value="monthly">Monthly</option>
           <option value="annual">Annual</option>
         </select>
-      </label>
+      </div>
     </form>
 
     <p class="kd-state" data-panel="loading" role="status">Loading figures…</p>
@@ -98,6 +102,7 @@
   </div>
 </main>
 
-<script src="admin.js?v=3"></script>
+<script src="icons.js?v=1"></script>
+<script src="admin.js?v=4"></script>
 </body>
 </html>
