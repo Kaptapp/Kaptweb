@@ -1018,14 +1018,14 @@ FIX = {
 },
 
 # ---------------------------------------------------------------- account entry in the header
-'<a class="btn btn-ghost btn-sm" href="/account/">Account</a>': {
- 'es': '<a class="btn btn-ghost btn-sm" href="/account/">Cuenta</a>',
- 'zh': '<a class="btn btn-ghost btn-sm" href="/account/">账户</a>',
- 'ko': '<a class="btn btn-ghost btn-sm" href="/account/">계정</a>',
- 'ja': '<a class="btn btn-ghost btn-sm" href="/account/">アカウント</a>',
- 'de': '<a class="btn btn-ghost btn-sm" href="/account/">Konto</a>',
- 'fr': '<a class="btn btn-ghost btn-sm" href="/account/">Compte</a>',
- 'pt-br': '<a class="btn btn-ghost btn-sm" href="/account/">Conta</a>',
- 'it': '<a class="btn btn-ghost btn-sm" href="/account/">Account</a>'},
+'<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="Sign in" data-label-in="My Account">Sign in</a>': {
+ 'es': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="Iniciar sesión" data-label-in="Mi cuenta">Iniciar sesión</a>',
+ 'zh': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="登录" data-label-in="我的账户">登录</a>',
+ 'ko': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="로그인" data-label-in="내 계정">로그인</a>',
+ 'ja': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="サインイン" data-label-in="マイアカウント">サインイン</a>',
+ 'de': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="Anmelden" data-label-in="Mein Konto">Anmelden</a>',
+ 'fr': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="Se connecter" data-label-in="Mon compte">Se connecter</a>',
+ 'pt-br': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="Entrar" data-label-in="Minha conta">Entrar</a>',
+ 'it': '<a class="btn btn-ghost btn-sm" href="/account/" data-label-out="Sign in" data-label-in="My Account">Sign in</a>'},
 
 }
