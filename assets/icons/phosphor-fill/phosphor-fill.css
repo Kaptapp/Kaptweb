@@ -1,0 +1,98 @@
+/* Phosphor Icons 2.1.2, Fill weight (MIT, Copyright (c) 2023 Phosphor Icons).
+   Subset of @phosphor-icons/web to the icons in icons.txt; built by
+   tools/build_phosphor_fill.py. Do not edit by hand. */
+@font-face {
+  font-family: "Phosphor-Fill";
+  src: url("phosphor-fill.woff2?v=2.1.2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.ph-fill {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Phosphor-Fill" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ph-fill.ph-apple-logo:before { content: "\e516"; }
+.ph-fill.ph-arrow-counter-clockwise:before { content: "\e038"; }
+.ph-fill.ph-arrow-down:before { content: "\e03e"; }
+.ph-fill.ph-arrow-up:before { content: "\e08e"; }
+.ph-fill.ph-arrows-clockwise:before { content: "\e094"; }
+.ph-fill.ph-buildings:before { content: "\e102"; }
+.ph-fill.ph-calendar-blank:before { content: "\e10a"; }
+.ph-fill.ph-calendar-check:before { content: "\e712"; }
+.ph-fill.ph-camera:before { content: "\e10e"; }
+.ph-fill.ph-chart-bar:before { content: "\e150"; }
+.ph-fill.ph-chart-line-up:before { content: "\e156"; }
+.ph-fill.ph-check-circle:before { content: "\e184"; }
+.ph-fill.ph-circle-dashed:before { content: "\e602"; }
+.ph-fill.ph-clock:before { content: "\e19a"; }
+.ph-fill.ph-clock-counter-clockwise:before { content: "\e1a0"; }
+.ph-fill.ph-copy:before { content: "\e1ca"; }
+.ph-fill.ph-credit-card:before { content: "\e1d2"; }
+.ph-fill.ph-currency-gbp:before { content: "\e556"; }
+.ph-fill.ph-cursor-click:before { content: "\e7c8"; }
+.ph-fill.ph-database:before { content: "\e1de"; }
+.ph-fill.ph-devices:before { content: "\eba4"; }
+.ph-fill.ph-flask:before { content: "\e79e"; }
+.ph-fill.ph-folder-plus:before { content: "\e258"; }
+.ph-fill.ph-gear-six:before { content: "\e272"; }
+.ph-fill.ph-google-chrome-logo:before { content: "\e976"; }
+.ph-fill.ph-heartbeat:before { content: "\e2ac"; }
+.ph-fill.ph-hourglass-medium:before { content: "\e2b8"; }
+.ph-fill.ph-identification-card:before { content: "\e2c8"; }
+.ph-fill.ph-image-square:before { content: "\e2cc"; }
+.ph-fill.ph-info:before { content: "\e2ce"; }
+.ph-fill.ph-lightning:before { content: "\e2de"; }
+.ph-fill.ph-link-simple:before { content: "\e2e6"; }
+.ph-fill.ph-list:before { content: "\e2f0"; }
+.ph-fill.ph-magnifying-glass:before { content: "\e30c"; }
+.ph-fill.ph-minus:before { content: "\e32a"; }
+.ph-fill.ph-monitor:before { content: "\e32e"; }
+.ph-fill.ph-note-pencil:before { content: "\e34c"; }
+.ph-fill.ph-plugs-connected:before { content: "\eb5a"; }
+.ph-fill.ph-prohibit:before { content: "\e3de"; }
+.ph-fill.ph-pulse:before { content: "\e000"; }
+.ph-fill.ph-question:before { content: "\e3e8"; }
+.ph-fill.ph-receipt:before { content: "\e3ec"; }
+.ph-fill.ph-rocket-launch:before { content: "\e3fe"; }
+.ph-fill.ph-seal-check:before { content: "\e606"; }
+.ph-fill.ph-shield-check:before { content: "\e40c"; }
+.ph-fill.ph-sparkle:before { content: "\e6a2"; }
+.ph-fill.ph-squares-four:before { content: "\e464"; }
+.ph-fill.ph-stack:before { content: "\e466"; }
+.ph-fill.ph-sun:before { content: "\e472"; }
+.ph-fill.ph-tag:before { content: "\e478"; }
+.ph-fill.ph-toggle-left:before { content: "\e674"; }
+.ph-fill.ph-toggle-right:before { content: "\e676"; }
+.ph-fill.ph-trash:before { content: "\e4a6"; }
+.ph-fill.ph-tray-arrow-down:before { content: "\e010"; }
+.ph-fill.ph-user-check:before { content: "\eafa"; }
+.ph-fill.ph-user-plus:before { content: "\e4d0"; }
+.ph-fill.ph-users:before { content: "\e4d6"; }
+.ph-fill.ph-users-three:before { content: "\e68e"; }
+.ph-fill.ph-wallet:before { content: "\e68a"; }
+.ph-fill.ph-warning-circle:before { content: "\e4e2"; }
+.ph-fill.ph-windows-logo:before { content: "\e692"; }
+.ph-fill.ph-x-circle:before { content: "\e4f8"; }

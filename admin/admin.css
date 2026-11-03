@@ -24,6 +24,11 @@
   --kd-card-2: var(--surface-2);
   --kd-gap: 14px;
   --kd-pad: 18px 20px;
+  /* Icon sizes: Phosphor Fill only, in these four sizes. */
+  --kd-i-lg: 20px;   /* KPI and status badges, section headings, notices */
+  --kd-i-md: 16px;   /* navigation, chart titles, tables and lists */
+  --kd-i-sm: 14px;   /* information buttons */
+  --kd-i-xs: 12px;   /* inside tags and comparison pills */
 }
 /* This page does not load script.js, which gives the sticky header its
    background on scroll, so it gets a solid one here. */
@@ -32,19 +37,21 @@
 .kd-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---- icons --------------------------------------------------------------- */
-.kd-i { width: 1em; height: 1em; flex: 0 0 auto; fill: currentColor; display: inline-block; vertical-align: -.125em; }
+/* Every icon is an <i class="kd-i ph-fill ph-NAME">: a square glyph box in the
+   current text colour, sized by font-size from the scale above. */
+.kd-i { display: inline-block; flex: 0 0 auto; width: 1em; height: 1em; line-height: 1; text-align: center; vertical-align: -.125em; font-size: var(--kd-i-md); }
 
 /* ---- head, status chips ------------------------------------------------ */
 .kd-head { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; justify-content: space-between; }
 .kd-head h1 { font-size: clamp(28px, 3.6vw, 36px); line-height: 1.1; }
 .kd-meta { margin-top: 6px; color: var(--text-dim); font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
-.kd-meta .kd-i { color: var(--text-muted); }
+.kd-meta .kd-i { color: var(--text-muted); font-size: var(--kd-i-md); }
 .kd-status-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .kd-chip {
   display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-dim);
   border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px 4px 9px; background: var(--kd-quiet-bg);
 }
-.kd-chip .kd-i { font-size: 15px; color: var(--text-muted); }
+.kd-chip .kd-i { font-size: var(--kd-i-md); color: var(--text-muted); }
 .kd-chip.is-on .kd-i { color: var(--kd-good); }
 
 /* ---- tabs -------------------------------------------------------------- */
@@ -57,7 +64,7 @@
   flex: 0 0 auto; display: inline-flex; align-items: center; gap: 7px; padding: 10px 14px; font-size: 15px;
   color: var(--text-dim); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap;
 }
-.kd-tabs a .kd-i { font-size: 17px; }
+.kd-tabs a .kd-i { font-size: var(--kd-i-md); }
 .kd-tabs a:hover { color: var(--text); }
 .kd-tabs a:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; border-radius: 6px; }
 .kd-tabs a[aria-current="page"] { color: var(--text); border-bottom-color: var(--teal); }
@@ -66,7 +73,7 @@
 /* ---- filters ----------------------------------------------------------- */
 .kd-filters { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-end; margin-top: 16px; }
 .kd-field { display: flex; flex-direction: column; gap: 4px; }
-.kd-field-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); letter-spacing: .02em; }
+.kd-field-label { display: inline-flex; align-items: center; gap: 0; font-size: 12px; color: var(--text-dim); letter-spacing: .02em; }
 .kd-filters select, .kd-filters input {
   font: inherit; font-size: 14px; color: var(--text); background: var(--surface);
   border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; min-width: 120px;
@@ -95,8 +102,8 @@
 /* ---- page rhythm --------------------------------------------------------- */
 .kd-view { margin-top: 20px; display: grid; gap: 28px; }
 .kd-block { display: grid; gap: var(--kd-gap); min-width: 0; }
-.kd-section-head { display: flex; align-items: center; gap: 9px; margin: 0; font-size: 17px; font-weight: 600; letter-spacing: .005em; }
-.kd-section-head .kd-i { font-size: 20px; color: var(--text-muted); }
+.kd-section-head { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 17px; font-weight: 600; letter-spacing: .005em; }
+.kd-section-head > .kd-i { font-size: var(--kd-i-lg); color: var(--text-muted); }
 .kd-grid { display: grid; gap: var(--kd-gap); grid-template-columns: repeat(12, minmax(0, 1fr)); }
 .kd-span-12 { grid-column: span 12; }
 .kd-span-8 { grid-column: span 8; }
@@ -117,7 +124,7 @@
   width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; flex: 0 0 auto;
   background: var(--kd-quiet-bg); color: var(--text-dim);
 }
-.kd-badge .kd-i { font-size: 18px; }
+.kd-badge .kd-i { font-size: var(--kd-i-lg); }
 .kd-tone-money .kd-badge { background: var(--kd-money-bg); color: var(--kd-money); }
 .kd-tone-grow .kd-badge { background: var(--kd-grow-bg); color: var(--kd-grow); }
 .kd-tone-use .kd-badge { background: var(--kd-use-bg); color: var(--kd-use); }
@@ -142,7 +149,7 @@
 .kd-kpi { display: flex; flex-direction: column; }
 .kd-kpi-top { display: flex; align-items: center; gap: 10px; min-width: 0; }
 /* Titles are one line by design: short labels, details in the tooltip. */
-.kd-kpi-label { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-dim); min-width: 0; }
+.kd-kpi-label { display: flex; align-items: center; gap: 0; font-size: 14px; color: var(--text-dim); min-width: 0; }
 .kd-kpi-title { white-space: nowrap; }
 .kd-kpi-value {
   margin-top: 14px; font-family: var(--font-title); font-size: 34px; line-height: 1.05; color: var(--text);
@@ -158,14 +165,14 @@
   display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-dim);
   background: var(--kd-quiet-bg); border-radius: 999px; padding: 3px 9px 3px 7px; line-height: 1.3;
 }
-.kd-delta .kd-i { font-size: 13px; }
+.kd-delta .kd-i { font-size: var(--kd-i-xs); }
 .kd-delta.is-up .kd-i { color: var(--kd-good); }
 .kd-delta.is-down .kd-i { color: var(--kd-warn); }
 
 /* ---- chart and list cards -------------------------------------------------- */
 .kd-panel-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; justify-content: space-between; }
 .kd-panel h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; margin: 0; }
-.kd-panel h3 .kd-i { font-size: 18px; color: var(--text-muted); }
+.kd-panel h3 > .kd-i { font-size: var(--kd-i-md); color: var(--text-muted); }
 .kd-panel-sub { font-size: 13px; color: var(--text-dim); margin: 5px 0 0; line-height: 1.5; }
 .kd-panel.is-test { border-style: dashed; border-color: var(--line-strong); }
 .kd-sub-head { margin: 18px 0 0; font-size: 13px; font-weight: 600; color: var(--text-dim); }
@@ -186,7 +193,7 @@
   display: flex; gap: 10px; align-items: flex-start; padding: 11px 14px; border-radius: var(--radius);
   background: var(--kd-quiet-bg); border: 1px solid var(--line); font-size: 13.5px; color: var(--text-dim); line-height: 1.5;
 }
-.kd-notice > .kd-i { font-size: 18px; margin-top: 1px; color: var(--text-muted); }
+.kd-notice > .kd-i { font-size: var(--kd-i-lg); color: var(--text-muted); }
 .kd-notice strong { color: var(--text); font-weight: 600; }
 .kd-notice.is-warn { background: var(--kd-warn-bg); border-color: rgba(242, 180, 90, .25); }
 .kd-notice.is-warn > .kd-i { color: var(--kd-warn); }
@@ -241,7 +248,7 @@
 .kd-hbars li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 12px; font-size: 13.5px; align-items: center; }
 .kd-hb-label { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; color: var(--text); min-width: 0; }
 .kd-hb-label > span:not(.kd-tag) { overflow-wrap: anywhere; }
-.kd-hb-label .kd-i { color: var(--text-muted); font-size: 16px; }
+.kd-hb-label > .kd-i { color: var(--text-muted); font-size: var(--kd-i-md); }
 .kd-hb-value { color: var(--text-dim); font-variant-numeric: tabular-nums; text-align: right; }
 .kd-hb-track { grid-column: 1 / -1; display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, .06); overflow: hidden; }
 .kd-hb-fill { display: block; height: 100%; border-radius: 3px; background: var(--kd-grow); }
@@ -257,18 +264,19 @@
   display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; line-height: 1.4; color: var(--text-dim);
   border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap;
 }
-.kd-tag .kd-i { font-size: 12px; }
+.kd-tag .kd-i { font-size: var(--kd-i-xs); }
 .kd-tag.is-good { color: var(--kd-good); border-color: rgba(90, 209, 154, .3); }
 .kd-tag.is-warn { color: var(--kd-warn); border-color: rgba(242, 180, 90, .3); }
 .kd-tag.is-bad { color: var(--kd-bad); border-color: rgba(242, 135, 122, .3); }
 .kd-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.kd-row-tag { margin-left: 8px; vertical-align: 1px; }
 
 /* ---- empty states ---------------------------------------------------------- */
 .kd-empty {
   display: flex; align-items: flex-start; gap: 11px; margin-top: 14px; padding: 12px 14px;
   border-radius: 12px; background: var(--kd-quiet-bg); font-size: 13.5px; color: var(--text-dim); line-height: 1.5;
 }
-.kd-empty > .kd-i { font-size: 20px; color: var(--text-muted); margin-top: 1px; }
+.kd-empty > .kd-i { font-size: var(--kd-i-lg); color: var(--text-muted); }
 .kd-empty strong { display: block; color: var(--text); font-weight: 600; }
 
 /* ---- recent activity (today / yesterday / 7 days) --------------------------- */
@@ -278,7 +286,7 @@
 .kd-recent thead th { white-space: normal; font-size: 12.5px; font-weight: 500; color: var(--text-dim); vertical-align: bottom; }
 .kd-recent thead th small { display: block; font-size: 11.5px; color: var(--text-muted); font-weight: 400; }
 .kd-recent tbody th { text-align: left; font-weight: 400; color: var(--text); }
-.kd-recent tbody th .kd-i { color: var(--text-muted); margin-right: 8px; font-size: 16px; }
+.kd-recent tbody th > .kd-i { color: var(--text-muted); margin-right: 8px; font-size: var(--kd-i-md); }
 .kd-recent td { font-variant-numeric: tabular-nums; font-size: 16px; }
 .kd-recent td.is-zero { color: var(--text-muted); }
 .kd-recent .is-today { background: rgba(25, 215, 192, .05); }
@@ -318,7 +326,7 @@
 .kd-platform { padding: 4px 24px 4px 0; min-width: 0; }
 .kd-platform + .kd-platform { padding: 4px 0 4px 24px; border-left: 1px solid var(--line); }
 .kd-platform-head { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 15px; }
-.kd-platform-head .kd-i { font-size: 20px; }
+.kd-platform-head > .kd-i { font-size: var(--kd-i-lg); }
 .kd-platform.is-mac .kd-platform-head .kd-i { color: var(--kd-device); }
 .kd-platform.is-win .kd-platform-head .kd-i { color: var(--kd-use); }
 .kd-platform .kd-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
@@ -340,7 +348,7 @@
   display: flex; gap: 10px; align-items: flex-start; padding: 11px 14px; border-radius: var(--radius);
   border: 1px solid var(--line); background: var(--kd-card); font-size: 14px; line-height: 1.45;
 }
-.kd-attn li > .kd-i { font-size: 18px; margin-top: 1px; }
+.kd-attn li > .kd-i { font-size: var(--kd-i-lg); }
 .kd-attn li.is-bad > .kd-i { color: var(--kd-bad); }
 .kd-attn li.is-warn > .kd-i { color: var(--kd-warn); }
 .kd-attn small { display: block; color: var(--text-dim); font-size: 12.5px; }
@@ -361,11 +369,16 @@
 }
 
 /* ---- tooltips -------------------------------------------------------------- */
-.kd-tip { position: relative; display: inline-flex; }
+/* The information button sits right after its label: a 20px target holding a
+   14px icon, so the visible gap is 6px wherever it appears. In headings,
+   which space their children with an 8px gap, the margin takes that back. */
+.kd-tip { position: relative; display: inline-flex; flex: 0 0 auto; vertical-align: middle; margin-left: 3px; }
+.kd-section-head > .kd-tip, .kd-panel h3 > .kd-tip { margin-left: -5px; }
 .kd-tip button {
-  display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; border: 0; background: none;
-  color: var(--text-muted); cursor: help; padding: 0; font-size: 15px;
+  display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 0; background: none;
+  color: var(--text-muted); cursor: help; padding: 0;
 }
+.kd-tip button .kd-i { font-size: var(--kd-i-sm); }
 .kd-tip button:hover { color: var(--text); }
 .kd-tip button:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
 .kd-tip-body {
@@ -386,7 +399,7 @@
   .kd-recent td { font-size: 15px; }
   .kd-recent th, .kd-recent td { padding: 8px 5px; }
   .kd-recent tbody th { white-space: normal; }
-  .kd-recent tbody th .kd-i { display: none; }
+  .kd-recent tbody th > .kd-i { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .kd[data-state="refreshing"] [data-panel="ready"], .kd-details > summary::before { transition: none; }

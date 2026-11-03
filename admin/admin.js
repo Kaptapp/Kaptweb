@@ -13,7 +13,6 @@
   var PREFS_KEY = 'kapture.dashboard';
   var SVGNS = 'http://www.w3.org/2000/svg';
   var VIEWS = ['overview', 'customers', 'devices', 'usage', 'health'];
-  var ICONS = window.kdIcons || {};
 
   var main = document.querySelector('.kd');
   var body = document.getElementById('kdBody');
@@ -116,17 +115,21 @@
     Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
     return e;
   }
+  /* Phosphor Fill, the only icon weight on this page (assets/icons/phosphor-fill). */
   function icon(name, cls) {
-    var s = svg('svg', { viewBox: '0 0 256 256', 'class': 'kd-i' + (cls ? ' ' + cls : ''), 'aria-hidden': 'true', focusable: 'false' });
-    if (ICONS[name]) s.appendChild(svg('path', { d: ICONS[name] }));
-    return s;
+    var i = el('i', 'kd-i ph-fill ph-' + name + (cls ? ' ' + cls : ''));
+    i.setAttribute('aria-hidden', 'true');
+    return i;
   }
   function add(parent) { for (var i = 1; i < arguments.length; i++) if (arguments[i]) parent.appendChild(typeof arguments[i] === 'string' ? document.createTextNode(arguments[i]) : arguments[i]); return parent; }
+  /* Information button: focusable, named, and described by its tooltip text. */
+  var tipCount = 0;
   function tip(text) {
-    var w = el('span', 'kd-tip');
-    var b = el('button'); b.type = 'button'; b.setAttribute('aria-label', 'What this means: ' + text);
+    var w = el('span', 'kd-tip'), id = 'kd-tip-' + (++tipCount);
+    var b = el('button'); b.type = 'button'; b.setAttribute('aria-label', 'More information'); b.setAttribute('aria-describedby', id);
     b.appendChild(icon('info'));
-    w.appendChild(b); w.appendChild(el('span', 'kd-tip-body', text));
+    var body = el('span', 'kd-tip-body', text); body.id = id; body.setAttribute('role', 'tooltip');
+    w.appendChild(b); w.appendChild(body);
     return w;
   }
   function n(v) { var x = Number(v); return isFinite(x) ? x : 0; }
@@ -210,6 +213,7 @@
     if (o.text || !/^[£$€−+<]?[\d.,%<+]+$/.test(String(o.value))) v.className += ' is-text';
     c.appendChild(v);
     if (o.sub) { var s = el('div', 'kd-kpi-sub'); if (typeof o.sub === 'string') s.textContent = o.sub; else s.appendChild(o.sub); c.appendChild(s); }
+    var uf = unfiltered(o.group); if (uf) { var ufw = el('div', 'kd-kpi-sub'); ufw.appendChild(uf); c.appendChild(ufw); }
     if (o.delta) { var f = el('div', 'kd-kpi-foot'); f.appendChild(o.delta); c.appendChild(f); }
     parent.appendChild(c);
     parent.setAttribute('data-n', Math.min(4, parent.children.length));
@@ -241,6 +245,7 @@
     h.appendChild(document.createTextNode(title));
     if (o.help) h.appendChild(tip(o.help));
     head.appendChild(h);
+    var uf = unfiltered(o.group); if (uf) head.appendChild(uf);
     p.appendChild(head);
     p.head = head;
     if (o.sub) p.appendChild(el('p', 'kd-panel-sub', o.sub));
@@ -449,6 +454,7 @@
     rows.forEach(function (r) {
       var tr = el('tr'), name = el('th'); name.scope = 'row';
       name.appendChild(icon(r.icon)); name.appendChild(document.createTextNode(r.name)); if (r.help) name.appendChild(tip(r.help));
+      var uf = unfiltered(r.group); if (uf) { uf.classList.add('kd-row-tag'); name.appendChild(uf); }
       tr.appendChild(name);
       var cell = function (points, cls) {
         var v = r.sum(points), td = el('td', cls, v.text);
@@ -492,6 +498,14 @@
       notice(parent, CLASS[k].icon, [el('strong', null, CLASS[k].name + ' accounts only. '), CLASS[k].about + ' These figures are not customer activity.']);
     }
   }
+  /* A figure the current filters cannot narrow (licence checks and usage
+     statistics are recorded without an account) says so where it is shown. */
+  function unfiltered(group) {
+    var sc = group ? scope([group]) : '';
+    if (!sc) return null;
+    var t = tag(cap(sc), 'is-warn', 'info'); t.title = 'Recorded without an account, so this figure includes every account type.';
+    return t;
+  }
   function scopeNote(parent, groups, what) {
     var sc = scope(groups);
     if (sc) notice(parent, 'info', [what + ' ' + sc + '.']);
@@ -529,7 +543,7 @@
     history_used: ['Capture history used', 'clock-counter-clockwise'], pro_banner: ['Pro banner', 'sparkle'], link_opened: ['Link opened', 'link-simple']
   };
   function eventName(e) { return (EVENTS[e] || [words(e)])[0]; }
-  function eventIcon(e) { var i = (EVENTS[e] || [])[1]; return ICONS[i] ? i : 'lightning'; }
+  function eventIcon(e) { return (EVENTS[e] || [])[1] || 'lightning'; }
 
   /* Feature totals grouped by event across platforms, in rank order. */
   function featureRows() {
@@ -580,7 +594,7 @@
       { name: 'Trials started', icon: 'hourglass-medium', sum: sumKey('trials') },
       { name: 'Payments received', icon: 'currency-gbp', sum: sumKey('revenue_cents', true), help: 'Live payments only, in GBP.' },
       { name: 'Device activations', icon: 'plugs-connected', sum: sumKey('activations') },
-      { name: 'Daily app activity', icon: 'pulse', sum: sumKey('anonymous_active'), late: true,
+      { name: 'Daily app activity', icon: 'pulse', sum: sumKey('anonymous_active'), late: true, group: 'anonymous',
         help: 'Anonymous: each install counts once for each day it is used. Apps send these totals about once a day, so today and yesterday fill in later.' }
     ]);
 
@@ -597,11 +611,11 @@
     var p2 = panel(g2, 4, 'Revenue received per day', { icon: 'currency-gbp', help: 'Live payments on the day they were received. GBP only.' });
     moneyDays(p2, data.series, 'revenue_cents', 'Received');
 
-    var p3 = panel(g2, 6, 'Daily app activity', { icon: 'pulse', help: 'Anonymous totals: each install counts once for each day it is used. Without an identifier this cannot say how many different people used Kapture.' });
+    var p3 = panel(g2, 6, 'Daily app activity', { icon: 'pulse', group: 'anonymous', help: 'Anonymous totals: each install counts once for each day it is used. Without an identifier this cannot say how many different people used Kapture.' });
     bars(p3, data.series, [{ key: 'anonymous_active', name: 'Active installs', c: 2 }], { height: 130, label: 'Daily app activity',
       emptyIcon: 'pulse', empty: data.switches.aggregate ? 'No app activity has arrived yet.' : 'Anonymous statistics are switched off.',
       emptyWhy: data.switches.aggregate ? ' Apps send anonymous totals about once a day after they are opened.' : '' });
-    var p4 = panel(g2, 6, 'Most used features', { icon: 'cursor-click', sub: 'Top actions in the period. Counts actions, not people.' });
+    var p4 = panel(g2, 6, 'Most used features', { icon: 'cursor-click', group: 'anonymous', sub: 'Top actions in the period. Counts actions, not people.' });
     var fr = featureRows().filter(function (r) { return r.event !== 'app_opened'; }).slice(0, 5);
     hbars(p4, fr.map(function (r) { return { label: eventName(r.event), icon: eventIcon(r.event), value: r.total.exact ? r.total.value : (r.total.text === '<5' ? '<5' : r.total.value), display: r.total.text, fill: 'kd-f2' }; }),
       ['cursor-click', data.switches.aggregate ? 'No feature activity yet.' : 'Anonymous statistics are switched off.', data.switches.aggregate ? ' It appears once apps send their daily totals.' : '']);
@@ -717,7 +731,7 @@
   function viewDevices(v) {
     var d = data.devices, k = data.kpi;
     var top = block(v);
-    scopeNote(top, ['devices', 'licence_checks'], 'These figures are');
+    scopeNote(top, ['devices'], 'Device figures are');
     if (data.filters.platform === 'chrome') notice(top, 'google-chrome-logo', ['Kapture for Chrome has no licence or licensed devices. These figures are for Kapture Pro on macOS and Windows.']);
     var sum = function (o) { return Object.keys(o).reduce(function (s, x) { return s + n(o[x]); }, 0); };
     var by = function (o) { return Object.keys(o).sort().map(function (x) { return plat(x) + ' ' + int(o[x]); }).join(' · ') || 'None yet'; };
@@ -736,7 +750,7 @@
       help: 'How many times a computer was activated. One device can activate more than once, and an activation is not a new customer.' });
     kpi(g, { icon: 'x-circle', tone: 'quiet', label: 'Deactivated', value: int(d.deactivations_in_period), sub: 'Devices removed from a licence',
       help: 'Devices removed from a licence in the period, by the user or automatically.' });
-    kpi(g, { icon: 'shield-check', tone: failed ? 'warn' : 'good', label: 'Licence checks', value: int(k.licence_checks.cur),
+    kpi(g, { icon: 'shield-check', tone: failed ? 'warn' : 'good', label: 'Licence checks', value: int(k.licence_checks.cur), group: 'licence_checks',
       sub: !checks ? 'None in this period' : checks >= 20 ? Math.round(100 * issued / checks) + '% issued a licence' : int(issued) + ' of ' + int(checks) + ' issued a licence',
       delta: delta(k.licence_checks.cur, k.licence_checks.prev),
       help: 'Background checks the apps make to confirm a licence. They are not user sessions, and one device checks many times.' });
@@ -747,7 +761,7 @@
     recentTable(pr, [
       { name: 'Activations on macOS', icon: 'apple-logo', sum: sumKey('activations_macos') },
       { name: 'Activations on Windows', icon: 'windows-logo', sum: sumKey('activations_windows') },
-      { name: 'Licences issued', icon: 'shield-check', sum: sumKey('licence_issued') }
+      { name: 'Licences issued', icon: 'shield-check', sum: sumKey('licence_issued'), group: 'licence_checks' }
     ]);
 
     // macOS and Windows.
@@ -780,13 +794,14 @@
     var pa = panel(og, 8, 'Activations per day', { sub: fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to) + ' · hover a day for details' });
     switcher(pa, [
       { label: 'Activations', defs: [{ key: 'activations_macos', name: 'macOS', c: 4 }, { key: 'activations_windows', name: 'Windows', c: 2 }], empty: 'No activations in this period.' },
-      { label: 'Licence checks', defs: [{ key: 'licence_issued', name: 'Licence issued', c: 1 }, { key: 'other_checks', name: 'Other answers', c: 5 }], empty: 'No licence checks in this period.' }
+      { label: 'Licence checks', group: 'licence_checks', defs: [{ key: 'licence_issued', name: 'Licence issued', c: 1 }, { key: 'other_checks', name: 'Other answers', c: 5 }], empty: 'No licence checks in this period.' }
     ], function (h, o) {
+      var uf = unfiltered(o.group); if (uf) { var ufp = el('p', 'kd-panel-sub'); ufp.appendChild(uf); h.appendChild(ufp); }
       var ser = data.series.map(function (p) { return Object.assign({}, p, { other_checks: Math.max(0, n(p.licence_checks) - n(p.licence_issued)) }); });
       bars(h, ser, o.defs, { label: o.label + ' per day', empty: o.empty, emptyIcon: 'plugs-connected' });
     });
     dailyTable(pa, ['activations_macos', 'activations_windows', 'licence_issued', 'licence_checks'], ['macOS activations', 'Windows activations', 'Licences issued', 'All licence checks']);
-    var po = panel(og, 4, 'Licence checks', { icon: 'shield-check', sub: 'Answers in the period' });
+    var po = panel(og, 4, 'Licence checks', { icon: 'shield-check', group: 'licence_checks', sub: 'Answers in the period' });
     var grouped = {};
     d.licence_outcomes.forEach(function (r) { grouped[r.outcome] = (grouped[r.outcome] || 0) + n(r.checks); });
     hbars(po, Object.keys(grouped).sort(function (a, b) { return grouped[b] - grouped[a]; }).map(function (o) {
@@ -1121,6 +1136,10 @@
   }
   main.addEventListener('mouseover', placeTip);
   main.addEventListener('focusin', placeTip);
+  // Escape closes an open tooltip, as it would any other popup.
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.activeElement && document.activeElement.closest && document.activeElement.closest('.kd-tip')) document.activeElement.blur();
+  });
   document.getElementById('kdRetry').addEventListener('click', load);
 
   syncForm();
