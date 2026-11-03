@@ -191,10 +191,10 @@
   function delta(cur, prev, fmt) {
     cur = n(cur); prev = n(prev); fmt = fmt || function (x) { return x.toLocaleString('en-GB'); };
     var d = cur - prev, s = el('span', 'kd-delta'), text;
-    if (!cur && !prev) { text = 'None in the previous ' + periodLabel() + ' either'; }
-    else if (!prev) { text = 'None in the previous ' + periodLabel(); }
-    else if (prev >= 5) { var pct = Math.round(100 * d / prev); text = (pct ? Math.abs(pct) + '% ' + (pct > 0 ? 'more' : 'less') : 'Same') + ' than the previous ' + periodLabel(); if (!pct) text = 'Same as the previous ' + periodLabel(); }
-    else { text = fmt(prev) + ' in the previous ' + periodLabel(); }
+    if (!cur && !prev) { text = 'None in either period'; }
+    else if (!prev) { text = 'None in previous ' + periodLabel(); }
+    else if (prev >= 5) { var pct = Math.round(100 * d / prev); text = pct ? Math.abs(pct) + '% ' + (pct > 0 ? 'up' : 'down') + ' vs previous ' + periodLabel() : 'Same as previous ' + periodLabel(); }
+    else { text = fmt(prev) + ' in previous ' + periodLabel(); }
     if (cur && d > 0) { s.className += ' is-up'; s.appendChild(icon('arrow-up')); }
     else if (d < 0) { s.className += ' is-down'; s.appendChild(icon('arrow-down')); }
     else s.appendChild(icon('minus'));
@@ -212,9 +212,11 @@
     var v = el('div', 'kd-kpi-value', o.value);
     if (o.text || !/^[£$€−+<]?[\d.,%<+]+$/.test(String(o.value))) v.className += ' is-text';
     c.appendChild(v);
-    if (o.sub) { var s = el('div', 'kd-kpi-sub'); if (typeof o.sub === 'string') s.textContent = o.sub; else s.appendChild(o.sub); c.appendChild(s); }
-    var uf = unfiltered(o.group); if (uf) { var ufw = el('div', 'kd-kpi-sub'); ufw.appendChild(uf); c.appendChild(ufw); }
-    if (o.delta) { var f = el('div', 'kd-kpi-foot'); f.appendChild(o.delta); c.appendChild(f); }
+    // No sentence under the value: what a card means is said once, in its
+    // section's intro and its tooltip. Figures that belong with the number
+    // (a platform split, today's count) go in a compact chip.
+    var chips = [o.delta, o.chip ? el('span', 'kd-delta', o.chip) : null, unfiltered(o.group)].filter(Boolean);
+    if (chips.length) { var f = el('div', 'kd-kpi-foot'); chips.forEach(function (x) { f.appendChild(x); }); c.appendChild(f); }
     parent.appendChild(c);
     parent.setAttribute('data-n', Math.min(4, parent.children.length));
     return c;
@@ -223,14 +225,19 @@
      the column count follows the number of cards (see data-n in the CSS). */
   function kpis(parent, featured) { var g = el('div', 'kd-kpis' + (featured ? ' is-hero' : '')); parent.appendChild(g); return g; }
 
-  function block(parent, title, iconName, help) {
+  /* A section: heading, then a short plain-language intro saying what its
+     cards and charts show. */
+  function block(parent, title, iconName, help, intro) {
     var b = el('section', 'kd-block');
     if (title) {
+      var head = el('div', 'kd-section-top');
       var h = el('h2', 'kd-section-head');
       if (iconName) h.appendChild(icon(iconName));
       h.appendChild(document.createTextNode(title));
       if (help) h.appendChild(tip(help));
-      b.appendChild(h);
+      head.appendChild(h);
+      if (intro) head.appendChild(el('p', 'kd-section-sub', intro));
+      b.appendChild(head);
     }
     parent.appendChild(b);
     return b;
@@ -470,7 +477,7 @@
     });
     t.appendChild(tb);
     var sc = el('div', 'kd-scroll'); sc.appendChild(t); parent.appendChild(sc);
-    parent.appendChild(el('p', 'kd-panel-sub', 'Days run midnight to midnight UTC. Today is still in progress' + (rows.some(function (r) { return r.late; }) ? '; — means not reported yet.' : '.')));
+    if (rows.some(function (r) { return r.late; })) parent.appendChild(el('p', 'kd-panel-sub', '— means not reported yet.'));
   }
   function sumKey(key, isMoney) {
     return function (points) {
@@ -562,32 +569,32 @@
 
   function viewOverview(v) {
     var k = data.kpi, rv = revenueTotals();
-    var top = block(v);
+    var top = block(v, 'At a glance', 'squares-four', null,
+      'Real money received and live subscriptions first. Then new sign-ups, free trials, the computers using Kapture Pro and how often computers were activated in the period.');
     classNotice(top);
 
     var hero = kpis(top, true);
     kpi(hero, { icon: 'currency-gbp', tone: 'money', label: 'Revenue received', value: money(rv.cur, rv.ccy),
-      sub: 'Real (live) payments in the last ' + periodLabel() + (rv.other.length ? '. Other currencies are on Customers.' : ''),
+      chip: rv.other.length ? 'GBP only · other currencies on Customers' : null,
       delta: delta(rv.cur, rv.prev, function (x) { return money(x, rv.ccy); }),
       help: 'Money actually paid through Stripe in live mode during the period. Stripe test-mode payments are never included.' });
     kpi(hero, { icon: 'credit-card', tone: 'money', label: 'Active subscriptions', value: int(k.active_subscriptions),
-      sub: 'Live subscriptions right now',
       help: 'Live Stripe subscriptions that are active or in a Stripe trial at this moment, whatever period is selected. Test-mode subscriptions are excluded.' });
 
     var g = kpis(top);
-    kpi(g, { icon: 'users', tone: 'grow', label: 'New sign-ups', value: int(k.new_accounts.cur), sub: 'Kapture accounts created',
+    kpi(g, { icon: 'users', tone: 'grow', label: 'New sign-ups', value: int(k.new_accounts.cur),
       delta: delta(k.new_accounts.cur, k.new_accounts.prev), help: 'Accounts created in the period. A sign-up is not necessarily a paying customer.' });
-    kpi(g, { icon: 'hourglass-medium', tone: 'grow', label: 'Trials started', value: int(k.trials_started.cur), sub: 'Free Kapture Pro trials',
+    kpi(g, { icon: 'hourglass-medium', tone: 'grow', label: 'Trials started', value: int(k.trials_started.cur),
       delta: delta(k.trials_started.cur, k.trials_started.prev), help: 'Kapture Pro free trials started in the period. Each account can start one trial.' });
-    kpi(g, { icon: 'monitor', tone: 'device', label: 'Devices using Kapture', value: int(k.active_devices), sub: 'Licensed computers that checked in',
+    kpi(g, { icon: 'monitor', tone: 'device', label: 'Devices using Kapture', value: int(k.active_devices),
       help: 'Computers with an active licence that checked in during the period. A device is a computer, not a person: one person can use several.' });
-    kpi(g, { icon: 'plugs-connected', tone: 'device', label: 'Device activations', value: int(k.activations.cur), sub: 'Computers signed in to Kapture Pro',
+    kpi(g, { icon: 'plugs-connected', tone: 'device', label: 'Device activations', value: int(k.activations.cur),
       delta: delta(k.activations.cur, k.activations.prev),
       help: 'How many times a computer was activated. One computer can activate more than once (for example after reinstalling), so this is not a count of devices, people or new customers.' });
     scopeNote(top, ['payments', 'accounts', 'subscriptions'], 'Revenue, subscriptions and sign-ups are');
 
     // What changed recently.
-    var gr = grid(block(v, 'Recent activity', 'calendar-check'));
+    var gr = grid(block(v, 'Recent activity', 'calendar-check', null, 'What happened today so far, yesterday and over the last seven days. Days run midnight to midnight UTC.'));
     var pr = panel(gr, 12, 'Today, yesterday and the last 7 days');
     recentTable(pr, [
       { name: 'New sign-ups', icon: 'users', sum: sumKey('registrations') },
@@ -599,9 +606,9 @@
     ]);
 
     // Trends.
-    var tb = block(v, 'Over the period', 'chart-line-up');
+    var tb = block(v, 'Over the period', 'chart-line-up', null, 'Day by day across the selected period. Hover over a day to see its figures.');
     var g2 = grid(tb);
-    var p1 = panel(g2, 8, 'Growth per day', { sub: fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to) + ' · hover a day for details' });
+    var p1 = panel(g2, 8, 'Growth per day');
     switcher(p1, [
       { label: 'Sign-ups and trials', defs: [{ key: 'registrations', name: 'New sign-ups', c: 1 }, { key: 'trials', name: 'Trials started', c: 2 }], empty: 'No sign-ups or trials in this period.' },
       { label: 'Device activations', defs: [{ key: 'activations_macos', name: 'macOS', c: 4 }, { key: 'activations_windows', name: 'Windows', c: 2 }], empty: 'No device activations in this period.' }
@@ -624,51 +631,52 @@
 
   function viewCustomers(v) {
     var c = data.customers, k = data.kpi, rv = revenueTotals();
-    var top = block(v);
+    var top = block(v, 'At a glance', 'squares-four', null,
+      'Everyone with a Kapture account of the selected type, live subscriptions right now and real money received in the period. Below that: new sign-ups, accounts with a confirmed email, free trials running now, and how many trials became paid.');
     classNotice(top);
     scopeNote(top, ['accounts', 'trials', 'subscriptions', 'payments'], 'These figures are');
 
     var hero = kpis(top, true);
-    kpi(hero, { icon: 'users', tone: 'grow', label: 'Total accounts', value: int(c.accounts_total), sub: 'All time, for the selected account type',
+    kpi(hero, { icon: 'users', tone: 'grow', label: 'Total accounts', value: int(c.accounts_total),
       help: 'Every Kapture account of the selected type, whenever it was created.' });
-    kpi(hero, { icon: 'credit-card', tone: 'money', label: 'Active subscriptions', value: int(k.active_subscriptions), sub: 'Live subscriptions right now',
+    kpi(hero, { icon: 'credit-card', tone: 'money', label: 'Active subscriptions', value: int(k.active_subscriptions),
       help: 'Live Stripe subscriptions that are active or in a Stripe trial at this moment. Test-mode subscriptions are excluded.' });
-    kpi(hero, { icon: 'currency-gbp', tone: 'money', label: 'Revenue received', value: money(rv.cur, rv.ccy), sub: 'Real (live) payments in the last ' + periodLabel(),
+    kpi(hero, { icon: 'currency-gbp', tone: 'money', label: 'Revenue received', value: money(rv.cur, rv.ccy),
       delta: delta(rv.cur, rv.prev, function (x) { return money(x, rv.ccy); }),
       help: 'Money actually paid through Stripe in live mode during the period. Stripe test-mode payments are never included.' });
 
     var g = kpis(top);
-    kpi(g, { icon: 'user-plus', tone: 'grow', label: 'New sign-ups', value: int(k.new_accounts.cur), sub: 'Accounts created', delta: delta(k.new_accounts.cur, k.new_accounts.prev) });
-    kpi(g, { icon: 'user-check', tone: 'grow', label: 'Confirmed accounts', value: int(c.confirmed_total), sub: int(c.confirmed_in_period) + ' confirmed in the period',
+    kpi(g, { icon: 'user-plus', tone: 'grow', label: 'New sign-ups', value: int(k.new_accounts.cur), delta: delta(k.new_accounts.cur, k.new_accounts.prev) });
+    kpi(g, { icon: 'user-check', tone: 'grow', label: 'Confirmed accounts', value: int(c.confirmed_total), chip: int(c.confirmed_in_period) + ' this period',
       help: 'Accounts whose email address has been confirmed, all time.' });
-    kpi(g, { icon: 'hourglass-medium', tone: 'grow', label: 'Active trials', value: int(c.trials_active), sub: int(c.trials_started) + ' started · ' + int(c.trials_ended) + ' ended in the period',
+    kpi(g, { icon: 'hourglass-medium', tone: 'grow', label: 'Active trials', value: int(c.trials_active), chip: int(c.trials_started) + ' started · ' + int(c.trials_ended) + ' ended',
       help: 'Kapture Pro free trials running right now.' });
     var conv = c.conversion;
     if (!n(conv.eligible)) {
       kpi(g, { icon: 'chart-line-up', tone: 'quiet', label: 'Trial conversion', value: 'Not enough history yet', text: true,
-        sub: 'No trials have reached the conversion measurement window.',
-        help: 'Share of trials that became a paid live subscription within 21 days. Only trials started at least 21 days ago count, and a percentage is shown from 5 such trials.' });
+        help: 'No trial has reached the 21-day measurement window yet. Share of trials that became a paid live subscription within 21 days. Only trials started at least 21 days ago count, and a percentage is shown from 5 such trials.' });
     } else {
       kpi(g, { icon: 'chart-line-up', tone: 'grow', label: 'Trial conversion',
         value: conv.eligible >= 5 ? Math.round(100 * conv.converted / conv.eligible) + '%' : int(conv.converted) + ' of ' + int(conv.eligible), text: conv.eligible < 5,
-        sub: conv.eligible >= 5 ? int(conv.converted) + ' of ' + int(conv.eligible) + ' trials became paid within 21 days' : 'Trials that became paid within 21 days. A percentage is shown from 5 trials.',
+        chip: conv.eligible >= 5 ? int(conv.converted) + ' of ' + int(conv.eligible) + ' trials' : null,
         help: 'Share of trials that became a paid live subscription within 21 days. Only trials started at least 21 days ago count.' });
     }
 
     // Subscriptions.
-    var sb = block(v, 'Subscriptions', 'arrows-clockwise');
+    var sb = block(v, 'Subscriptions', 'arrows-clockwise', null,
+      'Live paid subscriptions that started in the period, are set to cancel at the end of their billing period, or ended in the period. Stripe test-mode subscriptions are never counted.');
     var gs = kpis(sb);
-    kpi(gs, { icon: 'credit-card', tone: 'money', label: 'New subscriptions', value: int(c.subscriptions_new), sub: 'Live, started in the period',
+    kpi(gs, { icon: 'credit-card', tone: 'money', label: 'New subscriptions', value: int(c.subscriptions_new),
       help: 'Live Stripe subscriptions created in the period.' });
-    kpi(gs, { icon: 'calendar-blank', tone: c.subscriptions_set_to_cancel ? 'warn' : 'quiet', label: 'Ending soon', value: int(c.subscriptions_set_to_cancel), sub: 'Set to cancel at period end',
+    kpi(gs, { icon: 'calendar-blank', tone: c.subscriptions_set_to_cancel ? 'warn' : 'quiet', label: 'Ending soon', value: int(c.subscriptions_set_to_cancel),
       help: 'Active live subscriptions that are set to cancel at the end of their current billing period.' });
-    kpi(gs, { icon: 'x-circle', tone: 'quiet', label: 'Ended', value: int(c.subscriptions_cancelled), sub: 'Live subscriptions ended in the period' });
+    kpi(gs, { icon: 'x-circle', tone: 'quiet', label: 'Ended', value: int(c.subscriptions_cancelled) });
     if (c.subscriptions_test_mode) notice(sb, 'flask', [int(c.subscriptions_test_mode) + ' active test-mode ' + plural(c.subscriptions_test_mode, 'subscription') + ' left out of every figure here.']);
 
     // Over the period.
-    var ob = block(v, 'Over the period', 'chart-line-up');
+    var ob = block(v, 'Over the period', 'chart-line-up', null, 'Day by day across the selected period. Hover over a day to see its figures.');
     var og = grid(ob);
-    var p1 = panel(og, 8, 'Sign-ups and trials per day', { sub: fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to) + ' · hover a day for details' });
+    var p1 = panel(og, 8, 'Sign-ups and trials per day');
     switcher(p1, [
       { label: 'Both', defs: [{ key: 'registrations', name: 'New sign-ups', c: 1 }, { key: 'trials', name: 'Trials started', c: 2 }] },
       { label: 'Sign-ups', defs: [{ key: 'registrations', name: 'New sign-ups', c: 1 }] },
@@ -686,7 +694,8 @@
       ['hourglass-medium', 'No trials started in this period.', '']);
 
     // Revenue: real money and test money never share a panel.
-    var r = block(v, 'Revenue', 'currency-gbp', 'Revenue is money actually paid in the period. It is not recurring subscription value: an annual plan pays once a year, a monthly plan once a month.');
+    var r = block(v, 'Revenue', 'currency-gbp', 'Revenue is not recurring subscription value: an annual plan pays once a year, a monthly plan once a month.',
+      'Money actually received in the period, by account type. Payments made in Stripe’s test mode are shown separately and are never counted as revenue.');
     var gr = grid(r);
     var live = c.payments.filter(function (x) { return x.mode === 'live'; }), test = c.payments.filter(function (x) { return x.mode !== 'live'; });
     var className = function (x) { return (CLASS[x['class']] || { name: cap(x['class']) }).name; };
@@ -707,11 +716,12 @@
     if (rv.other.length) ph.appendChild(el('p', 'kd-panel-sub', 'Also received in other currencies: ' + rv.other.map(function (o) { return money(o.cur, o.currency); }).join(', ') + '.'));
 
     // Account types: always all three, whatever the filter.
-    var ct = block(v, 'Account types', 'identification-card', 'Account types come from existing records only. They are never guessed from behaviour. This section always shows all three types, whatever the filter.');
+    var ct = block(v, 'Account types', 'identification-card', 'Account types come from existing records only. They are never guessed from behaviour.',
+      'Internal accounts are Kapture’s own. Test accounts are marked for billing tests. Unmarked is everyone else, which does not prove they are real customers. This always shows all three, whatever the filter.');
     var cg = kpis(ct);
     ['unmarked', 'internal', 'test'].forEach(function (key) {
       var s = c.segments.filter(function (x) { return x['class'] === key; })[0] || {};
-      var card = kpi(cg, { icon: CLASS[key].icon, tone: key === 'unmarked' ? 'grow' : 'quiet', label: CLASS[key].name, value: int(s.accounts), sub: CLASS[key].about });
+      var card = kpi(cg, { icon: CLASS[key].icon, tone: key === 'unmarked' ? 'grow' : 'quiet', label: CLASS[key].name, value: int(s.accounts), help: CLASS[key].about });
       var f = el('div', 'kd-kpi-foot'); card.appendChild(f);
       stats(f, [['Active trials', int(s.trials_active)], ['Live subscriptions', int(s.subscriptions_live)], ['Live payments, all time', money(s.revenue_live_cents)]]).className += ' is-compact';
     });
@@ -730,7 +740,8 @@
 
   function viewDevices(v) {
     var d = data.devices, k = data.kpi;
-    var top = block(v);
+    var top = block(v, 'At a glance', 'squares-four', null,
+      'Licensed devices are computers activated for Kapture Pro right now; connected devices checked in during the period. An activation is each time a computer signs in, so one computer can count more than once. Licence checks are automatic background checks by the apps.');
     scopeNote(top, ['devices'], 'Device figures are');
     if (data.filters.platform === 'chrome') notice(top, 'google-chrome-logo', ['Kapture for Chrome has no licence or licensed devices. These figures are for Kapture Pro on macOS and Windows.']);
     var sum = function (o) { return Object.keys(o).reduce(function (s, x) { return s + n(o[x]); }, 0); };
@@ -740,23 +751,23 @@
     var failed = d.licence_outcomes.filter(function (r) { return OUTCOME[r.outcome] && OUTCOME[r.outcome][1] === 'bad'; }).reduce(function (s, r) { return s + n(r.checks); }, 0);
 
     var hero = kpis(top, true);
-    kpi(hero, { icon: 'monitor', tone: 'device', label: 'Licensed devices', value: int(sum(d.active_seats)), sub: 'Activated right now · ' + by(d.active_seats),
+    kpi(hero, { icon: 'monitor', tone: 'device', label: 'Licensed devices', value: int(sum(d.active_seats)), chip: by(d.active_seats),
       help: 'Computers activated for Kapture Pro and not deactivated, right now. One licence can cover more than one device, and a device is not a person.' });
-    kpi(hero, { icon: 'clock-counter-clockwise', tone: 'device', label: 'Connected devices', value: int(sum(d.seen_in_period)), sub: 'Checked in during the period · ' + by(d.seen_in_period),
+    kpi(hero, { icon: 'clock-counter-clockwise', tone: 'device', label: 'Connected devices', value: int(sum(d.seen_in_period)), chip: by(d.seen_in_period),
       help: 'Licensed devices that checked their licence at least once in the period.' });
     var g = kpis(top);
-    kpi(g, { icon: 'plugs-connected', tone: 'device', label: 'Device activations', value: int(k.activations.cur), sub: 'Computers signed in to Kapture Pro',
+    kpi(g, { icon: 'plugs-connected', tone: 'device', label: 'Device activations', value: int(k.activations.cur),
       delta: delta(k.activations.cur, k.activations.prev),
       help: 'How many times a computer was activated. One device can activate more than once, and an activation is not a new customer.' });
-    kpi(g, { icon: 'x-circle', tone: 'quiet', label: 'Deactivated', value: int(d.deactivations_in_period), sub: 'Devices removed from a licence',
+    kpi(g, { icon: 'x-circle', tone: 'quiet', label: 'Deactivated', value: int(d.deactivations_in_period),
       help: 'Devices removed from a licence in the period, by the user or automatically.' });
     kpi(g, { icon: 'shield-check', tone: failed ? 'warn' : 'good', label: 'Licence checks', value: int(k.licence_checks.cur), group: 'licence_checks',
-      sub: !checks ? 'None in this period' : checks >= 20 ? Math.round(100 * issued / checks) + '% issued a licence' : int(issued) + ' of ' + int(checks) + ' issued a licence',
+      chip: !checks ? null : checks >= 20 ? Math.round(100 * issued / checks) + '% issued' : int(issued) + ' of ' + int(checks) + ' issued',
       delta: delta(k.licence_checks.cur, k.licence_checks.prev),
       help: 'Background checks the apps make to confirm a licence. They are not user sessions, and one device checks many times.' });
 
     // Recent activity.
-    var rg = grid(block(v, 'Recent activity', 'calendar-check'));
+    var rg = grid(block(v, 'Recent activity', 'calendar-check', null, 'Activations and licences issued today so far, yesterday and over the last seven days. Days run midnight to midnight UTC.'));
     var pr = panel(rg, 12, 'Today, yesterday and the last 7 days');
     recentTable(pr, [
       { name: 'Activations on macOS', icon: 'apple-logo', sum: sumKey('activations_macos') },
@@ -765,8 +776,8 @@
     ]);
 
     // macOS and Windows.
-    var pg = grid(block(v, 'macOS and Windows', 'devices'));
-    var pp = panel(pg, 12, 'Platforms side by side', { sub: 'Kapture Pro devices. The split bar is drawn from 10 devices, so a tiny sample does not look like a trend.' });
+    var pg = grid(block(v, 'macOS and Windows', 'devices', null, 'The same device figures for each platform, with the app versions each one reported. The split bar appears from 10 devices, so a tiny sample does not look like a trend.'));
+    var pp = panel(pg, 12, 'Platforms side by side');
     var wrap = el('div', 'kd-platforms');
     [['macos', 'is-mac'], ['windows', 'is-win']].forEach(function (pl) {
       var key = pl[0], col = el('div', 'kd-platform ' + pl[1]), h = el('div', 'kd-platform-head');
@@ -790,8 +801,8 @@
     }
 
     // Over the period.
-    var og = grid(block(v, 'Over the period', 'chart-line-up'));
-    var pa = panel(og, 8, 'Activations per day', { sub: fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to) + ' · hover a day for details' });
+    var og = grid(block(v, 'Over the period', 'chart-line-up', null, 'Day by day across the selected period. Hover over a day to see its figures.'));
+    var pa = panel(og, 8, 'Activations per day');
     switcher(pa, [
       { label: 'Activations', defs: [{ key: 'activations_macos', name: 'macOS', c: 4 }, { key: 'activations_windows', name: 'Windows', c: 2 }], empty: 'No activations in this period.' },
       { label: 'Licence checks', group: 'licence_checks', defs: [{ key: 'licence_issued', name: 'Licence issued', c: 1 }, { key: 'other_checks', name: 'Other answers', c: 5 }], empty: 'No licence checks in this period.' }
@@ -816,8 +827,9 @@
     }
 
     // Supporting: versions.
-    var vg = grid(block(v, 'App versions', 'stack', '“Newest reported” is the highest version these devices reported. It may not be the latest release, so older versions are not necessarily out of date.'));
-    var pv = panel(vg, 12, 'Versions in use', { sub: 'Connected devices, by the version they last reported' });
+    var vg = grid(block(v, 'App versions', 'stack', '“Newest reported” is the highest version these devices reported. It may not be the latest release, so older versions are not necessarily out of date.',
+      'Which version each connected device last reported.'));
+    var pv = panel(vg, 12, 'Versions in use');
     var newest = {};
     d.versions.forEach(function (r) { if (r.version !== 'unknown' && (!newest[r.platform] || cmpVersion(r.version, newest[r.platform]) > 0)) newest[r.platform] = r.version; });
     var vrows = d.versions.slice().sort(function (a, b) { return a.platform === b.platform ? cmpVersion(b.version, a.version) : a.platform < b.platform ? -1 : 1; });
@@ -831,14 +843,15 @@
 
   function viewUsage(v) {
     var u = data.usage, act = u.activity, oi = u.optin_installs;
-    var top = block(v);
-    scopeNote(top, ['anonymous', 'opt_in'], 'Usage statistics are not linked to accounts, so they are');
     var noAgg = !data.switches.aggregate, noUse = !data.switches.usage;
-
     var today = utcToday();
     var lastMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1)).toLocaleDateString('en-GB', { month: 'long', timeZone: 'UTC' });
     var wkEnd = new Date(today); wkEnd.setUTCDate(wkEnd.getUTCDate() - ((wkEnd.getUTCDay() + 6) % 7) - 1);
     var wkStart = new Date(wkEnd); wkStart.setUTCDate(wkStart.getUTCDate() - 6);
+    var top = block(v, 'Everyone using the apps', 'users-three', null,
+      'Anonymous counts from every install, each counted once per day, week or month. They count installs, not people. Yesterday is ' + fmtDay(iso(new Date(today - 864e5))) +
+      ' and last week is ' + fmtDay(iso(wkStart)) + ' – ' + fmtDay(iso(wkEnd)) + ' (UTC).');
+    scopeNote(top, ['anonymous', 'opt_in'], 'Usage statistics are not linked to accounts, so they are');
     var combined = function (key) {
       var s = sumVals(act.map(function (r) { return r[key]; }));
       var split = act.length > 1 ? act.map(function (r) { return plat(r.platform) + (r.app && r.app !== 'pro' ? ' (' + r.app + ')' : '') + ' ' + short(r[key]); }).join(' · ') : '';
@@ -850,36 +863,37 @@
     else if (!act.length) notice(top, 'clock', [el('strong', null, 'No app activity has arrived yet. '), 'Apps send anonymous totals about once a day after they are opened, so a dash means “no data yet”, not zero use.']);
     var hero = kpis(top, true);
     var d1 = combined('dau'), w1 = combined('wau'), m1 = combined('mau');
-    kpi(hero, { icon: 'sun', tone: 'use', label: 'Active yesterday', value: d1.value, sub: d1.split || fmtDay(iso(new Date(today - 864e5))) + ' (UTC)',
+    kpi(hero, { icon: 'sun', tone: 'use', label: 'Active yesterday', value: d1.value, chip: d1.split || null,
       help: 'Anonymous: installs used yesterday (' + fmtDay(iso(new Date(today - 864e5))) + ', UTC), each counted once. Installs, not people. Yesterday is used because apps report with a delay.' });
-    kpi(hero, { icon: 'calendar-blank', tone: 'use', label: 'Active last week', value: w1.value, sub: w1.split || fmtDay(iso(wkStart)) + ' – ' + fmtDay(iso(wkEnd)),
+    kpi(hero, { icon: 'calendar-blank', tone: 'use', label: 'Active last week', value: w1.value, chip: w1.split || null,
       help: 'Anonymous: installs used at least once in the last full week, Monday to Sunday (' + fmtDay(iso(wkStart)) + ' – ' + fmtDay(iso(wkEnd)) + '). Each install counts once.' });
-    kpi(hero, { icon: 'calendar-check', tone: 'use', label: 'Active in ' + lastMonth, value: m1.value, sub: m1.split || 'Last full calendar month',
+    kpi(hero, { icon: 'calendar-check', tone: 'use', label: 'Active in ' + lastMonth, value: m1.value, chip: m1.split || null,
       help: 'Anonymous: installs used at least once in ' + lastMonth + '. Each install counts once.' });
-    kpi(hero, { icon: 'rocket-launch', tone: 'grow', label: 'First launches', value: isSupp(u.first_launches) ? '<5' : !act.length && !n(u.first_launches) ? '—' : int(u.first_launches), sub: 'New installs in the period',
+    kpi(hero, { icon: 'rocket-launch', tone: 'grow', label: 'First launches', value: isSupp(u.first_launches) ? '<5' : !act.length && !n(u.first_launches) ? '—' : int(u.first_launches),
       help: 'Anonymous: installs opened for the first time in the period.' });
 
     // Sharing devices: opted in, counted by a random install ID.
-    var sb = block(v, 'Sharing devices', 'chart-bar', 'Installs whose user chose “Share statistics”. They carry a random ID, so each device is counted once. This is a small, self-selected group, separate from the anonymous totals above.');
+    var sb = block(v, 'Sharing devices', 'chart-bar', 'They carry a random ID, so each device is counted once. They are separate from the anonymous counts above.',
+      'Devices whose owners chose “Share statistics”: a small, self-selected group, counted precisely. How many were used in the last 30 days, the last 7 days and yesterday.');
     if (noUse) notice(sb, 'toggle-left', ['Detailed statistics are switched off.']);
     var gb = kpis(sb);
     var oiSum = function (key) { return oi.length ? sumVals(oi.map(function (r) { return r[key]; })).text : noUse ? '—' : '0'; };
     var oiSplit = function (key) { return oi.length > 1 ? oi.map(function (r) { return plat(r.platform) + ' ' + short(r[key]); }).join(' · ') : ''; };
-    kpi(gb, { icon: 'devices', tone: 'device', label: 'Last 30 days', value: oiSum('mau'), sub: oiSplit('mau') || 'Sharing devices active', help: 'Distinct opted-in devices used at least once in the last 30 days.' });
-    kpi(gb, { icon: 'calendar-blank', tone: 'device', label: 'Last 7 days', value: oiSum('wau'), sub: oiSplit('wau') || 'Sharing devices active', help: 'Distinct opted-in devices used at least once in the last 7 days.' });
-    kpi(gb, { icon: 'sun', tone: 'device', label: 'Yesterday', value: oiSum('dau'), sub: oiSplit('dau') || 'Sharing devices active', help: 'Distinct opted-in devices used yesterday (UTC).' });
+    kpi(gb, { icon: 'devices', tone: 'device', label: 'Last 30 days', value: oiSum('mau'), chip: oiSplit('mau') || null, help: 'Distinct opted-in devices used at least once in the last 30 days.' });
+    kpi(gb, { icon: 'calendar-blank', tone: 'device', label: 'Last 7 days', value: oiSum('wau'), chip: oiSplit('wau') || null, help: 'Distinct opted-in devices used at least once in the last 7 days.' });
+    kpi(gb, { icon: 'sun', tone: 'device', label: 'Yesterday', value: oiSum('dau'), chip: oiSplit('dau') || null, help: 'Distinct opted-in devices used yesterday (UTC).' });
 
     // Recent activity.
-    var rg = grid(block(v, 'Recent activity', 'calendar-check'));
-    var pr = panel(rg, 12, 'Today, yesterday and the last 7 days', { sub: 'Apps send totals about once a day, so today and yesterday usually fill in a day later.' });
+    var rg = grid(block(v, 'Recent activity', 'calendar-check', null, 'Apps send their totals about once a day, so today and yesterday usually fill in a day later. Days run midnight to midnight UTC.'));
+    var pr = panel(rg, 12, 'Today, yesterday and the last 7 days');
     recentTable(pr, [
       { name: 'Daily app activity', icon: 'pulse', sum: sumKey('anonymous_active'), late: true, help: 'Anonymous: installs used that day, each counted once. Over 7 days the days are added, so this is not unique installs or people.' },
       { name: 'Sharing devices active', icon: 'devices', sum: sumKey('optin_active'), late: true, help: 'Distinct opted-in devices used that day. Over 7 days the days are added, so one device can count more than once.' }
     ]);
 
     // Over the period.
-    var og = grid(block(v, 'Over the period', 'chart-line-up'));
-    var pd = panel(og, 8, 'Daily app activity', { sub: fmtDay(data.period.from) + ' – ' + fmtDay(data.period.to) + ' · hover a day for details' });
+    var og = grid(block(v, 'Over the period', 'chart-line-up', null, 'Day by day across the selected period. Hover over a day to see its figures.'));
+    var pd = panel(og, 8, 'Daily app activity');
     switcher(pd, [
       { label: 'Everyone', defs: [{ key: 'anonymous_active', name: 'Installs active', c: 2 }],
         empty: noAgg ? 'Anonymous statistics are switched off.' : 'No daily activity yet.', why: noAgg ? '' : ' Apps send totals about once a day after they are opened.' },
@@ -896,8 +910,9 @@
     }
 
     // Most used features: full width, the screen's main list.
-    var fg = grid(block(v, 'Most used features', 'cursor-click', 'Anonymous totals of actions in the period, from every install. They count actions, not people. Figures from 1 to 4 show as <5.'));
-    var pf = panel(fg, 12, 'What people do in Kapture', { sub: 'Actions in the last ' + periodLabel() + ', top 20. Comparison with the previous period is not available yet.' });
+    var fg = grid(block(v, 'Most used features', 'cursor-click', 'Figures from 1 to 4 show as <5. Comparison with the previous period is not available yet.',
+      'The 20 most common actions in the period, from every install. They count actions, not people.'));
+    var pf = panel(fg, 12, 'What people do in Kapture');
     var fr = featureRows();
     hbars(pf, fr.map(function (r, i) {
       var tags = r.parts.map(function (p) { return tag(plat(p.platform) + ' ' + short(p.total), null, PLATFORM_ICON[p.platform]); });
@@ -908,7 +923,7 @@
       u.features.map(function (r) { return [eventName(r.event), el('code', null, r.event), plat(r.platform), short(r.total)]; }));
 
     // Adoption and return: one compact note while neither has enough data.
-    var ab = block(v, 'Adoption and return', 'arrow-counter-clockwise');
+    var ab = block(v, 'Adoption and return', 'arrow-counter-clockwise', null, 'Which features sharing devices tried last week, and whether new sharing devices are used again in later weeks.');
     if (!u.adoption.length && !u.retention.length) {
       var pn = panel(grid(ab), 12, 'Not enough sharing devices yet');
       pn.appendChild(el('p', 'kd-panel-sub', 'Feature adoption needs at least 5 sharing devices active in a week. “Are people coming back?” needs a week in which at least 5 devices started sharing, followed by a complete week. Both stay hidden until then, so no one can be singled out.'));
@@ -953,7 +968,8 @@
 
   function viewHealth(v) {
     var h = data.health, i = h.ingest, fr = h.freshness;
-    var top = block(v);
+    var top = block(v, 'Status', 'heartbeat', null,
+      'Whether the two kinds of statistics are switched on, whether reports are actually arriving, and whether the automatic tasks ran. On only means collection is allowed; Data collection shows whether anything has arrived.');
     var jobs = h.jobs, active = (jobs || []).filter(function (j) { return j.active; });
     var failedJobs = active.filter(function (j) { return j.last_status === 'failed'; });
     var anyOn = data.switches.aggregate || data.switches.usage;
@@ -961,18 +977,18 @@
 
     // Status first: the same card as every other screen, with the status as the value.
     var st = kpis(top);
-    var status = function (tone, iconName, label, word, sub, help) { kpi(st, { icon: iconName, tone: tone, label: label, value: word, text: true, sub: sub, help: help }); };
-    status(data.switches.aggregate ? 'good' : 'quiet', data.switches.aggregate ? 'toggle-right' : 'toggle-left', 'Anonymous analytics', data.switches.aggregate ? 'On' : 'Off', 'Daily totals from every install',
-      'Whether the apps are allowed to send anonymous daily totals. On does not by itself mean data is arriving: see Data collection.');
-    status(data.switches.usage ? 'good' : 'quiet', data.switches.usage ? 'toggle-right' : 'toggle-left', 'Detailed statistics', data.switches.usage ? 'On' : 'Off', 'Only from people who chose to share');
-    if (!anyOn) status('quiet', 'circle-dashed', 'Data collection', 'Not collecting', 'Both switches are off');
-    else if (!last) status('quiet', 'clock', 'Data collection', 'Waiting', 'No report has arrived yet');
+    var status = function (tone, iconName, label, word, chip, help) { kpi(st, { icon: iconName, tone: tone, label: label, value: word, text: true, chip: chip, help: help }); };
+    status(data.switches.aggregate ? 'good' : 'quiet', data.switches.aggregate ? 'toggle-right' : 'toggle-left', 'Anonymous analytics', data.switches.aggregate ? 'On' : 'Off', null,
+      'Anonymous daily totals from every install. On means the apps may send them; it does not by itself mean data is arriving.');
+    status(data.switches.usage ? 'good' : 'quiet', data.switches.usage ? 'toggle-right' : 'toggle-left', 'Detailed statistics', data.switches.usage ? 'On' : 'Off', null, 'Statistics only from people who chose “Share statistics”.');
+    if (!anyOn) status('quiet', 'circle-dashed', 'Data collection', 'Not collecting', null, 'Both switches are off.');
+    else if (!last) status('quiet', 'clock', 'Data collection', 'Waiting', null, 'No report has arrived yet.');
     else if (daysAgo(last) <= 1) status('good', 'check-circle', 'Data collection', 'Receiving', 'Last report ' + relDay(last));
     else status('quiet', 'clock', 'Data collection', 'Quiet', 'Last report ' + relDay(last), 'No reports recently. This can simply mean no one opened the apps; it is not by itself a fault.');
-    if (jobs === null) status('quiet', 'question', 'Scheduled jobs', 'Unavailable', 'The job log could not be read');
-    else if (failedJobs.length) status('bad', 'warning-circle', 'Scheduled jobs', 'Needs attention', failedJobs.length + ' failed on the last run');
-    else if (!active.some(function (j) { return j.last_status; })) status('quiet', 'clock', 'Scheduled jobs', 'Not yet run', 'No job has run yet');
-    else status('good', 'check-circle', 'Scheduled jobs', 'Healthy', active.some(function (j) { return !j.last_status; }) ? 'Every job that ran succeeded' : 'All succeeded on their last run');
+    if (jobs === null) status('quiet', 'question', 'Scheduled jobs', 'Unavailable', null, 'The job log could not be read.');
+    else if (failedJobs.length) status('bad', 'warning-circle', 'Scheduled jobs', 'Needs attention', failedJobs.length + ' failed last run');
+    else if (!active.some(function (j) { return j.last_status; })) status('quiet', 'clock', 'Scheduled jobs', 'Not yet run', null, 'No job has run yet.');
+    else status('good', 'check-circle', 'Scheduled jobs', 'Healthy', null, active.some(function (j) { return !j.last_status; }) ? 'Every job that has run succeeded; some have not run yet.' : 'Every job succeeded on its last run.');
 
     // Needs attention: real problems only, never zero activity on its own.
     var issues = [];
@@ -981,7 +997,7 @@
     if (n(i.limited)) issues.push(['warn', 'prohibit', int(i.limited) + ' analytics ' + plural(i.limited, 'request was', 'requests were') + ' limited', 'A daily limit was reached, so some reports were refused.']);
     if (jobs) active.filter(function (j) { return j.last_status === 'succeeded' && j.last_start && /^\d{1,2} \d{1,2} \* \* \*$/.test(j.schedule) && Date.now() - new Date(j.last_start) > 2 * 864e5; })
       .forEach(function (j) { issues.push(['warn', 'clock', jobName(j.name) + ' has not run for two days', 'It runs daily. Last run ' + fmtTime(j.last_start) + '.']); });
-    var ab = block(v, 'Needs attention', 'warning-circle');
+    var ab = block(v, 'Needs attention', 'warning-circle', null, 'Only real problems are listed: failed tasks, licence errors and refused requests. A quiet day with no data is not a problem.');
     if (!issues.length) notice(ab, 'check-circle', [el('strong', null, 'Nothing needs attention. '), 'No failed jobs, licence errors or limited requests in the period.'], 'is-good');
     else {
       var ul = el('ul', 'kd-attn');
@@ -990,15 +1006,16 @@
     }
 
     // Collection activity.
-    var cb = block(v, 'Collection activity', 'tray-arrow-down');
+    var cb = block(v, 'Collection activity', 'tray-arrow-down', null,
+      'A report is one delivery of statistics from an app, usually once a day. Requests are every call the apps made, including repeats and refused ones. Statistics recorded are the individual counts stored. The chart shows reports per day; an empty day means no app sent one, not a failure.');
     if (data.filters.platform !== 'all' || data.filters['class'] !== 'all') notice(cb, 'info', ['System figures are not affected by the platform or account type filters.']);
     var cg = kpis(cb);
-    kpi(cg, { icon: 'tray-arrow-down', tone: 'use', label: 'Reports received', value: int(n(i.batches_aggregate) + n(i.batches_usage)), sub: int(i.batches_aggregate) + ' anonymous · ' + int(i.batches_usage) + ' detailed',
+    kpi(cg, { icon: 'tray-arrow-down', tone: 'use', label: 'Reports received', value: int(n(i.batches_aggregate) + n(i.batches_usage)), chip: int(i.batches_aggregate) + ' anonymous · ' + int(i.batches_usage) + ' detailed',
       help: 'A report is one delivery of statistics from an app, accepted and stored. Apps send about one a day.' });
-    kpi(cg, { icon: 'arrows-clockwise', tone: 'use', label: 'Analytics requests', value: int(i.requests), sub: int(h.ingest_today.requests) + ' today',
+    kpi(cg, { icon: 'arrows-clockwise', tone: 'use', label: 'Analytics requests', value: int(i.requests), chip: int(h.ingest_today.requests) + ' today',
       help: 'Every call the apps made to the analytics service that reached the database, including duplicates and limited ones.' });
-    kpi(cg, { icon: 'database', tone: 'use', label: 'Statistics recorded', value: int(i.entries), sub: 'Individual counts stored', help: 'The individual counts stored from accepted reports.' });
-    kpi(cg, { icon: 'prohibit', tone: n(i.limited) ? 'warn' : 'quiet', label: 'Requests limited', value: int(i.limited), sub: int(h.ingest_today.limited) + ' today',
+    kpi(cg, { icon: 'database', tone: 'use', label: 'Statistics recorded', value: int(i.entries), help: 'The individual counts stored from accepted reports.' });
+    kpi(cg, { icon: 'prohibit', tone: n(i.limited) ? 'warn' : 'quiet', label: 'Requests limited', value: int(i.limited), chip: int(h.ingest_today.limited) + ' today',
       help: 'Requests refused because a daily limit was reached.' });
     var ser = h.ingest_series.map(function (p) { return Object.assign({}, p, { reports: n(p.batches_aggregate) + n(p.batches_usage) }); });
     var rg = grid(cb);
@@ -1008,13 +1025,13 @@
       { name: 'Analytics requests', icon: 'arrows-clockwise', sum: sumKey('requests') },
       { name: 'Requests limited', icon: 'prohibit', sum: sumKey('limited') }
     ], ser);
-    var pc = panel(rg, 12, 'Reports received per day', { sub: 'An empty day means no app sent a report, not that collection failed.' });
+    var pc = panel(rg, 12, 'Reports received per day');
     bars(pc, ser, [{ key: 'batches_aggregate', name: 'Anonymous', c: 2 }, { key: 'batches_usage', name: 'Detailed', c: 4 }],
       { label: 'Reports received per day', emptyIcon: 'tray-arrow-down', empty: anyOn ? 'No reports in this period.' : 'Collection is switched off.', emptyWhy: anyOn ? ' Reports arrive when people open the apps.' : '' });
 
     // Scheduled jobs.
-    var jg = grid(block(v, 'Scheduled jobs', 'clock'));
-    var pj = panel(jg, 12, 'Automatic tasks', { sub: 'Times are UTC.' });
+    var jg = grid(block(v, 'Scheduled jobs', 'clock', null, 'Tasks the system runs by itself: the daily analytics summary, old data cleanup and payment reconciliation. Times are UTC.'));
+    var pj = panel(jg, 12, 'Automatic tasks');
     if (jobs === null) empty(pj, 'question', 'Job status is unavailable.', ' The job log could not be read.');
     else if (!jobs.length) empty(pj, 'clock', 'No scheduled jobs.', '');
     else {

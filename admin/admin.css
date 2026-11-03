@@ -103,6 +103,8 @@
 .kd-view { margin-top: 20px; display: grid; gap: 28px; }
 .kd-block { display: grid; gap: var(--kd-gap); min-width: 0; }
 .kd-section-head { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 17px; font-weight: 600; letter-spacing: .005em; }
+.kd-section-top { display: grid; gap: 4px; }
+.kd-section-sub { margin: 0; max-width: 78ch; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); }
 .kd-section-head > .kd-i { font-size: var(--kd-i-lg); color: var(--text-muted); }
 .kd-grid { display: grid; gap: var(--kd-gap); grid-template-columns: repeat(12, minmax(0, 1fr)); }
 .kd-span-12 { grid-column: span 12; }
@@ -158,12 +160,11 @@
 .kd-kpis.is-hero .kd-kpi-value { font-size: clamp(38px, 4.4vw, 48px); }
 .kd-kpi-value.is-text { font-size: 22px; line-height: 1.25; font-family: var(--font); font-weight: 600; letter-spacing: 0; overflow-wrap: normal; }
 .kd-kpis.is-hero .kd-kpi-value.is-text { font-size: 26px; }
-.kd-kpi-sub { margin-top: 6px; font-size: 13px; color: var(--text-dim); line-height: 1.45; }
-.kd-kpi-foot { margin-top: auto; padding-top: 10px; }
+.kd-kpi-foot { margin-top: auto; padding-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
 .kd-delta {
   display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-dim);
-  background: var(--kd-quiet-bg); border-radius: 999px; padding: 3px 9px 3px 7px; line-height: 1.3;
+  background: var(--kd-quiet-bg); border-radius: 999px; padding: 3px 9px 3px 7px; line-height: 1.3; white-space: nowrap;
 }
 .kd-delta .kd-i { font-size: var(--kd-i-xs); }
 .kd-delta.is-up .kd-i { color: var(--kd-good); }
@@ -302,6 +303,7 @@
 /* Inside a KPI card: small figures under the main value. */
 .kd-stats.is-compact { margin: 0; padding-top: 12px; border-top: 1px solid var(--line); grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; }
 .kd-stats.is-compact dd { font-size: 15px; }
+.kd-kpi-foot > .kd-stats { flex: 1 1 100%; }
 
 .kd-details { margin-top: 14px; }
 .kd-details > summary {
